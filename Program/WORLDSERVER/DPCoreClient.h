@@ -7,7 +7,7 @@
 #include "misc.h"
 
 #include "guild.h"
-asdasd
+
 #if __VER >= 14 // __INSTANCE_DUNGEON
 #include "InstanceDungeonBase.h"
 #endif // __INSTANCE_DUNGEON
