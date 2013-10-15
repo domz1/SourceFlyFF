@@ -1,0 +1,79 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Function template after</title>
+<link rel="stylesheet" href="../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.68.1">
+<link rel="start" href="../../index.html" title="The Boost C++ Libraries BoostBook Documentation Subset">
+<link rel="up" href="../../xpressive/reference.html#header.boost.xpressive.regex_primitives.hpp" title="Header &lt;boost/xpressive/regex_primitives.hpp&gt;">
+<link rel="prev" href="before.html" title="Function template before">
+<link rel="next" href="imbue.html" title="Function template imbue">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%">
+<td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../boost.png"></td>
+<td align="center"><a href="../../../../index.htm">Home</a></td>
+<td align="center"><a href="../../../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="../../../../people/people.htm">People</a></td>
+<td align="center"><a href="../../../../more/faq.htm">FAQ</a></td>
+<td align="center"><a href="../../../../more/index.htm">More</a></td>
+</table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="before.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../xpressive/reference.html#header.boost.xpressive.regex_primitives.hpp"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="imbue.html"><img src="../../images/next.png" alt="Next"></a>
+</div>
+<div class="refentry" lang="en">
+<a name="boost.xpressive.after"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Function template after</span></h2>
+<p>boost::xpressive::after &#8212; Look-behind assertion. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis">
+<span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> Xpr&gt; <span class="type"><span class="emphasis"><em>unspecified</em></span></span> after(Xpr <span class="bold"><strong>const</strong></span> &amp; xpr);</pre></div>
+<div class="refsect1" lang="en">
+<a name="id2046076"></a><h2>Description</h2>
+<p>after(xpr) succeeds if the xpr sub-expression would match at the current position minus N in the sequence, where N is the width of xpr. xpr is not included in the match. For instance, after("foo") succeeds if we are after a "foo". Look-behind assertions can be negated with the bit-complement operator.</p>
+<p>
+
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td>
+<span class="term"><code class="computeroutput">xpr</code></span></td>
+<td><p>The sub-expression to put in the look-ahead assertion.</p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td>
+<span class="term">Requires:</span></td>
+<td><p>xpr cannot match a variable number of characters. </p></td>
+</tr>
+<tr>
+<td>
+<span class="term">Notes:</span></td>
+<td><p>after(xpr) is equivalent to the perl (?&lt;=...) extension. ~after(xpr) is a negative look-behind assertion, equivalent to the perl (?&lt;!...) extension.</p></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<table width="100%"><tr>
+<td align="left"></td>
+<td align="right"><small>Copyright © 2003, 2004 Eric Niebler</small></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="before.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../xpressive/reference.html#header.boost.xpressive.regex_primitives.hpp"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="imbue.html"><img src="../../images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

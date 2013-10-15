@@ -1,0 +1,105 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Struct template counted_time_rep</title>
+<link rel="stylesheet" href="../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.68.1">
+<link rel="start" href="../../index.html" title="The Boost C++ Libraries BoostBook Documentation Subset">
+<link rel="up" href="../../date_time/doxy.html#header.boost.date_time.time_system_counted.hpp" title="Header &lt;boost/date_time/time_system_counted.hpp&gt;">
+<link rel="prev" href="time_resolution_traits_bi64_impl.html" title="Struct time_resolution_traits_bi64_impl">
+<link rel="next" href="counted_time_system.html" title="Class template counted_time_system">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%">
+<td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../boost.png"></td>
+<td align="center"><a href="../../../../index.htm">Home</a></td>
+<td align="center"><a href="../../../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="../../../../people/people.htm">People</a></td>
+<td align="center"><a href="../../../../more/faq.htm">FAQ</a></td>
+<td align="center"><a href="../../../../more/index.htm">More</a></td>
+</table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="time_resolution_traits_bi64_impl.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../date_time/doxy.html#header.boost.date_time.time_system_counted.hpp"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="counted_time_system.html"><img src="../../images/next.png" alt="Next"></a>
+</div>
+<div class="refentry" lang="en">
+<a name="boost.date_time.counted_time_rep"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Struct template counted_time_rep</span></h2>
+<p>boost::date_time::counted_time_rep &#8212; Time representation that uses a single integer count. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> config&gt; 
+<span class="bold"><strong>struct</strong></span> counted_time_rep {
+  <span class="emphasis"><em>// types</em></span>
+  <span class="bold"><strong>typedef</strong></span> config::int_type           int_type;          
+  <span class="bold"><strong>typedef</strong></span> config::date_type          date_type;         
+  <span class="bold"><strong>typedef</strong></span> config::impl_type          impl_type;         
+  <span class="bold"><strong>typedef</strong></span> date_type::duration_type   date_duration_type;
+  <span class="bold"><strong>typedef</strong></span> date_type::calendar_type   calendar_type;     
+  <span class="bold"><strong>typedef</strong></span> date_type::ymd_type        ymd_type;          
+  <span class="bold"><strong>typedef</strong></span> config::time_duration_type time_duration_type;
+  <span class="bold"><strong>typedef</strong></span> config::resolution_traits  resolution_traits; 
+
+  <span class="emphasis"><em>// <a href="counted_time_rep.html#boost.date_time.counted_time_repconstruct-copy-destruct">construct/copy/destruct</a></em></span>
+  <a href="counted_time_rep.html#id939992-bb">counted_time_rep</a>(<span class="bold"><strong>const</strong></span> date_type &amp;, <span class="bold"><strong>const</strong></span> time_duration_type &amp;);
+  <a href="counted_time_rep.html#id767905-bb">counted_time_rep</a>(int_type);
+  <a href="counted_time_rep.html#id767911-bb">counted_time_rep</a>(impl_type);
+
+  <span class="emphasis"><em>// <a href="counted_time_rep.html#id939918-bb">public member functions</a></em></span>
+  <span class="type">date_type</span> <a href="counted_time_rep.html#id939922-bb">date</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>unsigned</strong></span> <span class="bold"><strong>long</strong></span></span> <a href="counted_time_rep.html#id939929-bb">day_count</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">int_type</span> <a href="counted_time_rep.html#id939937-bb">time_count</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">int_type</span> <a href="counted_time_rep.html#id939945-bb">tod</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="counted_time_rep.html#id939953-bb">is_pos_infinity</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="counted_time_rep.html#id939960-bb">is_neg_infinity</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="counted_time_rep.html#id939968-bb">is_not_a_date_time</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="counted_time_rep.html#id939976-bb">is_special</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">impl_type</span> <a href="counted_time_rep.html#id939984-bb">get_rep</a>() <span class="bold"><strong>const</strong></span>;
+
+  <span class="emphasis"><em>// <a href="counted_time_rep.html#id830185-bb">public static functions</a></em></span>
+  <span class="type"><span class="bold"><strong>static</strong></span> int_type</span> <a href="counted_time_rep.html#id830188-bb">frac_sec_per_day</a>() ;
+};</pre></div>
+<div class="refsect1" lang="en">
+<a name="id1138241"></a><h2>Description</h2>
+<div class="refsect2" lang="en">
+<a name="id1138245"></a><h3>
+<a name="boost.date_time.counted_time_repconstruct-copy-destruct"></a><code class="computeroutput">counted_time_rep</code> construct/copy/destruct</h3>
+<div class="orderedlist"><ol type="1">
+<li><pre class="literallayout"><a name="id939992-bb"></a>counted_time_rep(<span class="bold"><strong>const</strong></span> date_type &amp; d, <span class="bold"><strong>const</strong></span> time_duration_type &amp; time_of_day);</pre></li>
+<li><pre class="literallayout"><a name="id767905-bb"></a>counted_time_rep(int_type count);</pre></li>
+<li><pre class="literallayout"><a name="id767911-bb"></a>counted_time_rep(impl_type count);</pre></li>
+</ol></div>
+</div>
+<div class="refsect2" lang="en">
+<a name="id1138318"></a><h3>
+<a name="id939918-bb"></a><code class="computeroutput">counted_time_rep</code> public member functions</h3>
+<div class="orderedlist"><ol type="1">
+<li><pre class="literallayout"><span class="type">date_type</span> <a name="id939922-bb"></a>date() <span class="bold"><strong>const</strong></span>;</pre></li>
+<li><pre class="literallayout"><span class="type"><span class="bold"><strong>unsigned</strong></span> <span class="bold"><strong>long</strong></span></span> <a name="id939929-bb"></a>day_count() <span class="bold"><strong>const</strong></span>;</pre></li>
+<li><pre class="literallayout"><span class="type">int_type</span> <a name="id939937-bb"></a>time_count() <span class="bold"><strong>const</strong></span>;</pre></li>
+<li><pre class="literallayout"><span class="type">int_type</span> <a name="id939945-bb"></a>tod() <span class="bold"><strong>const</strong></span>;</pre></li>
+<li><pre class="literallayout"><span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id939953-bb"></a>is_pos_infinity() <span class="bold"><strong>const</strong></span>;</pre></li>
+<li><pre class="literallayout"><span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id939960-bb"></a>is_neg_infinity() <span class="bold"><strong>const</strong></span>;</pre></li>
+<li><pre class="literallayout"><span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id939968-bb"></a>is_not_a_date_time() <span class="bold"><strong>const</strong></span>;</pre></li>
+<li><pre class="literallayout"><span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id939976-bb"></a>is_special() <span class="bold"><strong>const</strong></span>;</pre></li>
+<li><pre class="literallayout"><span class="type">impl_type</span> <a name="id939984-bb"></a>get_rep() <span class="bold"><strong>const</strong></span>;</pre></li>
+</ol></div>
+</div>
+<div class="refsect2" lang="en">
+<a name="id1138557"></a><h3>
+<a name="id830185-bb"></a><code class="computeroutput">counted_time_rep</code> public static functions</h3>
+<div class="orderedlist"><ol type="1"><li><pre class="literallayout"><span class="type"><span class="bold"><strong>static</strong></span> int_type</span> <a name="id830188-bb"></a>frac_sec_per_day() ;</pre></li></ol></div>
+</div>
+</div>
+</div>
+<table width="100%"><tr>
+<td align="left"></td>
+<td align="right"><small>Copyright © 2001-2005 CrystalClear Software, Inc</small></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="time_resolution_traits_bi64_impl.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../date_time/doxy.html#header.boost.date_time.time_system_counted.hpp"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="counted_time_system.html"><img src="../../images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

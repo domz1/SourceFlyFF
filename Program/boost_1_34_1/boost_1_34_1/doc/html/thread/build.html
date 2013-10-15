@@ -1,0 +1,191 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Build</title>
+<link rel="stylesheet" href="../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.68.1">
+<link rel="start" href="../index.html" title="The Boost C++ Libraries BoostBook Documentation Subset">
+<link rel="up" href="../thread.html" title="Chapter 15. Boost.Thread">
+<link rel="prev" href="configuration.html" title="Configuration">
+<link rel="next" href="implementation_notes.html" title="Implementation Notes">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%">
+<td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../boost.png"></td>
+<td align="center"><a href="../../../index.htm">Home</a></td>
+<td align="center"><a href="../../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="../../../people/people.htm">People</a></td>
+<td align="center"><a href="../../../more/faq.htm">FAQ</a></td>
+<td align="center"><a href="../../../more/index.htm">More</a></td>
+</table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="configuration.html"><img src="../images/prev.png" alt="Prev"></a><a accesskey="u" href="../thread.html"><img src="../images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="../images/home.png" alt="Home"></a><a accesskey="n" href="implementation_notes.html"><img src="../images/next.png" alt="Next"></a>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="thread.build"></a>Build</h2></div></div></div>
+<div class="toc"><dl>
+<dt><span class="section"><a href="build.html#thread.build.building">Building the <span class="bold"><strong>Boost.Thread</strong></span> Libraries</a></span></dt>
+<dt><span class="section"><a href="build.html#thread.build.testing">Testing the <span class="bold"><strong>Boost.Thread</strong></span> Libraries</a></span></dt>
+</dl></div>
+<p>
+	How you build the <span class="bold"><strong>Boost.Thread</strong></span> libraries, and how you build your own applications
+	that use those libraries, are some of the most frequently asked questions. Build
+	processes are difficult to deal with in a portable manner. That's one reason
+	why <span class="bold"><strong>Boost.Thread</strong></span> makes use of <span class="bold"><strong>Boost.Build</strong></span>.
+	In general you should refer to the documentation for <span class="bold"><strong>Boost.Build</strong></span>.
+	This document will only supply you with some simple usage examples for how to
+	use <span class="emphasis"><em>bjam</em></span> to build and test <span class="bold"><strong>Boost.Thread</strong></span>. In addition, this document
+	will try to explain the build requirements so that users may create their own
+	build processes (for instance, create an IDE specific project), both for building
+	and testing <span class="bold"><strong>Boost.Thread</strong></span>, as well as for building their own projects using
+	<span class="bold"><strong>Boost.Thread</strong></span>.
+	</p>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="thread.build.building"></a>Building the <span class="bold"><strong>Boost.Thread</strong></span> Libraries</h3></div></div></div>
+<div class="toc"><dl>
+<dt><span class="section"><a href="build.html#thread.build.precompiled">Precompiled</a></span></dt>
+<dt><span class="section"><a href="build.html#thread.build.bjam"><span class="bold"><strong>Boost.Build</strong></span> Project</a></span></dt>
+<dt><span class="section"><a href="build.html#thread.build.source">Source Form</a></span></dt>
+</dl></div>
+<p>
+            Building the <span class="bold"><strong>Boost.Thread</strong></span> Library depends on how you intend to use it. You have several options:
+            </p>
+<div class="itemizedlist"><ul type="disc">
+<li>
+                    Using as a <a href="build.html#thread.build.precompiled" title="Precompiled">precompiled</a> library, possibly
+                    with auto-linking, or for use from within an IDE.
+                </li>
+<li>
+                    Use from a <a href="build.html#thread.build.bjam" title="Boost.Build Project"><span class="bold"><strong>Boost.Build</strong></span></a> project.
+                </li>
+<li>
+                    Using in <a href="build.html#thread.build.source" title="Source Form">source</a> form.
+                </li>
+</ul></div>
+<p>
+        </p>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="thread.build.precompiled"></a>Precompiled</h4></div></div></div>
+<p>
+                Using the <span class="bold"><strong>Boost.Thread</strong></span> library in precompiled form is the way to go if you want to
+                install the library to a standard place, from where your linker is able to resolve code
+                in binary form. You also will want this option if compile time is a concern. Multiple 
+                variants are available, for different toolsets and build variants (debug/release).
+                The library files are named <span class="emphasis"><em>{lead}boost_thread{build-specific-tags}.{extension}</em></span>,
+                where the build-specific-tags indicate the toolset used to build the library, whether it's
+                a debug or release build, what version of <span class="bold"><strong>Boost</strong></span> was used, etc.; and the lead and extension
+                are the appropriate extensions for a dynamic link library or static library for the platform
+                for which <span class="bold"><strong>Boost.Thread</strong></span> is being built.
+            	For instance, a debug build of the dynamic library built for Win32 with VC++ 7.1 using Boost 1.34 would
+            	be named <span class="emphasis"><em>boost_thread-vc71-mt-gd-1_34.dll</em></span>.
+                More information on this should be available from the <span class="bold"><strong>Boost.Build</strong></span> documentation.
+            </p>
+<p>
+                Building should be possible with the default configuration. If you are running into problems,
+                it might be wise to adjust your local settings of <span class="bold"><strong>Boost.Build</strong></span> though. Typically you will
+                need to get your user-config.jam file to reflect your environment, i.e. used toolsets. Please
+                refer to the <span class="bold"><strong>Boost.Build</strong></span> documentation to learn how to do this.
+            </p>
+<p>
+                To create the libraries you need to open a command shell and change to the 
+                <span class="emphasis"><em>boost_root</em></span> directory. From there you give the command 
+                </p>
+<pre class="programlisting">bjam --toolset=<span class="emphasis"><em>mytoolset</em></span> stage --with-thread</pre>
+<p>
+                Replace <span class="emphasis"><em>mytoolset</em></span> with the name of your toolset, e.g. msvc-7.1 .
+                This will compile and put the libraries into the <span class="emphasis"><em>stage</em></span> directory which is just below the
+                <span class="emphasis"><em>boost_root</em></span> directory. <span class="bold"><strong>Boost.Build</strong></span> by default will generate static and 
+                dynamic variants for debug and release.
+            </p>
+<div class="note"><table border="0" summary="Note">
+<tr>
+<td rowspan="2" align="center" valign="top" width="25"><img alt="[Note]" src="../images/note.png"></td>
+<th align="left">Note</th>
+</tr>
+<tr><td align="left" valign="top">
+                Invoking the above command without the --with-thread switch <span class="bold"><strong>Boost.Build</strong></span> will build all of 
+	            the Boost distribution, including <span class="bold"><strong>Boost.Thread</strong></span>.
+            </td></tr>
+</table></div>
+<p>
+                The next step is to copy your libraries to a place where your linker is able to pick them up.
+                It is also quite possible to leave them in the stage directory and instruct your IDE to take them
+                from there.
+            </p>
+<p>
+                In your IDE you then need to add <span class="emphasis"><em>boost_root</em></span>/boost to the paths where the compiler
+                expects to find files to be included. For toolsets that support <span class="emphasis"><em>auto-linking</em></span>
+                it is not necessary to explicitly specify the name of the library to link against, it is sufficient
+                to specify the path of the stage directory. Typically this is true on Windows. For gcc you need 
+                to specify the exact library name (including all the tags). Please don't forget that threading
+                support must be turned on to be able to use the library. You should be able now to build your
+                project from the IDE.
+            </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="thread.build.bjam"></a><span class="bold"><strong>Boost.Build</strong></span> Project</h4></div></div></div>
+<p>
+                If you have decided to use <span class="bold"><strong>Boost.Build</strong></span> as a build environment for your application, you simply
+                need to add a single line to your <span class="emphasis"><em>Jamroot</em></span> file:
+                </p>
+<pre class="programlisting">use-project /boost : {path-to-boost-root} ;</pre>
+<p>
+                where <span class="emphasis"><em>{path-to-boost-root}</em></span> needs to be replaced with the location of
+                your copy of the boost tree.
+                Later when you specify a component that needs to link against <span class="bold"><strong>Boost.Thread</strong></span> you specify this
+                as e.g.:
+                </p>
+<pre class="programlisting">exe myapp : {myappsources} /boost//thread ;</pre>
+<p>
+                and you are done.
+            </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h4 class="title">
+<a name="thread.build.source"></a>Source Form</h4></div></div></div>
+<p>
+                Of course it is also possible to use the <span class="bold"><strong>Boost.Thread</strong></span> library in source form.
+                First you need to specify the <span class="emphasis"><em>boost_root</em></span>/boost directory as
+                a path where your compiler expects to find files to include. It is not easy
+                to isolate the <span class="bold"><strong>Boost.Thread</strong></span> include files from the rest of the boost 
+                library though. You would also need to isolate every include file that the thread
+                library depends on. Next you need to copy the files from 
+                <span class="emphasis"><em>boost_root</em></span>/libs/thread/src to your project and instruct your
+                build system to compile them together with your project. Please look into the
+                <span class="emphasis"><em>Jamfile</em></span> in <span class="emphasis"><em>boost_root</em></span>/libs/thread/build
+                to find out which compiler options and defines you will need to get a clean compile.
+                Using the boost library in this way is the least recommended, and should only be
+                considered if avoiding dependency on <span class="bold"><strong>Boost.Build</strong></span> is a requirement. Even if so
+                it might be a better option to use the library in it's precompiled form. 
+                Precompiled downloads are available from the boost consulting web site, or as
+                part of most linux distributions.
+            </p>
+</div>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="thread.build.testing"></a>Testing the <span class="bold"><strong>Boost.Thread</strong></span> Libraries</h3></div></div></div>
+<p>
+	        To test the <span class="bold"><strong>Boost.Thread</strong></span> libraries using <span class="bold"><strong>Boost.Build</strong></span>, simply change to the
+	        directory <span class="emphasis"><em>boost_root</em></span>/libs/thread/test and execute the command:
+			</p>
+<pre class="programlisting">bjam --toolset=<span class="emphasis"><em>mytoolset</em></span> test</pre>
+<p>
+		</p>
+</div>
+</div>
+<table width="100%"><tr>
+<td align="left"><small><p>Last revised: January 18, 2007 at 17:33:50 GMT</p></small></td>
+<td align="right"><small>Copyright © 2001-2003 William E. Kempf</small></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="configuration.html"><img src="../images/prev.png" alt="Prev"></a><a accesskey="u" href="../thread.html"><img src="../images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="../images/home.png" alt="Home"></a><a accesskey="n" href="implementation_notes.html"><img src="../images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

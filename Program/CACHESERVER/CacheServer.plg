@@ -1,0 +1,80 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: CacheServer - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\JHMA~1.AEO\LOCALS~1\Temp\RSPEC.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /I "..\..\resource" /I "." /I "..\_Network\Net\Include" /I "..\_Network\Misc\Include" /I "..\_Network\Mcl\Include" /I "..\_network" /I "..\_DirectX" /I "..\_Common" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /FR"..\..\Output\CacheServer\Debug/" /Fp"..\..\Output\CacheServer\Debug/CacheServer.pch" /Yu"stdafx.h" /Fo"..\..\Output\CacheServer\Debug/" /Fd"..\..\Output\CacheServer\Debug/" /FD /GZ /c 
+"D:\NEUROSPACE\PROGRAM\CacheServer\CacheServer.cpp"
+"D:\NEUROSPACE\PROGRAM\CacheServer\DPCacheSrvr.cpp"
+"D:\NEUROSPACE\PROGRAM\CacheServer\DPClient.cpp"
+"D:\NEUROSPACE\PROGRAM\CacheServer\DPCoreClient.cpp"
+"D:\NEUROSPACE\PROGRAM\CacheServer\Player.cpp"
+"D:\NEUROSPACE\PROGRAM\_network\misc\src\speedhackchecker.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\JHMA~1.AEO\LOCALS~1\Temp\RSPEC.tmp" 
+Creating temporary file "C:\DOCUME~1\JHMA~1.AEO\LOCALS~1\Temp\RSPED.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib ws2_32.lib winmm.lib VERSION.LIB psapi.lib /nologo /subsystem:windows /incremental:yes /pdb:"..\..\Output\CacheServer\Debug/CacheServer.pdb" /debug /machine:I386 /nodefaultlib:"msvcrt.lib" /out:"..\..\Output\CacheServer\Debug/CacheServer.exe" /pdbtype:sept 
+\NEUROSPACE\Output\CacheServer\Debug\CacheServer.obj
+\NEUROSPACE\Output\CacheServer\Debug\crashstatus.obj
+\NEUROSPACE\Output\CacheServer\Debug\DPCacheSrvr.obj
+\NEUROSPACE\Output\CacheServer\Debug\DPClient.obj
+\NEUROSPACE\Output\CacheServer\Debug\DPCoreClient.obj
+\NEUROSPACE\Output\CacheServer\Debug\memtrace.obj
+\NEUROSPACE\Output\CacheServer\Debug\messenger.obj
+\NEUROSPACE\Output\CacheServer\Debug\packetlog.obj
+\NEUROSPACE\Output\CacheServer\Debug\Player.obj
+\NEUROSPACE\Output\CacheServer\Debug\rtmessenger.obj
+\NEUROSPACE\Output\CacheServer\Debug\speedhackchecker.obj
+\NEUROSPACE\Output\CacheServer\Debug\StdAfx.obj
+\NEUROSPACE\Output\CacheServer\Debug\vutil.obj
+\NEUROSPACE\Output\CacheServer\Debug\buffer.obj
+\NEUROSPACE\Output\CacheServer\Debug\clientsock.obj
+\NEUROSPACE\Output\CacheServer\Debug\clientsocke.obj
+\NEUROSPACE\Output\CacheServer\Debug\dpmng.obj
+\NEUROSPACE\Output\CacheServer\Debug\dpsock.obj
+\NEUROSPACE\Output\CacheServer\Debug\serversock.obj
+\NEUROSPACE\Output\CacheServer\Debug\serversocke.obj
+\NEUROSPACE\Output\CacheServer\Debug\sock.obj
+\NEUROSPACE\Output\CacheServer\Debug\ar.obj
+\NEUROSPACE\Output\CacheServer\Debug\dos2.obj
+\NEUROSPACE\Output\CacheServer\Debug\heapmng.obj
+\NEUROSPACE\Output\CacheServer\Debug\MyTrace.obj
+\NEUROSPACE\Output\CacheServer\Debug\ServerDesc.obj
+\NEUROSPACE\Output\CacheServer\Debug\crc.obj
+\NEUROSPACE\Output\CacheServer\Debug\dxutil.obj
+\NEUROSPACE\Output\CacheServer\Debug\debug.obj
+\NEUROSPACE\Output\CacheServer\Debug\file.obj
+\NEUROSPACE\Output\CacheServer\Debug\scanner.obj
+\NEUROSPACE\Output\CacheServer\Debug\timer.obj
+\NEUROSPACE\Output\CacheServer\Debug\xutil.obj
+\NEUROSPACE\Output\CacheServer\Debug\exceptionhandler.obj
+\NEUROSPACE\Output\CacheServer\Debug\CacheServer.res
+..\_UnhandledException\neuzd.lib
+]
+Creating command line "link.exe @C:\DOCUME~1\JHMA~1.AEO\LOCALS~1\Temp\RSPED.tmp"
+<h3>Output Window</h3>
+Compiling...
+CacheServer.cpp
+Generating Code...
+Compiling...
+DPCacheSrvr.cpp
+DPClient.cpp
+DPCoreClient.cpp
+Player.cpp
+speedhackchecker.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+CacheServer.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

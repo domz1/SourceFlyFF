@@ -1,0 +1,6 @@
+//단계	단계최소값	단계최대값	보정치
+//dwgrade	dwGradePointMin	dwGradePointMax	dwMadrigalAddLevel
+0	0	9999	0
+1	10000	22499	0
+2	22500	39999	10
+3	40000	40000	20

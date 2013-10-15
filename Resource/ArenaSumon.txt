@@ -1,0 +1,3 @@
+//소환 몬스터	컨트롤	변신 몬스터
+//dwMonster	dwControl	dwUserMonster
+MI_EVENT_FWCMONSTER	CI_FWC_EVENTARENA_WALL	MI_AIBATT1

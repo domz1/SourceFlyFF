@@ -1,0 +1,199 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Portability</title>
+<link rel="stylesheet" href="../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.68.1">
+<link rel="start" href="../index.html" title="The Boost C++ Libraries BoostBook Documentation Subset">
+<link rel="up" href="../foreach.html" title="Chapter 5. Boost.Foreach">
+<link rel="prev" href="extensibility.html" title="Extensibility">
+<link rel="next" href="pitfalls.html" title="Pitfalls">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%">
+<td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../boost.png"></td>
+<td align="center"><a href="../../../index.htm">Home</a></td>
+<td align="center"><a href="../../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="../../../people/people.htm">People</a></td>
+<td align="center"><a href="../../../more/faq.htm">FAQ</a></td>
+<td align="center"><a href="../../../more/index.htm">More</a></td>
+</table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="extensibility.html"><img src="../images/prev.png" alt="Prev"></a><a accesskey="u" href="../foreach.html"><img src="../images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="../images/home.png" alt="Home"></a><a accesskey="n" href="pitfalls.html"><img src="../images/next.png" alt="Next"></a>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="foreach.portability"></a>Portability</h2></div></div></div>
+<p>
+      <code class="literal">BOOST_FOREACH</code> uses some fairly sophisticated techniques
+      that not all compilers support. Depending on how compliant your compiler is,
+      you may not be able to use <code class="literal">BOOST_FOREACH</code> in some scenarios.
+      Since <code class="literal">BOOST_FOREACH</code> uses <a href="../../../libs/range/index.html" target="_top">Boost.Range</a>,
+      it inherits <a href="../../../libs/range/index.html" target="_top">Boost.Range</a>'s
+      portability issues. You can read about those issues in the <a href="../../../libs/range/doc/portability.html" target="_top">Boost.Range
+      Portability</a> section.
+    </p>
+<p>
+      In addition to the demands placed on the compiler by <a href="../../../libs/range/index.html" target="_top">Boost.Range</a>,
+      <code class="literal">BOOST_FOREACH</code> places additional demands in order to handle
+      rvalue sequences properly. (Recall that an rvalue is an unnamed object, so
+      an example of an rvalue sequence would be a function that returns a <code class="computeroutput"><span class="identifier">std</span><span class="special">::</span><span class="identifier">vector</span><span class="special">&lt;&gt;</span></code> by value.) Compilers vary in their
+      handling of rvalues and lvalues. To cope with the situation <code class="literal">BOOST_FOREACH</code>
+      defines three levels of compliance, described below:
+    </p>
+<div class="informaltable">
+<h4>
+<a name="id1184431"></a>
+        <span class="table-title">BOOST_FOREACH Compliance Levels</span>
+      </h4>
+<table class="table">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead><tr>
+<th>Level</th>
+<th>Meaning</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><span class="bold"><strong>Level 0</strong></span></td>
+<td>
+<span class="emphasis"><em><span class="underline">Highest level of compliance</span></em></span><br>
+            <code class="literal">BOOST_FOREACH</code> works with lvalues, rvalues and const-qualified
+            rvalues.</td>
+</tr>
+<tr>
+<td><span class="bold"><strong>Level 1</strong></span></td>
+<td>
+<span class="emphasis"><em><span class="underline">Moderate level of compliance</span></em></span><br>
+            <code class="literal">BOOST_FOREACH</code> works with lvalues and plain rvalues,
+            but not const-qualified rvalues.<br> <code class="computeroutput"><span class="identifier">BOOST_FOREACH_NO_CONST_RVALUE_DETECTION</span></code>
+            is defined in this case.</td>
+</tr>
+<tr>
+<td><span class="bold"><strong>Level 2</strong></span></td>
+<td>
+<span class="emphasis"><em><span class="underline">Lowest level of compliance</span></em></span><br>
+            <code class="literal">BOOST_FOREACH</code> works with lvalues only, not rvalues.<br>
+            <code class="computeroutput"><span class="identifier">BOOST_FOREACH_NO_RVALUE_DETECTION</span></code>
+            is defined in this case.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>
+      Below are the compilers with which <code class="literal">BOOST_FOREACH</code> has been
+      tested, and the compliance level <code class="literal">BOOST_FOREACH</code> provides
+      for them.
+    </p>
+<div class="informaltable">
+<h4>
+<a name="id1184586"></a>
+        <span class="table-title">Compiler Compliance Level</span>
+      </h4>
+<table class="table">
+<colgroup>
+<col>
+<col>
+</colgroup>
+<thead><tr>
+<th>Compiler</th>
+<th>Compliance Level</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Visual C++ 8.0</td>
+<td>Level 0</td>
+</tr>
+<tr>
+<td>Visual C++ 7.1</td>
+<td>Level 0</td>
+</tr>
+<tr>
+<td>Visual C++ 7.0</td>
+<td>Level 2</td>
+</tr>
+<tr>
+<td>Visual C++ 6.0</td>
+<td>Level 2</td>
+</tr>
+<tr>
+<td>gcc 4.0</td>
+<td>Level 0</td>
+</tr>
+<tr>
+<td>gcc 3.4</td>
+<td>Level 0</td>
+</tr>
+<tr>
+<td>gcc 3.3</td>
+<td>Level 0</td>
+</tr>
+<tr>
+<td>mingw 3.4</td>
+<td>Level 0</td>
+</tr>
+<tr>
+<td>Intel for Linux 9.0</td>
+<td>Level 0</td>
+</tr>
+<tr>
+<td>Intel for Windows 9.0</td>
+<td>Level 0</td>
+</tr>
+<tr>
+<td>Intel for Windows 8.0</td>
+<td>Level 1</td>
+</tr>
+<tr>
+<td>Intel for Windows 7.0</td>
+<td>Level 2</td>
+</tr>
+<tr>
+<td>Comeau 4.3.3</td>
+<td>Level 0</td>
+</tr>
+<tr>
+<td>Borland 5.6.4</td>
+<td>Level 2</td>
+</tr>
+<tr>
+<td>Metrowerks 9.5</td>
+<td>Level 1</td>
+</tr>
+<tr>
+<td>Metrowerks 9.4</td>
+<td>Level 1</td>
+</tr>
+<tr>
+<td>SunPro 5.8</td>
+<td>Level 2</td>
+</tr>
+<tr>
+<td>qcc 3.3</td>
+<td>Level 0</td>
+</tr>
+<tr>
+<td>tru64cxx 65</td>
+<td>Level 2</td>
+</tr>
+<tr>
+<td>tru64cxx 71</td>
+<td>Level 2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<table width="100%"><tr>
+<td align="left"></td>
+<td align="right"><small>Copyright © 2004 Eric Niebler</small></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="extensibility.html"><img src="../images/prev.png" alt="Prev"></a><a accesskey="u" href="../foreach.html"><img src="../images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="../images/home.png" alt="Home"></a><a accesskey="n" href="pitfalls.html"><img src="../images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

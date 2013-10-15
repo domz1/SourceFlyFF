@@ -1,0 +1,14 @@
+// 운영자만 가려서 전송하는 부분입니다.
+
+//	CMclAutoLock	Lock( g_PlayerMng.m_AddRemoveLock );
+	g_PlayerMng.m_AddRemoveLock.Enter();
+	CPlayer* pPlayer;
+	for( set<u_long>::iterator i = g_PlayerMng.m_set.begin(); i != g_PlayerMng.m_set.end(); ++i )
+	{
+		pPlayer	= g_PlayerMng.GetPlayer( *i );
+		if( pPlayer ) {
+			// 이놈은 운영자다, 메시지 보내자!!!.
+		}
+	}
+	g_PlayerMng.m_AddRemoveLock.Leave();
+

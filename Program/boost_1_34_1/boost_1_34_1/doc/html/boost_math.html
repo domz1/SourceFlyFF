@@ -1,0 +1,194 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Chapter 9. Boost.Math</title>
+<link rel="stylesheet" href="boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.68.1">
+<link rel="start" href="index.html" title="The Boost C++ Libraries BoostBook Documentation Subset">
+<link rel="up" href="libraries.html" title="Part I. The Boost C++ Libraries (BoostBook Subset)">
+<link rel="prev" href="apa.html" title="Appendix A. Rationale for some of the design decisions">
+<link rel="next" href="boost_math/gcd_lcm.html" title=" Greatest Common Divisor and Least Common Multiple">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%">
+<td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../boost.png"></td>
+<td align="center"><a href="../../index.htm">Home</a></td>
+<td align="center"><a href="../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="../../people/people.htm">People</a></td>
+<td align="center"><a href="../../more/faq.htm">FAQ</a></td>
+<td align="center"><a href="../../more/index.htm">More</a></td>
+</table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="apa.html"><img src="images/prev.png" alt="Prev"></a><a accesskey="u" href="libraries.html"><img src="images/up.png" alt="Up"></a><a accesskey="h" href="index.html"><img src="images/home.png" alt="Home"></a><a accesskey="n" href="boost_math/gcd_lcm.html"><img src="images/next.png" alt="Next"></a>
+</div>
+<div class="chapter" lang="en">
+<div class="titlepage"><div>
+<div><h2 class="title">
+<a name="boost_math"></a>Chapter 9. Boost.Math</h2></div>
+<div><div class="author"><h3 class="author">
+<span class="firstname">Hubert</span> <span class="surname">Holin</span>
+</h3></div></div>
+<div><div class="author"><h3 class="author">
+<span class="firstname">John</span> <span class="surname">Maddock</span>
+</h3></div></div>
+<div><div class="author"><h3 class="author">
+<span class="firstname">Daryle</span> <span class="surname">Walker</span>
+</h3></div></div>
+<div><p class="copyright">Copyright © 2001 -2002 Daryle Walker, 2001-2003 Hubert Holin, 2005
+      John Maddock</p></div>
+<div><div class="legalnotice">
+<a name="id1250634"></a><p>
+        Distributed under the Boost Software License, Version 1.0. (See accompanying
+        file LICENSE_1_0.txt or copy at <a href="http://www.boost.org/LICENSE_1_0.txt" target="_top">http://www.boost.org/LICENSE_1_0.txt</a>)
+      </p>
+</div></div>
+</div></div>
+<div class="toc">
+<p><b>Table of Contents</b></p>
+<dl>
+<dt><span class="section"><a href="boost_math.html#boost_math.overview">Overview</a></span></dt>
+<dt><span class="section"><a href="boost_math/gcd_lcm.html"> Greatest Common Divisor and Least Common Multiple</a></span></dt>
+<dd><dl>
+<dt><span class="section"><a href="boost_math/gcd_lcm.html#boost_math.gcd_lcm.introduction">Introduction</a></span></dt>
+<dt><span class="section"><a href="boost_math/gcd_lcm.html#boost_math.gcd_lcm.synopsis">Synopsis</a></span></dt>
+<dt><span class="section"><a href="boost_math/gcd_lcm.html#boost_math.gcd_lcm.gcd_function_object">GCD Function Object</a></span></dt>
+<dt><span class="section"><a href="boost_math/gcd_lcm.html#boost_math.gcd_lcm.lcm_function_object">LCM Function Object</a></span></dt>
+<dt><span class="section"><a href="boost_math/gcd_lcm.html#boost_math.gcd_lcm.run_time_gcd___lcm_determination">Run-time GCD &amp; LCM Determination</a></span></dt>
+<dt><span class="section"><a href="boost_math/gcd_lcm.html#boost_math.gcd_lcm.compile_time_gcd_and_lcm_determination">Compile time GCD and LCM determination</a></span></dt>
+<dt><span class="section"><a href="boost_math/gcd_lcm.html#boost_math.gcd_lcm.header__boost_math_common_factor_hpp_">Header &lt;boost/math/common_factor.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="boost_math/gcd_lcm.html#boost_math.gcd_lcm.demonstration_program">Demonstration Program</a></span></dt>
+<dt><span class="section"><a href="boost_math/gcd_lcm.html#boost_math.gcd_lcm.rationale">Rationale</a></span></dt>
+<dt><span class="section"><a href="boost_math/gcd_lcm.html#boost_math.gcd_lcm.history">History</a></span></dt>
+<dt><span class="section"><a href="boost_math/gcd_lcm.html#boost_math.gcd_lcm.credits">Credits</a></span></dt>
+</dl></dd>
+<dt><span class="section"><a href="boost_math/math_special_functions.html">Math Special Functions</a></span></dt>
+<dd><dl>
+<dt><span class="section"><a href="boost_math/math_special_functions.html#boost_math.math_special_functions.overview">Overview</a></span></dt>
+<dt><span class="section"><a href="boost_math/math_special_functions.html#boost_math.math_special_functions.header_files">Header Files</a></span></dt>
+<dt><span class="section"><a href="boost_math/math_special_functions.html#boost_math.math_special_functions.synopsis">Synopsis</a></span></dt>
+<dt><span class="section"><a href="boost_math/math_special_functions.html#boost_math.math_special_functions.acosh">acosh</a></span></dt>
+<dt><span class="section"><a href="boost_math/math_special_functions.html#boost_math.math_special_functions.asinh">asinh</a></span></dt>
+<dt><span class="section"><a href="boost_math/math_special_functions.html#boost_math.math_special_functions.atanh">atanh</a></span></dt>
+<dt><span class="section"><a href="boost_math/math_special_functions.html#boost_math.math_special_functions.expm1"> expm1</a></span></dt>
+<dt><span class="section"><a href="boost_math/math_special_functions.html#boost_math.math_special_functions.hypot"> hypot</a></span></dt>
+<dt><span class="section"><a href="boost_math/math_special_functions.html#boost_math.math_special_functions.log1p"> log1p</a></span></dt>
+<dt><span class="section"><a href="boost_math/math_special_functions.html#boost_math.math_special_functions.sinc_pi">sinc_pi</a></span></dt>
+<dt><span class="section"><a href="boost_math/math_special_functions.html#boost_math.math_special_functions.sinhc_pi">sinhc_pi</a></span></dt>
+<dt><span class="section"><a href="boost_math/math_special_functions.html#boost_math.math_special_functions.test_programs">Test Programs</a></span></dt>
+<dt><span class="section"><a href="boost_math/math_special_functions.html#boost_math.math_special_functions.acknowledgements">Acknowledgements</a></span></dt>
+<dt><span class="section"><a href="boost_math/math_special_functions.html#boost_math.math_special_functions.history">History</a></span></dt>
+<dt><span class="section"><a href="boost_math/math_special_functions.html#boost_math.math_special_functions.to_do">To Do</a></span></dt>
+</dl></dd>
+<dt><span class="section"><a href="boost_math/inverse_complex.html"> Complex Number Inverse Trigonometric Functions</a></span></dt>
+<dd><dl>
+<dt><span class="section"><a href="boost_math/inverse_complex.html#boost_math.inverse_complex.implementation_and_accuracy">Implementation and Accuracy</a></span></dt>
+<dt><span class="section"><a href="boost_math/inverse_complex.html#boost_math.inverse_complex.asin"> asin</a></span></dt>
+<dt><span class="section"><a href="boost_math/inverse_complex.html#boost_math.inverse_complex.acos"> acos</a></span></dt>
+<dt><span class="section"><a href="boost_math/inverse_complex.html#boost_math.inverse_complex.atan"> atan</a></span></dt>
+<dt><span class="section"><a href="boost_math/inverse_complex.html#boost_math.inverse_complex.asinh"> asinh</a></span></dt>
+<dt><span class="section"><a href="boost_math/inverse_complex.html#boost_math.inverse_complex.acosh"> acosh</a></span></dt>
+<dt><span class="section"><a href="boost_math/inverse_complex.html#boost_math.inverse_complex.atanh"> atanh</a></span></dt>
+<dt><span class="section"><a href="boost_math/inverse_complex.html#boost_math.inverse_complex.history">History</a></span></dt>
+</dl></dd>
+<dt><span class="section"><a href="boost_math/quaternions.html">Quaternions</a></span></dt>
+<dd><dl>
+<dt><span class="section"><a href="boost_math/quaternions.html#boost_math.quaternions.overview">Overview</a></span></dt>
+<dt><span class="section"><a href="boost_math/quaternions.html#boost_math.quaternions.header_file">Header File</a></span></dt>
+<dt><span class="section"><a href="boost_math/quaternions.html#boost_math.quaternions.synopsis">Synopsis</a></span></dt>
+<dt><span class="section"><a href="boost_math/quaternions.html#boost_math.quaternions.template_class_quaternion">Template Class quaternion</a></span></dt>
+<dt><span class="section"><a href="boost_math/quaternions.html#boost_math.quaternions.quaternion_specializations">Quaternion Specializations</a></span></dt>
+<dt><span class="section"><a href="boost_math/quaternions.html#boost_math.quaternions.quaternion_member_typedefs">Quaternion Member Typedefs</a></span></dt>
+<dt><span class="section"><a href="boost_math/quaternions.html#boost_math.quaternions.quaternion_member_functions">Quaternion Member Functions</a></span></dt>
+<dt><span class="section"><a href="boost_math/quaternions.html#boost_math.quaternions.quaternion_non_member_operators">Quaternion Non-Member Operators</a></span></dt>
+<dt><span class="section"><a href="boost_math/quaternions.html#boost_math.quaternions.quaternion_value_operations">Quaternion Value Operations</a></span></dt>
+<dt><span class="section"><a href="boost_math/quaternions.html#boost_math.quaternions.quaternion_creation_functions">Quaternion Creation Functions</a></span></dt>
+<dt><span class="section"><a href="boost_math/quaternions.html#boost_math.quaternions.quaternion_transcendentals">Quaternion Transcendentals</a></span></dt>
+<dt><span class="section"><a href="boost_math/quaternions.html#boost_math.quaternions.test_program">Test Program</a></span></dt>
+<dt><span class="section"><a href="boost_math/quaternions.html#boost_math.quaternions.acknowledgements">Acknowledgements</a></span></dt>
+<dt><span class="section"><a href="boost_math/quaternions.html#boost_math.quaternions.history">History</a></span></dt>
+<dt><span class="section"><a href="boost_math/quaternions.html#boost_math.quaternions.to_do">To Do</a></span></dt>
+</dl></dd>
+<dt><span class="section"><a href="boost_math/octonions.html">Octonions</a></span></dt>
+<dd><dl>
+<dt><span class="section"><a href="boost_math/octonions.html#boost_math.octonions.overview">Overview</a></span></dt>
+<dt><span class="section"><a href="boost_math/octonions.html#boost_math.octonions.header_file">Header File</a></span></dt>
+<dt><span class="section"><a href="boost_math/octonions.html#boost_math.octonions.synopsis">Synopsis</a></span></dt>
+<dt><span class="section"><a href="boost_math/octonions.html#boost_math.octonions.template_class_octonion">Template Class octonion</a></span></dt>
+<dt><span class="section"><a href="boost_math/octonions.html#boost_math.octonions.octonion_specializations">Octonion Specializations</a></span></dt>
+<dt><span class="section"><a href="boost_math/octonions.html#boost_math.octonions.octonion_member_typedefs">Octonion Member Typedefs</a></span></dt>
+<dt><span class="section"><a href="boost_math/octonions.html#boost_math.octonions.octonion_member_functions">Octonion Member Functions</a></span></dt>
+<dt><span class="section"><a href="boost_math/octonions.html#boost_math.octonions.octonion_non_member_operators">Octonion Non-Member Operators</a></span></dt>
+<dt><span class="section"><a href="boost_math/octonions.html#boost_math.octonions.octonion_value_operations">Octonion Value Operations</a></span></dt>
+<dt><span class="section"><a href="boost_math/octonions.html#boost_math.octonions.quaternion_creation_functions">Quaternion Creation Functions</a></span></dt>
+<dt><span class="section"><a href="boost_math/octonions.html#boost_math.octonions.octonions_transcendentals">Octonions Transcendentals</a></span></dt>
+<dt><span class="section"><a href="boost_math/octonions.html#boost_math.octonions.test_program">Test Program</a></span></dt>
+<dt><span class="section"><a href="boost_math/octonions.html#boost_math.octonions.acknowledgements">Acknowledgements</a></span></dt>
+<dt><span class="section"><a href="boost_math/octonions.html#boost_math.octonions.history">History</a></span></dt>
+<dt><span class="section"><a href="boost_math/octonions.html#boost_math.octonions.to_do">To Do</a></span></dt>
+</dl></dd>
+<dt><span class="section"><a href="boost_math/background_information_and_white_papers.html">Background Information and White Papers</a></span></dt>
+<dd><dl>
+<dt><span class="section"><a href="boost_math/background_information_and_white_papers.html#boost_math.background_information_and_white_papers.the_inverse_hyperbolic_functions">The Inverse Hyperbolic Functions</a></span></dt>
+<dt><span class="section"><a href="boost_math/background_information_and_white_papers.html#boost_math.background_information_and_white_papers.sinus_cardinal_and_hyperbolic_sinus_cardinal_functions">Sinus Cardinal and Hyperbolic Sinus Cardinal Functions</a></span></dt>
+<dt><span class="section"><a href="boost_math/background_information_and_white_papers.html#boost_math.background_information_and_white_papers.the_quaternionic_exponential">The Quaternionic Exponential</a></span></dt>
+</dl></dd>
+</dl>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="boost_math.overview"></a>Overview</h2></div></div></div>
+<p>
+      This documentation is <a href="http://boost-consulting.com/vault/index.php?action=downloadfile&amp;filename=boost_math-1.34.pdf&amp;directory=PDF%20Documentation&amp;" target="_top">also
+      available in printer-friendly PDF format</a>.
+    </p>
+<p>
+      The <a href="boost_math/gcd_lcm.html" title=" Greatest Common Divisor and Least Common Multiple">Greatest Common Divisor and Least Common
+      Multiple library</a> provides run-time and compile-time evaluation of the
+      greatest common divisor (GCD) or least common multiple (LCM) of two integers.
+    </p>
+<p>
+      The <a href="boost_math/math_special_functions.html" title="Math Special Functions">Special Functions library</a>
+      currently provides eight templated special functions, in namespace boost. Two
+      of these (<a href="boost_math/math_special_functions.html#boost_math.math_special_functions.sinc_pi" title="sinc_pi">sinc_pi</a>
+      and <a href="boost_math/math_special_functions.html#boost_math.math_special_functions.sinhc_pi" title="sinhc_pi">sinhc_pi</a>)
+      are needed by our implementation of quaternions and octonions. The functions
+      <a href="boost_math/math_special_functions.html#boost_math.math_special_functions.acosh" title="acosh">acosh</a>, <a href="boost_math/math_special_functions.html#boost_math.math_special_functions.asinh" title="asinh">asinh</a> and <a href="boost_math/math_special_functions.html#boost_math.math_special_functions.atanh" title="atanh">atanh</a>
+      are entirely classical, the function <a href="boost_math/math_special_functions.html#boost_math.math_special_functions.sinc_pi" title="sinc_pi">sinc_pi</a>
+      sees heavy use in signal processing tasks, and the function <a href="boost_math/math_special_functions.html#boost_math.math_special_functions.sinhc_pi" title="sinhc_pi">sinhc_pi</a>
+      is an ad'hoc function whose naming is modelled on <a href="boost_math/math_special_functions.html#boost_math.math_special_functions.sinc_pi" title="sinc_pi">sinc_pi</a>
+      and hyperbolic functions. The functions <a href="boost_math/math_special_functions.html#boost_math.math_special_functions.log1p" title=" log1p">log1p</a>,
+      <a href="boost_math/math_special_functions.html#boost_math.math_special_functions.expm1" title=" expm1">expm1</a> and <a href="boost_math/math_special_functions.html#boost_math.math_special_functions.hypot" title=" hypot">hypot</a> are all part
+      of the C99 standard but not yet C++. Two of these (<a href="boost_math/math_special_functions.html#boost_math.math_special_functions.log1p" title=" log1p">log1p</a>
+      and <a href="boost_math/math_special_functions.html#boost_math.math_special_functions.hypot" title=" hypot">hypot</a>) were
+      needed for the <a href="boost_math/inverse_complex.html" title=" Complex Number Inverse Trigonometric Functions">complex number inverse
+      trigonometric functions</a>.
+    </p>
+<p>
+      The <a href="boost_math/inverse_complex.html" title=" Complex Number Inverse Trigonometric Functions">Complex Number Inverse Trigonometric
+      Functions</a> are the inverses of trigonometric functions currently present
+      in the C++ standard. Equivalents to these functions are part of the C99 standard,
+      and they will be part of the forthcoming Technical Report on C++ Standard Library
+      Extensions.
+    </p>
+<p>
+      <a href="boost_math/quaternions.html" title="Quaternions">Quaternions</a> are a relative of
+      complex numbers often used to parameterise rotations in three dimentional space.
+    </p>
+<p>
+      <a href="boost_math/octonions.html" title="Octonions">Octonions</a>, like <a href="boost_math/quaternions.html" title="Quaternions">quaternions</a>,
+      are a relative of complex numbers. <a href="boost_math/octonions.html" title="Octonions">Octonions</a>
+      see some use in theoretical physics.
+    </p>
+</div>
+</div>
+<table width="100%"><tr>
+<td align="left"><small><p>Last revised: May 09, 2007 at 17:20:56 GMT</p></small></td>
+<td align="right"><small></small></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="apa.html"><img src="images/prev.png" alt="Prev"></a><a accesskey="u" href="libraries.html"><img src="images/up.png" alt="Up"></a><a accesskey="h" href="index.html"><img src="images/home.png" alt="Home"></a><a accesskey="n" href="boost_math/gcd_lcm.html"><img src="images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

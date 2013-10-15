@@ -1,0 +1,13 @@
+//팀 이름	극단 번호	캐릭터 이름
+//dwTeamName	bPartyNum	dwCharacterName
+"Fly"	1	FWC서효진
+"Fly"	1	FWC홍인표
+"Fly"	2	FWC김창섭
+"Fly"	2	FWC태선
+"For"	1	gjfgjf
+"For"	1	FWC양승일
+"For"	2	FWC김기태
+"For"	2	FWC정도영
+
+
+

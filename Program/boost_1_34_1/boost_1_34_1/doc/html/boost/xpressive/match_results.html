@@ -1,0 +1,312 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Struct template match_results</title>
+<link rel="stylesheet" href="../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.68.1">
+<link rel="start" href="../../index.html" title="The Boost C++ Libraries BoostBook Documentation Subset">
+<link rel="up" href="../../xpressive/reference.html#header.boost.xpressive.match_results.hpp" title="Header &lt;boost/xpressive/match_results.hpp&gt;">
+<link rel="prev" href="cpp_regex_traits.html" title="Struct template cpp_regex_traits">
+<link rel="next" href="regex_id_filter_predicate.html" title="Struct template regex_id_filter_predicate">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%">
+<td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../boost.png"></td>
+<td align="center"><a href="../../../../index.htm">Home</a></td>
+<td align="center"><a href="../../../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="../../../../people/people.htm">People</a></td>
+<td align="center"><a href="../../../../more/faq.htm">FAQ</a></td>
+<td align="center"><a href="../../../../more/index.htm">More</a></td>
+</table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="cpp_regex_traits.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../xpressive/reference.html#header.boost.xpressive.match_results.hpp"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="regex_id_filter_predicate.html"><img src="../../images/next.png" alt="Next"></a>
+</div>
+<div class="refentry" lang="en">
+<a name="boost.xpressive.match_results"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Struct template match_results</span></h2>
+<p>boost::xpressive::match_results &#8212; Class template match_results&lt;&gt; holds the results of a regex_match() or a regex_search() as a collection of sub_match objects. </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+<span class="bold"><strong>struct</strong></span> match_results {
+  <span class="emphasis"><em>// types</em></span>
+  <span class="bold"><strong>typedef</strong></span> iterator_value&lt; BidiIter &gt;::type      char_type;          
+  <span class="bold"><strong>typedef</strong></span> std::basic_string&lt; char_type &gt;        string_type;        
+  <span class="bold"><strong>typedef</strong></span> std::size_t                           size_type;          
+  <span class="bold"><strong>typedef</strong></span> <a href="sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt;                 value_type;         
+  <span class="bold"><strong>typedef</strong></span> iterator_difference&lt; BidiIter &gt;::type difference_type;    
+  <span class="bold"><strong>typedef</strong></span> value_type <span class="bold"><strong>const</strong></span> &amp;                    reference;          
+  <span class="bold"><strong>typedef</strong></span> value_type <span class="bold"><strong>const</strong></span> &amp;                    const_reference;    
+  <span class="bold"><strong>typedef</strong></span> <span class="emphasis"><em>unspecified</em></span>                           iterator;           
+  <span class="bold"><strong>typedef</strong></span> <span class="emphasis"><em>unspecified</em></span>                           const_iterator;     
+  <span class="bold"><strong>typedef</strong></span> <span class="emphasis"><em>unspecified</em></span>                           nested_results_type;
+
+  <span class="emphasis"><em>// <a href="match_results.html#boost.xpressive.match_resultsconstruct-copy-destruct">construct/copy/destruct</a></em></span>
+  <a href="match_results.html#id1661134-bb">match_results</a>();
+  <a href="match_results.html#id1636723-bb">match_results</a>(<a href="match_results.html" title="Struct template match_results">match_results</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp;);
+  match_results&amp; <a href="match_results.html#id1636770-bb"><span class="bold"><strong>operator</strong></span>=</a>(<a href="match_results.html" title="Struct template match_results">match_results</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp;);
+  <a href="match_results.html#id1636769-bb">~match_results</a>();
+
+  <span class="emphasis"><em>// <a href="match_results.html#id1218576-bb">public member functions</a></em></span>
+  <span class="type">size_type</span> <a href="match_results.html#id1218580-bb">size</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="match_results.html#id1218592-bb">empty</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">difference_type</span> <a href="match_results.html#id1256438-bb">length</a>(size_type = 0) <span class="bold"><strong>const</strong></span>;
+  <span class="type">difference_type</span> <a href="match_results.html#id1318693-bb">position</a>(size_type = 0) <span class="bold"><strong>const</strong></span>;
+  <span class="type">string_type</span> <a href="match_results.html#id1318717-bb">str</a>(size_type = 0) <span class="bold"><strong>const</strong></span>;
+  <span class="type">const_reference</span> <a href="match_results.html#id902146-bb"><span class="bold"><strong>operator</strong></span>[]</a>(size_type) <span class="bold"><strong>const</strong></span>;
+  <span class="type">const_reference</span> <a href="match_results.html#id962843-bb"><span class="bold"><strong>operator</strong></span>[]</a>(<span class="emphasis"><em>unspecified</em></span>) <span class="bold"><strong>const</strong></span>;
+  <span class="type">const_reference</span> <a href="match_results.html#id1005369-bb">prefix</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">const_reference</span> <a href="match_results.html#id622959-bb">suffix</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">const_iterator</span> <a href="match_results.html#id622973-bb">begin</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">const_iterator</span> <a href="match_results.html#id653657-bb">end</a>() <span class="bold"><strong>const</strong></span>;
+  <a href="match_results.html#id1243857-bb"><span class="bold"><strong>operator</strong></span> bool_type</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="match_results.html#id1243870-bb"><span class="bold"><strong>operator</strong></span>!</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">regex_id_type</span> <a href="match_results.html#id928834-bb">regex_id</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">nested_results_type <span class="bold"><strong>const</strong></span> &amp;</span> <a href="match_results.html#id1007710-bb">nested_results</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> <a href="../../OutputIterator.html" title="Concept OutputIterator">OutputIterator</a>&gt; 
+    <span class="type">OutputIterator</span> 
+    <a href="match_results.html#id1007722-bb">format</a>(OutputIterator, <span class="bold"><strong>const</strong></span> string_type &amp;, 
+           regex_constants::match_flag_type = regex_constants::format_default) <span class="bold"><strong>const</strong></span>;
+  <span class="type">string_type</span> <a href="match_results.html#id1661066-bb">format</a>(<span class="bold"><strong>const</strong></span> string_type &amp;, 
+                     regex_constants::match_flag_type = regex_constants::format_default) <span class="bold"><strong>const</strong></span>;
+  <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="match_results.html#id1661099-bb">swap</a>(<a href="match_results.html" title="Struct template match_results">match_results</a>&lt; BidiIter &gt; &amp;) ;
+};</pre></div>
+<div class="refsect1" lang="en">
+<a name="id2019016"></a><h2>Description</h2>
+<p>Class template match_results&lt;&gt; denotes a collection of sequences representing the result of a regular expression match. Storage for the collection is allocated and freed as necessary by the member functions of class match_results&lt;&gt;.</p>
+<p>The class template match_results&lt;&gt; conforms to the requirements of a Sequence, as specified in (lib.sequence.reqmts), except that only operations defined for const-qualified Sequences are supported. </p>
+<div class="refsect2" lang="en">
+<a name="id2019034"></a><h3>
+<a name="boost.xpressive.match_resultsconstruct-copy-destruct"></a><code class="computeroutput">match_results</code> construct/copy/destruct</h3>
+<div class="orderedlist"><ol type="1">
+<li>
+<pre class="literallayout"><a name="id1661134-bb"></a>match_results();</pre>
+<p>
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td>
+<span class="term">Postconditions:</span></td>
+<td>
+<p>regex_id() == 0 </p>
+<p>size() == 0 </p>
+<p>empty() == true </p>
+</td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><a name="id1636723-bb"></a>match_results(<a href="match_results.html" title="Struct template match_results">match_results</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; that);</pre>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td>
+<span class="term"><code class="computeroutput">that</code></span></td>
+<td><p>The match_results object to copy </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td>
+<span class="term">Postconditions:</span></td>
+<td>
+<p>regex_id() == that.regex_id(). </p>
+<p>size() == that.size(). </p>
+<p>empty() == that.empty(). </p>
+<p>str(n) == that.str(n) for all positive integers n &lt; that.size(). </p>
+<p>prefix() == that.prefix(). </p>
+<p>suffix() == that.suffix(). </p>
+<p>(*this)[n] == that[n] for all positive integers n &lt; that.size(). </p>
+<p>length(n) == that.length(n) for all positive integers n &lt; that.size(). </p>
+<p>position(n) == that.position(n) for all positive integers n &lt; that.size(). </p>
+</td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout">match_results&amp; <a name="id1636770-bb"></a><span class="bold"><strong>operator</strong></span>=(<a href="match_results.html" title="Struct template match_results">match_results</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; that);</pre>
+<p>
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td>
+<span class="term"><code class="computeroutput">that</code></span></td>
+<td><p>The match_results object to copy. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td>
+<span class="term">Postconditions:</span></td>
+<td>
+<p>regex_id() == that.regex_id(). </p>
+<p>size() == that.size(). </p>
+<p>empty() == that.empty(). </p>
+<p>str(n) == that.str(n) for all positive integers n &lt; that.size(). </p>
+<p>prefix() == that.prefix(). </p>
+<p>suffix() == that.suffix(). </p>
+<p>(*this)[n] == that[n] for all positive integers n &lt; that.size(). </p>
+<p>length(n) == that.length(n) for all positive integers n &lt; that.size(). </p>
+<p>position(n) == that.position(n) for all positive integers n &lt; that.size(). </p>
+</td>
+</tr>
+</tbody>
+</table></div>
+</li>
+<li><pre class="literallayout"><a name="id1636769-bb"></a>~match_results();</pre></li>
+</ol></div>
+</div>
+<div class="refsect2" lang="en">
+<a name="id2019281"></a><h3>
+<a name="id1218576-bb"></a><code class="computeroutput">match_results</code> public member functions</h3>
+<div class="orderedlist"><ol type="1">
+<li>
+<pre class="literallayout"><span class="type">size_type</span> <a name="id1218580-bb"></a>size() <span class="bold"><strong>const</strong></span>;</pre>
+<p>Returns the number of sub_match elements stored in *this. </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id1218592-bb"></a>empty() <span class="bold"><strong>const</strong></span>;</pre>
+<p>Returns size() == 0. </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type">difference_type</span> <a name="id1256438-bb"></a>length(size_type sub = 0) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Returns (*this)[sub].length(). </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type">difference_type</span> <a name="id1318693-bb"></a>position(size_type sub = 0) <span class="bold"><strong>const</strong></span>;</pre>
+<p>If !(*this)[sub].matched then returns -1. Otherwise returns std::distance(base, (*this)[sub].first), where base is the start iterator of the sequence that was searched. [Note – unless this is part of a repeated search with a regex_iterator then base is the same as prefix().first – end note] </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type">string_type</span> <a name="id1318717-bb"></a>str(size_type sub = 0) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Returns string_type((*this)[sub]). </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_reference</span> <a name="id902146-bb"></a><span class="bold"><strong>operator</strong></span>[](size_type sub) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Returns a reference to the sub_match object representing the sequence that matched marked sub-expression sub. If sub == 0 then returns a reference to a sub_match object representing the sequence that matched the whole regular expression. 
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td>
+<span class="term">Requires:</span></td>
+<td><p>sub &lt; (*this).size(). </p></td>
+</tr></tbody>
+</table></div>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_reference</span> <a name="id962843-bb"></a><span class="bold"><strong>operator</strong></span>[](<span class="emphasis"><em>unspecified</em></span> mark) <span class="bold"><strong>const</strong></span>;</pre>
+<p>This is an overloaded member function, provided for convenience. It differs from the above function only in what argument(s) it accepts. </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_reference</span> <a name="id1005369-bb"></a>prefix() <span class="bold"><strong>const</strong></span>;</pre>
+<p>Returns a reference to the sub_match object representing the character sequence from the start of the string being matched/searched, to the start of the match found. </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_reference</span> <a name="id622959-bb"></a>suffix() <span class="bold"><strong>const</strong></span>;</pre>
+<p>Returns a reference to the sub_match object representing the character sequence from the end of the match found to the end of the string being matched/searched. </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_iterator</span> <a name="id622973-bb"></a>begin() <span class="bold"><strong>const</strong></span>;</pre>
+<p>Returns a starting iterator that enumerates over all the marked sub-expression matches stored in *this. </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type">const_iterator</span> <a name="id653657-bb"></a>end() <span class="bold"><strong>const</strong></span>;</pre>
+<p>Returns a terminating iterator that enumerates over all the marked sub-expression matches stored in *this. </p>
+</li>
+<li>
+<pre class="literallayout"><a name="id1243857-bb"></a><span class="bold"><strong>operator</strong></span> bool_type() <span class="bold"><strong>const</strong></span>;</pre>
+<p>Returns a true value if(*this)[0].matched, else returns a false value. </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id1243870-bb"></a><span class="bold"><strong>operator</strong></span>!() <span class="bold"><strong>const</strong></span>;</pre>
+<p>Returns true if empty() || !(*this)[0].matched, else returns false. </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type">regex_id_type</span> <a name="id928834-bb"></a>regex_id() <span class="bold"><strong>const</strong></span>;</pre>
+<p>Returns the id of the basic_regex object most recently used with this match_results object. </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type">nested_results_type <span class="bold"><strong>const</strong></span> &amp;</span> <a name="id1007710-bb"></a>nested_results() <span class="bold"><strong>const</strong></span>;</pre>
+<p>Returns a Sequence of nested match_results elements. </p>
+</li>
+<li>
+<pre class="literallayout"><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> <a href="../../OutputIterator.html" title="Concept OutputIterator">OutputIterator</a>&gt; 
+  <span class="type">OutputIterator</span> 
+  <a name="id1007722-bb"></a>format(OutputIterator out, <span class="bold"><strong>const</strong></span> string_type &amp; fmt, 
+         regex_constants::match_flag_type flags = regex_constants::format_default) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Copies the character sequence [fmt.begin(), fmt.end()) to OutputIterator out. For each format specifier or escape sequence in fmt, replace that sequence with either the character(s) it represents, or the sequence within *this to which it refers. The bitmasks specified in flags determines what format specifiers or escape sequences are recognized, by default this is the format used by ECMA-262, ECMAScript Language Specification, Chapter 15 part 5.4.11 String.prototype.replace. </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type">string_type</span> <a name="id1661066-bb"></a>format(<span class="bold"><strong>const</strong></span> string_type &amp; fmt, 
+                   regex_constants::match_flag_type flags = regex_constants::format_default) <span class="bold"><strong>const</strong></span>;</pre>
+<p>Returns a copy of the string fmt. For each format specifier or escape sequence in fmt, replace that sequence with either the character(s) it represents, or the sequence within this to which it refers. The bitmasks specified in flags determines what format specifiers or escape sequences are recognized, by default this is the format used by ECMA-262, ECMAScript Language Specification, Chapter 15 part 5.4.11 String.prototype.replace. </p>
+</li>
+<li>
+<pre class="literallayout"><span class="type"><span class="bold"><strong>void</strong></span></span> <a name="id1661099-bb"></a>swap(<a href="match_results.html" title="Struct template match_results">match_results</a>&lt; BidiIter &gt; &amp; that) ;</pre>
+<p>Swaps the contents of two match_results objects. Guaranteed not to throw. 
+
+
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody>
+<tr>
+<td>
+<span class="term">Parameters:</span></td>
+<td><div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td>
+<span class="term"><code class="computeroutput">that</code></span></td>
+<td><p>The match_results object to swap with. </p></td>
+</tr></tbody>
+</table></div></td>
+</tr>
+<tr>
+<td>
+<span class="term">Postconditions:</span></td>
+<td><p>*this contains the sequence of matched sub-expressions that were in that, that contains the sequence of matched sub-expressions that were in *this. </p></td>
+</tr>
+<tr>
+<td>
+<span class="term">Throws:</span></td>
+<td>Will not throw.</td>
+</tr>
+</tbody>
+</table></div>
+</li>
+</ol></div>
+</div>
+</div>
+</div>
+<table width="100%"><tr>
+<td align="left"></td>
+<td align="right"><small>Copyright © 2003, 2004 Eric Niebler</small></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="cpp_regex_traits.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../xpressive/reference.html#header.boost.xpressive.match_results.hpp"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="regex_id_filter_predicate.html"><img src="../../images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

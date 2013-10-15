@@ -1,0 +1,132 @@
+**** Window Interface 사용하기
+
+  윈도는 크게 두가지 형태로 관리된다. 
+
+     a.태스크에 등록된 윈도
+	     태스크 매뉴를 누르면 나오는 펑션들은 별도의 등록 절차가 필요한 윈도들이다. 
+		 그에 대한 설명은 _Interface\FuncApplet.cpp에 추가하는 방법 설명되어 있음.
+		 
+     b.인스턴트 윈도
+	     태스크 매뉴에 등록할 필요가 없고, 간단한 매시지, 또는 입력 박스 등의 용도로
+		 사용되는 윈도우들. Daisy를 이용하거나 간단한 기본 코딩만으로 윈도우를 열수 있다.
+
+  모든 윈도의 관리자.
+
+      게임에서는 CWndManager 클래스가 전반적인 관리를 하며 최상의 페어런트 윈도 역할을 한다.
+      즉 데스크 탑인 것이다. g_WndMng로 전역 선언되어 있음.
+
+  윈도 열기 
+
+      이 윈도들은 기본적으로 MFC의 Modeless와 같다고 할수 있다. 
+      // 생성 
+      CWndSample* m_pWndSample = new CWndSample;
+      // 초기화
+      m_pWndSample->Initialize();
+      // Initializef로 윈도는 열렸다.
+
+  윈도 파과하기 
+
+      // 파괴 - 아래 Destroy 함수는 자기 자신의 클래스 내부에서 파괴하려고 할때 사용한다. 
+      m_pWndSample->Destroy( FALSE ); // 수동 파괴방식. 패어런트의 OnDestroyChildWnd 펑션을 호출한다. 거기서 변수를 delete한다.
+      m_pWndSample->Destroy( TRUE ); // 자동 파괴 방식. 내부에서 자동으로 delete된다.
+
+      // 또는 - 이경우는 외부에서 파괴할 때 사용할 수 있다. 
+      delete m_pWndSample;
+      
+
+  간단한 메시지 박스 열기 
+
+      g_WndMng.OpenMessageBox( LPCTSTR strMessage, UINT nType = MB_OK );
+
+  콘트롤 및 윈도 클래스 리스트
+
+     CWndBase : WndBase.h - 가장 기본이 되는 배이스 윈도 
+	 CWndNeuz : WndNeuz.h - 타이틀바, 또는 타이틀바의 종료 버튼 등을 만들어주는 윈도. 보통의 애플렛을 만들기 위해서는 이 클래스는 계승 받음
+
+	 CWndButton    : WndControl.h - 버튼 콘트롤
+	 CWndStatic    : WndControl.h - 간단한 텍스트 출력 콘트롤
+	 CWndText      : WndControl.h - 텍스트 뷰어 콘트롤
+	 CWndComboBox  : WndControl.h - 콤보 박스 
+	 CWndListBox   : WndControl.h - 리스트 박스 콘트롤
+	 CWndTreeCtrl  : WndControl.h - 트리 콘트롤 
+	 CWndTabCtrl   : WndControl.h - 탭 콘트롤
+	 CWndScrollBar : WndControl.h - 스크롤바 (현재 수직 방향만 지원 )
+	 CWndCustom    : WndControl.h - 커스톰 컨트롤 
+	 CWndEdit      : WndEditCtrl.h - 에디트 박스 (텍스트 입력)
+
+  게임에서 사용하는 클래스 리스트
+  
+     CWndStatus : 상태 창
+	 CWndInventory : 장착, 인벤토리 창
+	 CWndSkill : 스킬 창
+	 CWndChat : 채팅창
+	 CWndLogin : 로긴
+	 CWnd
+
+*** item과 part
+
+  무기류는 item_으로 이름을 정하지만 part로 사용시 item_으로 파일명 읽음
+  파츠류는 필드에 떨어질 아이템은 item_ 접두사로 파일명 만들고
+  장착은 part_를 붙여서 파일명을 만든다.
+
+
+*** part 파일명 규칙
+
+
+
+*** Max에서 파츠 지정 방식
+
+1.각각의 파츠 오브젝트에는 다음과 같이 명칭을 지정해야한다.
+   part_
+
+
+*** 컨버트 방법
+
+각 오브젝트의 명칭에서 # 같은 특정한 문자가 있으면 더미 오브젝트로 인식
+더미 오브젝트가 아닌 것은 정보를 추출하여 mes로 만든다.
+본, 애니는 별도의 ase파일을 복사해 준다.(파일명만 변경함)
+
+cola에서 #된 오브젝트는 추출하지 않게 한다.
+cola에서 선택적으로 매쉬로 저장할수 있게 한다.
+
+///////////////////////////////////////////////////
+
+이펙트 오브젝트 코딩
+
+1.이펙트 오브젝트
+  sfx.h, sfx.cpp에 이펙트 객체 클래스 코딩
+
+2.스킬 이펙트 생성
+  CreateObj.cpp의 CreateSkillSfx와 CreateObjSfx 안에 코딩
+  II_로 시작하는 인덱스는 ItemIndex를 의미함. 
+  SI_로 시작하는 인덱스는 SkillIndex를 의미함.
+  즉, 이 두개의 함수는 아이템과 스킬을 사용할 때 생성될 효과임.
+
+3.아이템과 스킬이 아닌 일반 이펙트 생성법.
+  	CObj* pObj = new CObj;
+	pObj->m_dwType = OT_SFX;
+	pObj->SetPos( vPos );
+	pObj->SetIndex( g_Neuz.m_pd3dDevice, XI_EXPLOSION );
+	g_WorldMng()->AddObj( pObj );  
+
+4.등록
+   a. resource\\defineObj.h에 XI_로 시작하는 define 정의
+   b. resource\\model.inc에 sfx로 시작하는 항목에
+       파일명과 define, 그리고 model 타입을 입력
+
+5.실행순
+   아이템이나 스킬을 사용하면 
+   ActionMove.cpp의
+   UseSkill 또는 UseItem을 사용.
+   UseSkill 또는 UseItem에서
+   CreateObj 호출하여 오브젝트 생성.
+   
+ 
+//////////////////////////////////////////////////////////////
+
+소스세이프를 이용한 오브젝트 리소스 관리
+ 
+1.각각의 오브젝트는 만들어진 기본 폴더에 넣는다.
+   ex) obj_tree, obj_house
+
+2.

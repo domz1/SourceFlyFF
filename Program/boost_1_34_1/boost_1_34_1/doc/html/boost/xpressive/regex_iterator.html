@@ -1,0 +1,118 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Struct template regex_iterator</title>
+<link rel="stylesheet" href="../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.68.1">
+<link rel="start" href="../../index.html" title="The Boost C++ Libraries BoostBook Documentation Subset">
+<link rel="up" href="../../xpressive/reference.html#header.boost.xpressive.regex_iterator.hpp" title="Header &lt;boost/xpressive/regex_iterator.hpp&gt;">
+<link rel="prev" href="regex_error.html" title="Struct regex_error">
+<link rel="next" href="as_xpr.html" title="Function template as_xpr">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%">
+<td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../boost.png"></td>
+<td align="center"><a href="../../../../index.htm">Home</a></td>
+<td align="center"><a href="../../../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="../../../../people/people.htm">People</a></td>
+<td align="center"><a href="../../../../more/faq.htm">FAQ</a></td>
+<td align="center"><a href="../../../../more/index.htm">More</a></td>
+</table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="regex_error.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../xpressive/reference.html#header.boost.xpressive.regex_iterator.hpp"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="as_xpr.html"><img src="../../images/next.png" alt="Next"></a>
+</div>
+<div class="refentry" lang="en">
+<a name="boost.xpressive.regex_iterator"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Struct template regex_iterator</span></h2>
+<p>boost::xpressive::regex_iterator &#8212; </p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis"><span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+<span class="bold"><strong>struct</strong></span> regex_iterator {
+  <span class="emphasis"><em>// types</em></span>
+  <span class="bold"><strong>typedef</strong></span> <a href="basic_regex.html" title="Struct template basic_regex">basic_regex</a>&lt; BidiIter &gt;               regex_type;       
+  <span class="bold"><strong>typedef</strong></span> <a href="match_results.html" title="Struct template match_results">match_results</a>&lt; BidiIter &gt;             value_type;       
+  <span class="bold"><strong>typedef</strong></span> iterator_difference&lt; BidiIter &gt;::type difference_type;  
+  <span class="bold"><strong>typedef</strong></span> value_type <span class="bold"><strong>const</strong></span> *                    pointer;          
+  <span class="bold"><strong>typedef</strong></span> value_type <span class="bold"><strong>const</strong></span> &amp;                    reference;        
+  <span class="bold"><strong>typedef</strong></span> std::forward_iterator_tag             iterator_category;
+
+  <span class="emphasis"><em>// <a href="regex_iterator.html#boost.xpressive.regex_iteratorconstruct-copy-destruct">construct/copy/destruct</a></em></span>
+  <a href="regex_iterator.html#id1660923-bb">regex_iterator</a>();
+  <a href="regex_iterator.html#id1660924-bb">regex_iterator</a>(BidiIter, BidiIter, <a href="basic_regex.html" title="Struct template basic_regex">basic_regex</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                 regex_constants::match_flag_type = regex_constants::match_default);
+  <a href="regex_iterator.html#id1660954-bb">regex_iterator</a>(<a href="regex_iterator.html" title="Struct template regex_iterator">regex_iterator</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp;);
+  regex_iterator&amp; <a href="regex_iterator.html#id1660963-bb"><span class="bold"><strong>operator</strong></span>=</a>(<a href="regex_iterator.html" title="Struct template regex_iterator">regex_iterator</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp;);
+
+  <span class="emphasis"><em>// <a href="regex_iterator.html#id1219470-bb">public member functions</a></em></span>
+  <span class="type">value_type <span class="bold"><strong>const</strong></span> &amp;</span> <a href="regex_iterator.html#id1219473-bb"><span class="bold"><strong>operator</strong></span> *</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type">value_type <span class="bold"><strong>const</strong></span> *</span> <a href="regex_iterator.html#id900989-bb"><span class="bold"><strong>operator</strong></span>-&gt;</a>() <span class="bold"><strong>const</strong></span>;
+  <span class="type"><a href="regex_iterator.html" title="Struct template regex_iterator">regex_iterator</a>&lt; BidiIter &gt; &amp;</span> <a href="regex_iterator.html#id733068-bb"><span class="bold"><strong>operator</strong></span>++</a>() ;
+  <span class="type"><a href="regex_iterator.html" title="Struct template regex_iterator">regex_iterator</a>&lt; BidiIter &gt;</span> <a href="regex_iterator.html#id1660908-bb"><span class="bold"><strong>operator</strong></span>++</a>(<span class="bold"><strong>int</strong></span>) ;
+};</pre></div>
+<div class="refsect1" lang="en">
+<a name="id2026610"></a><h2>Description</h2>
+<div class="refsect2" lang="en">
+<a name="id2026613"></a><h3>
+<a name="boost.xpressive.regex_iteratorconstruct-copy-destruct"></a><code class="computeroutput">regex_iterator</code> construct/copy/destruct</h3>
+<div class="orderedlist"><ol type="1">
+<li><pre class="literallayout"><a name="id1660923-bb"></a>regex_iterator();</pre></li>
+<li><pre class="literallayout"><a name="id1660924-bb"></a>regex_iterator(BidiIter begin, BidiIter end, 
+               <a href="basic_regex.html" title="Struct template basic_regex">basic_regex</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; rex, 
+               regex_constants::match_flag_type flags = regex_constants::match_default);</pre></li>
+<li><pre class="literallayout"><a name="id1660954-bb"></a>regex_iterator(<a href="regex_iterator.html" title="Struct template regex_iterator">regex_iterator</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; that);</pre></li>
+<li><pre class="literallayout">regex_iterator&amp; <a name="id1660963-bb"></a><span class="bold"><strong>operator</strong></span>=(<a href="regex_iterator.html" title="Struct template regex_iterator">regex_iterator</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; that);</pre></li>
+</ol></div>
+</div>
+<div class="refsect2" lang="en">
+<a name="id2026741"></a><h3>
+<a name="id1219470-bb"></a><code class="computeroutput">regex_iterator</code> public member functions</h3>
+<div class="orderedlist"><ol type="1">
+<li><pre class="literallayout"><span class="type">value_type <span class="bold"><strong>const</strong></span> &amp;</span> <a name="id1219473-bb"></a><span class="bold"><strong>operator</strong></span> *() <span class="bold"><strong>const</strong></span>;</pre></li>
+<li><pre class="literallayout"><span class="type">value_type <span class="bold"><strong>const</strong></span> *</span> <a name="id900989-bb"></a><span class="bold"><strong>operator</strong></span>-&gt;() <span class="bold"><strong>const</strong></span>;</pre></li>
+<li>
+<pre class="literallayout"><span class="type"><a href="regex_iterator.html" title="Struct template regex_iterator">regex_iterator</a>&lt; BidiIter &gt; &amp;</span> <a name="id733068-bb"></a><span class="bold"><strong>operator</strong></span>++() ;</pre>
+<p>If what.prefix().first != what[0].second and if the element match_prev_avail is not set in flags then sets it. Then behaves as if by calling regex_search(what[0].second, end, what, *pre, flags), with the following variation: in the event that the previous match found was of zero length (what[0].length() == 0) then attempts to find a non-zero length match starting at what[0].second, only if that fails and provided what[0].second != suffix().second does it look for a (possibly zero length) match starting from what[0].second + 1. If no further match is found then sets this equal to the end of sequence iterator. 
+</p>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td>
+<span class="term">Postconditions:</span></td>
+<td>
+<p>(*this)-&gt;size() == pre-&gt;mark_count() </p>
+<p>(*this)-&gt;empty() == false </p>
+<p>(*this)-&gt;prefix().first == An iterator denoting the end point of the previous match found </p>
+<p>(*this)-&gt;prefix().last == (**this)[0].first </p>
+<p>(*this)-&gt;prefix().matched == (*this)-&gt;prefix().first != (*this)-&gt;prefix().second </p>
+<p>(*this)-&gt;suffix().first == (**this)[0].second </p>
+<p>(*this)-&gt;suffix().last == end </p>
+<p>(*this)-&gt;suffix().matched == (*this)-&gt;suffix().first != (*this)-&gt;suffix().second </p>
+<p>(**this)[0].first == The starting iterator for this match. </p>
+<p>(**this)[0].second == The ending iterator for this match. </p>
+<p>(**this)[0].matched == true if a full match was found, and false if it was a partial match (found as a result of the match_partial flag being set). </p>
+<p>(**this)[n].first == For all integers n &lt; (*this)-&gt;size(), the start of the sequence that matched sub-expression n. Alternatively, if sub-expression n did not participate in the match, then end. </p>
+<p>(**this)[n].second == For all integers n &lt; (*this)-&gt;size(), the end of the sequence that matched sub-expression n. Alternatively, if sub-expression n did not participate in the match, then end. </p>
+<p>(**this)[n].matched == For all integers n &lt; (*this)-&gt;size(), true if sub-expression n participated in the match, false otherwise. </p>
+<p>(*this)-&gt;position() == The distance from the start of the original sequence being iterated, to the start of this match. </p>
+</td>
+</tr></tbody>
+</table></div>
+</li>
+<li><pre class="literallayout"><span class="type"><a href="regex_iterator.html" title="Struct template regex_iterator">regex_iterator</a>&lt; BidiIter &gt;</span> <a name="id1660908-bb"></a><span class="bold"><strong>operator</strong></span>++(<span class="bold"><strong>int</strong></span>) ;</pre></li>
+</ol></div>
+</div>
+</div>
+</div>
+<table width="100%"><tr>
+<td align="left"></td>
+<td align="right"><small>Copyright © 2003, 2004 Eric Niebler</small></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="regex_error.html"><img src="../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../xpressive/reference.html#header.boost.xpressive.regex_iterator.hpp"><img src="../../images/up.png" alt="Up"></a><a accesskey="h" href="../../index.html"><img src="../../images/home.png" alt="Home"></a><a accesskey="n" href="as_xpr.html"><img src="../../images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

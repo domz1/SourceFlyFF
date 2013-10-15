@@ -1,0 +1,54 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Certifier - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\JHMA~1.AEO\LOCALS~1\Temp\RSPE5.tmp" with contents
+[
+/nologo /o"..\..\Output\Certifier\Debug/Certifier.bsc" 
+\NEUROSPACE\Output\Certifier\Debug\StdAfx.sbr
+\NEUROSPACE\Output\Certifier\Debug\AccountMgr.sbr
+\NEUROSPACE\Output\Certifier\Debug\certifier.sbr
+\NEUROSPACE\Output\Certifier\Debug\DBManager.sbr
+\NEUROSPACE\Output\Certifier\Debug\dpaccountclient.sbr
+\NEUROSPACE\Output\Certifier\Debug\DPCertifier.sbr
+\NEUROSPACE\Output\Certifier\Debug\memtrace.sbr
+\NEUROSPACE\Output\Certifier\Debug\user.sbr
+\NEUROSPACE\Output\Certifier\Debug\buffer.sbr
+\NEUROSPACE\Output\Certifier\Debug\clientsock.sbr
+\NEUROSPACE\Output\Certifier\Debug\clientsocke.sbr
+\NEUROSPACE\Output\Certifier\Debug\crc.sbr
+\NEUROSPACE\Output\Certifier\Debug\dpmng.sbr
+\NEUROSPACE\Output\Certifier\Debug\dpsock.sbr
+\NEUROSPACE\Output\Certifier\Debug\serversock.sbr
+\NEUROSPACE\Output\Certifier\Debug\serversocke.sbr
+\NEUROSPACE\Output\Certifier\Debug\sock.sbr
+\NEUROSPACE\Output\Certifier\Debug\ar.sbr
+\NEUROSPACE\Output\Certifier\Debug\DoS.sbr
+\NEUROSPACE\Output\Certifier\Debug\dos2.sbr
+\NEUROSPACE\Output\Certifier\Debug\heapmng.sbr
+\NEUROSPACE\Output\Certifier\Debug\mytrace.sbr
+\NEUROSPACE\Output\Certifier\Debug\dxutil.sbr
+\NEUROSPACE\Output\Certifier\Debug\scanner.sbr
+\NEUROSPACE\Output\Certifier\Debug\debug.sbr
+\NEUROSPACE\Output\Certifier\Debug\file.sbr
+\NEUROSPACE\Output\Certifier\Debug\timer.sbr
+\NEUROSPACE\Output\Certifier\Debug\vutil.sbr
+\NEUROSPACE\Output\Certifier\Debug\xutil.sbr
+\NEUROSPACE\Output\Certifier\Debug\des.sbr
+\NEUROSPACE\Output\Certifier\Debug\Query.sbr
+\NEUROSPACE\Output\Certifier\Debug\exceptionhandler.sbr]
+Creating command line "bscmake.exe @C:\DOCUME~1\JHMA~1.AEO\LOCALS~1\Temp\RSPE5.tmp"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+Certifier.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

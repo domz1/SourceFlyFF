@@ -1,0 +1,104 @@
+QUEST_DESTINATION_ID_0000	
+QUEST_DESTINATION_ID_0001	Investigate all camping sites in Istia area.
+QUEST_DESTINATION_ID_0002	Collect Twinke Stone by hunting Aibatt.
+QUEST_DESTINATION_ID_0003	Investigate Ivilis Temple located southern part of Saint Morning.
+QUEST_DESTINATION_ID_0004	Hunt Meteonyker and Red Meteonyker that live in Volcane.
+QUEST_DESTINATION_ID_0005	Deliver it to [Magician Instructor]Lopaze.
+QUEST_DESTINATION_ID_0006	Deliver it to [Acrobat Trainer]Tailer.
+QUEST_DESTINATION_ID_0007	Get rid of Ren from Ivilis Temple located southern part of Saint Morning.
+QUEST_DESTINATION_ID_0008	Get rid of Sisif and find Soulstone of Hero.
+QUEST_DESTINATION_ID_0009	Get rid of Venel Guardian and find Venel Heart.
+QUEST_DESTINATION_ID_0010	Get rid of Rubo and find Letter of Hynan.
+QUEST_DESTINATION_ID_0011	Get rid of Prankster and find History Book of Heroes.
+QUEST_DESTINATION_ID_0012	Get rid of Cyclops X that live in Volcane.
+QUEST_DESTINATION_ID_0013	Investigate Ivilis Temple area located sourthern part of Saint Morning.
+QUEST_DESTINATION_ID_0014	Get rid of Seido and find Label of Technique.
+QUEST_DESTINATION_ID_0015	Deliver Earring of Heren to Ata.
+QUEST_DESTINATION_ID_0016	Get rid of Shacalpion and find Tear of Darkness.
+QUEST_DESTINATION_ID_0017	Get rid of Kidler and find Clue of Golden Helmet.
+QUEST_DESTINATION_ID_0018	Meet Kurumin.
+QUEST_DESTINATION_ID_0019	Defeat the wheelem and get the soul stone.
+QUEST_DESTINATION_ID_0020	Defeat the hoaren and get the Hall Document.
+QUEST_DESTINATION_ID_0021	Defeat the steam walker and get the poster of skill(Master)
+QUEST_DESTINATION_ID_0022	Meet Segho and give him the Hall Document.
+QUEST_DESTINATION_ID_0023	Defeat the Ren and get the Seal of Aenn.
+QUEST_DESTINATION_ID_0024	Meet Tesar and give him the Seal of Aenn.
+QUEST_DESTINATION_ID_0025	Defeat the hunter X and get the Teardrop of Aenn.
+QUEST_DESTINATION_ID_0026	Defeat the kinsay and get the Magic Underwear of Power.
+QUEST_DESTINATION_ID_0027	Meet Rufan, the boss of the blue flag and give him the Magic Underwear of Power.
+QUEST_DESTINATION_ID_0028	Meet Parinee, the manage of the saintcity station and give her the Feather of Magic Power.
+QUEST_DESTINATION_ID_0029	Find the aminus dungeon in the northern of the harmonin.
+QUEST_DESTINATION_ID_0030	Bring it to the mayor of Darkon.
+QUEST_DESTINATION_ID_0031	Hunt the red bang theives in the northern Leren Mountain.
+QUEST_DESTINATION_ID_0032	Defeat Organiger.
+QUEST_DESTINATION_ID_0033	Defeat Gangard.
+QUEST_DESTINATION_ID_0034	Defeat Hardeser.
+QUEST_DESTINATION_ID_0035	Defeat the group of Mia and get the Mia Report.
+QUEST_DESTINATION_ID_0036	Meet the mayor of the saintcity.
+QUEST_DESTINATION_ID_0037	Besiege den Anführer der Red Bangs
+QUEST_DESTINATION_ID_0038	Besiege die Red Bangs und hole dir das Symbol of the Thieves.
+QUEST_DESTINATION_ID_0039	Kill Lord Bang and obtain necklace.
+QUEST_DESTINATION_ID_0040	Hand it to Strange Collector
+QUEST_DESTINATION_ID_0041	After making a party of 3 or more, you can look for Helena
+QUEST_DESTINATION_ID_0042	Look for an egg after killing Red Mantis C
+QUEST_DESTINATION_ID_0043	[Dr.] Bring it to Estern
+QUEST_DESTINATION_ID_0044	[Dr.] Bring it to Estly
+QUEST_DESTINATION_ID_0045	Please give it to Mayor in Darkon
+QUEST_DESTINATION_ID_0046	You can see in Flarine, Saintmorning, and Darkon.
+QUEST_DESTINATION_ID_0047	It lives in Coral Island and you can purchase from cash shop.
+QUEST_DESTINATION_ID_0048	It lives in Azria and you can purchase from cash shop.
+QUEST_DESTINATION_ID_0049	It lives in first floor of Forsaken Tower and you can enter through Forsaken Tower Manger in Flarine.
+QUEST_DESTINATION_ID_0050	It lives in second floor of Forsaken Tower and you can enter through Forsaken Tower Manger in Flarine.
+QUEST_DESTINATION_ID_0051	It lives in third floor of Forsaken Tower and you can enter through Forsaken Tower Manger in Flarine.
+QUEST_DESTINATION_ID_0052	It lives in fourth floor of Forsaken Tower and you can enter through Forsaken Tower Manger in Flarine.
+QUEST_DESTINATION_ID_0053	It lives in fifth floor of Forsaken Tower and you can enter through Forsaken Tower Manger in Flarine.
+QUEST_DESTINATION_ID_0054	You can obtain it in collect area.
+QUEST_DESTINATION_ID_0055	Give it to Hachal.
+QUEST_DESTINATION_ID_0056	Bring it to [Chairman of History Society]Gothante.
+QUEST_DESTINATION_ID_0057	Bring it to [Manager of Ancient Document]Rovanett
+QUEST_DESTINATION_ID_0058	Bring it to [Great Magician]Laola
+QUEST_DESTINATION_ID_0059	Bring it to [Historian]Martinyc
+QUEST_DESTINATION_ID_0060	Bring it to [Mercenary Instructor]Hyuit
+QUEST_DESTINATION_ID_0061	Kill Small Mushpang
+QUEST_DESTINATION_ID_0062	Bring it to [Assist Instructor]Kidmen
+QUEST_DESTINATION_ID_0063	Bring it to Hachal in Flarine
+QUEST_DESTINATION_ID_0064	Bring it to Hachal in Darkon
+QUEST_DESTINATION_ID_0065	Find Cursed Aminus dungeon in northern Harmonin
+QUEST_DESTINATION_ID_0066	Receive mail from Rankashu who is standing in front of Dekanes dungeon
+QUEST_DESTINATION_ID_0067	Drian exists in the first room
+QUEST_DESTINATION_ID_0068	Töte Keakoon im dritten Raum um seinen Schlüssel zu erhalten.
+QUEST_DESTINATION_ID_0069	Move to the third room and check a cell where Nevil is locked.
+QUEST_DESTINATION_ID_0070	Kill Elite Keakoon in third room.
+QUEST_DESTINATION_ID_0071	Talk with  Nevin in prison
+QUEST_DESTINATION_ID_0072	Break Roach egg in fifth room and obtain 15 Pink Roach Fluids
+QUEST_DESTINATION_ID_0073	Break Roach egg in fourth room and obtain 15 Blue Roach Fluids
+QUEST_DESTINATION_ID_0074	Break Roach egg in fifth room and obtain 15 Pink Roach Queen Fluids
+QUEST_DESTINATION_ID_0075	Break Roach egg in fourth room and obtain 15 Blue Roach Queen Fluids
+QUEST_DESTINATION_ID_0076	Obtain 30 Cillins nearby
+QUEST_DESTINATION_ID_0077	Meet Kazen
+QUEST_DESTINATION_ID_0078	Move to where Kazen is and kill Green Trillipy. Then obtain 30 Ribenuums 
+QUEST_DESTINATION_ID_0079	You can find Nein in Dead Waldernis of Darkon 3 and do 'Finding Tridum'. Then collect 10 Ribenuums
+QUEST_DESTINATION_ID_0080	Speak with Cell in Darkon 1 and do 'Trace of ID card'. After getting a key, you can obtain 20 Tridum.
+QUEST_DESTINATION_ID_0081	Bring Ribenuum to Nein
+QUEST_DESTINATION_ID_0082	You can see Mutant Fefern and Mutant Nyangnyang Queen nearby.
+QUEST_DESTINATION_ID_0083	Slay Vice Veduque living in the last room of Mas dungeon.
+QUEST_DESTINATION_ID_0084	It exists in Ivillis and revelation can be found in the last room on left.
+QUEST_DESTINATION_ID_0085	Slay 8 Ivillis Crashers in Ivillis.
+QUEST_DESTINATION_ID_0086	Slay 4 Ivillis Guardians in Ivillis.
+QUEST_DESTINATION_ID_0087	Slay 4 Ivillis Guardians in Ivillis and obtain 4 Pattern of Ivillis Guardians.
+QUEST_DESTINATION_ID_0088	Slay Meteonykers in Volcane and obtain 70 Dragon Tooth.
+QUEST_DESTINATION_ID_0089	Slay Cyclops X in Volcane and obtain 80 Mysterious eyeballs.
+QUEST_DESTINATION_ID_0090	It is said that they live in Volcane.
+QUEST_DESTINATION_ID_0091	Please purchase long sword from Luda NPC.
+QUEST_DESTINATION_ID_0092	Slay Meteonykers in Volcane and obtain 100 Dragon Tooth.
+QUEST_DESTINATION_ID_0093	After speaking with Drian, obtain a pouch.
+QUEST_DESTINATION_ID_0094	A group of Organigor exists nearby.
+QUEST_DESTINATION_ID_0095	A group of Gangard exists nearby.
+QUEST_DESTINATION_ID_0096	A group of Hadeseor exists nearby.
+QUEST_DESTINATION_ID_0097	Newbies! This is an event coupon.
+QUEST_DESTINATION_ID_0098	It drops from monster lvl 15 or higher during the event.
+QUEST_DESTINATION_ID_0099	Hunt event monsters in all over the Madrigal.
+QUEST_DESTINATION_ID_0100	Finde einen der vielen Steine im Ruendra Camp.
+QUEST_DESTINATION_ID_0101	Töte den letzten Boss in der Kalgas Höhle und nimm dir das Pendant of Eternity.
+QUEST_DESTINATION_ID_0102	Töte Rubo und nimm dir das Seal of Aenn.
+QUEST_DESTINATION_ID_0103	Töte 50 Event Baby Karego, die überall in Madrigal verteilt sind.

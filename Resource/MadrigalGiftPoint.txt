@@ -1,0 +1,3 @@
+//로그아웃때분당획득포인트	로그인때분당획득포인트	
+//dwMadrigalGiftLogoutPerMin	dwMadrigalGiftLoginPerMin	
+1	250	

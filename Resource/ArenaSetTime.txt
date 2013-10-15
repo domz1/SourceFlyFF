@@ -1,0 +1,3 @@
+//전투 시간	소환 대기 시간	전투 대기 시간	승자 표시 시간
+//bSetFighttime	bSetCalltime	bSetFightStandby	bSetWinnertime
+180	5	20	10

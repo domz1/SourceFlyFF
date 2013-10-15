@@ -1,0 +1,469 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Reference</title>
+<link rel="stylesheet" href="../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.68.1">
+<link rel="start" href="../index.html" title="The Boost C++ Libraries BoostBook Documentation Subset">
+<link rel="up" href="../xpressive.html" title="Chapter 21. Boost.Xpressive">
+<link rel="prev" href="user_s_guide.html" title="User's Guide">
+<link rel="next" href="../boost/xpressive/basic_regex.html" title="Struct template basic_regex">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%">
+<td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../boost.png"></td>
+<td align="center"><a href="../../../index.htm">Home</a></td>
+<td align="center"><a href="../../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="../../../people/people.htm">People</a></td>
+<td align="center"><a href="../../../more/faq.htm">FAQ</a></td>
+<td align="center"><a href="../../../more/index.htm">More</a></td>
+</table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="user_s_guide.html"><img src="../images/prev.png" alt="Prev"></a><a accesskey="u" href="../xpressive.html"><img src="../images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="../images/home.png" alt="Home"></a><a accesskey="n" href="../boost/xpressive/basic_regex.html"><img src="../images/next.png" alt="Next"></a>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="xpressive.reference"></a>Reference</h2></div></div></div>
+<div class="toc"><dl>
+<dt><span class="section"><a href="reference.html#header.boost.xpressive.basic_regex.hpp">Header &lt;boost/xpressive/basic_regex.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference.html#header.boost.xpressive.traits.c_regex_traits.hpp">Header &lt;boost/xpressive/traits/c_regex_traits.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference.html#header.boost.xpressive.traits.cpp_regex_traits.hpp">Header &lt;boost/xpressive/traits/cpp_regex_traits.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference.html#header.boost.xpressive.match_results.hpp">Header &lt;boost/xpressive/match_results.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference.html#header.boost.xpressive.traits.null_regex_traits.hpp">Header &lt;boost/xpressive/traits/null_regex_traits.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference.html#header.boost.xpressive.regex_algorithms.hpp">Header &lt;boost/xpressive/regex_algorithms.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference.html#header.boost.xpressive.regex_compiler.hpp">Header &lt;boost/xpressive/regex_compiler.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference.html#header.boost.xpressive.regex_constants.hpp">Header &lt;boost/xpressive/regex_constants.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference.html#header.boost.xpressive.regex_error.hpp">Header &lt;boost/xpressive/regex_error.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference.html#header.boost.xpressive.regex_iterator.hpp">Header &lt;boost/xpressive/regex_iterator.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference.html#header.boost.xpressive.regex_primitives.hpp">Header &lt;boost/xpressive/regex_primitives.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference.html#header.boost.xpressive.regex_token_iterator.hpp">Header &lt;boost/xpressive/regex_token_iterator.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference.html#header.boost.xpressive.regex_traits.hpp">Header &lt;boost/xpressive/regex_traits.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference.html#header.boost.xpressive.sub_match.hpp">Header &lt;boost/xpressive/sub_match.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference.html#header.boost.xpressive.xpressive.hpp">Header &lt;boost/xpressive/xpressive.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference.html#header.boost.xpressive.xpressive_dynamic.hpp">Header &lt;boost/xpressive/xpressive_dynamic.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference.html#header.boost.xpressive.xpressive_fwd.hpp">Header &lt;boost/xpressive/xpressive_fwd.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference.html#header.boost.xpressive.xpressive_static.hpp">Header &lt;boost/xpressive/xpressive_static.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="reference.html#header.boost.xpressive.xpressive_typeof.hpp">Header &lt;boost/xpressive/xpressive_typeof.hpp&gt;</a></span></dt>
+</dl></div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="header.boost.xpressive.basic_regex.hpp"></a>Header &lt;<a href="../../../boost/xpressive/basic_regex.hpp" target="_top">boost/xpressive/basic_regex.hpp</a>&gt;</h3></div></div></div>
+<p>Contains the definition of the basic_regex&lt;&gt; class template and its associated helper functions.</p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> xpressive {
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; <span class="bold"><strong>struct</strong></span> <a href="../boost/xpressive/basic_regex.html" title="Struct template basic_regex">basic_regex</a>;
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>void</strong></span></span> <a href="../id1668860-bb.html" title="Function template swap">swap</a>(<a href="../boost/xpressive/basic_regex.html" title="Struct template basic_regex">basic_regex</a>&lt; BidiIter &gt; &amp;, <a href="../boost/xpressive/basic_regex.html" title="Struct template basic_regex">basic_regex</a>&lt; BidiIter &gt; &amp;);
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="header.boost.xpressive.traits.c_regex_traits.hpp"></a>Header &lt;<a href="../../../boost/xpressive/traits/c_regex_traits.hpp" target="_top">boost/xpressive/traits/c_regex_traits.hpp</a>&gt;</h3></div></div></div>
+<p>Contains the definition of the c_regex_traits&lt;&gt; template, which is a wrapper for the C locale functions that can be used to customize the behavior of static and dynamic regexes.</p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> xpressive {
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> Char&gt; <span class="bold"><strong>struct</strong></span> <a href="../boost/xpressive/c_regex_traits.html" title="Struct template c_regex_traits">c_regex_traits</a>;
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="header.boost.xpressive.traits.cpp_regex_traits.hpp"></a>Header &lt;<a href="../../../boost/xpressive/traits/cpp_regex_traits.hpp" target="_top">boost/xpressive/traits/cpp_regex_traits.hpp</a>&gt;</h3></div></div></div>
+<p>Contains the definition of the cpp_regex_traits&lt;&gt; template, which is a wrapper for std::locale that can be used to customize the behavior of static and dynamic regexes.</p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> xpressive {
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> Char&gt; <span class="bold"><strong>struct</strong></span> <a href="../boost/xpressive/cpp_regex_traits.html" title="Struct template cpp_regex_traits">cpp_regex_traits</a>;
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="header.boost.xpressive.match_results.hpp"></a>Header &lt;<a href="../../../boost/xpressive/match_results.hpp" target="_top">boost/xpressive/match_results.hpp</a>&gt;</h3></div></div></div>
+<p>Contains the definition of the match_results type and associated helpers. The match_results type holds the results of a regex_match() or regex_search() operation.</p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> xpressive {
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; <span class="bold"><strong>struct</strong></span> <a href="../boost/xpressive/match_results.html" title="Struct template match_results">match_results</a>;
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; <span class="bold"><strong>struct</strong></span> <a href="../boost/xpressive/regex_id_filter_predicate.html" title="Struct template regex_id_filter_predicate">regex_id_filter_predicate</a>;
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="header.boost.xpressive.traits.null_regex_traits.hpp"></a>Header &lt;<a href="../../../boost/xpressive/traits/null_regex_traits.hpp" target="_top">boost/xpressive/traits/null_regex_traits.hpp</a>&gt;</h3></div></div></div>
+<p>Contains the definition of the null_regex_traits&lt;&gt; template, which is a stub regex traits implementation that can be used by static and dynamic regexes for searching non-character data.</p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> xpressive {
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> Elem&gt; <span class="bold"><strong>struct</strong></span> <a href="../boost/xpressive/null_regex_traits.html" title="Struct template null_regex_traits">null_regex_traits</a>;
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="header.boost.xpressive.regex_algorithms.hpp"></a>Header &lt;<a href="../../../boost/xpressive/regex_algorithms.hpp" target="_top">boost/xpressive/regex_algorithms.hpp</a>&gt;</h3></div></div></div>
+<p>Contains the regex_match(), regex_search() and regex_replace() algorithms.</p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> xpressive {
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> OtherBidiIter, <span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="../boost/xpressive/regex_match.html" title="Function regex_match">regex_match</a>(OtherBidiIter, OtherBidiIter, 
+                       <a href="../boost/xpressive/match_results.html" title="Struct template match_results">match_results</a>&lt; BidiIter &gt; &amp;, 
+                       <a href="../boost/xpressive/basic_regex.html" title="Struct template basic_regex">basic_regex</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                       regex_constants::match_flag_type = regex_constants::match_default);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> OtherBidiIter, <span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="../boost/xpressive/regex_match.html" title="Function regex_match">regex_match</a>(OtherBidiIter, OtherBidiIter, 
+                       <a href="../boost/xpressive/basic_regex.html" title="Struct template basic_regex">basic_regex</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                       regex_constants::match_flag_type = regex_constants::match_default);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> Char&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="../boost/xpressive/regex_match.html" title="Function regex_match">regex_match</a>(Char <span class="bold"><strong>const</strong></span> *, <a href="../boost/xpressive/match_results.html" title="Struct template match_results">match_results</a>&lt; Char <span class="bold"><strong>const</strong></span> * &gt; &amp;, 
+                       <a href="../boost/xpressive/basic_regex.html" title="Struct template basic_regex">basic_regex</a>&lt; Char <span class="bold"><strong>const</strong></span> * &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                       regex_constants::match_flag_type = regex_constants::match_default);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> Char, <span class="bold"><strong>typename</strong></span> Traits, <span class="bold"><strong>typename</strong></span> Alloc&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="../boost/xpressive/regex_match.html" title="Function regex_match">regex_match</a>(std::basic_string&lt; Char, Traits, Alloc &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                       <a href="../boost/xpressive/match_results.html" title="Struct template match_results">match_results</a>&lt; <span class="bold"><strong>typename</strong></span> std::basic_string&lt; Char, Traits, Alloc &gt;::const_iterator &gt; &amp;, 
+                       <a href="../boost/xpressive/basic_regex.html" title="Struct template basic_regex">basic_regex</a>&lt; <span class="bold"><strong>typename</strong></span> std::basic_string&lt; Char, Traits, Alloc &gt;::const_iterator &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                       regex_constants::match_flag_type = regex_constants::match_default);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> Char&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="../boost/xpressive/regex_match.html" title="Function regex_match">regex_match</a>(Char <span class="bold"><strong>const</strong></span> *, <a href="../boost/xpressive/basic_regex.html" title="Struct template basic_regex">basic_regex</a>&lt; Char <span class="bold"><strong>const</strong></span> * &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                       regex_constants::match_flag_type = regex_constants::match_default);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> Char, <span class="bold"><strong>typename</strong></span> Traits, <span class="bold"><strong>typename</strong></span> Alloc&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="../boost/xpressive/regex_match.html" title="Function regex_match">regex_match</a>(std::basic_string&lt; Char, Traits, Alloc &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                       <a href="../boost/xpressive/basic_regex.html" title="Struct template basic_regex">basic_regex</a>&lt; <span class="bold"><strong>typename</strong></span> std::basic_string&lt; Char, Traits, Alloc &gt;::const_iterator &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                       regex_constants::match_flag_type = regex_constants::match_default);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> OtherBidiIter, <span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="../boost/xpressive/regex_search.html" title="Function regex_search">regex_search</a>(OtherBidiIter, OtherBidiIter, 
+                        <a href="../boost/xpressive/match_results.html" title="Struct template match_results">match_results</a>&lt; BidiIter &gt; &amp;, 
+                        <a href="../boost/xpressive/basic_regex.html" title="Struct template basic_regex">basic_regex</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                        regex_constants::match_flag_type = regex_constants::match_default);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> OtherBidiIter, <span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="../boost/xpressive/regex_search.html" title="Function regex_search">regex_search</a>(OtherBidiIter, OtherBidiIter, 
+                        <a href="../boost/xpressive/basic_regex.html" title="Struct template basic_regex">basic_regex</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                        regex_constants::match_flag_type = regex_constants::match_default);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> Char&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="../boost/xpressive/regex_search.html" title="Function regex_search">regex_search</a>(Char <span class="bold"><strong>const</strong></span> *, <a href="../boost/xpressive/match_results.html" title="Struct template match_results">match_results</a>&lt; Char <span class="bold"><strong>const</strong></span> * &gt; &amp;, 
+                        <a href="../boost/xpressive/basic_regex.html" title="Struct template basic_regex">basic_regex</a>&lt; Char <span class="bold"><strong>const</strong></span> * &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                        regex_constants::match_flag_type = regex_constants::match_default);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> Char, <span class="bold"><strong>typename</strong></span> Traits, <span class="bold"><strong>typename</strong></span> Alloc&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="../boost/xpressive/regex_search.html" title="Function regex_search">regex_search</a>(std::basic_string&lt; Char, Traits, Alloc &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                        <a href="../boost/xpressive/match_results.html" title="Struct template match_results">match_results</a>&lt; <span class="bold"><strong>typename</strong></span> std::basic_string&lt; Char, Traits, Alloc &gt;::const_iterator &gt; &amp;, 
+                        <a href="../boost/xpressive/basic_regex.html" title="Struct template basic_regex">basic_regex</a>&lt; <span class="bold"><strong>typename</strong></span> std::basic_string&lt; Char, Traits, Alloc &gt;::const_iterator &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                        regex_constants::match_flag_type = regex_constants::match_default);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> Char&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="../boost/xpressive/regex_search.html" title="Function regex_search">regex_search</a>(Char <span class="bold"><strong>const</strong></span> *, <a href="../boost/xpressive/basic_regex.html" title="Struct template basic_regex">basic_regex</a>&lt; Char <span class="bold"><strong>const</strong></span> * &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                        regex_constants::match_flag_type = regex_constants::match_default);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> Char, <span class="bold"><strong>typename</strong></span> Traits, <span class="bold"><strong>typename</strong></span> Alloc&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a href="../boost/xpressive/regex_search.html" title="Function regex_search">regex_search</a>(std::basic_string&lt; Char, Traits, Alloc &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                        <a href="../boost/xpressive/basic_regex.html" title="Struct template basic_regex">basic_regex</a>&lt; <span class="bold"><strong>typename</strong></span> std::basic_string&lt; Char, Traits, Alloc &gt;::const_iterator &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                        regex_constants::match_flag_type = regex_constants::match_default);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> OutIter, <span class="bold"><strong>typename</strong></span> OtherBidiIter, <span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type">OutIter</span> <a href="../boost/xpressive/regex_replace.html" title="Function regex_replace">regex_replace</a>(OutIter, OtherBidiIter, OtherBidiIter, 
+                            <a href="../boost/xpressive/basic_regex.html" title="Struct template basic_regex">basic_regex</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                            std::basic_string&lt; <span class="bold"><strong>typename</strong></span> iterator_value&lt; BidiIter &gt;::type &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                            regex_constants::match_flag_type = regex_constants::match_default);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> Char&gt; 
+      <span class="type">std::basic_string&lt; Char &gt;</span> 
+      <a href="../boost/xpressive/regex_replace.html" title="Function regex_replace">regex_replace</a>(std::basic_string&lt; Char &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                    <a href="../boost/xpressive/basic_regex.html" title="Struct template basic_regex">basic_regex</a>&lt; <span class="bold"><strong>typename</strong></span> std::basic_string&lt; Char &gt;::const_iterator &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                    std::basic_string&lt; Char &gt; <span class="bold"><strong>const</strong></span> &amp;, 
+                    regex_constants::match_flag_type = regex_constants::match_default);
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="header.boost.xpressive.regex_compiler.hpp"></a>Header &lt;<a href="../../../boost/xpressive/regex_compiler.hpp" target="_top">boost/xpressive/regex_compiler.hpp</a>&gt;</h3></div></div></div>
+<p>Contains the definition of regex_compiler, a factory for building regex objects from strings.</p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> xpressive {
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter, <span class="bold"><strong>typename</strong></span> RegexTraits, <span class="bold"><strong>typename</strong></span> CompilerTraits&gt; 
+      <span class="bold"><strong>struct</strong></span> <a href="../boost/xpressive/regex_compiler.html" title="Struct template regex_compiler">regex_compiler</a>;
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="header.boost.xpressive.regex_constants.hpp"></a>Header &lt;<a href="../../../boost/xpressive/regex_constants.hpp" target="_top">boost/xpressive/regex_constants.hpp</a>&gt;</h3></div></div></div>
+<p>Contains definitions for the syntax_option_type, match_flag_type and error_type enumerations.</p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> xpressive {
+    <span class="bold"><strong>namespace</strong></span> regex_constants {
+      <span class="bold"><strong>enum</strong></span> <a href="../boost/xpressive/regex_constants/syntax_option_type.html" title="Type syntax_option_type">syntax_option_type</a>;
+      <span class="bold"><strong>enum</strong></span> <a href="../boost/xpressive/regex_constants/match_flag_type.html" title="Type match_flag_type">match_flag_type</a>;
+      <span class="bold"><strong>enum</strong></span> <a href="../boost/xpressive/regex_constants/error_type.html" title="Type error_type">error_type</a>;
+    }
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="header.boost.xpressive.regex_error.hpp"></a>Header &lt;<a href="../../../boost/xpressive/regex_error.hpp" target="_top">boost/xpressive/regex_error.hpp</a>&gt;</h3></div></div></div>
+<p>Contains the definition of the regex_error exception class.</p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> xpressive {
+    <span class="bold"><strong>struct</strong></span> <a href="../boost/xpressive/regex_error.html" title="Struct regex_error">regex_error</a>;
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="header.boost.xpressive.regex_iterator.hpp"></a>Header &lt;<a href="../../../boost/xpressive/regex_iterator.hpp" target="_top">boost/xpressive/regex_iterator.hpp</a>&gt;</h3></div></div></div>
+<p>Contains the definition of the regex_iterator type, an STL-compatible iterator for stepping through all the matches in a sequence.</p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> xpressive {
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; <span class="bold"><strong>struct</strong></span> <a href="../boost/xpressive/regex_iterator.html" title="Struct template regex_iterator">regex_iterator</a>;
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="header.boost.xpressive.regex_primitives.hpp"></a>Header &lt;<a href="../../../boost/xpressive/regex_primitives.hpp" target="_top">boost/xpressive/regex_primitives.hpp</a>&gt;</h3></div></div></div>
+<p>Contains the syntax elements for writing static regular expressions.</p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> xpressive {
+    unsigned int const  <a href="../boost/xpressive/inf.html" title="Global inf">inf</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/nil.html" title="Global nil">nil</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/alnum.html" title="Global alnum">alnum</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/alpha.html" title="Global alpha">alpha</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/blank.html" title="Global blank">blank</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/cntrl.html" title="Global cntrl">cntrl</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/digit.html" title="Global digit">digit</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/graph.html" title="Global graph">graph</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/lower.html" title="Global lower">lower</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/print.html" title="Global print">print</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/punct.html" title="Global punct">punct</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/space.html" title="Global space">space</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/upper.html" title="Global upper">upper</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/xdigit.html" title="Global xdigit">xdigit</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/bos.html" title="Global bos">bos</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/eos.html" title="Global eos">eos</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/bol.html" title="Global bol">bol</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/eol.html" title="Global eol">eol</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/bow.html" title="Global bow">bow</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/eow.html" title="Global eow">eow</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/_b.html" title="Global _b">_b</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/_w.html" title="Global _w">_w</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/_d.html" title="Global _d">_d</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/_s.html" title="Global _s">_s</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/_n.html" title="Global _n">_n</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/_ln.html" title="Global _ln">_ln</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/_.html" title="Global _">_</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/self.html" title="Global self">self</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/set.html" title="Global set">set</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/s0.html" title="Global s0">s0</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/s1.html" title="Global s1">s1</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/s2.html" title="Global s2">s2</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/s3.html" title="Global s3">s3</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/s4.html" title="Global s4">s4</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/s5.html" title="Global s5">s5</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/s6.html" title="Global s6">s6</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/s7.html" title="Global s7">s7</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/s8.html" title="Global s8">s8</a>;
+    <span class="emphasis"><em>unspecified</em></span> <a href="../boost/xpressive/s9.html" title="Global s9">s9</a>;
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> Literal&gt; <span class="type"><span class="emphasis"><em>unspecified</em></span></span> <a href="../boost/xpressive/as_xpr.html" title="Function template as_xpr">as_xpr</a>(Literal <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> Xpr&gt; <span class="type"><span class="emphasis"><em>unspecified</em></span></span> <a href="../boost/xpressive/icase.html" title="Function template icase">icase</a>(Xpr <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="emphasis"><em>unspecified</em></span></span> <a href="../boost/xpressive/by_ref.html" title="Function template by_ref">by_ref</a>(<a href="../boost/xpressive/basic_regex.html" title="Struct template basic_regex">basic_regex</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> Char&gt; <span class="type"><span class="emphasis"><em>unspecified</em></span></span> <a href="../boost/xpressive/range.html" title="Function template range">range</a>(Char, Char);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> Xpr&gt; <span class="type"><span class="emphasis"><em>unspecified</em></span></span> <a href="../boost/xpressive/optional.html" title="Function template optional">optional</a>(Xpr <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>unsigned</strong></span> <span class="bold"><strong>int</strong></span> Min, <span class="bold"><strong>unsigned</strong></span> <span class="bold"><strong>int</strong></span> Max, <span class="bold"><strong>typename</strong></span> Xpr&gt; 
+      <span class="type"><span class="emphasis"><em>unspecified</em></span></span> <a href="../boost/xpressive/repeat.html" title="Function repeat">repeat</a>(Xpr <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>unsigned</strong></span> <span class="bold"><strong>int</strong></span> Count, <span class="bold"><strong>typename</strong></span> Xpr2&gt; 
+      <span class="type"><span class="emphasis"><em>unspecified</em></span></span> <a href="../boost/xpressive/repeat.html" title="Function repeat">repeat</a>(Xpr2 <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> Xpr&gt; <span class="type"><span class="emphasis"><em>unspecified</em></span></span> <a href="../boost/xpressive/keep.html" title="Function template keep">keep</a>(Xpr <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> Xpr&gt; <span class="type"><span class="emphasis"><em>unspecified</em></span></span> <a href="../boost/xpressive/before.html" title="Function template before">before</a>(Xpr <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> Xpr&gt; <span class="type"><span class="emphasis"><em>unspecified</em></span></span> <a href="../boost/xpressive/after.html" title="Function template after">after</a>(Xpr <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> Locale&gt; <span class="type"><span class="emphasis"><em>unspecified</em></span></span> <a href="../boost/xpressive/imbue.html" title="Function template imbue">imbue</a>(Locale <span class="bold"><strong>const</strong></span> &amp;);
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="header.boost.xpressive.regex_token_iterator.hpp"></a>Header &lt;<a href="../../../boost/xpressive/regex_token_iterator.hpp" target="_top">boost/xpressive/regex_token_iterator.hpp</a>&gt;</h3></div></div></div>
+<p>Contains the definition of regex_token_iterator, and STL-compatible iterator for tokenizing a string using a regular expression.</p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> xpressive {
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; <span class="bold"><strong>struct</strong></span> <a href="../boost/xpressive/regex_token_iterator.html" title="Struct template regex_token_iterator">regex_token_iterator</a>;
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="header.boost.xpressive.regex_traits.hpp"></a>Header &lt;<a href="../../../boost/xpressive/regex_traits.hpp" target="_top">boost/xpressive/regex_traits.hpp</a>&gt;</h3></div></div></div>
+<p>Includes the C regex traits or the CPP regex traits header file depending on the BOOST_XPRESSIVE_USE_C_TRAITS macro.</p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> xpressive {
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> Char, <span class="bold"><strong>typename</strong></span> Impl&gt; <span class="bold"><strong>struct</strong></span> <a href="../boost/xpressive/regex_traits.html" title="Struct template regex_traits">regex_traits</a>;
+    <span class="bold"><strong>struct</strong></span> <a href="../boost/xpressive/regex_traits_version_1_case_fold_tag.html" title="Struct regex_traits_version_1_case_fold_tag">regex_traits_version_1_case_fold_tag</a>;
+    <span class="bold"><strong>struct</strong></span> <a href="../boost/xpressive/regex_traits_version_1_tag.html" title="Struct regex_traits_version_1_tag">regex_traits_version_1_tag</a>;
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="header.boost.xpressive.sub_match.hpp"></a>Header &lt;<a href="../../../boost/xpressive/sub_match.hpp" target="_top">boost/xpressive/sub_match.hpp</a>&gt;</h3></div></div></div>
+<p>Contains the definition of the class template sub_match&lt;&gt; and associated helper functions</p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> xpressive {
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; <span class="bold"><strong>struct</strong></span> <a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>;
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter, <span class="bold"><strong>typename</strong></span> Char, <span class="bold"><strong>typename</strong></span> Traits&gt; 
+      <span class="type">std::basic_ostream&lt; Char, Traits &gt; &amp;</span> 
+      <a href="../id655400-bb.html" title="Function template operator&lt;&lt;"><span class="bold"><strong>operator</strong></span>&lt;&lt;</a>(std::basic_ostream&lt; Char, Traits &gt; &amp;, 
+                 <a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp;);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id1216029-bb"></a><span class="bold"><strong>operator</strong></span>==(<a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; lhs, 
+                      <a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id907064-bb"></a><span class="bold"><strong>operator</strong></span>!=(<a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; lhs, 
+                      <a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id1013478-bb"></a><span class="bold"><strong>operator</strong></span>&lt;(<a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; lhs, 
+                     <a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id1244655-bb"></a><span class="bold"><strong>operator</strong></span>&lt;=(<a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; lhs, 
+                      <a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id907763-bb"></a><span class="bold"><strong>operator</strong></span>&gt;=(<a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; lhs, 
+                      <a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id907619-bb"></a><span class="bold"><strong>operator</strong></span>&gt;(<a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; lhs, 
+                     <a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id1247370-bb"></a><span class="bold"><strong>operator</strong></span>==(<span class="bold"><strong>typename</strong></span> iterator_value&lt; BidiIter &gt;::type <span class="bold"><strong>const</strong></span> * lhs, 
+                      <a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id656520-bb"></a><span class="bold"><strong>operator</strong></span>!=(<span class="bold"><strong>typename</strong></span> iterator_value&lt; BidiIter &gt;::type <span class="bold"><strong>const</strong></span> * lhs, 
+                      <a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id1289077-bb"></a><span class="bold"><strong>operator</strong></span>&lt;(<span class="bold"><strong>typename</strong></span> iterator_value&lt; BidiIter &gt;::type <span class="bold"><strong>const</strong></span> * lhs, 
+                     <a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id1248283-bb"></a><span class="bold"><strong>operator</strong></span>&gt;(<span class="bold"><strong>typename</strong></span> iterator_value&lt; BidiIter &gt;::type <span class="bold"><strong>const</strong></span> * lhs, 
+                     <a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id1248310-bb"></a><span class="bold"><strong>operator</strong></span>&gt;=(<span class="bold"><strong>typename</strong></span> iterator_value&lt; BidiIter &gt;::type <span class="bold"><strong>const</strong></span> * lhs, 
+                      <a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id1247877-bb"></a><span class="bold"><strong>operator</strong></span>&lt;=(<span class="bold"><strong>typename</strong></span> iterator_value&lt; BidiIter &gt;::type <span class="bold"><strong>const</strong></span> * lhs, 
+                      <a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id1252677-bb"></a><span class="bold"><strong>operator</strong></span>==(<a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; lhs, 
+                      <span class="bold"><strong>typename</strong></span> iterator_value&lt; BidiIter &gt;::type <span class="bold"><strong>const</strong></span> * rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id1285181-bb"></a><span class="bold"><strong>operator</strong></span>!=(<a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; lhs, 
+                      <span class="bold"><strong>typename</strong></span> iterator_value&lt; BidiIter &gt;::type <span class="bold"><strong>const</strong></span> * rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id1285207-bb"></a><span class="bold"><strong>operator</strong></span>&lt;(<a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; lhs, 
+                     <span class="bold"><strong>typename</strong></span> iterator_value&lt; BidiIter &gt;::type <span class="bold"><strong>const</strong></span> * rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id1278175-bb"></a><span class="bold"><strong>operator</strong></span>&gt;(<a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; lhs, 
+                     <span class="bold"><strong>typename</strong></span> iterator_value&lt; BidiIter &gt;::type <span class="bold"><strong>const</strong></span> * rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id1278202-bb"></a><span class="bold"><strong>operator</strong></span>&gt;=(<a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; lhs, 
+                      <span class="bold"><strong>typename</strong></span> iterator_value&lt; BidiIter &gt;::type <span class="bold"><strong>const</strong></span> * rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id1278229-bb"></a><span class="bold"><strong>operator</strong></span>&lt;=(<a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; lhs, 
+                      <span class="bold"><strong>typename</strong></span> iterator_value&lt; BidiIter &gt;::type <span class="bold"><strong>const</strong></span> * rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id1278256-bb"></a><span class="bold"><strong>operator</strong></span>==(<span class="bold"><strong>typename</strong></span> iterator_value&lt; BidiIter &gt;::type <span class="bold"><strong>const</strong></span> &amp; lhs, 
+                      <a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id1278284-bb"></a><span class="bold"><strong>operator</strong></span>!=(<span class="bold"><strong>typename</strong></span> iterator_value&lt; BidiIter &gt;::type <span class="bold"><strong>const</strong></span> &amp; lhs, 
+                      <a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id1278311-bb"></a><span class="bold"><strong>operator</strong></span>&lt;(<span class="bold"><strong>typename</strong></span> iterator_value&lt; BidiIter &gt;::type <span class="bold"><strong>const</strong></span> &amp; lhs, 
+                     <a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id1220629-bb"></a><span class="bold"><strong>operator</strong></span>&gt;(<span class="bold"><strong>typename</strong></span> iterator_value&lt; BidiIter &gt;::type <span class="bold"><strong>const</strong></span> &amp; lhs, 
+                     <a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id1220656-bb"></a><span class="bold"><strong>operator</strong></span>&gt;=(<span class="bold"><strong>typename</strong></span> iterator_value&lt; BidiIter &gt;::type <span class="bold"><strong>const</strong></span> &amp; lhs, 
+                      <a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id1220683-bb"></a><span class="bold"><strong>operator</strong></span>&lt;=(<span class="bold"><strong>typename</strong></span> iterator_value&lt; BidiIter &gt;::type <span class="bold"><strong>const</strong></span> &amp; lhs, 
+                      <a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id905853-bb"></a><span class="bold"><strong>operator</strong></span>==(<a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; lhs, 
+                      <span class="bold"><strong>typename</strong></span> iterator_value&lt; BidiIter &gt;::type <span class="bold"><strong>const</strong></span> &amp; rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id927613-bb"></a><span class="bold"><strong>operator</strong></span>!=(<a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; lhs, 
+                      <span class="bold"><strong>typename</strong></span> iterator_value&lt; BidiIter &gt;::type <span class="bold"><strong>const</strong></span> &amp; rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id999833-bb"></a><span class="bold"><strong>operator</strong></span>&lt;(<a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; lhs, 
+                     <span class="bold"><strong>typename</strong></span> iterator_value&lt; BidiIter &gt;::type <span class="bold"><strong>const</strong></span> &amp; rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id1213176-bb"></a><span class="bold"><strong>operator</strong></span>&gt;(<a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; lhs, 
+                     <span class="bold"><strong>typename</strong></span> iterator_value&lt; BidiIter &gt;::type <span class="bold"><strong>const</strong></span> &amp; rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id1287454-bb"></a><span class="bold"><strong>operator</strong></span>&gt;=(<a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; lhs, 
+                      <span class="bold"><strong>typename</strong></span> iterator_value&lt; BidiIter &gt;::type <span class="bold"><strong>const</strong></span> &amp; rhs);
+    <span class="bold"><strong>template</strong></span>&lt;<span class="bold"><strong>typename</strong></span> BidiIter&gt; 
+      <span class="type"><span class="bold"><strong>bool</strong></span></span> <a name="id1255928-bb"></a><span class="bold"><strong>operator</strong></span>&lt;=(<a href="../boost/xpressive/sub_match.html" title="Struct template sub_match">sub_match</a>&lt; BidiIter &gt; <span class="bold"><strong>const</strong></span> &amp; lhs, 
+                      <span class="bold"><strong>typename</strong></span> iterator_value&lt; BidiIter &gt;::type <span class="bold"><strong>const</strong></span> &amp; rhs);
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="header.boost.xpressive.xpressive.hpp"></a>Header &lt;<a href="../../../boost/xpressive/xpressive.hpp" target="_top">boost/xpressive/xpressive.hpp</a>&gt;</h3></div></div></div>
+<p>Includes all of xpressive including support for both static and dynamic regular expressions.</p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="header.boost.xpressive.xpressive_dynamic.hpp"></a>Header &lt;<a href="../../../boost/xpressive/xpressive_dynamic.hpp" target="_top">boost/xpressive/xpressive_dynamic.hpp</a>&gt;</h3></div></div></div>
+<p>Includes everything you need to write and use dynamic regular expressions.</p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="header.boost.xpressive.xpressive_fwd.hpp"></a>Header &lt;<a href="../../../boost/xpressive/xpressive_fwd.hpp" target="_top">boost/xpressive/xpressive_fwd.hpp</a>&gt;</h3></div></div></div>
+<p>Forward declarations for all of xpressive's public data types.</p>
+<pre class="synopsis"><span class="bold"><strong>namespace</strong></span> boost {
+  <span class="bold"><strong>namespace</strong></span> xpressive {
+    <span class="bold"><strong>typedef</strong></span> <span class="bold"><strong>void</strong></span> <span class="bold"><strong>const</strong></span> * regex_id_type;
+    <span class="bold"><strong>typedef</strong></span> <a href="../boost/xpressive/basic_regex.html" title="Struct template basic_regex">basic_regex</a>&lt; std::string::const_iterator &gt; sregex;
+    <span class="bold"><strong>typedef</strong></span> <a href="../boost/xpressive/basic_regex.html" title="Struct template basic_regex">basic_regex</a>&lt; <span class="bold"><strong>char</strong></span> <span class="bold"><strong>const</strong></span> * &gt; cregex;
+    <span class="bold"><strong>typedef</strong></span> <a href="../boost/xpressive/basic_regex.html" title="Struct template basic_regex">basic_regex</a>&lt; std::wstring::const_iterator &gt; wsregex;
+    <span class="bold"><strong>typedef</strong></span> <a href="../boost/xpressive/basic_regex.html" title="Struct template basic_regex">basic_regex</a>&lt; <span class="bold"><strong>wchar_t</strong></span> <span class="bold"><strong>const</strong></span> * &gt; wcregex;
+    <span class="bold"><strong>typedef</strong></span> <a href="../boost/xpressive/regex_compiler.html" title="Struct template regex_compiler">regex_compiler</a>&lt; std::string::const_iterator &gt; sregex_compiler;
+    <span class="bold"><strong>typedef</strong></span> <a href="../boost/xpressive/regex_compiler.html" title="Struct template regex_compiler">regex_compiler</a>&lt; <span class="bold"><strong>char</strong></span> <span class="bold"><strong>const</strong></span> * &gt; cregex_compiler;
+    <span class="bold"><strong>typedef</strong></span> <a href="../boost/xpressive/regex_compiler.html" title="Struct template regex_compiler">regex_compiler</a>&lt; std::wstring::const_iterator &gt; wsregex_compiler;
+    <span class="bold"><strong>typedef</strong></span> <a href="../boost/xpressive/regex_compiler.html" title="Struct template regex_compiler">regex_compiler</a>&lt; <span class="bold"><strong>wchar_t</strong></span> <span class="bold"><strong>const</strong></span> * &gt; wcregex_compiler;
+    <span class="bold"><strong>typedef</strong></span> <a href="../boost/xpressive/regex_iterator.html" title="Struct template regex_iterator">regex_iterator</a>&lt; std::string::const_iterator &gt; sregex_iterator;
+    <span class="bold"><strong>typedef</strong></span> <a href="../boost/xpressive/regex_iterator.html" title="Struct template regex_iterator">regex_iterator</a>&lt; <span class="bold"><strong>char</strong></span> <span class="bold"><strong>const</strong></span> * &gt; cregex_iterator;
+    <span class="bold"><strong>typedef</strong></span> <a href="../boost/xpressive/regex_iterator.html" title="Struct template regex_iterator">regex_iterator</a>&lt; std::wstring::const_iterator &gt; wsregex_iterator;
+    <span class="bold"><strong>typedef</strong></span> <a href="../boost/xpressive/regex_iterator.html" title="Struct template regex_iterator">regex_iterator</a>&lt; <span class="bold"><strong>wchar_t</strong></span> <span class="bold"><strong>const</strong></span> * &gt; wcregex_iterator;
+    <span class="bold"><strong>typedef</strong></span> <a href="../boost/xpressive/regex_token_iterator.html" title="Struct template regex_token_iterator">regex_token_iterator</a>&lt; std::string::const_iterator &gt; sregex_token_iterator;
+    <span class="bold"><strong>typedef</strong></span> <a href="../boost/xpressive/regex_token_iterator.html" title="Struct template regex_token_iterator">regex_token_iterator</a>&lt; <span class="bold"><strong>char</strong></span> <span class="bold"><strong>const</strong></span> * &gt; cregex_token_iterator;
+    <span class="bold"><strong>typedef</strong></span> <a href="../boost/xpressive/regex_token_iterator.html" title="Struct template regex_token_iterator">regex_token_iterator</a>&lt; std::wstring::const_iterator &gt; wsregex_token_iterator;
+    <span class="bold"><strong>typedef</strong></span> <a href="../boost/xpressive/regex_token_iterator.html" title="Struct template regex_token_iterator">regex_token_iterator</a>&lt; <span class="bold"><strong>wchar_t</strong></span> <span class="bold"><strong>const</strong></span> * &gt; wcregex_token_iterator;
+    <span class="bold"><strong>typedef</strong></span> <a href="../boost/xpressive/match_results.html" title="Struct template match_results">match_results</a>&lt; std::string::const_iterator &gt; smatch;
+    <span class="bold"><strong>typedef</strong></span> <a href="../boost/xpressive/match_results.html" title="Struct template match_results">match_results</a>&lt; <span class="bold"><strong>char</strong></span> <span class="bold"><strong>const</strong></span> * &gt; cmatch;
+    <span class="bold"><strong>typedef</strong></span> <a href="../boost/xpressive/match_results.html" title="Struct template match_results">match_results</a>&lt; std::wstring::const_iterator &gt; wsmatch;
+    <span class="bold"><strong>typedef</strong></span> <a href="../boost/xpressive/match_results.html" title="Struct template match_results">match_results</a>&lt; <span class="bold"><strong>wchar_t</strong></span> <span class="bold"><strong>const</strong></span> * &gt; wcmatch;
+    <span class="bold"><strong>typedef</strong></span> <a href="../boost/xpressive/regex_id_filter_predicate.html" title="Struct template regex_id_filter_predicate">regex_id_filter_predicate</a>&lt; std::string::const_iterator &gt; sregex_id_filter_predicate;
+    <span class="bold"><strong>typedef</strong></span> <a href="../boost/xpressive/regex_id_filter_predicate.html" title="Struct template regex_id_filter_predicate">regex_id_filter_predicate</a>&lt; <span class="bold"><strong>char</strong></span> <span class="bold"><strong>const</strong></span> * &gt; cregex_id_filter_predicate;
+    <span class="bold"><strong>typedef</strong></span> <a href="../boost/xpressive/regex_id_filter_predicate.html" title="Struct template regex_id_filter_predicate">regex_id_filter_predicate</a>&lt; std::wstring::const_iterator &gt; wsregex_id_filter_predicate;
+    <span class="bold"><strong>typedef</strong></span> <a href="../boost/xpressive/regex_id_filter_predicate.html" title="Struct template regex_id_filter_predicate">regex_id_filter_predicate</a>&lt; <span class="bold"><strong>wchar_t</strong></span> <span class="bold"><strong>const</strong></span> * &gt; wcregex_id_filter_predicate;
+  }
+}</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="header.boost.xpressive.xpressive_static.hpp"></a>Header &lt;<a href="../../../boost/xpressive/xpressive_static.hpp" target="_top">boost/xpressive/xpressive_static.hpp</a>&gt;</h3></div></div></div>
+<p>Includes everything you need to write static regular expressions and use them.</p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="header.boost.xpressive.xpressive_typeof.hpp"></a>Header &lt;<a href="../../../boost/xpressive/xpressive_typeof.hpp" target="_top">boost/xpressive/xpressive_typeof.hpp</a>&gt;</h3></div></div></div>
+<p>Type registrations so that xpressive can be used with the Boost.Typeof library.</p>
+</div>
+</div>
+<table width="100%"><tr>
+<td align="left"></td>
+<td align="right"><small>Copyright © 2003, 2004 Eric Niebler</small></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="user_s_guide.html"><img src="../images/prev.png" alt="Prev"></a><a accesskey="u" href="../xpressive.html"><img src="../images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="../images/home.png" alt="Home"></a><a accesskey="n" href="../boost/xpressive/basic_regex.html"><img src="../images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

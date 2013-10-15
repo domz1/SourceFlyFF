@@ -1,0 +1,77 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Writing Jamfiles</title>
+<link rel="stylesheet" href="../../../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.68.1">
+<link rel="start" href="../../../index.html" title="The Boost C++ Libraries BoostBook Documentation Subset">
+<link rel="up" href="../../vs_v1.html" title="Appendix B. Differences to Boost.Build V1">
+<link rel="prev" href="../../vs_v1.html" title="Appendix B. Differences to Boost.Build V1">
+<link rel="next" href="build_process.html" title="Build process">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%">
+<td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../../../boost.png"></td>
+<td align="center"><a href="../../../../../index.htm">Home</a></td>
+<td align="center"><a href="../../../../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="../../../../../people/people.htm">People</a></td>
+<td align="center"><a href="../../../../../more/faq.htm">FAQ</a></td>
+<td align="center"><a href="../../../../../more/index.htm">More</a></td>
+</table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../../vs_v1.html"><img src="../../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../vs_v1.html"><img src="../../../images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../images/home.png" alt="Home"></a><a accesskey="n" href="build_process.html"><img src="../../../images/next.png" alt="Next"></a>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="bbv2.advanced.differences_to_v1.jamfiles"></a>Writing Jamfiles</h3></div></div></div>
+<p>Probably one of the most important differences in V2 Jamfiles is
+      the use of project requirements. In V1, if several targets had the same
+      requirements (for example, a common <code class="computeroutput">#include</code> path), it was necessary to
+      manually write the requirements or use a helper rule or template target. In V2, the
+      common properties can be specified with the <code class="computeroutput">requirements</code> project
+      attribute, as documented in <a href="../../advanced.html#bbv2.advanced.projects" title="Projects">the section called &#8220;Projects&#8221;</a>.
+      </p>
+<p><a href="../../tutorial.html#bbv2.tutorial.libs" title="Dependent Targets">Usage requirements</a>
+      also help to simplify Jamfiles. 
+      
+      If a library requires
+      all clients to use specific <code class="computeroutput">#include</code> paths or macros when compiling 
+      code that depends on the library, that information can be cleanly
+      represented.</p>
+<p>The difference between <code class="computeroutput">lib</code> and <code class="computeroutput">dll</code> targets in V1 is completely
+      eliminated in V2. There's only one library target type, <code class="computeroutput">lib</code>, which can create
+      either static or shared libraries depending on the value of the 
+        <a href="../../reference.html#bbv2.advanced.builtins.features.link"><code class="varname">&lt;link&gt;</code>
+      feature</a>. If your target should be only built in one way, you
+      can add <code class="computeroutput">&lt;link&gt;shared</code> or <code class="computeroutput">&lt;link&gt;static</code> to its requirements.
+      </p>
+<p>The syntax for referring to other targets was changed a bit. While
+      in V1 one would use:
+</p>
+<pre class="programlisting">
+exe a : a.cpp &lt;lib&gt;../foo/bar ;
+</pre>
+<p> 
+        the V2 syntax is:
+</p>
+<pre class="programlisting">
+exe a : a.cpp ../foo//bar ;
+</pre>
+<p>
+        Note that you don't need to specify the type of other target, but the
+        last element should be separated from the others by a double slash to indicate that
+        you're referring to target <code class="filename">bar</code> in project <code class="filename">../foo</code>, and not to
+        project <code class="filename">../foo/bar</code>.
+        </p>
+</div>
+<table width="100%"><tr>
+<td align="left"></td>
+<td align="right"><small></small></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../../vs_v1.html"><img src="../../../images/prev.png" alt="Prev"></a><a accesskey="u" href="../../vs_v1.html"><img src="../../../images/up.png" alt="Up"></a><a accesskey="h" href="../../../index.html"><img src="../../../images/home.png" alt="Home"></a><a accesskey="n" href="build_process.html"><img src="../../../images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

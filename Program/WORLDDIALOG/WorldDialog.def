@@ -1,0 +1,7 @@
+LIBRARY   WorldDialog
+
+EXPORTS
+    FindScriptKey    @2
+    RunDialog        @3
+	SetLanguage      @4
+	InitWorldDialog  @5

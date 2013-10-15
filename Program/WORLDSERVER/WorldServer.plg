@@ -1,0 +1,79 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: AccountServer - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+
+
+
+<h3>Results</h3>
+AccountServer.exe - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: CacheServer - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+
+
+
+<h3>Results</h3>
+CacheServer.exe - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: Certifier - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+
+
+
+<h3>Results</h3>
+Certifier.exe - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: CoreServer - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+
+
+
+<h3>Results</h3>
+CoreServer.exe - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: DatabaseServer - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+
+
+
+<h3>Results</h3>
+DatabaseServer.exe - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: LoginServer - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+
+
+
+<h3>Results</h3>
+LoginServer.exe - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: Neuz - Win32 NoGameguard--------------------
+</h3>
+<h3>Command Lines</h3>
+
+
+
+<h3>Results</h3>
+Neuz.exe - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: WorldServer - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+
+
+
+<h3>Results</h3>
+WorldServer.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

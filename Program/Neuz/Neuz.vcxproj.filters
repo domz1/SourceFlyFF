@@ -1,0 +1,2018 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{a5fa8413-6bfa-45df-8625-17feb6904663}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Source Files\_DirectX">
+      <UniqueIdentifier>{502e3698-67b8-4c5a-a387-cdf4d0771c83}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_Interface">
+      <UniqueIdentifier>{6b5d2184-289c-49ed-8712-efe41adb411e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_Interface\WndBase">
+      <UniqueIdentifier>{b25051fe-a860-4cba-b479-d75bd7f38e1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_Interface\WndTitle">
+      <UniqueIdentifier>{194182dd-c4d5-423b-900b-856cb147d36e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_Interface\Misc">
+      <UniqueIdentifier>{2bc212f0-052d-4f9f-a7ee-14a9785c7e7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_Interface\WndApplet">
+      <UniqueIdentifier>{7135edf5-4eea-41cf-abf4-7b6c352b1556}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_Interface\WndApplet\Communication">
+      <UniqueIdentifier>{48d9079d-2920-468b-a0df-cd4d1785a373}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_Interface\WndApplet\Vendor">
+      <UniqueIdentifier>{df3ff44f-76a3-4b70-b3bc-ca2e92777bbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_Interface\WndApplet\Guild">
+      <UniqueIdentifier>{a83c500f-ea01-405b-864b-e285fdda3750}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_Interface\WndApplet\Rank">
+      <UniqueIdentifier>{d0cce14b-fc38-4918-b982-b8e47cdd8c1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_Interface\WndApplet\Piercing">
+      <UniqueIdentifier>{a47aa1d9-6a1a-4af6-973d-ab67993235e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_Interface\Admin">
+      <UniqueIdentifier>{e1efab36-c213-4567-ab51-805ef917fe5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_Common">
+      <UniqueIdentifier>{32dd22f7-db60-49a1-8a0e-ca6e27cc281d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_Common\LOD">
+      <UniqueIdentifier>{4650f301-5bb8-4bbb-a89b-1bcc25bc0548}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_Common\Object">
+      <UniqueIdentifier>{be23f07a-c72a-4c97-a9b7-912d55c572c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_Common\Model No. 1">
+      <UniqueIdentifier>{56b25434-865e-4e88-8c3f-434963fe5f0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_Common\Script">
+      <UniqueIdentifier>{9c484292-28cb-47e2-b676-7e0b44339df8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_Common\Contents">
+      <UniqueIdentifier>{6e178496-3751-493e-af96-3caaf894c190}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_Common\World">
+      <UniqueIdentifier>{734d9cc3-4063-436e-b6ba-53c9d80112a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_Common\Low">
+      <UniqueIdentifier>{9227dd33-d58b-4f51-b114-98649708649c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_Common\TextMessage">
+      <UniqueIdentifier>{86ce5a3e-b58e-4bc5-a097-b09adf3d7f6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_Common\Console">
+      <UniqueIdentifier>{f73e9487-6447-4f70-8850-ba8be82b0de6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_Network">
+      <UniqueIdentifier>{2347fbdb-a0ee-4f47-9d50-a4a9d778cdf4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_Network\Net">
+      <UniqueIdentifier>{15966bf8-6fd7-4e42-b258-af5da040ed82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_Network\Mcl">
+      <UniqueIdentifier>{7687cfbe-953a-4d3b-8a99-63af284232a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_Network\Mics">
+      <UniqueIdentifier>{10fe6987-c4f1-4fb9-bb3d-3cb8e834435f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_Multimedia">
+      <UniqueIdentifier>{14a296c6-704e-46cf-8cc0-b303cd82564b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_ObjSubClass">
+      <UniqueIdentifier>{5f9b7819-7678-4313-8240-0b39c5364c0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_ObjSubClass\Action">
+      <UniqueIdentifier>{d15e50c4-5096-4909-8900-b2549be049bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\_ExceptionHandler">
+      <UniqueIdentifier>{94a57b8d-d9f2-472d-a9df-97dac6f30702}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{edccad20-9a11-4c8d-ab96-f66fe7682d99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Data">
+      <UniqueIdentifier>{4cdb90c2-b9da-465b-9769-1e28e4a9bed5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Data\Music">
+      <UniqueIdentifier>{0390042f-22e3-4ff8-a2e4-d870be5f9807}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\_Common\accessory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CampusHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="clord.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Cloth.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\collecting.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="couplehelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DPCertified.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DPClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DPClientGuildWar.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DPClientLux.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DPCollectClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DPLoginClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HelperWebBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\langman.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\lord.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\memtrace.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Network.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Neuz.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NeuzEnemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NeuzMsgProc.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NPGameLib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenLoadWnd.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\playerdata.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\pocket.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\rtmessenger.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeLimit.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WebBox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WebCtrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndQuizEvent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WorldMap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_DirectX\d3dapp.cpp">
+      <Filter>Source Files\_DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_DirectX\d3denumeration.cpp">
+      <Filter>Source Files\_DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_DirectX\d3dfont.cpp">
+      <Filter>Source Files\_DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_DirectX\d3dsettings.cpp">
+      <Filter>Source Files\_DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_DirectX\d3dutil.cpp">
+      <Filter>Source Files\_DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_DirectX\dsutil.cpp">
+      <Filter>Source Files\_DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_DirectX\dxutil.cpp">
+      <Filter>Source Files\_DirectX</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\FuncApplet.cpp">
+      <Filter>Source Files\_Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\FuncTextCmd.cpp">
+      <Filter>Source Files\_Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndGuideSystem.cpp">
+      <Filter>Source Files\_Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndHelperWebBox.cpp">
+      <Filter>Source Files\_Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndInvenRemoveItem.cpp">
+      <Filter>Source Files\_Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndMailRequestingBox.cpp">
+      <Filter>Source Files\_Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndManager.cpp">
+      <Filter>Source Files\_Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndMessageBox.cpp">
+      <Filter>Source Files\_Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndNeuz.cpp">
+      <Filter>Source Files\_Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndQuest.cpp">
+      <Filter>Source Files\_Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndQuitRoom.cpp">
+      <Filter>Source Files\_Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndRoomList.cpp">
+      <Filter>Source Files\_Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndSelectVillage.cpp">
+      <Filter>Source Files\_Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndUserMarkNameChanger.cpp">
+      <Filter>Source Files\_Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndWebBox.cpp">
+      <Filter>Source Files\_Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndWorld.cpp">
+      <Filter>Source Files\_Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndWorldControlPlayer.cpp">
+      <Filter>Source Files\_Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\ResManager.cpp">
+      <Filter>Source Files\_Interface\WndBase</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndBase.cpp">
+      <Filter>Source Files\_Interface\WndBase</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndControl.cpp">
+      <Filter>Source Files\_Interface\WndBase</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndEditCtrl.cpp">
+      <Filter>Source Files\_Interface\WndBase</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndItemCtrl.cpp">
+      <Filter>Source Files\_Interface\WndBase</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndTradeCtrl.cpp">
+      <Filter>Source Files\_Interface\WndBase</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndCredit.cpp">
+      <Filter>Source Files\_Interface\WndTitle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndTitle.cpp">
+      <Filter>Source Files\_Interface\WndTitle</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\Clipboard.cpp">
+      <Filter>Source Files\_Interface\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\ITheme.cpp">
+      <Filter>Source Files\_Interface\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\tooltip.cpp">
+      <Filter>Source Files\_Interface\Misc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\Wnd2ndPassword.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndAwakening.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndBagEx.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndBank.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndBlessingCancel.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_interface\WndChangeFace.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndChangeName.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndChattingBlockingList.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_interface\WndCloseExistingConnection.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndCollecting.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndCommItem.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndDialog.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndDuelConfirm.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndField.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndHelp.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndHousing.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndLord.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndLvReqDown.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndMap.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndMapEx.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndMessengerSearch.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndMiniGame.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndMotion.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndNotice.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndOption.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndOptionGame.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndParty.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndPartyChangeTroup.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndPartyConfirm.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndPartyQuick.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndPetRes.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndPetSys.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndPvp.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndQuestQuickInfo.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndRainbowRace.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndRepairItem.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndRepairItemCtrl.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndSealChar.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndSelectCh.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndShop.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndSummonAngel.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndSummonFriend.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndTaskBar.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndText.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndTutorial.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndUpgradeBase.cpp">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_interface\WndChatFilter.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Communication</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndCommand.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Communication</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndCommunication.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Communication</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndFriendConFirm.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Communication</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndFriendCtrl.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Communication</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndGuildCtrl.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Communication</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndMessenger.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Communication</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndMessengerCtrl.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Communication</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndPartyCtrl.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Communication</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_interface\WndRegVend.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Vendor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_interface\WndVendor.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Vendor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_interface\WndVendorBuy.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Vendor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_interface\WndVendorCtrl.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Vendor</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndGuild.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_interface\WndGuildBank.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndGuildCombat1to1.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndGuildHouse.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndGuildMerit.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndGuildName.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndGuildTabApp.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndGuildTabInfo.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndGuildTabMember.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndGuildTabPower.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndGuildTabWar.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndGuildVote.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndGuildWarDecl.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndGuildWarGiveUp.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndGuildWarPeace.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndGuildWarPeaceConfirm.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndGuildWarRequest.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndSecretRoom.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndRankGuild.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Rank</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndRankInfo.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Rank</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndRankWar.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Rank</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndPiercing.cpp">
+      <Filter>Source Files\_Interface\WndApplet\Piercing</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndAdminCreateItem.cpp">
+      <Filter>Source Files\_Interface\Admin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndDebugInfo.cpp">
+      <Filter>Source Files\_Interface\Admin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Interface\WndIndirectTalk.cpp">
+      <Filter>Source Files\_Interface\Admin</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_AIInterface\AIInterface.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\buff.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Campus.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Chatting.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Colosseum.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Continent.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\CooltimeMgr.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\couple.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\debug.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\DefineCommon.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_common\eveschool.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Exchange.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_common\flyffevent.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\GuildCombat1to1.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\GuildHouse.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\honor.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Housing.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\HwOption.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\lordskill.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\LuaBase.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\MapComboBoxData.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\MapInformationManager.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\MapMonsterInformation.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\MapMonsterInformationPack.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\messenger.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\MiniGame.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\MiniGameBase.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\moverbuff.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Particle.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\partyquest.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\PCBang.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\piercing.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\post.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\profile.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\ProfileInfo.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Project.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\ProjectCmn.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\ProjectLux.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Quiz.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\RainbowNPCInformation.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\RainbowNPCInformationPack.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\RainbowRace.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\randomoption.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Rijndael.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\SecretRoom.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\serialnumber.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\spevent.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Tax.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\TeleportationIconInfo.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="TexturePool.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\ticket.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\TreeInformation.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\UltimateWeapon.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\UserMarkPositionInfo.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\yUtil.cpp">
+      <Filter>Source Files\_Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\lod.cpp">
+      <Filter>Source Files\_Common\LOD</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\CommonCtrl.cpp">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\CreateObj.cpp">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Ctrl.cpp">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Item.cpp">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Light.cpp">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Mover.cpp">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\MoverActEvent.cpp">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\MoverAttack.cpp">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\MoverEquip.cpp">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\MoverItem.cpp">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\MoverMove.cpp">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\MoverMsg.cpp">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\MoverParam.cpp">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\MoverRender.cpp">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\MoverSkill.cpp">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Obj.cpp">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\ObjSerialize.cpp">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_common\ObjSerializeOpt.cpp">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\PathObj.cpp">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\pet.cpp">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Region.cpp">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Sfx.cpp">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\sfxbase.cpp">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\SfxObj.cpp">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Ship.cpp">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\SkillInfluence.cpp">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\weather.cpp">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\billboard.cpp">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Bone.cpp">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Material.cpp">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Model.cpp">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\ModelGlobal.cpp">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\ModelMng.cpp">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\ModelObject.cpp">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Object3D.cpp">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\ParticleMng.cpp">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Shader.cpp">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\TailEffectMng.cpp">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\scanner.cpp">
+      <Filter>Source Files\_Common\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Script.cpp">
+      <Filter>Source Files\_Common\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_common\guild.cpp">
+      <Filter>Source Files\_Common\Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_common\guildquest.cpp">
+      <Filter>Source Files\_Common\Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\GuildRender.cpp">
+      <Filter>Source Files\_Common\Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_common\guildwar.cpp">
+      <Filter>Source Files\_Common\Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\party.cpp">
+      <Filter>Source Files\_Common\Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Camera.cpp">
+      <Filter>Source Files\_Common\World</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Environment.cpp">
+      <Filter>Source Files\_Common\World</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Respawn.cpp">
+      <Filter>Source Files\_Common\World</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\SkyBox.cpp">
+      <Filter>Source Files\_Common\World</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\TerrainMng.cpp">
+      <Filter>Source Files\_Common\World</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\World.cpp">
+      <Filter>Source Files\_Common\World</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\World3D.cpp">
+      <Filter>Source Files\_Common\World</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\WorldEnvironment.cpp">
+      <Filter>Source Files\_Common\World</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\WorldFile.cpp">
+      <Filter>Source Files\_Common\World</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\WorldIntersect.cpp">
+      <Filter>Source Files\_Common\World</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\worldmng.cpp">
+      <Filter>Source Files\_Common\World</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\2DRender.cpp">
+      <Filter>Source Files\_Common\Low</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\EditString.cpp">
+      <Filter>Source Files\_Common\Low</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\File.cpp">
+      <Filter>Source Files\_Common\Low</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Graphic3D.cpp">
+      <Filter>Source Files\_Common\Low</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Music.cpp">
+      <Filter>Source Files\_Common\Low</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Music2.cpp">
+      <Filter>Source Files\_Common\Low</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\path.cpp">
+      <Filter>Source Files\_Common\Low</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\targa.cpp">
+      <Filter>Source Files\_Common\Low</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\timer.cpp">
+      <Filter>Source Files\_Common\Low</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\vutil.cpp">
+      <Filter>Source Files\_Common\Low</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\xUtil.cpp">
+      <Filter>Source Files\_Common\Low</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\xUtil3D.cpp">
+      <Filter>Source Files\_Common\Low</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\ClientMsg.cpp">
+      <Filter>Source Files\_Common\TextMessage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\DialogMsg.cpp">
+      <Filter>Source Files\_Common\TextMessage</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\Console.cpp">
+      <Filter>Source Files\_Common\Console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Common\ConsoleFunc.cpp">
+      <Filter>Source Files\_Common\Console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Network\tools.cpp">
+      <Filter>Source Files\_Network</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_network\net\src\buffer.cpp">
+      <Filter>Source Files\_Network\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_network\net\src\clientsock.cpp">
+      <Filter>Source Files\_Network\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_network\net\src\clientsocke.cpp">
+      <Filter>Source Files\_Network\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Network\Net\Src\crc.cpp">
+      <Filter>Source Files\_Network\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_network\net\src\dpmng.cpp">
+      <Filter>Source Files\_Network\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_network\net\src\dpsock.cpp">
+      <Filter>Source Files\_Network\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_network\net\src\serversock.cpp">
+      <Filter>Source Files\_Network\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_network\net\src\serversocke.cpp">
+      <Filter>Source Files\_Network\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_network\net\src\sock.cpp">
+      <Filter>Source Files\_Network\Net</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_network\misc\src\ar.cpp">
+      <Filter>Source Files\_Network\Mics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Network\Misc\Src\heapmng.cpp">
+      <Filter>Source Files\_Network\Mics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_Multimedia\WRITEAVI.CPP">
+      <Filter>Source Files\_Multimedia</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_AIInterface\Action.cpp">
+      <Filter>Source Files\_ObjSubClass\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_AIInterface\ActionMover.cpp">
+      <Filter>Source Files\_ObjSubClass\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_AIInterface\ActionMoverCollision.cpp">
+      <Filter>Source Files\_ObjSubClass\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_AIInterface\ActionMoverCtrl.cpp">
+      <Filter>Source Files\_ObjSubClass\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_AIInterface\ActionMoverDmg.cpp">
+      <Filter>Source Files\_ObjSubClass\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_AIInterface\ActionMoverMsg.cpp">
+      <Filter>Source Files\_ObjSubClass\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_AIInterface\ActionMoverMsg2.cpp">
+      <Filter>Source Files\_ObjSubClass\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_AIInterface\ActionMoverState.cpp">
+      <Filter>Source Files\_ObjSubClass\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_AIInterface\ActionMoverState2.cpp">
+      <Filter>Source Files\_ObjSubClass\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_AIInterface\ActionShip.cpp">
+      <Filter>Source Files\_ObjSubClass\Action</Filter>
+    </ClCompile>
+    <ClCompile Include="..\_UnhandledException\ExceptionHandler.cpp">
+      <Filter>Source Files\_ExceptionHandler</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\_Common\accessory.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CNTREVNT.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="couplehelper.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DPCertified.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DPClient.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DPLoginClient.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HelperWebBox.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\lord.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\memtrace.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\mss.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Network.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Neuz.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NeuzEnemy.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NPGameLib4.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="npkcrypt.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenLoadWnd.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\playerdata.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TimeLimit.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="VersionCommon.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WebBox.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WebCtrl.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldMap.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\xuzhu.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_DirectX\d3dapp.h">
+      <Filter>Source Files\_DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_DirectX\d3denumeration.h">
+      <Filter>Source Files\_DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_DirectX\d3dfont.h">
+      <Filter>Source Files\_DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_DirectX\d3dres.h">
+      <Filter>Source Files\_DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_DirectX\d3dsettings.h">
+      <Filter>Source Files\_DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_DirectX\d3dutil.h">
+      <Filter>Source Files\_DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_DirectX\dsutil.h">
+      <Filter>Source Files\_DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_DirectX\dxutil.h">
+      <Filter>Source Files\_DirectX</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\AppDefine.h">
+      <Filter>Source Files\_Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\FuncTextCmd.h">
+      <Filter>Source Files\_Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndGuideSystem.h">
+      <Filter>Source Files\_Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndHelperWebBox.h">
+      <Filter>Source Files\_Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndInvenRemoveItem.h">
+      <Filter>Source Files\_Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndMailRequestingBox.h">
+      <Filter>Source Files\_Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndManager.h">
+      <Filter>Source Files\_Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndMessageBox.h">
+      <Filter>Source Files\_Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndNeuz.h">
+      <Filter>Source Files\_Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndQuest.h">
+      <Filter>Source Files\_Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndQuitRoom.h">
+      <Filter>Source Files\_Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndRoomList.h">
+      <Filter>Source Files\_Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndSelectVillage.h">
+      <Filter>Source Files\_Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndUserMarkNameChanger.h">
+      <Filter>Source Files\_Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndWebBox.h">
+      <Filter>Source Files\_Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndWorld.h">
+      <Filter>Source Files\_Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\ResManager.h">
+      <Filter>Source Files\_Interface\WndBase</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndBase.h">
+      <Filter>Source Files\_Interface\WndBase</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndControl.h">
+      <Filter>Source Files\_Interface\WndBase</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndEditCtrl.h">
+      <Filter>Source Files\_Interface\WndBase</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndItemCtrl.h">
+      <Filter>Source Files\_Interface\WndBase</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndTradeCtrl.h">
+      <Filter>Source Files\_Interface\WndBase</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndCredit.h">
+      <Filter>Source Files\_Interface\WndTitle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndTitle.h">
+      <Filter>Source Files\_Interface\WndTitle</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\Clipboard.h">
+      <Filter>Source Files\_Interface\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\ITheme.h">
+      <Filter>Source Files\_Interface\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\tooltip.h">
+      <Filter>Source Files\_Interface\Misc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\Wnd2ndPassword.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndAwakening.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndBagEx.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndBank.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndBlessingCancel.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_interface\WndChangeFace.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndChangeName.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndChattingBlockingList.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_interface\WndCloseExistingConnection.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndCollecting.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndCommItem.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndDialog.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndDuelConfirm.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndField.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndHelp.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndHousing.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndLord.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndLvReqDown.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndMap.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndMapEx.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndMessengerSearch.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndMiniGame.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndMotion.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndNotice.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndOption.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndOptionGame.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndParty.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndPartyChangeTroup.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndPartyConfirm.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndPartyQuick.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndPetRes.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndPetSys.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndPvp.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndQuestQuickInfo.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndRainbowRace.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndRepairItem.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndRepairItemCtrl.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndSealChar.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndSelectCh.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndShop.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndSummonAngel.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndSummonFriend.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndTaskBar.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndText.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndTutorial.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndUpgradeBase.h">
+      <Filter>Source Files\_Interface\WndApplet</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_interface\WndChatFilter.h">
+      <Filter>Source Files\_Interface\WndApplet\Communication</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndCommand.h">
+      <Filter>Source Files\_Interface\WndApplet\Communication</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndCommunication.h">
+      <Filter>Source Files\_Interface\WndApplet\Communication</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndFriendConFirm.h">
+      <Filter>Source Files\_Interface\WndApplet\Communication</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndFriendCtrl.h">
+      <Filter>Source Files\_Interface\WndApplet\Communication</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndGuildCtrl.h">
+      <Filter>Source Files\_Interface\WndApplet\Communication</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndMessenger.h">
+      <Filter>Source Files\_Interface\WndApplet\Communication</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndMessengerCtrl.h">
+      <Filter>Source Files\_Interface\WndApplet\Communication</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndPartyCtrl.h">
+      <Filter>Source Files\_Interface\WndApplet\Communication</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_interface\WndRegVend.h">
+      <Filter>Source Files\_Interface\WndApplet\Vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_interface\WndVendor.h">
+      <Filter>Source Files\_Interface\WndApplet\Vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_interface\WndVendorBuy.h">
+      <Filter>Source Files\_Interface\WndApplet\Vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_interface\WndVendorCtrl.h">
+      <Filter>Source Files\_Interface\WndApplet\Vendor</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndGuild.h">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_interface\WndGuildBank.h">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndGuildCombat1to1.h">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndGuildHouse.h">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndGuildMerit.h">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndGuildName.h">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndGuildTabApp.h">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndGuildTabInfo.h">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndGuildTabMember.h">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndGuildTabPower.h">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndGuildTabWar.h">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndGuildVote.h">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndGuildWarDecl.h">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndGuildWarGiveUp.h">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndGuildWarPeace.h">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndGuildWarPeaceConfirm.h">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndGuildWarRequest.h">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndSecretRoom.h">
+      <Filter>Source Files\_Interface\WndApplet\Guild</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndRankGuild.h">
+      <Filter>Source Files\_Interface\WndApplet\Rank</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndRankInfo.h">
+      <Filter>Source Files\_Interface\WndApplet\Rank</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndRankWar.h">
+      <Filter>Source Files\_Interface\WndApplet\Rank</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndPiercing.h">
+      <Filter>Source Files\_Interface\WndApplet\Piercing</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndAdminCreateItem.h">
+      <Filter>Source Files\_Interface\Admin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndDebugInfo.h">
+      <Filter>Source Files\_Interface\Admin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Interface\WndIndirectTalk.h">
+      <Filter>Source Files\_Interface\Admin</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\authorization.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\buff.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Chatting.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Colosseum.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Continent.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\CooltimeMgr.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\debug.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\DefineCommon.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_common\eveschool.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Exchange.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_common\flyffevent.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\fmod.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\fmod_errors.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\fmoddyn.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\GuildCombat1to1.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\GuildHouse.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\honor.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Housing.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\HwOption.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\LuaBase.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\MapComboBoxData.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\MapInformationManager.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\MapMonsterInformation.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\MapMonsterInformationPack.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\messenger.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\MiniGame.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Particle.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\partyquest.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\PCBang.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Piercing.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\post.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\profile.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\ProfileInfo.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Project.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\ProjectCmn.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\RainbowNPCInformation.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\RainbowNPCInformationPack.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Respawn.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Rijndael.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\SecretRoom.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\serialnumber.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\spevent.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Tax.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\TeleportationIconInfo.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="TexturePool.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\ticket.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\TreeInformation.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\UltimateWeapon.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\UserMarkPositionInfo.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\yUtil.h">
+      <Filter>Source Files\_Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\landscape.h">
+      <Filter>Source Files\_Common\LOD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\patch.h">
+      <Filter>Source Files\_Common\LOD</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\CommonCtrl.h">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\CreateObj.h">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Ctrl.h">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Item.h">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Light.h">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Mover.h">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\MoverMsg.h">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Obj.h">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\PathObj.h">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Region.h">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Sfx.h">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\sfxbase.h">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Ship.h">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\SkillInfluence.h">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\weather.h">
+      <Filter>Source Files\_Common\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\billboard.h">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Bone.h">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Material.h">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Model.h">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\ModelGlobal.h">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\ModelMng.h">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\ModelObject.h">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Object3D.h">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\ParticleMng.h">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Shader.h">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\TailEffectMng.h">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\scanner.h">
+      <Filter>Source Files\_Common\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Script.h">
+      <Filter>Source Files\_Common\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_common\guild.h">
+      <Filter>Source Files\_Common\Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_common\guildquest.h">
+      <Filter>Source Files\_Common\Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\GuildRender.h">
+      <Filter>Source Files\_Common\Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_common\guildwar.h">
+      <Filter>Source Files\_Common\Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\party.h">
+      <Filter>Source Files\_Common\Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Camera.h">
+      <Filter>Source Files\_Common\World</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\ContinentDef.h">
+      <Filter>Source Files\_Common\World</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Environment.h">
+      <Filter>Source Files\_Common\World</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\SkyBox.h">
+      <Filter>Source Files\_Common\World</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\TerrainMng.h">
+      <Filter>Source Files\_Common\World</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\World.h">
+      <Filter>Source Files\_Common\World</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\worldmng.h">
+      <Filter>Source Files\_Common\World</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\2DRender.h">
+      <Filter>Source Files\_Common\Low</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\data.h">
+      <Filter>Source Files\_Common\Low</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\EditString.h">
+      <Filter>Source Files\_Common\Low</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\File.h">
+      <Filter>Source Files\_Common\Low</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Graphic3D.h">
+      <Filter>Source Files\_Common\Low</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Music.h">
+      <Filter>Source Files\_Common\Low</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\path.h">
+      <Filter>Source Files\_Common\Low</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\targa.h">
+      <Filter>Source Files\_Common\Low</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\timer.h">
+      <Filter>Source Files\_Common\Low</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\vutil.h">
+      <Filter>Source Files\_Common\Low</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\xUtil.h">
+      <Filter>Source Files\_Common\Low</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\xUtil3D.h">
+      <Filter>Source Files\_Common\Low</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\ClientMsg.h">
+      <Filter>Source Files\_Common\TextMessage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\DialogMsg.h">
+      <Filter>Source Files\_Common\TextMessage</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\Console.h">
+      <Filter>Source Files\_Common\Console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Common\ConsoleCommon.h">
+      <Filter>Source Files\_Common\Console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_network\CmnHdr.h">
+      <Filter>Source Files\_Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Network\ErrorCode.h">
+      <Filter>Source Files\_Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_network\ggsrv.h">
+      <Filter>Source Files\_Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_network\MsgHdr.h">
+      <Filter>Source Files\_Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Network\tools.h">
+      <Filter>Source Files\_Network</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_network\net\include\buffer.h">
+      <Filter>Source Files\_Network\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_network\net\include\clientsock.h">
+      <Filter>Source Files\_Network\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_network\net\include\clientsocke.h">
+      <Filter>Source Files\_Network\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Network\Net\Include\crc.h">
+      <Filter>Source Files\_Network\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_network\net\include\dpmng.h">
+      <Filter>Source Files\_Network\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_network\net\include\dpsock.h">
+      <Filter>Source Files\_Network\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_network\net\include\serversock.h">
+      <Filter>Source Files\_Network\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_network\net\include\serversocke.h">
+      <Filter>Source Files\_Network\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_network\net\include\sock.h">
+      <Filter>Source Files\_Network\Net</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_network\mcl\include\cmcl.h">
+      <Filter>Source Files\_Network\Mcl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_network\mcl\include\cmclautolock.h">
+      <Filter>Source Files\_Network\Mcl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_network\mcl\include\cmclcritsec.h">
+      <Filter>Source Files\_Network\Mcl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_network\misc\include\ar.h">
+      <Filter>Source Files\_Network\Mics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_network\misc\include\chassert.h">
+      <Filter>Source Files\_Network\Mics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_network\misc\include\heapmng.h">
+      <Filter>Source Files\_Network\Mics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_network\misc\include\mempool.h">
+      <Filter>Source Files\_Network\Mics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_network\misc\include\MEMPOOLER.H">
+      <Filter>Source Files\_Network\Mics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_network\misc\include\memspy.h">
+      <Filter>Source Files\_Network\Mics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_network\misc\include\Misc.h">
+      <Filter>Source Files\_Network\Mics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_network\misc\include\MyMap.h">
+      <Filter>Source Files\_Network\Mics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_network\misc\include\ObjMap.h">
+      <Filter>Source Files\_Network\Mics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_network\misc\include\tickcount.h">
+      <Filter>Source Files\_Network\Mics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_Multimedia\WriteAVI.h">
+      <Filter>Source Files\_Multimedia</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_AIInterface\Action.h">
+      <Filter>Source Files\_ObjSubClass\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_AIInterface\ActionMover.h">
+      <Filter>Source Files\_ObjSubClass\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_AIInterface\ActionShip.h">
+      <Filter>Source Files\_ObjSubClass\Action</Filter>
+    </ClInclude>
+    <ClInclude Include="..\_UnhandledException\ExceptionHandler.h">
+      <Filter>Source Files\_ExceptionHandler</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Resource Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CampusHelper.h" />
+    <ClInclude Include="clord.h" />
+    <ClInclude Include="Cloth.h" />
+    <ClInclude Include="..\_Common\collecting.h" />
+    <ClInclude Include="DPCollectClient.h" />
+    <ClInclude Include="..\_Common\langman.h" />
+    <ClInclude Include="..\_Common\rtmessenger.h" />
+    <ClInclude Include="..\_Interface\WndQuizEvent.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\_Common\mss32.lib">
+      <Filter>Source Files</Filter>
+    </Library>
+    <Library Include="npkcrypt.lib">
+      <Filter>Source Files</Filter>
+    </Library>
+    <Library Include="..\_UnhandledException\neuzd.lib">
+      <Filter>Source Files\_ExceptionHandler</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Resource\Blur.fx">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </None>
+    <None Include="..\..\Resource\blur.ps">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </None>
+    <None Include="..\..\Resource\blur.vs">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </None>
+    <None Include="..\..\Resource\Blur2.fx">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </None>
+    <None Include="..\..\resource\skining.vsh">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </None>
+    <None Include="..\..\resource\skining2.vsh">
+      <Filter>Source Files\_Common\Model No. 1</Filter>
+    </None>
+    <None Include="..\..\resource\neuz.ini">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\resource\credit.txt">
+      <Filter>Resource Data</Filter>
+    </None>
+    <None Include="res\cur00001.cur">
+      <Filter>Resource Data</Filter>
+    </None>
+    <None Include="res\cur00002.cur">
+      <Filter>Resource Data</Filter>
+    </None>
+    <None Include="res\cur00003.cur">
+      <Filter>Resource Data</Filter>
+    </None>
+    <None Include="res\curAttack.cur">
+      <Filter>Resource Data</Filter>
+    </None>
+    <None Include="res\curBase.cur">
+      <Filter>Resource Data</Filter>
+    </None>
+    <None Include="res\curCamera.cur">
+      <Filter>Resource Data</Filter>
+    </None>
+    <None Include="res\curControl.cur">
+      <Filter>Resource Data</Filter>
+    </None>
+    <None Include="res\curDelay.cur">
+      <Filter>Resource Data</Filter>
+    </None>
+    <None Include="res\curGetItem.cur">
+      <Filter>Resource Data</Filter>
+    </None>
+    <None Include="res\curHelp.cur">
+      <Filter>Resource Data</Filter>
+    </None>
+    <None Include="res\curNo.cur">
+      <Filter>Resource Data</Filter>
+    </None>
+    <None Include="res\curNPC.cur">
+      <Filter>Resource Data</Filter>
+    </None>
+    <None Include="res\curSelect.cur">
+      <Filter>Resource Data</Filter>
+    </None>
+    <None Include="res\cursor2.cur">
+      <Filter>Resource Data</Filter>
+    </None>
+    <None Include="res\cursor3.cur">
+      <Filter>Resource Data</Filter>
+    </None>
+    <None Include="res\edit.cur">
+      <Filter>Resource Data</Filter>
+    </None>
+    <None Include="res\hori.cur">
+      <Filter>Resource Data</Filter>
+    </None>
+    <None Include="res\ico00001.ico">
+      <Filter>Resource Data</Filter>
+    </None>
+    <None Include="res\main_ico.ico">
+      <Filter>Resource Data</Filter>
+    </None>
+    <None Include="..\..\resource\Masquerade.prj">
+      <Filter>Resource Data</Filter>
+    </None>
+    <None Include="..\..\resource\mss32.dll">
+      <Filter>Resource Data</Filter>
+    </None>
+    <None Include="..\..\resource\mssmp3.asi">
+      <Filter>Resource Data</Filter>
+    </None>
+    <None Include="res\resize_h.cur">
+      <Filter>Resource Data</Filter>
+    </None>
+    <None Include="..\..\resource\serverIPList.txt">
+      <Filter>Resource Data</Filter>
+    </None>
+    <None Include="..\..\resource\water.vsh">
+      <Filter>Resource Data</Filter>
+    </None>
+    <None Include="..\..\resource\Music\default.bgm">
+      <Filter>Resource Data\Music</Filter>
+    </None>
+    <None Include="..\..\resource\Music\morrowind title.mp3">
+      <Filter>Resource Data\Music</Filter>
+    </None>
+    <None Include="..\..\resource\Music\music1007.mp3">
+      <Filter>Resource Data\Music</Filter>
+    </None>
+    <None Include="..\..\resource\Music\track13.wav">
+      <Filter>Resource Data\Music</Filter>
+    </None>
+    <None Include="res\anvil.cur" />
+    <None Include="res\curDoor.cur" />
+    <None Include="res\curGate.cur" />
+    <None Include="res\curLever.cur" />
+    <None Include="res\data1.bin" />
+    <None Include="res\data2.bin" />
+    <None Include="res\data3.bin" />
+    <None Include="res\Omg.ico" />
+    <None Include="ReadMe.txt" />
+    <None Include="남인환매모.txt" />
+    <None Include="허저메모.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="WinMain.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

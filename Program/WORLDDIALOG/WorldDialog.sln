@@ -1,0 +1,30 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WorldDialog", "WorldDialog.vcproj", "{B6EC785E-CB43-4FC6-AA43-7E0E8524DB3B}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 1
+		SccProjectUniqueName0 = WorldDialog.vcproj
+		SccProjectName0 = \u0022$/Neurospace/Program/WorldDialog\u0022,\u0020DKECCAAA
+		SccLocalPath0 = .
+		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{B6EC785E-CB43-4FC6-AA43-7E0E8524DB3B}.Debug.ActiveCfg = Debug|Win32
+		{B6EC785E-CB43-4FC6-AA43-7E0E8524DB3B}.Debug.Build.0 = Debug|Win32
+		{B6EC785E-CB43-4FC6-AA43-7E0E8524DB3B}.Release.ActiveCfg = Release|Win32
+		{B6EC785E-CB43-4FC6-AA43-7E0E8524DB3B}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

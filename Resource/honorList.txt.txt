@@ -1,0 +1,101 @@
+IDS_TITLE_TXT_0001	Master Collector
+IDS_TITLE_TXT_0002	Entrepreneur
+IDS_TITLE_TXT_0003	Master Hatcher
+IDS_TITLE_TXT_0004	Casanova
+IDS_TITLE_TXT_0005	Great Couple
+IDS_TITLE_TXT_0006	Dreadful Fellow
+IDS_TITLE_TXT_0007	Strength Master
+IDS_TITLE_TXT_0008	Stamina Master
+IDS_TITLE_TXT_0009	Dexterity Master
+IDS_TITLE_TXT_0010	Intelligence Master
+IDS_TITLE_TXT_0011	Novice Fighter
+IDS_TITLE_TXT_0012	Apprentice Fighter
+IDS_TITLE_TXT_0013	Persistant Fighter
+IDS_TITLE_TXT_0014	Devoted Fighter
+IDS_TITLE_TXT_0015	Passionate Fighter
+IDS_TITLE_TXT_0016	Unyeilding Fighter
+IDS_TITLE_TXT_0017	Prizewinning Fighter
+IDS_TITLE_TXT_0018	Renowned Fighter
+IDS_TITLE_TXT_0019	Epic Fighter
+IDS_TITLE_TXT_0020	Champion Fighter
+IDS_TITLE_TXT_0021	Master Knight
+IDS_TITLE_TXT_0022	Master Blade
+IDS_TITLE_TXT_0023	Master Jester
+IDS_TITLE_TXT_0024	Master Ranger
+IDS_TITLE_TXT_0025	Master Ringmaster
+IDS_TITLE_TXT_0026	Master Billposter
+IDS_TITLE_TXT_0027	Master Psykeeper
+IDS_TITLE_TXT_0028	Master Elementer
+IDS_TITLE_TXT_0029	Hero Knight
+IDS_TITLE_TXT_0030	Hero Blade
+IDS_TITLE_TXT_0031	Hero Jester
+IDS_TITLE_TXT_0032	Hero Ranger
+IDS_TITLE_TXT_0033	Hero Ringmaster
+IDS_TITLE_TXT_0034	Hero Billposter
+IDS_TITLE_TXT_0035	Hero Psykeeper
+IDS_TITLE_TXT_0036	Hero Elementor
+IDS_TITLE_TXT_0037	Lord
+IDS_TITLE_TXT_0038	Gray Pill Addict
+IDS_TITLE_TXT_0039	Yellow Pill Addict
+IDS_TITLE_TXT_0040	Blue Pill Addict
+IDS_TITLE_TXT_0041	Red Pill Addict
+IDS_TITLE_TXT_0042	Gold Pill Addict
+IDS_TITLE_TXT_0043	Mysterious Pill Addict
+IDS_TITLE_TXT_0044	Lollipop Addict
+IDS_TITLE_TXT_0045	Biscuit Addict
+IDS_TITLE_TXT_0046	Chocolate Bar Addict
+IDS_TITLE_TXT_0047	Milk Addict
+IDS_TITLE_TXT_0048	Roll Bread Addict
+IDS_TITLE_TXT_0049	Hot Dog Addict
+IDS_TITLE_TXT_0050	Pizza Addict
+IDS_TITLE_TXT_0051	Kimbap Addict
+IDS_TITLE_TXT_0052	Chicken Stick Addict
+IDS_TITLE_TXT_0053	Star Candy Addict
+IDS_TITLE_TXT_0054	Meat Skewer Addict
+IDS_TITLE_TXT_0055	Barbecue Addict
+IDS_TITLE_TXT_0056	Seafood Pan Cake Addict
+IDS_TITLE_TXT_0057	Fish Soup Addict
+IDS_TITLE_TXT_0058	Sausage Casserole Addict
+IDS_TITLE_TXT_0059	Fish Stew Addict
+IDS_TITLE_TXT_0060	Steamed Seafood Addict
+IDS_TITLE_TXT_0061	Meat Salad Addict
+IDS_TITLE_TXT_0062	Gratin Addict
+IDS_TITLE_TXT_0063	Seafood Pizza Addict
+IDS_TITLE_TXT_0064	Orange Juice Addict
+IDS_TITLE_TXT_0065	Strawberry Shake Addict
+IDS_TITLE_TXT_0066	Pineapple Cone Addict
+IDS_TITLE_TXT_0067	Banana Jujubar Addict
+IDS_TITLE_TXT_0068	Fruit Juice Addict
+IDS_TITLE_TXT_0069	Fruit Icewater Addict
+IDS_TITLE_TXT_0070	Fruit Parfait Addict
+IDS_TITLE_TXT_0071	Fruit Sherbert Addict
+IDS_TITLE_TXT_0072	Icecream Addict
+IDS_TITLE_TXT_0073	Fruit Punch Addict
+IDS_TITLE_TXT_0074	Aibatt Hunter
+IDS_TITLE_TXT_0075	Lawolf Hunter
+IDS_TITLE_TXT_0076	Cardpuppet Hunter
+IDS_TITLE_TXT_0077	Glaphan Hunter
+IDS_TITLE_TXT_0078	Meteonyker Hunter
+IDS_TITLE_TXT_0079	Cyclops X Hunter
+IDS_TITLE_TXT_0080	Yetti Hunter
+IDS_TITLE_TXT_0081	Mutant Yetti Hunter
+IDS_TITLE_TXT_0082	Augu Hunter
+IDS_TITLE_TXT_0083	Mutant Augu Hunter
+IDS_TITLE_TXT_0084	Ghostly Prince Hunter
+IDS_TITLE_TXT_0085	Ghostly King Hunter
+IDS_TITLE_TXT_0086	Mammoth Hunter
+IDS_TITLE_TXT_0087	Cannibal Mammoth Hunter
+IDS_TITLE_TXT_0088	Kingster Hunter
+IDS_TITLE_TXT_0089	Kragen Hunter
+IDS_TITLE_TXT_0090	Crepper Hunter
+IDS_TITLE_TXT_0091	Naga Hunter
+IDS_TITLE_TXT_0092	Atrox Hunter
+IDS_TITLE_TXT_0093	Okean Hunter
+IDS_TITLE_TXT_0094	Tigar Hunter
+IDS_TITLE_TXT_0095	Dorian Hunter
+IDS_TITLE_TXT_0096	Meral Hunter
+IDS_TITLE_TXT_0097	Clockworks Killer
+IDS_TITLE_TXT_0098	Red Dragon Hunter
+IDS_TITLE_TXT_0099	Jump Master
+IDS_TITLE_TXT_0100	Donation Magistrate
+IDS_TITLE_TXT_0101	Service Magistrate

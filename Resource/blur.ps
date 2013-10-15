@@ -1,0 +1,17 @@
+ps_1_3
+;def c0, 0.25, 0.25, 0.25, 0.25	// -1 offset weight
+;def c1, 0.50, 0.50, 0.50, 0.50  //  0 offset weight
+;def c2, 0.25, 0.25, 0.25, 0.25	//  1 offset weight
+;def c0, 0.125, 0.125, 0.125, 0.125	// -1 offset weight
+;def c1, 0.25, 0.25, 0.25, 0.25  //  0 offset weight
+;def c2, 0.125, 0.125, 0.125, 0.125	//  1 offset weight
+tex t0
+tex t1
+tex t2
+
+;mul r0, t0, c0	// left 
+;mov r0, 1 - t0
+
+mul r0, t0, c0	// left 
+mad r0, t1, c1, r0
+mad r0, t2, c2, r0

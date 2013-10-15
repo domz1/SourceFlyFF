@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C++ Express 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Neuz", "Neuz.vcproj", "{FC71C16A-AE8F-4A1D-AA32-D01508491EF2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		NoGameguard|Win32 = NoGameguard|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC71C16A-AE8F-4A1D-AA32-D01508491EF2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FC71C16A-AE8F-4A1D-AA32-D01508491EF2}.Debug|Win32.Build.0 = Debug|Win32
+		{FC71C16A-AE8F-4A1D-AA32-D01508491EF2}.NoGameguard|Win32.ActiveCfg = NoGameguard|Win32
+		{FC71C16A-AE8F-4A1D-AA32-D01508491EF2}.NoGameguard|Win32.Build.0 = NoGameguard|Win32
+		{FC71C16A-AE8F-4A1D-AA32-D01508491EF2}.Release|Win32.ActiveCfg = Release|Win32
+		{FC71C16A-AE8F-4A1D-AA32-D01508491EF2}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

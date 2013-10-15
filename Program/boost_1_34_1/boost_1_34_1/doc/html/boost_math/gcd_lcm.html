@@ -1,0 +1,303 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title> Greatest Common Divisor and Least Common Multiple</title>
+<link rel="stylesheet" href="../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.68.1">
+<link rel="start" href="../index.html" title="The Boost C++ Libraries BoostBook Documentation Subset">
+<link rel="up" href="../boost_math.html" title="Chapter 9. Boost.Math">
+<link rel="prev" href="../boost_math.html" title="Chapter 9. Boost.Math">
+<link rel="next" href="math_special_functions.html" title="Math Special Functions">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%">
+<td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../boost.png"></td>
+<td align="center"><a href="../../../index.htm">Home</a></td>
+<td align="center"><a href="../../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="../../../people/people.htm">People</a></td>
+<td align="center"><a href="../../../more/faq.htm">FAQ</a></td>
+<td align="center"><a href="../../../more/index.htm">More</a></td>
+</table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../boost_math.html"><img src="../images/prev.png" alt="Prev"></a><a accesskey="u" href="../boost_math.html"><img src="../images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="../images/home.png" alt="Home"></a><a accesskey="n" href="math_special_functions.html"><img src="../images/next.png" alt="Next"></a>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="boost_math.gcd_lcm"></a> Greatest Common Divisor and Least Common Multiple</h2></div></div></div>
+<div class="toc"><dl>
+<dt><span class="section"><a href="gcd_lcm.html#boost_math.gcd_lcm.introduction">Introduction</a></span></dt>
+<dt><span class="section"><a href="gcd_lcm.html#boost_math.gcd_lcm.synopsis">Synopsis</a></span></dt>
+<dt><span class="section"><a href="gcd_lcm.html#boost_math.gcd_lcm.gcd_function_object">GCD Function Object</a></span></dt>
+<dt><span class="section"><a href="gcd_lcm.html#boost_math.gcd_lcm.lcm_function_object">LCM Function Object</a></span></dt>
+<dt><span class="section"><a href="gcd_lcm.html#boost_math.gcd_lcm.run_time_gcd___lcm_determination">Run-time GCD &amp; LCM Determination</a></span></dt>
+<dt><span class="section"><a href="gcd_lcm.html#boost_math.gcd_lcm.compile_time_gcd_and_lcm_determination">Compile time GCD and LCM determination</a></span></dt>
+<dt><span class="section"><a href="gcd_lcm.html#boost_math.gcd_lcm.header__boost_math_common_factor_hpp_">Header &lt;boost/math/common_factor.hpp&gt;</a></span></dt>
+<dt><span class="section"><a href="gcd_lcm.html#boost_math.gcd_lcm.demonstration_program">Demonstration Program</a></span></dt>
+<dt><span class="section"><a href="gcd_lcm.html#boost_math.gcd_lcm.rationale">Rationale</a></span></dt>
+<dt><span class="section"><a href="gcd_lcm.html#boost_math.gcd_lcm.history">History</a></span></dt>
+<dt><span class="section"><a href="gcd_lcm.html#boost_math.gcd_lcm.credits">Credits</a></span></dt>
+</dl></div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.gcd_lcm.introduction"></a>Introduction</h3></div></div></div>
+<p>
+        The class and function templates in &lt;boost/math/common_factor.hpp&gt;
+        provide run-time and compile-time evaluation of the greatest common divisor
+        (GCD) or least common multiple (LCM) of two integers. These facilities are
+        useful for many numeric-oriented generic programming problems.
+      </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.gcd_lcm.synopsis"></a>Synopsis</h3></div></div></div>
+<pre class="programlisting">
+<span class="keyword">namespace</span> <span class="identifier">boost</span>
+<span class="special">{</span>
+<span class="keyword">namespace</span> <span class="identifier">math</span>
+<span class="special">{</span>
+
+<span class="keyword">template</span> <span class="special">&lt;</span> <span class="keyword">typename</span> <span class="identifier">IntegerType</span> <span class="special">&gt;</span>
+   <span class="keyword">class</span> <span class="identifier">gcd_evaluator</span><span class="special">;</span>
+<span class="keyword">template</span> <span class="special">&lt;</span> <span class="keyword">typename</span> <span class="identifier">IntegerType</span> <span class="special">&gt;</span>
+   <span class="keyword">class</span> <span class="identifier">lcm_evaluator</span><span class="special">;</span>
+
+<span class="keyword">template</span> <span class="special">&lt;</span> <span class="keyword">typename</span> <span class="identifier">IntegerType</span> <span class="special">&gt;</span>
+   <span class="identifier">IntegerType</span>  <span class="identifier">gcd</span><span class="special">(</span> <span class="identifier">IntegerType</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="identifier">a</span><span class="special">,</span> <span class="identifier">IntegerType</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="identifier">b</span> <span class="special">);</span>
+<span class="keyword">template</span> <span class="special">&lt;</span> <span class="keyword">typename</span> <span class="identifier">IntegerType</span> <span class="special">&gt;</span>
+   <span class="identifier">IntegerType</span>  <span class="identifier">lcm</span><span class="special">(</span> <span class="identifier">IntegerType</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="identifier">a</span><span class="special">,</span> <span class="identifier">IntegerType</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="identifier">b</span> <span class="special">);</span>
+
+<span class="keyword">template</span> <span class="special">&lt;</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="identifier">Value1</span><span class="special">,</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="identifier">Value2</span> <span class="special">&gt;</span>
+   <span class="keyword">struct</span> <span class="identifier">static_gcd</span><span class="special">;</span>
+<span class="keyword">template</span> <span class="special">&lt;</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="identifier">Value1</span><span class="special">,</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="identifier">Value2</span> <span class="special">&gt;</span>
+   <span class="keyword">struct</span> <span class="identifier">static_lcm</span><span class="special">;</span>
+
+<span class="special">}</span>
+<span class="special">}</span>
+</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.gcd_lcm.gcd_function_object"></a>GCD Function Object</h3></div></div></div>
+<p>
+        <span class="bold"><strong>Header: </strong></span> <a href="../../../boost/math/common_factor_rt.hpp" target="_top">&lt;boost/math/common_factor_rt.hpp&gt;</a>
+      </p>
+<pre class="programlisting">
+<span class="keyword">template</span> <span class="special">&lt;</span> <span class="keyword">typename</span> <span class="identifier">IntegerType</span> <span class="special">&gt;</span>
+<span class="keyword">class</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">math</span><span class="special">::</span><span class="identifier">gcd_evaluator</span>
+<span class="special">{</span>
+<span class="keyword">public</span><span class="special">:</span>
+   <span class="comment">// Types
+</span>   <span class="keyword">typedef</span> <span class="identifier">IntegerType</span>  <span class="identifier">result_type</span><span class="special">;</span>
+   <span class="keyword">typedef</span> <span class="identifier">IntegerType</span>  <span class="identifier">first_argument_type</span><span class="special">;</span>
+   <span class="keyword">typedef</span> <span class="identifier">IntegerType</span>  <span class="identifier">second_argument_type</span><span class="special">;</span>
+
+   <span class="comment">// Function object interface
+</span>   <span class="identifier">result_type</span>  <span class="keyword">operator</span> <span class="special">()(</span> <span class="identifier">first_argument_type</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="identifier">a</span><span class="special">,</span>
+   <span class="identifier">second_argument_type</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="identifier">b</span> <span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+<span class="special">};</span>
+</pre>
+<p>
+        The boost::math::gcd_evaluator class template defines a function object class
+        to return the greatest common divisor of two integers. The template is parameterized
+        by a single type, called IntegerType here. This type should be a numeric
+        type that represents integers. The result of the function object is always
+        nonnegative, even if either of the operator arguments is negative.
+      </p>
+<p>
+        This function object class template is used in the corresponding version
+        of the GCD function template. If a numeric type wants to customize evaluations
+        of its greatest common divisors, then the type should specialize on the gcd_evaluator
+        class template.
+      </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.gcd_lcm.lcm_function_object"></a>LCM Function Object</h3></div></div></div>
+<p>
+        <span class="bold"><strong>Header: </strong></span> <a href="../../../boost/math/common_factor_rt.hpp" target="_top">&lt;boost/math/common_factor_rt.hpp&gt;</a>
+      </p>
+<pre class="programlisting">
+<span class="keyword">template</span> <span class="special">&lt;</span> <span class="keyword">typename</span> <span class="identifier">IntegerType</span> <span class="special">&gt;</span>
+<span class="keyword">class</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">math</span><span class="special">::</span><span class="identifier">lcm_evaluator</span>
+<span class="special">{</span>
+<span class="keyword">public</span><span class="special">:</span>
+   <span class="comment">// Types
+</span>   <span class="keyword">typedef</span> <span class="identifier">IntegerType</span>  <span class="identifier">result_type</span><span class="special">;</span>
+   <span class="keyword">typedef</span> <span class="identifier">IntegerType</span>  <span class="identifier">first_argument_type</span><span class="special">;</span>
+   <span class="keyword">typedef</span> <span class="identifier">IntegerType</span>  <span class="identifier">second_argument_type</span><span class="special">;</span>
+
+   <span class="comment">// Function object interface
+</span>   <span class="identifier">result_type</span>  <span class="keyword">operator</span> <span class="special">()(</span> <span class="identifier">first_argument_type</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="identifier">a</span><span class="special">,</span>
+   <span class="identifier">second_argument_type</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="identifier">b</span> <span class="special">)</span> <span class="keyword">const</span><span class="special">;</span>
+<span class="special">};</span>
+</pre>
+<p>
+        The boost::math::lcm_evaluator class template defines a function object class
+        to return the least common multiple of two integers. The template is parameterized
+        by a single type, called IntegerType here. This type should be a numeric
+        type that represents integers. The result of the function object is always
+        nonnegative, even if either of the operator arguments is negative. If the
+        least common multiple is beyond the range of the integer type, the results
+        are undefined.
+      </p>
+<p>
+        This function object class template is used in the corresponding version
+        of the LCM function template. If a numeric type wants to customize evaluations
+        of its least common multiples, then the type should specialize on the lcm_evaluator
+        class template.
+      </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.gcd_lcm.run_time_gcd___lcm_determination"></a>Run-time GCD &amp; LCM Determination</h3></div></div></div>
+<p>
+        <span class="bold"><strong>Header: </strong></span> <a href="../../../boost/math/common_factor_rt.hpp" target="_top">&lt;boost/math/common_factor_rt.hpp&gt;</a>
+      </p>
+<pre class="programlisting">
+<span class="keyword">template</span> <span class="special">&lt;</span> <span class="keyword">typename</span> <span class="identifier">IntegerType</span> <span class="special">&gt;</span>
+<span class="identifier">IntegerType</span>  <span class="identifier">boost</span><span class="special">::</span><span class="identifier">math</span><span class="special">::</span><span class="identifier">gcd</span><span class="special">(</span> <span class="identifier">IntegerType</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="identifier">a</span><span class="special">,</span> <span class="identifier">IntegerType</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="identifier">b</span> <span class="special">);</span>
+
+<span class="keyword">template</span> <span class="special">&lt;</span> <span class="keyword">typename</span> <span class="identifier">IntegerType</span> <span class="special">&gt;</span>
+<span class="identifier">IntegerType</span>  <span class="identifier">boost</span><span class="special">::</span><span class="identifier">math</span><span class="special">::</span><span class="identifier">lcm</span><span class="special">(</span> <span class="identifier">IntegerType</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="identifier">a</span><span class="special">,</span> <span class="identifier">IntegerType</span> <span class="keyword">const</span> <span class="special">&amp;</span><span class="identifier">b</span> <span class="special">);</span>
+</pre>
+<p>
+        The boost::math::gcd function template returns the greatest common (nonnegative)
+        divisor of the two integers passed to it. The boost::math::lcm function template
+        returns the least common (nonnegative) multiple of the two integers passed
+        to it. The function templates are parameterized on the function arguments'
+        IntegerType, which is also the return type. Internally, these function templates
+        use an object of the corresponding version of the gcd_evaluator and lcm_evaluator
+        class templates, respectively.
+      </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.gcd_lcm.compile_time_gcd_and_lcm_determination"></a>Compile time GCD and LCM determination</h3></div></div></div>
+<p>
+        <span class="bold"><strong>Header: </strong></span> <a href="../../../boost/math/common_factor_ct.hpp" target="_top">&lt;boost/math/common_factor_ct.hpp&gt;</a>
+      </p>
+<pre class="programlisting">
+<span class="keyword">template</span> <span class="special">&lt;</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="identifier">Value1</span><span class="special">,</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="identifier">Value2</span> <span class="special">&gt;</span>
+<span class="keyword">struct</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">math</span><span class="special">::</span><span class="identifier">static_gcd</span>
+<span class="special">{</span>
+   <span class="keyword">static</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">const</span>  <span class="identifier">value</span> <span class="special">=</span> <span class="identifier">implementation_defined</span><span class="special">;</span>
+<span class="special">};</span>
+
+<span class="keyword">template</span> <span class="special">&lt;</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="identifier">Value1</span><span class="special">,</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="identifier">Value2</span> <span class="special">&gt;</span>
+<span class="keyword">struct</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">math</span><span class="special">::</span><span class="identifier">static_lcm</span>
+<span class="special">{</span>
+   <span class="keyword">static</span> <span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="keyword">const</span>  <span class="identifier">value</span> <span class="special">=</span> <span class="identifier">implementation_defined</span><span class="special">;</span>
+<span class="special">};</span>
+</pre>
+<p>
+        The boost::math::static_gcd and boost::math::static_lcm class templates take
+        two value-based template parameters of the unsigned long type and have a
+        single static constant data member, value, of that same type. The value of
+        that member is the greatest common factor or least common multiple, respectively,
+        of the template arguments. A compile-time error will occur if the least common
+        multiple is beyond the range of an unsigned long.
+      </p>
+<a name="boost_math.gcd_lcm.compile_time_gcd_and_lcm_determination.example"></a><h3>
+<a name="id1252541"></a>
+        Example
+      </h3>
+<pre class="programlisting">
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">math</span><span class="special">/</span><span class="identifier">common_factor</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">algorithm</span><span class="special">&gt;</span>
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">iterator</span><span class="special">&gt;</span>
+
+
+<span class="keyword">int</span> <span class="identifier">main</span><span class="special">()</span>
+<span class="special">{</span>
+   <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">cout</span><span class="special">;</span>
+   <span class="keyword">using</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">endl</span><span class="special">;</span>
+
+   <span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"The GCD and LCM of 6 and 15 are "</span>
+   <span class="special">&lt;&lt;</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">math</span><span class="special">::</span><span class="identifier">gcd</span><span class="special">(</span><span class="number">6</span><span class="special">,</span> <span class="number">15</span><span class="special">)</span> <span class="special">&lt;&lt;</span> <span class="string">" and "</span>
+   <span class="special">&lt;&lt;</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">math</span><span class="special">::</span><span class="identifier">lcm</span><span class="special">(</span><span class="number">6</span><span class="special">,</span> <span class="number">15</span><span class="special">)</span> <span class="special">&lt;&lt;</span> <span class="string">", respectively."</span>
+   <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
+
+   <span class="identifier">cout</span> <span class="special">&lt;&lt;</span> <span class="string">"The GCD and LCM of 8 and 9 are "</span>
+   <span class="special">&lt;&lt;</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">math</span><span class="special">::</span><span class="identifier">static_gcd</span><span class="special">&lt;</span><span class="number">8</span><span class="special">,</span> <span class="number">9</span><span class="special">&gt;::</span><span class="identifier">value</span>
+   <span class="special">&lt;&lt;</span> <span class="string">" and "</span>
+   <span class="special">&lt;&lt;</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">math</span><span class="special">::</span><span class="identifier">static_lcm</span><span class="special">&lt;</span><span class="number">8</span><span class="special">,</span> <span class="number">9</span><span class="special">&gt;::</span><span class="identifier">value</span>
+   <span class="special">&lt;&lt;</span> <span class="string">", respectively."</span> <span class="special">&lt;&lt;</span> <span class="identifier">endl</span><span class="special">;</span>
+
+   <span class="keyword">int</span>  <span class="identifier">a</span><span class="special">[]</span> <span class="special">=</span> <span class="special">{</span> <span class="number">4</span><span class="special">,</span> <span class="number">5</span><span class="special">,</span> <span class="number">6</span> <span class="special">},</span> <span class="identifier">b</span><span class="special">[]</span> <span class="special">=</span> <span class="special">{</span> <span class="number">7</span><span class="special">,</span> <span class="number">8</span><span class="special">,</span> <span class="number">9</span> <span class="special">},</span> <span class="identifier">c</span><span class="special">[</span><span class="number">3</span><span class="special">];</span>
+   <span class="identifier">std</span><span class="special">::</span><span class="identifier">transform</span><span class="special">(</span> <span class="identifier">a</span><span class="special">,</span> <span class="identifier">a</span> <span class="special">+</span> <span class="number">3</span><span class="special">,</span> <span class="identifier">b</span><span class="special">,</span> <span class="identifier">c</span><span class="special">,</span> <span class="identifier">boost</span><span class="special">::</span><span class="identifier">math</span><span class="special">::</span><span class="identifier">gcd_evaluator</span><span class="special">&lt;</span><span class="keyword">int</span><span class="special">&gt;()</span> <span class="special">);</span>
+   <span class="identifier">std</span><span class="special">::</span><span class="identifier">copy</span><span class="special">(</span> <span class="identifier">c</span><span class="special">,</span> <span class="identifier">c</span> <span class="special">+</span> <span class="number">3</span><span class="special">,</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">ostream_iterator</span><span class="special">&lt;</span><span class="keyword">int</span><span class="special">&gt;(</span><span class="identifier">cout</span><span class="special">,</span> <span class="string">" "</span><span class="special">)</span> <span class="special">);</span>
+<span class="special">}</span>
+</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.gcd_lcm.header__boost_math_common_factor_hpp_"></a>Header &lt;boost/math/common_factor.hpp&gt;</h3></div></div></div>
+<p>
+        This header simply includes the headers <a href="../../../boost/math/common_factor_ct.hpp" target="_top">&lt;boost/math/common_factor_ct.hpp&gt;</a>
+        and <a href="../../../boost/math/common_factor_rt.hpp" target="_top">&lt;boost/math/common_factor_rt.hpp&gt;</a>.
+      </p>
+<p>
+        Note this is a legacy header: it used to contain the actual implementation,
+        but the compile-time and run-time facilities were moved to separate headers
+        (since they were independent of each other).
+      </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.gcd_lcm.demonstration_program"></a>Demonstration Program</h3></div></div></div>
+<p>
+        The program <a href="../../../libs/math/test/common_factor_test.cpp" target="_top">common_factor_test.cpp</a>
+        is a demonstration of the results from instantiating various examples of
+        the run-time GCD and LCM function templates and the compile-time GCD and
+        LCM class templates. (The run-time GCD and LCM class templates are tested
+        indirectly through the run-time function templates.)
+      </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.gcd_lcm.rationale"></a>Rationale</h3></div></div></div>
+<p>
+        The greatest common divisor and least common multiple functions are greatly
+        used in some numeric contexts, including some of the other Boost libraries.
+        Centralizing these functions to one header improves code factoring and eases
+        maintainence.
+      </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.gcd_lcm.history"></a>History</h3></div></div></div>
+<div class="itemizedlist"><ul type="disc">
+<li>
+          17 Dec 2005: Converted documentation to Quickbook Format.
+        </li>
+<li>
+          2 Jul 2002: Compile-time and run-time items separated to new headers.
+        </li>
+<li>
+          7 Nov 2001: Initial version
+        </li>
+</ul></div>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.gcd_lcm.credits"></a>Credits</h3></div></div></div>
+<p>
+        The author of the Boost compilation of GCD and LCM computations is Daryle
+        Walker. The code was prompted by existing code hiding in the implementations
+        of Paul Moore's rational library and Steve Cleary's pool library. The code
+        had updates by Helmut Zeisel.
+      </p>
+</div>
+</div>
+<table width="100%"><tr>
+<td align="left"></td>
+<td align="right"><small>Copyright © 2001 -2002 Daryle Walker, 2001-2003 Hubert Holin, 2005
+      John Maddock</small></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="../boost_math.html"><img src="../images/prev.png" alt="Prev"></a><a accesskey="u" href="../boost_math.html"><img src="../images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="../images/home.png" alt="Home"></a><a accesskey="n" href="math_special_functions.html"><img src="../images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Class thread_resource_error</title>
+<link rel="stylesheet" href="../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.68.1">
+<link rel="start" href="../index.html" title="The Boost C++ Libraries BoostBook Documentation Subset">
+<link rel="up" href="../thread/reference.html#header.boost.thread.exceptions.hpp" title="Header &lt;boost/thread/exceptions.hpp&gt;">
+<link rel="prev" href="lock_error.html" title="Class lock_error">
+<link rel="next" href="mutex.html" title="Class mutex">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%">
+<td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../boost.png"></td>
+<td align="center"><a href="../../../index.htm">Home</a></td>
+<td align="center"><a href="../../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="../../../people/people.htm">People</a></td>
+<td align="center"><a href="../../../more/faq.htm">FAQ</a></td>
+<td align="center"><a href="../../../more/index.htm">More</a></td>
+</table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="lock_error.html"><img src="../images/prev.png" alt="Prev"></a><a accesskey="u" href="../thread/reference.html#header.boost.thread.exceptions.hpp"><img src="../images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="../images/home.png" alt="Home"></a><a accesskey="n" href="mutex.html"><img src="../images/next.png" alt="Next"></a>
+</div>
+<div class="refentry" lang="en">
+<a name="boost.thread_resource_error"></a><div class="titlepage"></div>
+<div class="refnamediv">
+<h2><span class="refentrytitle">Class thread_resource_error</span></h2>
+<p>boost::thread_resource_error &#8212; <p>The <a href="thread_resource_error.html" title="Class thread_resource_error">thread_resource_error</a> class
+			defines an exception type that is thrown by constructors in the
+			<span class="bold"><strong>Boost.Thread</strong></span> library when thread-related resources can not be 
+			acquired.</p></p>
+</div>
+<h2 xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv-title">Synopsis</h2>
+<div xmlns:rev="http://www.cs.rpi.edu/~gregod/boost/tools/doc/revision" class="refsynopsisdiv"><pre class="synopsis">
+<span class="bold"><strong>class</strong></span> thread_resource_error : <span class="bold"><strong>public</strong></span> <span class="type">std::runtime_error</span> {
+<span class="bold"><strong>public</strong></span>:
+  <span class="emphasis"><em>// <a href="thread_resource_error.html#boost.thread_resource_errorconstruct-copy-destruct">construct/copy/destruct</a></em></span>
+  <a href="thread_resource_error.html#id1245634-bb">thread_resource_error</a>();
+};</pre></div>
+<div class="refsect1" lang="en">
+<a name="id1738291"></a><h2>Description</h2>
+<p><a href="thread_resource_error.html" title="Class thread_resource_error">thread_resource_error</a> is used
+			only when thread-related resources cannot be acquired; memory
+			allocation failures are indicated by 
+			std::bad_alloc.</p>
+<div class="refsect2" lang="en">
+<a name="id1738308"></a><h3>
+<a name="boost.thread_resource_errorconstruct-copy-destruct"></a><code class="computeroutput">thread_resource_error</code> construct/copy/destruct</h3>
+<div class="orderedlist"><ol type="1"><li>
+<pre class="literallayout"><a name="id1245634-bb"></a>thread_resource_error();</pre>
+<div class="variablelist"><table border="0">
+<col align="left" valign="top">
+<tbody><tr>
+<td>
+<span class="term">Effects:</span></td>
+<td>Constructs a <code class="computeroutput">thread_resource_error</code>
+			object.</td>
+</tr></tbody>
+</table></div>
+</li></ol></div>
+</div>
+</div>
+</div>
+<table width="100%"><tr>
+<td align="left"></td>
+<td align="right"><small>Copyright © 2001-2003 William E. Kempf</small></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="lock_error.html"><img src="../images/prev.png" alt="Prev"></a><a accesskey="u" href="../thread/reference.html#header.boost.thread.exceptions.hpp"><img src="../images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="../images/home.png" alt="Home"></a><a accesskey="n" href="mutex.html"><img src="../images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

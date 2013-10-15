@@ -1,0 +1,3945 @@
+
+
+
+준비시간
+. 캐스팅 준비시간 있음/없음
+
+발동 방식
+. 직접 발동
+. 발사체 명중 후 발동
+
+데미지타입
+. 데미지 타입
+. 비데미지 타입(데미지+버프 방식은 데미지 타입임)
+
+타겟
+. 자신이 타겟(타겟지정 필요 없음)
+. 지정된 타겟
+. 지정된 지역
+. 컨트롤 타겟
+
+발동 대상의 상태
+. 살아있는 대상
+. 죽어있는 대상
+
+적용 대상
+. 자기자신만 적용
+. 시전자와 같은파티원만 적용
+. 아군만 적용
+. 적군만 적용
+. 아군적군 모두 적용
+
+발동 범위
+. 자신만 적용
+. 자신을 제외한 주변
+. 자신을 포함한 주변
+. 타겟만 적용
+. 타겟을 제외한 주변
+. 타겟을 포함한 주변
+. 타겟을 향해 지정된 폭과 길이로 적용.
+
+
+
+
+
+
+
+
+지속시간  
+ -일정시간동안 
+ -다음공격시 한번
+ -ON / OFF로 켜고 끌수 있게
+
+발동조건
+ - 일반공격을 명중시켰을때
+ - 스킬공격을 명중시켰을때, 특정스킬로도 선택가능
+ - 공격당했을때
+ - HP/MP등이 
+
+발동확률
+ - 확률
+ - 항상
+
+발동스킬
+ - 스킬
+
+
+
+   (일반공격,스킬공격,특정스킬사용,맞았을때) <스킬>이 발동.
+
+
+
+* 일정시간동안 일반타격시 5%확률로 스턴공격이 발동됩니다.
+- DST_CHR_CHANCESKILL         <확률>          (발동스킬)SA_STUN01
+- DST_CHR_CHANCESKILL         <확률>          (발동스킬)SA_STUN02
+
+
+if( 일반타격시 )
+{
+	if( 확률있는가? 확률이 맞았냐? )
+	{
+		ApplySkill( SkillProp(SA_STUN01) );
+
+
+	}
+}
+"스턴"	SA_STUN01		<스턴시간>
+
+* 일정시간동안 (모든,특정)스킬공격시 독공격이 발동됩니다
+
+"독" SA_POISON1			<몇초동안> <몇초마다> <몇데미지> <- 이건 너무 귀찮을거 같다.
+
+
+
+if( ((CModelObject *)pModel)->IsAttrHit() )
+{
+	뭐시기;
+}
+
+
+
+
+// 날아가서 맞고 터지는 일반적인 이펙트.
+CSfxShoot::CSfxShoot()
+{
+//	m_SfxObj2.SetSfx( "sfx_sklmagelelgtbal01" );
+	m_bHit = FALSE;
+	m_dwSndHit = NULL_ID;
+	m_bDir = FALSE;
+	m_fHitScale = 1.0f;
+}
+CSfxShoot::~CSfxShoot()
+{
+	m_bHit = FALSE;
+	m_dwSndHit = NULL_ID;
+	m_bDir = FALSE;
+	m_fHitScale = 1.0f;
+}
+
+// 맞았을때 이펙트 등록
+void CSfxShoot::SetHitSfx( LPCTSTR szFileName, OBJID idSrc, OBJID idDst, FLOAT fScale ) 
+{ 
+	m_SfxObj2.SetSfx( szFileName );		// 맞고 터질때 이펙트 로딩.
+
+	CMover* pObjSrc = (CMover*)prj.GetCtrl( idSrc );
+	if( IsValidObj(pObjSrc) ) 
+		m_pSfxObj->m_vPos = pObjSrc->GetPos() + D3DXVECTOR3(0, 1.0f, 0);		// 소스측에서 1미터위 좌표에서 발사.
+	else
+		Delete();
+
+	m_fHitScale = fScale;
+}
+
+// 방향성 있는 sfx 인가.
+void CSfxShoot::SetDir( BOOL bDir )
+{
+	m_bDir = bDir;
+}
+
+
+
+void CSfxShoot::Process( FLOAT fElapsedTime )
+{
+	CMover* pObjDest = (CMover*)prj.GetCtrl( m_idDest );	// 유도탄 형이기때문에 타겟은 항상 읽어봐야 한다.
+	if( IsValidObj(pObjDest) )
+	{
+		m_vPosDest = pObjDest->GetPos();
+		m_SfxObj2.m_vPos = pObjDest->GetPos() + D3DXVECTOR3(.0f,0.3f,.0f);	// 터질 위치는 타겟좌표 약간위.
+		m_SfxObj2.m_vScale = D3DXVECTOR3( m_fHitScale, m_fHitScale, m_fHitScale );			// 크기는 1.0배
+	} else
+	{
+		// 날아가다 타겟이 없어졌으면 마지막좌표로 날아가서 터지게.
+	}
+
+	if( m_bHit == FALSE ) 
+	{
+		if( m_pSfxObj->Process() )		// 애니메이션은 루프.
+		{
+			m_pSfxObj->m_nCurFrame = 0;
+		}
+		D3DXVECTOR3 vDelta = m_vPosDest - m_pSfxObj->m_vPos;
+		D3DXVec3Normalize( &vDelta, &vDelta );		// 타겟쪽 단위벡터 구해서
+		m_pSfxObj->m_vPos += vDelta * 0.2f;			// 그 벡터로 속도를 결정해서 좌표 이동.
+		SetPos( m_pSfxObj->m_vPos );
+		
+		if( m_bDir )
+		{
+			// 마법객체 방향벡터로 모델 방향 돌리기~~~
+			D3DXVECTOR3 vDir      = D3DXVECTOR3( 0.0f, 0.0f, 1.0f );
+			D3DXVECTOR3 vDestNor  = m_vPosDest - m_pSfxObj->m_vPos;
+			D3DXVECTOR3 vAxis;
+			D3DXQUATERNION   qRot;
+			
+			FLOAT       fTheta;
+			D3DXVec3Normalize( &vDestNor, &vDestNor );
+			D3DXVec3Cross( &vAxis, &vDir, &vDestNor );
+			fTheta = D3DXVec3Dot( &vDir, &vDestNor );
+			D3DXQuaternionRotationAxis( &qRot, &vAxis, acosf( fTheta ) );
+			
+			D3DXVECTOR3 vYPW;
+			
+			QuaternionRotationToYPW( qRot, vYPW );
+			m_pSfxObj->m_vRotate.x = m_SfxObj2.m_vRotate.x = D3DXToDegree(vYPW.x);
+			m_pSfxObj->m_vRotate.y = m_SfxObj2.m_vRotate.y = D3DXToDegree(vYPW.y);
+			m_pSfxObj->m_vRotate.z = m_SfxObj2.m_vRotate.z = D3DXToDegree(vYPW.z);
+		}
+		
+		vDelta = m_pSfxObj->m_vPos - m_SfxObj2.m_vPos;		// 대상과의 거리
+		if( D3DXVec3LengthSq( &vDelta ) < 0.2f * 0.2f )		// 폭발 거리까지 다가가면 충돌.
+		{
+			if( m_dwSndHit != NULL_ID )
+				PLAYSND( m_dwSndHit, &GetPos() );		// 사운드 플레이.
+			m_bHit = TRUE;
+			DamageToTarget();
+		}
+	}
+	else 
+	{
+		if( m_SfxObj2.Process() )		// 애니메이션 다 끝났으면 종료.
+			Delete();
+	}
+	m_nFrame ++;
+}
+#ifndef __WORLDSERVER
+void CSfxShoot::Render( LPDIRECT3DDEVICE9 pd3dDevice )
+{
+	m_pSfxObj->m_vScale = GetScale();
+	if( m_bHit == FALSE ) 
+		m_pSfxObj->Render2( pd3dDevice );
+	else 
+		m_SfxObj2.Render( pd3dDevice );
+}
+#endif
+
+
+
+ 개인상점 개선 Ver2.0 #define __YNEWPERSONSHOP_EX1026
+ #define __YRAIN_EXEX //바닥에 빗방울 넣기  
+
+#define __YNEWPERSONSHOP_EX1026 //클라 개인상점 개선 Ver2.0 
+#define __YRAIN_EXEX //클라 비올때 빗방울 효과 넣기 
+#define		__YSTATIC_MONEY1028			// 돈표시 자릿수 구분하기, 클라
+
+
+
+. 거리에따른 AI공격방식
+
+int 적과의거리;
+
+if( 원거리 && 근거리 )
+{
+	if( 적과의거리 < 사거리 / 2  )	// 너무 가까이 붙어있을때.(도망칠수 없다고 판단)
+	{
+		공격방식 = 근접공격으로 전환;
+	} else
+	{
+		공격방식 = 원거리 공격으로 전환.
+	}
+} else
+if( 원거리 && 근거리 == FALSE )		// 원거리만 있을때
+{
+	공격방식 = 원거리 공격;
+} else
+if( 원거리 == FALSE && 근거리 )		// 근거리만 있을때
+{
+	공격방식 = 근거리;
+	적에게 다가감.
+}
+
+// 거리 유지.
+if( 원거리 공격 )
+{
+	if( KeepRange )		// 거리유지.
+	{
+		if( 적과의 거리 와 사거리 차이가 1미터 이내면 )
+		{
+			if( 이동중이냐? )
+				거리가 적당하므로 제자리 멈춤.;
+		} else
+		{
+			if( 적과의 거리 < 사거리 )
+			{
+				반대방향으로 이동;
+			} else
+			{
+				적에게 다가감.
+			}
+		}
+	} else
+	{
+		if( 적과의 거리 < 사거리 )
+		{
+			if( 이동중이냐? )
+				제자리 멈춤;
+		} else
+		{
+			적에게 다가감;
+		}
+	}
+} else
+{
+	적에게 다가감;
+}
+
+if( 공격타이밍 )
+{
+	if( 공격방식 == 원거리 공격 )
+	{
+		if( 사거리내에 들어왔는가? )
+			DoAttack( 공격방식 );
+	} else
+	{
+		
+	}
+
+}
+
+
+명령어
+# Scan
+# Attack
+# Recovery
+# Summon
+# Rangeattack
+# Keeprangeattack
+# Evade
+# Helper
+# Berserk
+. Randomtarget
+. Teleport
+. Loot
+
+파라메터
+ Scan
+  - 없음 
+  - 직업<VAG,MAG,MER,ASS>
+ Attack
+  - 없음
+  - 수치<대상유저의 hp미만 감시>
+  - cunning (low,sam,high) <대상유저와의 레벨 비교>
+ Recovery
+  - 
+ Summon
+ Rangeattack
+ Keeprangeattack
+ Evade
+ Helper
+ Berserk
+ Randomtarget
+ Teleport
+ Loot
+
+
+scan
+{
+	scan
+}
+
+battle
+{
+	RangeAttack MAX_JOB 3
+	RangeAttack JOB_MAGICIAN 6
+	RangeAttack JOB_VAGRANT 5
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+	ItemProp *pAttackerHandItemProp = pAttacker->GetHandItemProp();
+	if( pAttackerHandItem )
+	{
+		DWORD dwActiveSkill		 = pAttackerHandItemProp->dwActiveSkill;
+		DWORD dwActiveSkillLevel = 1;
+		if(  dwActiveSkill != NULL_ID )	// 공격자의 무기에 발동마법이 있다.
+		{
+			if( xRandom(100) < pAttackerHandItemProp->dwActiveSkillRate )	// 발동확률에 걸렸는가.
+			{
+				pAttacker->CreateSkillEffect( GetId(), dwActiveSkill, dwActiveSkillLevel );	// 일단은 1레벨로
+				g_UserMng.AddCreateSkillEffect( pAttacker, dwActiveSkill, dwActiveSkillLevel );		// pAttacker중심으로 클라로 보내줌.
+			}
+		}
+	}
+}
+
+
+
+독공격
+dstParam = DST_CHRSTATE
+adjParam = CHS_POISON
+
+
+
+// 크리티컬 처리부.
+int		CActionMover::_SubCritical( CMover* pAttacker, int &nHit, DWORD &dwAtkFlag )
+
+
+
+* 보스몹
+ . 포쏘기 - 1.0;
+ . 밟기 - 0.5;
+ . 거리계산해서 공격 선택하기 AI 1.0
+ . 이동하기 AI 1.0
+ . 타겟 선정하기 AI 2.0
+ . 데미지 먹이기 1.0
+ . 정밀피킹 1.0
+ . 1차 테스트 1.0
+ . AI수정.
+
+
+
+05/30 03:37:21	18341582	64	머서너리                        	32	1	50	40	15	85	-2	-2	NOT DEFINED
+05/30 03:37:22	15597960	63	머서너리                        	32	1	50	40	15	85	-4	-4	NOT DEFINED
+
+* 비행전투 계획
+ . 보드관련 리소스 넣고 테스트
+ . 비행공격 애니 넣고 테스트
+ # 마법미사일 쏠때 타겟이 뒤에 있으면 못쏘게.
+ # 지상모드에서 시점변환을 마우스 오른쪽 버튼 사용으로 할수 있게
+ # 지상모드에서 스킬사용을 쉬프트로 할수 있게.
+ # 보드 꼬리 스플라인 이펙트
+ . 터보모드 이펙트
+ . 수상비행 효과
+ . 
+
+* 비공정 계획
+ # 비공정에 올라탄 후 비공정 조종모드로 변환 인터페이스
+ # 비공정 조종해제 모드.
+ # 조종모드로 변환된 후 카메라 줌 조절
+ # 비공정 조종할 수 있게
+ # 조종하는 비공정 동기화 되게 하기.
+ . 재접 했을때 비공정 오브젝트 클라에 생성되게.
+ . 오브젝트가 올라타는 순간 정확한 동기화 적용.
+ # 비공정 위에서 마우스 이동 가능하게.
+ . 
+
+ # 타겟잡고 Z키 누르면 자동 트래킹 되게
+ . 누가 나에게 원거리공격을 시도했으면 안내메시지 출력하고 타겟색을 다른색으로 표시.
+ # 1인칭 시점에선 내 파티클 안보이게.
+ # 타겟이 자꾸 바뀌는 버그
+ # 회전때 지평선 기울기.
+ # 화면 중심에서 레이를 쏴서 타겟을 검색하되 바운딩구를 크게 하여 TAB으로 선택할수 있게 하자.
+ # 타겟이 화면을 벗어났을때 방향을 가르켜주는 인터페이스.
+
+ # PK때 안내메시지 여러번 출력되는거 막음.
+
+// 정상적인 아이템 장착, 탈착 
+BOOL CMover::DoEquip( CItemElem* pItemElem, BOOL bEquip )
+{
+	ItemProp* pItemProp = pItemElem->GetProp();
+
+	if( IsDie() )	// 죽은 상태에서는 탈착 금지
+	{
+		return FALSE;
+	}
+
+	// 장착을 하려하고 장착할 조건이 안되면 리턴.
+//	if( bEquip && IsEquipAble() == FALSE )
+//		return FALSE;
+
+	// 해제를 하려하고 해제할 조건이 안되면 리턴.
+//	if( bEquip == FALSE && IsUnEquipAble() == FALSE )
+//		return FALSE;
+		
+#ifdef __Y0128
+	if( pItemProp->dwParts == PARTS_RIDE )
+	{
+		if( bEquip )
+		{
+			if( GetFlightLevel() < 1 )
+				return FALSE;
+			if( m_Inventory.GetEquip( PARTS_RIDE ) )	// 장착된 비행 아이템이 있으면, 탈착한 후 교체하도록 유도
+				return FALSE;
+		}
+		int nAttr = m_pWorld->GetHeightAttribute( GetPos().x, GetPos().z );		// 이동할 위치의 속성 읽음.
+		if( (nAttr == HATTR_NOFLY || nAttr == HATTR_NOWALK || nAttr == HATTR_NOMOVE ) && bEquip == FALSE )		// 비행 금지 지역에서 타려고 하면 못탄다.
+		{
+			return FALSE;
+		}
+		
+		if( m_pActMover->IsSit() )	// 앉은 상태에서는 탈착 금지
+		{
+			return FALSE;
+		}
+		float fSec = ((float)pItemProp->dwSkillReady / 1000.0f);
+		if( m_nAtkCnt && m_nAtkCnt < (int)(SEC1 * fSec) )		// 공격한지 5초가 지나야만 탈수있다.
+		{
+  #ifdef __WORLDSERVER
+			if( TRUE == IsPlayer() )
+				( (CUser*)this )->AddDefinedText( TID_GAME_NOT_FLY, "" );	// 잠시만 기다려주세요.
+  #endif
+			return FALSE;
+		}
+	}
+#endif// __Y0128
+	
+	// 방어구는 성별 확인
+	if( pItemProp->dwItemKind1 != IK1_WEAPON )
+	{
+		// 성별 확인( 무기는 빠짐 )
+		if( pItemProp->dwItemSex != NULL_ID && pItemProp->dwItemSex != m_dwSex )
+		{
+#ifdef __WORLDSERVER
+			if( TRUE == IsPlayer() )
+				( (CUser*)this )->AddDefinedText( TID_GAME_WRONGSEX, "\"%s\"", pItemProp->szName );
+#endif	// __WORLDSERVER
+			return FALSE;
+		} // 성별
+	}// 무기
+
+	// 직업 확인
+	if( pItemProp->dwItemJob != 0 && pItemProp->dwItemKind1 != IK1_WEAPON )
+	{
+		if( m_nJob < MAX_EXPERT )		// 1차전직
+		{
+			if( pItemProp->dwItemJob != NULL_ID && m_nJob != pItemProp->dwItemJob ) {
+#ifdef __WORLDSERVER
+				if( TRUE == IsPlayer() )
+					( (CUser*)this )->AddDefinedText( TID_GAME_WRONGJOB, "\"%s\"", pItemProp->szName );
+#endif	// __WORLDSERVER
+				return FALSE;
+			}
+		}
+		else						// 2차 전직
+		{
+			switch( m_nJob )
+			{
+			case JOB_GUARD:
+			case JOB_STRONGMAN:
+				{
+					if( m_nJob != pItemProp->dwItemJob && pItemProp->dwItemJob != JOB_MERCENARY)
+					{
+#ifdef __WORLDSERVER
+						if( TRUE == IsPlayer() )
+							( (CUser*)this )->AddDefinedText( TID_GAME_WRONGJOB, "\"%s\"", pItemProp->szName );
+#endif	// __WORLDSERVER
+						return FALSE;
+					}
+					break;
+				}
+			case JOB_JESTER:
+			case JOB_DANCER:
+				{
+					if( m_nJob != pItemProp->dwItemJob && pItemProp->dwItemJob != JOB_MERCENARY)
+					{
+#ifdef __WORLDSERVER
+						if( TRUE == IsPlayer() )
+							( (CUser*)this )->AddDefinedText( TID_GAME_WRONGJOB, "\"%s\"", pItemProp->szName );
+#endif	// __WORLDSERVER
+						return FALSE;
+					}
+					break;
+				}
+			case JOB_RINGMASTER:
+			case JOB_BILLPOSTER:
+				{
+					if( m_nJob != pItemProp->dwItemJob && pItemProp->dwItemJob != JOB_MERCENARY)
+					{
+#ifdef __WORLDSERVER
+						if( TRUE == IsPlayer() )
+							( (CUser*)this )->AddDefinedText( TID_GAME_WRONGJOB, "\"%s\"", pItemProp->szName );
+#endif	// __WORLDSERVER
+						return FALSE;
+					}
+					break;
+				}
+			case JOB_RAINMAKER:
+			case JOB_EARTHWEILER:
+				{
+					if( m_nJob != pItemProp->dwItemJob && pItemProp->dwItemJob != JOB_MERCENARY)
+					{
+#ifdef __WORLDSERVER
+						if( TRUE == IsPlayer() )
+							( (CUser*)this )->AddDefinedText( TID_GAME_WRONGJOB, "\"%s\"", pItemProp->szName );
+#endif	// __WORLDSERVER
+						return FALSE;
+					}
+					break;
+				}
+			case JOB_GATEKEEPER:
+			case JOB_DOPPLER:
+				{
+					if( m_nJob != pItemProp->dwItemJob && pItemProp->dwItemJob != JOB_MERCENARY)
+					{
+#ifdef __WORLDSERVER
+						if( TRUE == IsPlayer() )
+							( (CUser*)this )->AddDefinedText( TID_GAME_WRONGJOB, "\"%s\"", pItemProp->szName );
+#endif	// __WORLDSERVER
+						return FALSE;
+					}
+					break;
+				}
+			default:
+				ASSERT( 0 );
+				return FALSE;
+			}// switch
+		}// 직업
+	} // 성별
+
+	if( pItemProp->dwItemKind1 == IK1_WEAPON && m_nJob == JOB_VAGRANT )
+	{
+		if( m_nJob != pItemProp->dwItemJob )
+		{
+			//  방랑자 이므로 방랑자 무기밖에 못씀
+#ifdef __WORLDSERVER
+			if( TRUE == IsPlayer() )
+				( (CUser*)this )->AddDefinedText( TID_GAME_WRONGJOB, "\"%s\"", pItemProp->szName );
+#endif	// __WORLDSERVER
+			return FALSE;				
+		}
+	}
+	
+#ifdef __Y0323
+	if( pItemProp->dwItemKind1 == IK1_WEAPON )
+	{
+//		if( pItemProp->dwLimitJob1 != 0xffffffff )
+		if( pItemProp->dwItemJob != 0xffffffff )
+		{
+			if( pItemProp->dwItemJob != 0 && m_nJob != pItemProp->dwItemJob )
+//			if( m_nJob != pItemProp->dwItemJob ) 
+			{
+	#ifdef __WORLDSERVER
+				if( TRUE == IsPlayer() )
+					( (CUser*)this )->AddDefinedText( TID_GAME_WRONGJOB, "\"%s\"", pItemProp->szName );
+	#endif	// __WORLDSERVER
+				return FALSE;
+			}
+		}
+	}
+	if( pItemProp->dwLimitLevel1 != 0xffffffff )
+	{
+		if( m_nLevel < pItemProp->dwLimitLevel1 )
+		{
+#ifdef __WORLDSERVER
+			if( TRUE == IsPlayer() )
+				( (CUser*)this )->AddDefinedText( TID_GAME_REQLEVEL, "\"%d\"", pItemProp->dwLimitLevel1 );
+#endif	// __WORLDSERVER
+			return FALSE;
+		}
+	}
+
+
+#else // __Y0323
+
+	// Str
+	if( pItemProp->dwReqStr != 0xffffffff )
+	{
+		if( m_nStr < pItemProp->dwReqStr )	// GetStr()로 읽지 말것. 마법으로 증가된값이 나오기 때문이다.
+		{
+#ifdef __WORLDSERVER
+			if( TRUE == IsPlayer() )
+				( (CUser*)this )->AddDefinedText( TID_GAME_REQSTR, "\"%s\"", pItemProp->szName );
+#endif	// __WORLDSERVER
+			return FALSE;
+		}
+	}
+	// Sta
+	if( pItemProp->dwReqSta != 0xffffffff )
+	{
+		if( m_nSta < pItemProp->dwReqSta )
+		{
+#ifdef __WORLDSERVER
+			if( TRUE == IsPlayer() )
+				( (CUser*)this )->AddDefinedText( TID_GAME_REQSTA, "\"%s\"", pItemProp->szName );
+#endif	// __WORLDSERVER
+			return FALSE;
+		}
+	}
+	// Dex
+	if( pItemProp->dwReqDex != 0xffffffff )
+	{
+		if( m_nDex < pItemProp->dwReqDex )
+		{
+#ifdef __WORLDSERVER
+			if( TRUE == IsPlayer() )
+				( (CUser*)this )->AddDefinedText( TID_GAME_REQDEX, "\"%s\"", pItemProp->szName );
+#endif	// __WORLDSERVER
+			return FALSE;
+		}
+	}
+	// Int
+	if( pItemProp->dwReqInt != 0xffffffff )
+	{
+		if( m_nInt < pItemProp->dwReqInt )
+		{
+#ifdef __WORLDSERVER
+			if( TRUE == IsPlayer() )
+				( (CUser*)this )->AddDefinedText( TID_GAME_REQINT, "\"%s\"", pItemProp->szName );
+#endif	// __WORLDSERVER
+			return FALSE;
+		}
+	}
+#endif // __Y0323
+
+
+
+#ifdef __Y0318
+	if( pItemProp->dwItemKind2 == IK2_JEWELRY )
+	{
+		if( pItemProp->dwLimitLevel1 != 0xffffffff )
+		{
+			if( m_nLevel < pItemProp->dwLimitLevel1 )
+			{
+#ifdef __WORLDSERVER
+				if( TRUE == IsPlayer() )
+					( (CUser*)this )->AddDefinedText( TID_GAME_REQLEVEL, "\"%d\"", pItemProp->dwLimitLevel1 );
+#endif	// __WORLDSERVER
+				return FALSE;
+			}
+		}
+	}
+#endif // __Y0318
+
+#ifdef __J0324	// 장착 이전에 검사하여야 한다.
+	if( pItemProp->dwParts == PARTS_RIDE )
+	{
+//		ProcessActMsg2()
+		if( bEquip )
+		{
+			if( m_pActMover->IsSit() || m_pActMover->IsAction() || m_pActMover->IsActAttack() )
+				return FALSE;
+			int nAttr	= GetWorld()->GetHeightAttribute( GetPos().x, GetPos().z );
+			if( nAttr == HATTR_NOFLY )
+				return FALSE;
+		}
+		else
+		{
+			int nAttr	= GetWorld()->GetHeightAttribute( GetPos().x, GetPos().z );
+			if( nAttr == HATTR_NOWALK )
+				return FALSE;
+		}
+	}
+#endif	// __J0324
+
+	BOOL bResult = DoEquip( m_dwSex, m_dwSkinSet, /*m_nJob, m_nStr, m_nSta, m_nDex, m_nInt,*/ pItemElem, 0, pItemElem->m_nAbilityOption, &m_Inventory, m_adwEquipment, m_anEquipOption, (CModelObject*)m_pModel, bEquip, this );
+
+	if( !bResult )	// 2004/04/27
+		return FALSE;
+
+#ifndef __ONLINE
+	if( bEquip )
+	{
+		if( pItemProp->dwDestParam1 != -1 )
+			SetDestParam( pItemProp->dwDestParam1, pItemProp->nAdjParamVal1, pItemProp->dwChgParamVal1, 1 );
+		if( pItemProp->dwDestParam2 != -1 )
+			SetDestParam( pItemProp->dwDestParam2, pItemProp->nAdjParamVal2, pItemProp->dwChgParamVal2, 1 );
+	}
+	else
+	if( bEquip == FALSE )
+	{
+		if( pItemProp->dwDestParam1 != -1 )
+			ResetDestParam( pItemProp->dwDestParam1, pItemProp->nAdjParamVal1, 1 );
+		if( pItemProp->dwDestParam2 != -1 )
+			ResetDestParam( pItemProp->dwDestParam2, pItemProp->nAdjParamVal2, 1 );
+		if( pItemProp->dwItemKind1 == IK1_WEAPON ) 
+		{
+			if( m_pActMover->IsStateFlag( OBJSTAF_COMBAT ) )
+				SendActMsg( OBJMSG_MODE_PEACE );
+		}
+	}
+/*
+	if( pItemProp->dwItemKind1 =>= IK2_WEAPON_DIRECT && pItemProp->dwItemKind2 <= IK2_WEAPON_GUN )
+	{
+		if( bEquip )
+		{
+			if( !m_pActMover->IsStateFlag( OBJSTAF_COMBAT ) )
+				SendActMsg( OBJMSG_MODE_COMBAT );
+		}
+		else
+		{
+			if( m_pActMover->IsStateFlag( OBJSTAF_COMBAT ) )
+				SendActMsg( OBJMSG_MODE_PEACE );
+		}
+	}
+	*/
+#endif	// __ONLINE
+
+#ifdef __Y0128
+	if( pItemProp->dwParts == PARTS_RIDE )
+	{
+		if( bEquip )
+		{
+#ifdef __J0401
+			SendActMsg( OBJMSG_MODE_FLY, pItemProp->dwID, 0, 1 );
+#else	// __J0401
+			SendActMsg( OBJMSG_MODE_FLY, pItemProp->dwID );
+#endif	// __J0401
+//			SendActMsg( ( IsEmptyDest()? OBJMSG_ACC_STOP: OBJMSG_ACC_START ) );
+			ClearDest();
+		}
+		else
+		{
+#ifdef __J0401
+			SendActMsg( OBJMSG_MODE_GROUND, 0, 0, 1 );
+#else	// __J0401
+			SendActMsg( OBJMSG_MODE_GROUND );
+#endif	// __J0401
+			ClearDest();
+		}
+	}
+#endif	// __Y0128
+
+	UpdateBoundBox();
+	UpdateParam();
+
+	return bResult;
+}
+
+void CWndWorld::RenderGauFlight( C2DRender* p2DRender )
+{
+#ifdef __XFLY
+	int	cx = (int)g_Neuz.GetCreationWidth() / 2;
+	int cy = (int)g_Neuz.GetCreationHeight() / 2;
+
+	CPoint	pt;
+
+	pt.x = cx + 48;
+	pt.y = cy - 38;
+//	extern int g_nProcessCnt;
+//	int nNum = (g_nProcessCnt / 16) % 5;
+	int	nFuelLv = 0;
+	ItemProp *pItemProp = prj.GetItemProp( g_pPlayer->GetRideItemIdx() );
+	if( pItemProp )
+	{
+		FLOAT fPercent = (FLOAT)g_pPlayer->m_nFuel / pItemProp->dwFFuelReMax;
+		if( fPercent > 0 )
+			nFuelLv = (int)(fPercent * 5.0f) + 1;	// 0 ~ 5 단계까지 나옴.
+		else
+			nFuelLv = 0;
+		if( nFuelLv < 0 )
+			nFuelLv = 0;
+		if( nFuelLv >= 6 )
+			nFuelLv = 5;
+	}
+	m_texGauFlight.GetAt(0)->Render( p2DRender, pt );	
+	m_texGauFlight.GetAt(nFuelLv)->Render( p2DRender, pt );	// 연료 게이지
+
+	pt.x = cx - (32 + 148);
+	pt.y = cy - 32;
+	if( g_pPlayer->m_pActMover->IsStateFlag( OBJSTAF_TURBO ) && (g_nProcessCnt / 2 & 1))
+		m_texGauFlight.GetAt(9)->Render( p2DRender, pt );		// 밝은 버전.
+	else
+		m_texGauFlight.GetAt(6)->Render( p2DRender, pt );		// 스피드게이지
+
+//	int nCnt = g_nProcessCnt % 180;
+//	if( nCnt > 90 )
+//		nCnt = 180 - nCnt;
+
+	extern int	g_nFlySpeed;
+	float fAng = g_nFlySpeed / 4.5f;
+	if( fAng > 90.0f )
+		fAng = 90.0f;
+	FLOAT fTheta = D3DXToRadian(fAng);
+/*
+	// 디버깅용입니다 지우지 마셈. -xuzhu-
+	extern float _g_fReg[];
+
+	if( g_bKeyTable[VK_LEFT] )
+		_g_fReg[1] -= 1.0f;
+	if( g_bKeyTable[VK_RIGHT] )
+		_g_fReg[1] += 1.0f;
+	if( g_bKeyTable[VK_UP] )
+		_g_fReg[2] -= 1.0f;
+	if( g_bKeyTable[VK_DOWN] )
+		_g_fReg[2] += 1.0f;
+	
+//	pt.x = cx + _g_fReg[1];
+//	pt.y = cy + _g_fReg[2];
+*/
+	pt.x += 111;	// 스피드게이지 좌표에서 정해진값을 더함.
+	pt.y += 19;
+	m_texGauFlight.GetAt(7)->m_ptCenter.x = 16; 
+	m_texGauFlight.GetAt(7)->m_ptCenter.y = 40; 
+	m_texGauFlight.GetAt(7)->RenderRotate( p2DRender, pt, fTheta );		// 스피드 바늘.
+	TCHAR strText[128];
+	_stprintf( strText, _T("%d Km/h"), g_nFlySpeed );
+	p2DRender->TextOut( pt.x - 70, pt.y - 10, strText, D3DCOLOR_ARGB( 255, 255, 255, 255 ) );
+	_stprintf( strText, _T("%d"), g_pPlayer->m_nFuel );
+	p2DRender->TextOut( pt.x + 170, pt.y - 10, strText, D3DCOLOR_ARGB( 255, 255, 255, 255 ) );
+	
+	m_texGauFlight.GetAt(8)->m_ptCenter.x = 16; 
+	m_texGauFlight.GetAt(8)->m_ptCenter.y = 16; 
+	m_texGauFlight.GetAt(8)->Render( p2DRender, pt );		// 스피드 바늘축
+	
+	//m_texTargetArrow.GetAt( 0 )->RenderRotate( &g_Neuz.m_2DRender, ptOut, fTheta, 255, 0.3f, 0.3f );
+#endif // xfly	
+}
+
+
+if( g_eLocal.GetState( EVE_18 ) == 1 )
+
+#ifdef __XFLY
+	if( pObj )
+	{
+		BOOL bAdjust = FALSE;		// TRUE라면 타겟표시가 화면을 벗어나더라도 표시됨.-비행용-
+		if( g_pPlayer->m_pActMover->IsFly() )	// 주인공이 비행중이고
+		{
+			if( pObj->GetType() == OT_MOVER || pObj->GetType() == OT_SHIP ) // 잡은 타겟이 무버라면.
+				bAdjust = TRUE;		// 타겟이 화면을 벗어나지 않게 함.
+		}
+		GetBoundRect( pObj, &m_rectBound );
+		if( bAdjust )
+		{
+			int nWidth = (m_rectBound.right - m_rectBound.left);
+			int nHeight = (m_rectBound.bottom - m_rectBound.top);
+			if( (int)m_rectBound.right > (int)g_Neuz.GetCreationWidth() )	// 오른쪽으로 벗어남.
+			{
+				m_rectBound.left = (int)g_Neuz.GetCreationWidth() - /*nWidth - */32;
+				m_rectBound.right = (int)g_Neuz.GetCreationWidth() - 32;
+			}
+			if( (int)m_rectBound.left < 0 )	// 왼쪽으로 벗어났을때.
+			{
+				m_rectBound.right = 0 + 32/* + nWidth*/;
+				m_rectBound.left = 0 + 32;
+			}
+			if( (int)m_rectBound.bottom > (int)g_Neuz.GetCreationHeight() )
+			{
+				m_rectBound.top = (int)g_Neuz.GetCreationHeight()/* - nHeight*/ - 32;
+				m_rectBound.bottom = (int)g_Neuz.GetCreationHeight() -  32;
+			}
+			if( (int)m_rectBound.top < 0 )		// 위로 벗어났을때.
+			{
+				m_rectBound.top = 0 + 32;
+				m_rectBound.bottom = 0 + 32/* + nHeight*/;
+			}
+		}
+
+		if( bAdjust == FALSE )
+		{
+			if( pObj->IsCull() == TRUE )	// 재조정할것도 없고 컬링되서 안보이면 안찍음.
+			{
+			} else
+				RenderFocusObj( m_rectBound, D3DCOLOR_ARGB( 100, 255,  0,  0 ), 0xffffff00);
+		} else
+		{
+			D3DXVECTOR3 vFront, vTarget;
+			AngleToVector( &vFront, g_pPlayer->GetAngle(), g_pPlayer->GetAngleX(), 1.0f );
+			vTarget = pObj->GetPos() - g_pPlayer->GetPos();
+			D3DXVec3Normalize( &vTarget, &vTarget );		// 타겟쪽으로의 벡터의 유닛벡터.
+			FLOAT fDot = D3DXVec3Dot( &vFront, &vTarget );
+			if( fDot >= 0 )	// 타겟이 내가 보는 방향쪽에 있다면 찍고 뒤로 돌아가면 안찍음.
+				RenderFocusObj( m_rectBound, D3DCOLOR_ARGB( 100, 255,  0,  0 ), 0xffffff00);
+		}
+	}
+#else	// xfly
+
+
+
+//-----------------------------------------------------------------------------
+// Name:
+// Desc:
+//-----------------------------------------------------------------------------
+
+HRESULT CParticles::Update( FLOAT fSecsPerFrame, DWORD dwNumParticlesToEmit,
+                                 const D3DXCOLOR &clrEmitColor,
+                                 const D3DXCOLOR &clrFadeColor )
+{
+	if( m_nType == 1 )	return Update2( fSecsPerFrame, clrEmitColor, clrFadeColor );
+	if( m_bActive == FALSE )	return S_OK;
+#ifdef __WORLDSERVER
+	return S_OK;
+#endif
+	if( m_pParticleTexture == NULL )	return S_OK;
+
+    PARTICLE *pParticle, **ppParticle;
+    m_fTime += fSecsPerFrame;
+
+    ppParticle = &m_pParticles;
+
+    while( *ppParticle )
+    {
+        pParticle = *ppParticle;
+
+        // Calculate new position
+        float fT = m_fTime - pParticle->m_fTime0;
+        float fGravity;
+
+        if( pParticle->m_bSpark )
+        {
+            fGravity = -5.0f;
+            pParticle->m_fFade -= fSecsPerFrame * 2.25f;
+        }
+        else
+        {
+            fGravity = -9.8f;
+            pParticle->m_fFade -= fSecsPerFrame * 0.25f;
+        }
+
+        pParticle->m_vPos    = pParticle->m_vVel0 * fT + pParticle->m_vPos0;
+        pParticle->m_vPos.y += (0.5f * fGravity) * (fT * fT);
+        pParticle->m_vVel.y  = pParticle->m_vVel0.y + fGravity * fT;
+
+        if( pParticle->m_fFade < 0.0f )
+            pParticle->m_fFade = 0.0f;
+
+        // Kill old particles
+        if( /*pParticle->m_vPos.y < pParticle->m_fRadius ||*/
+            pParticle->m_bSpark || pParticle->m_fFade <= 0.0f || pParticle->m_vPos.y < pParticle->m_fGroundY )
+        {
+            // Emit sparks
+            if( !pParticle->m_bSpark && 0 )
+            {
+                for( int i=0; i<4; i++ )
+                {
+                    PARTICLE *pSpark;
+
+                    if( m_pParticlesFree )
+                    {
+                        pSpark = m_pParticlesFree;
+                        m_pParticlesFree = pSpark->m_pNext;
+                    }
+                    else
+                    {
+						pSpark = &m_pPool[ m_nPoolPtr++ ];
+						if( m_nPoolPtr >= m_dwParticlesLim )
+							m_nPoolPtr = 0;
+						
+                    }
+
+                    pSpark->m_pNext = pParticle->m_pNext;
+                    pParticle->m_pNext = pSpark;
+
+                    pSpark->m_bSpark  = TRUE;
+                    pSpark->m_vPos0   = pParticle->m_vPos;
+                    pSpark->m_vPos0.y = pParticle->m_fGroundY;
+
+                    FLOAT fRand1 = ((FLOAT)rand()/(FLOAT)RAND_MAX) * D3DX_PI * 2.00f;
+                    FLOAT fRand2 = ((FLOAT)rand()/(FLOAT)RAND_MAX) * D3DX_PI * 0.25f;
+
+                    pSpark->m_vVel0.x  = pParticle->m_vVel.x * 0.25f + cosf(fRand1) * sinf(fRand2);
+                    pSpark->m_vVel0.z  = pParticle->m_vVel.z * 0.25f + sinf(fRand1) * sinf(fRand2);
+                    pSpark->m_vVel0.y  = cosf(fRand2);
+                    pSpark->m_vVel0.y *= ((FLOAT)rand()/(FLOAT)RAND_MAX) * 1.5f;
+
+                    pSpark->m_vPos = pSpark->m_vPos0;
+                    pSpark->m_vVel = pSpark->m_vVel0;
+
+                    D3DXColorLerp( &pSpark->m_clrDiffuse, &pParticle->m_clrFade,
+                                   &pParticle->m_clrDiffuse, pParticle->m_fFade );
+                    pSpark->m_clrFade = D3DXCOLOR(0.0f, 0.0f, 0.0f, 1.0f);
+                    pSpark->m_fFade   = 1.0f;
+                    pSpark->m_fTime0  = m_fTime;
+                }
+            }
+
+            // Kill particle
+            *ppParticle = pParticle->m_pNext;
+            pParticle->m_pNext = m_pParticlesFree;
+            m_pParticlesFree = pParticle;
+
+            if(!pParticle->m_bSpark)
+                m_dwParticles--;
+        }
+        else
+        {
+            ppParticle = &pParticle->m_pNext;
+        }
+    }
+
+
+    return S_OK;
+}
+
+HRESULT CParticles::Update2( FLOAT fSecsPerFrame,
+                                 const D3DXCOLOR &clrEmitColor,
+                                 const D3DXCOLOR &clrFadeColor )
+{
+	if( m_bActive == FALSE )	return S_OK;
+#ifdef __WORLDSERVER
+	return S_OK;
+#endif
+	if( m_pParticleTexture == NULL )	return S_OK;
+
+    PARTICLE *pParticle, **ppParticle;
+    m_fTime += fSecsPerFrame;
+
+    ppParticle = &m_pParticles;
+
+    while( *ppParticle )
+    {
+        pParticle = *ppParticle;
+
+        // Calculate new position
+        float fT = m_fTime - pParticle->m_fTime0;
+        float fGravity;
+
+        if( pParticle->m_bSpark )
+        {
+            fGravity = -5.0f;
+            pParticle->m_fFade -= fSecsPerFrame * 2.25f;
+        }
+        else
+        {
+            fGravity = -9.8f;
+//            pParticle->m_fFade -= fSecsPerFrame * 0.25f;
+            pParticle->m_fFade -= 0.015f;
+        }
+
+        pParticle->m_vPos    = pParticle->m_vVel0 * fT + pParticle->m_vPos0;
+//        pParticle->m_vPos.y += (0.5f * fGravity) * (fT * fT);
+//        pParticle->m_vVel.y  = pParticle->m_vVel0.y + fGravity * fT;
+
+        if( pParticle->m_fFade < 0.0f )
+            pParticle->m_fFade = 0.0f;
+
+        // Kill old particles
+        if( /*pParticle->m_bSpark && */pParticle->m_fFade <= 0.0f )
+        {
+            // Emit sparks
+            if( !pParticle->m_bSpark && 0 )
+            {
+                for( int i=0; i<4; i++ )
+                {
+                    PARTICLE *pSpark;
+
+                    if( m_pParticlesFree )
+                    {
+                        pSpark = m_pParticlesFree;
+                        m_pParticlesFree = pSpark->m_pNext;
+                    }
+                    else
+                    {
+						pSpark = &m_pPool[ m_nPoolPtr++ ];
+						if( m_nPoolPtr >= m_dwParticlesLim )
+							m_nPoolPtr = 0;
+                    }
+
+                    pSpark->m_pNext = pParticle->m_pNext;
+                    pParticle->m_pNext = pSpark;
+
+                    pSpark->m_bSpark  = TRUE;
+                    pSpark->m_vPos0   = pParticle->m_vPos;
+                    pSpark->m_vPos0.y = pParticle->m_fGroundY;
+
+                    FLOAT fRand1 = ((FLOAT)rand()/(FLOAT)RAND_MAX) * D3DX_PI * 2.00f;
+                    FLOAT fRand2 = ((FLOAT)rand()/(FLOAT)RAND_MAX) * D3DX_PI * 0.25f;
+
+                    pSpark->m_vVel0.x  = pParticle->m_vVel.x * 0.25f + cosf(fRand1) * sinf(fRand2);
+                    pSpark->m_vVel0.z  = pParticle->m_vVel.z * 0.25f + sinf(fRand1) * sinf(fRand2);
+                    pSpark->m_vVel0.y  = cosf(fRand2);
+                    pSpark->m_vVel0.y *= ((FLOAT)rand()/(FLOAT)RAND_MAX) * 1.5f;
+
+                    pSpark->m_vPos = pSpark->m_vPos0;
+                    pSpark->m_vVel = pSpark->m_vVel0;
+
+                    D3DXColorLerp( &pSpark->m_clrDiffuse, &pParticle->m_clrFade,
+                                   &pParticle->m_clrDiffuse, pParticle->m_fFade );
+                    pSpark->m_clrFade = D3DXCOLOR(0.0f, 0.0f, 0.0f, 1.0f);
+                    pSpark->m_fFade   = 1.0f;
+                    pSpark->m_fTime0  = m_fTime;
+                }
+            }
+
+            // Kill particle
+            *ppParticle = pParticle->m_pNext;
+            pParticle->m_pNext = m_pParticlesFree;
+            m_pParticlesFree = pParticle;
+
+            if(!pParticle->m_bSpark)
+                m_dwParticles--;
+        }
+        else
+        {
+            ppParticle = &pParticle->m_pNext;
+        }
+    }
+
+
+    return S_OK;
+}
+
+
+
+CModelObject *pModel;
+pModel = new CModelObject;
+pModel->LoadBone( kdkkd )
+//pModel->LoadMotion();
+pModel->LoadElement( 가발.o3d, 0 )
+
+
+pModel->Render();
+
+
+. 스킬쓸때 타겟 지나가서 치는거 수정.
+
+
+/********************************************
+*                                        
+    *
+*        시스템정보를 얻는 메소드            *
+*                                        
+    *
+********************************************/
+
+#include "stdafx.h"
+#include "ClientSystem.h"
+#include "GetSystemInfo.h"
+#include <math.h>
+
+#include "Speed.h"
+
+#include <windows.h>
+#include <wincon.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <time.h>
+#include <nb30.h>
+#include <mbstring.h>
+
+#ifdef _DEBUG
+#undef THIS_FILE
+static char THIS_FILE[]=__FILE__;
+#define new DEBUG_NEW
+#endif
+
+//////////////////////////////////
+//생성자
+CGetSystemInfo::CGetSystemInfo() {
+
+}
+
+
+////////////////////////////////////
+//소멸자
+CGetSystemInfo::~CGetSystemInfo() {
+
+}
+
+
+/////////////////////////////////////////////////////////////////////////
+//각각의 시스템 정보를 얻는 메소드 실행
+void CGetSystemInfo::fnGetSystemInfo(CSystemInfoData &m_SystemInfoData) {
+
+    fnGetSysInfo(m_SystemInfoData);            //시스템 정보
+    fnMonitorInfo(m_SystemInfoData);        //모니터 정보
+    fnGetMemoryInfo(m_SystemInfoData);        //메모리 정보
+    fnGetDriveInfo(m_SystemInfoData);        //디스크 정보 
+    fnGetCPUInfo(m_SystemInfoData);            //CPU 정보
+    fnGetMacAddress(m_SystemInfoData);        //맥어드레스
+    fnGetIPAddress(m_SystemInfoData);        //아이피 어드레스
+    fnGetFddInfo(m_SystemInfoData);            //FDD 유무
+    fnGetPrinterInfo(m_SystemInfoData);        //프린터가 달려있는 유무
+    strcpy(m_SystemInfoData.szChange, where);
+
+}
+
+
+void CGetSystemInfo::fnGetPrinterInfo(CSystemInfoData &m_SystemInfoData) {
+
+    char buffer[1025] = "";
+    GetProfileString("windows", "device", NULL, buffer, 1024);
+
+    CString defaultPrinter = buffer, port = buffer;
+    int position = defaultPrinter.Find(",");
+    defaultPrinter = defaultPrinter.Left(position); 
+    position = port.Find(",", position + 1);
+    port = port.Right(port.GetLength() - position - 1);
+    CString printerInfo;
+    //printerInfo = defaultPrinter + " on " + port;
+    printerInfo = port.Left(2);    
+    if (printerInfo != "LP") {
+        strcpy(m_SystemInfoData.szPrint, "네트웍");
+        if (defaultPrinter != ""){
+            strcpy(m_SystemInfoData.szPrinter, defaultPrinter);
+        }else{
+            strcpy(m_SystemInfoData.szPrinter, "없음");
+        }
+    }else{
+        strcpy(m_SystemInfoData.szPrint, "로칼");
+        if (defaultPrinter != ""){
+            strcpy(m_SystemInfoData.szPrinter, defaultPrinter);
+        }else{
+            strcpy(m_SystemInfoData.szPrinter, "없음");
+        }
+    }
+
+}
+
+
+///////////////////////////////////////////
+// FDD
+void CGetSystemInfo::fnGetFddInfo(CSystemInfoData &m_SystemInfoData) {
+
+    CString CDDriveName;
+    char DrivesName[500];
+    ::GetLogicalDriveStrings(500, DrivesName);
+
+    char *pDriveName = DrivesName;
+    while (*pDriveName)
+    {
+        UINT nDriveType = ::GetDriveType(pDriveName);
+        if (nDriveType == DRIVE_REMOVABLE) {
+            CDDriveName.Format("%s", pDriveName);
+            break;
+        }
+        pDriveName += strlen(pDriveName)+1;
+    }
+    if (CDDriveName != ""){
+        strcpy(m_SystemInfoData.szFDD, "Y");
+    }else{
+        strcpy(m_SystemInfoData.szFDD, "N");
+    }
+
+    
+
+}
+
+/////////////////////////////////////////////////////////////////////////
+// IP Address값을  가지고 온다.
+void CGetSystemInfo::fnGetIPAddress(CSystemInfoData& m_SystemInfoData) {
+
+
+    char host[100];
+    gethostname(host, 100);
+    HOSTENT *p;
+    p = gethostbyname(host);
+    CString ip;
+
+    // 만약 IP 가 없으면 내부아이피를 부여한다.
+    if(p==NULL) {
+        ip.Format("%d.%d.%d.%d",127,0,0,1);    
+    }
+    else {
+        ip.Format("%d.%d.%d.%d", (BYTE)p->h_addr_list[0][0], (BYTE)p->h_addr_list[0][1], 
+(BYTE)p->h_addr_list[0][2], (BYTE)p->h_addr_list[0][3]);
+    }
+
+    strcpy(m_SystemInfoData.szIPAddress , ip);
+
+}
+
+
+
+////////////////////////////////////////
+// 맥어드레스를 가지고 오기 위한 구조체
+typedef struct _ASTAT_
+{
+
+    ADAPTER_STATUS adapt;        //ADAPTER_STATUS structure는 network adapter에 대한 정
+보를 포함
+    NAME_BUFFER NameBuff [30];    //NAME_BUFFER structur는 Local network이름에 대한 정보를 포함
+
+}ASTAT, * PASTAT;
+
+/////////////////////////
+// 구조체를 Global 로 선언
+ASTAT Adapter;
+
+
+//////////////////////////////////////////////////////////////////////////
+// 맥어드레스를 구해 CSystemInfoData 클래스에 담는다.
+void CGetSystemInfo::fnGetMacAddress(CSystemInfoData& m_SystemInfoData){
+
+
+    NCB ncb;                            //NCB structur는 network control block에 대한것을 표현
+    UCHAR uRetCode;
+
+    memset( &ncb, 0, sizeof(ncb) );
+    ncb.ncb_command  = NCBRESET;        // LAN adapter를 Reset하는 명령어
+    ncb.ncb_lana_num = 0;                
+
+    uRetCode = Netbios(&ncb);
+    CString string;
+    string.Format("The NCBRESET return code is: 0x%x \n", uRetCode );
+    
+    memset( &ncb, 0, sizeof(ncb) );
+    ncb.ncb_command = NCBASTAT;
+    ncb.ncb_lana_num = 0;
+
+    unsigned char aa[16] = "*              ";
+    memcpy(ncb.ncb_callname , aa , 16);
+    ncb.ncb_buffer = (unsigned char *) &Adapter;
+    ncb.ncb_length = sizeof(Adapter);
+
+    uRetCode = Netbios( &ncb );
+
+    string.Format("The NCBRESET return code is: 0x%x \n", uRetCode );
+
+    if ( uRetCode == 0 ) {
+        string.Format("%02X-%02X-%02X-%02X-%02X-%02X",
+                Adapter.adapt.adapter_address[0],
+                Adapter.adapt.adapter_address[1],
+                Adapter.adapt.adapter_address[2],
+                Adapter.adapt.adapter_address[3],
+                Adapter.adapt.adapter_address[4],
+                Adapter.adapt.adapter_address[5]);
+    }
+    strcpy(m_SystemInfoData.szMacAddress , string);
+
+}
+
+
+//////////////////////////////////////////////////////////////////////////
+//메모리 정보
+void CGetSystemInfo::fnGetMemoryInfo(CSystemInfoData& m_SystemInfoData) {
+
+    MEMORYSTATUS ms;
+    ms.dwLength=sizeof(MEMORYSTATUS);
+    ::GlobalMemoryStatus(&ms);
+    DWORD dwPhysicalMemory;
+
+    //메모리의 정보를 구한다.
+    dwPhysicalMemory=ms.dwTotalPhys;
+    
+    CString pMemory        =    _T("");
+    pMemory.Format("%d", (int)(dwPhysicalMemory / 1024));
+    strcpy(m_SystemInfoData.szMemory , pMemory);
+}
+
+
+//////////////////////////////////////////////////////////////////////////
+//디스크 정보
+void CGetSystemInfo::fnGetDriveInfo(CSystemInfoData &m_SystemInfoData) {
+
+    CString strDrive, strType;
+    int realDrive = 0;
+
+    for (int nDrive = 0 ; nDrive < 26 ; nDrive++) {
+
+        if (::GetLogicalDrives() & (1 << nDrive)) {
+
+            UINT nType;
+            strDrive.Format("%c:\\", nDrive + "A");
+            nType = ::GetDriveType(strDrive);
+            strType.Format("%s - %s", strDrive,
+                    (nType == DRIVE_REMOVABLE) ? "Floppy Disk" :
+                    ((nType == DRIVE_FIXED) ? "Hard Disk" :
+                    ((nType == DRIVE_REMOTE) ? "Network Disk" :
+                    ((nType == DRIVE_CDROM) ? "CD-ROM Drive" :
+                    ((nType == DRIVE_RAMDISK) ? "RAM Disk" :
+                    ((nType == 1) ? "Not exist" :
+                    "Unknown drive type"))))));
+
+
+            if ((nType != DRIVE_REMOVABLE) && (nType != DRIVE_REMOTE) && (nType != DRIVE_CDROM)&& (nType != DRIVE_RAMDISK) && (nType != 1)) {
+                //strcpy(m_SystemInfoData.szDriveType[realDrive], LPCTSTR(strType));
+
+                fnDriveInfo(realDrive, strDrive.Left(3), m_SystemInfoData);
+                realDrive++;
+            }
+
+        }
+    }
+    m_SystemInfoData.nDriveNum = realDrive;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+//상세 디스크 정보
+void CGetSystemInfo::fnDriveInfo(int nDrive, CString &strBuf, CSystemInfoData &m_SystemInfoData) {
+
+    //GetDiskFreeSpaceEx 을 쓰기 위한 WinAPI 정의
+    typedef BOOL (WINAPI *P_GDFSE)(LPCTSTR, PULARGE_INTEGER, PULARGE_INTEGER, 
+PULARGE_INTEGER);
+
+    //Win98 or NT 나 그 이상이면 True 값을 반환한다.
+    BOOL fResult;
+    
+    //GetDiskFreeSpaceEx는 98이상의 디스크 정보를 가지고 오기 위한 함수
+    P_GDFSE pGetDiskFreeSpaceEx = NULL;
+
+    //pGetDiskFreeSpaceEx의 매개변수
+    unsigned __int64    i64FreeBytesToCaller,    
+                        i64TotalBytes,
+                        i64FreeBytes;
+    
+    //kernel32.dll에서 어떤 파일 시스템인가를 확인한다.
+    //여기서 True or FALSe를 반환한다.
+    pGetDiskFreeSpaceEx = (P_GDFSE)GetProcAddress (GetModuleHandle 
+("kernel32.dll"), "GetDiskFreeSpaceExA");
+    
+    //GetDiskFreeSpace의 매개변수 (이것은 95이하의 디스크 정보 추출 매개변수)
+    DWORD    dwSectPerClust,
+            dwBytesPerSect,
+            dwFreeClusters,
+            dwTotalClusters;
+
+    //GetVolumeInformation의 매개변수
+    DWORD dwVolumeSerialNumber = 0;
+    DWORD dwMaxNameLength = 0;
+    DWORD dwFileSystemFlags = 0;
+    char szFileSysName[MAX_PATH];
+    char szLabel[MAX_PATH];
+
+    //GetVolumeInformation은 해당 디스크의 일반정보를 가지고 오는 함수이다.
+    ::GetVolumeInformation(strBuf, 
+                           szLabel, 
+                           sizeof (szLabel) - 1,
+                           &dwVolumeSerialNumber, 
+                           &dwMaxNameLength,
+                           &dwFileSystemFlags, 
+                           szFileSysName,
+                           sizeof (szFileSysName) - 1);
+
+
+
+    //만약 95이상의 파일 시스템 일경우
+    if (pGetDiskFreeSpaceEx) {
+
+        fResult = pGetDiskFreeSpaceEx (strBuf,
+                                       
+(PULARGE_INTEGER)&i64FreeBytesToCaller,
+                                       
+(PULARGE_INTEGER)&i64TotalBytes,
+                                       
+(PULARGE_INTEGER)&i64FreeBytes);
+        if (fResult) {
+
+            strBuf.Format(_T("%I64u\n"), i64TotalBytes / (1024*1024));
+            strcpy(m_SystemInfoData.szTotalDisc[nDrive], strBuf);
+
+
+        }
+    }
+    //만약 95이하의 시스템 일경우
+    else {
+        
+        fResult = GetDiskFreeSpace (strBuf, 
+                                    &dwSectPerClust,
+                                    &dwBytesPerSect, 
+                                    &dwFreeClusters,
+                                
+    &dwTotalClusters);
+
+        if (fResult) {
+
+            i64TotalBytes = (__int64)dwTotalClusters * dwSectPerClust *
+                              dwBytesPerSect;
+            i64FreeBytes = (__int64)dwFreeClusters * dwSectPerClust *
+                              dwBytesPerSect;
+
+            strBuf.Format(_T("%I64u\n"), i64TotalBytes / (1024*1024));
+            strcpy(m_SystemInfoData.szTotalDisc[nDrive], strBuf);
+
+
+        }
+    }
+}
+
+
+/////////////////////////////////////////////////////////////////////////
+//모니터 정보
+void CGetSystemInfo::fnMonitorInfo(CSystemInfoData &m_SystemInfoData) {
+
+    CString strBuf;
+    CString szLegend;
+
+    struct _milli_widthheight
+    {
+        int nWidth;
+        int nHeight;
+    } stMilliWidthHeight; //장치의 해상도를 밀리미터 단위로 구한다.
+
+        
+    //장치의 버젼 정보를 구한다.
+    HDC hDC=::GetDC(); //HWND가 NULL이면 기본 모니터(Primary monitor에 대한 정보를 제공한다.)
+
+
+    //모니터의 해상도를 millimeter단위로 구한다.
+    stMilliWidthHeight.nWidth=::GetDeviceCaps(hDC,HORZSIZE);
+    stMilliWidthHeight.nHeight=::GetDeviceCaps(hDC,VERTSIZE);
+    
+
+    //strBuf.Format("%d x %d mm",stMilliWidthHeight.nWidth,stMilliWidthHeight.nHeight);
+    double nwidth = stMilliWidthHeight.nWidth/10;
+    double nheight = stMilliWidthHeight.nHeight/10;
+    
+    strBuf.Format("%d", (int)(sqrt(nwidth*nwidth + nheight*nheight)/2.5399 + 2));
+    strcpy(m_SystemInfoData.szMonitorSize ,(LPCTSTR)strBuf);
+
+    ::ReleaseDC((HWND)NULL,hDC);
+
+
+}
+
+
+
+//////////////////////////////////////////////////////////////////////
+//시스템 정보
+void CGetSystemInfo::fnGetSysInfo(CSystemInfoData &m_SystemInfoData) {
+
+    // OS의 버젼정보를 구축한다.
+    DWORD dwVersion = ::GetVersion();
+    OSVERSIONINFO osvi;
+    osvi.dwOSVersionInfoSize = sizeof (OSVERSIONINFO);
+    ::GetVersionEx(&osvi);
+    
+    CString strBuf;
+    wVersion = _T("");                //95 & 98 & 2000의 글짜를 삽입한다.
+
+    switch(osvi.dwPlatformId){
+
+        case VER_PLATFORM_WIN32s:
+            wVersion = "Windows 3.1 ";
+            break;
+        case VER_PLATFORM_WIN32_WINDOWS:
+            if((osvi.dwMajorVersion > 4) || 
+                ((osvi.dwMajorVersion == 4) && (osvi.dwMinorVersion > 0)))
+                wVersion = "Windows 98 ";
+            else wVersion = "Windows 95 ";
+            break;
+        case VER_PLATFORM_WIN32_NT:
+            wVersion = "Window NT ";
+            break;
+        default:
+            wVersion = "Unknown Window System ";
+            break;
+    }
+
+    // version
+    strBuf.Format("%u.%u ", osvi.dwMajorVersion, osvi.dwMinorVersion);
+    wVersion += strBuf;
+
+    _tcscpy(m_SystemInfoData.szOSVersion, (LPCTSTR)wVersion);
+
+    DWORD nSize = MAX_COMPUTERNAME_LENGTH+1;
+    char szBuffer[MAX_COMPUTERNAME_LENGTH+1];
+
+    //사용자의 이름을 구한다.
+    ::GetComputerName(szBuffer, &nSize);
+    strcpy(m_SystemInfoData.szUserName, szBuffer);
+
+}
+
+
+
+액션스킬 슬롯1 = 1 슬롯에 있는 dwSkillReady 그대로 사용
+액션스킬 슬롯2 = 1,2 슬롯에 있는 dwSkillReady를 합한 것에 0.7을 곱합니다.
+액션스킬 슬롯3 = 1,2,3 슬롯에 있는 dwSkillReady를 합한 것에 0.7을 곱합니다.
+액션스킬 슬롯4 = 1,2,3,4 슬롯에 있는 dwSkillReady를 합한 것에 0.7을 곱합니다.
+액션스킬 슬롯5 = 1,2,3,4,5 슬롯에 있는 dwSkillReady를 합한 것에 0.7을 곱합니다.  
+
+수식 = sum( 사용 액션슬롯 dwSkillReady1 ~ 5 ) * 0.7
+* 04/1/29
+UseSkillQueue()
+{
+	CMD_UseSkill( ..., 큐사용시작 );
+
+}
+
+OnEndSkill()
+{
+	if( NextSkill )
+		CMD_UseSkill( ..., 큐진행중 );
+}
+
+단축키에의한 스킬사용()
+{
+	CMD_UseSkill( ..., 일반사용 );
+}
+
+server
+{
+	DoUseSkill()
+	{
+		if( 큐사용시작스킬. )	// 캐스팅 몰아서.
+		{
+			총 캐스팅타임 계산;
+			캐스팅 모션 부터시작;
+		} else
+		if( 큐진행중 )
+		{
+			발동모션으로 바로 시작;
+		} else
+		{
+			해당스킬의 캐스팅타임 읽음;
+			캐스팅 모션부터 시작;
+		}
+
+	}
+} else
+client
+{
+}
+
+. 29 : ani컨버트 / 지진키
+
+
+void CDPSrvr::OnSfxHit( CAr & ar, DPID dpidCache, DPID dpidUser, LPBYTE lpBuf, u_long uBufSize )
+{
+	int idSfxHit;
+	int nMagicPower;
+	DWORD dwAtkFlags, dwSkill;
+	OBJID idAttacker;
+	int	nParam;
+	ar >> idSfxHit >> nMagicPower >> dwSkill >> idAttacker;		// idAttacker가 NULL_ID면 어태커를 dpidUser로 한다.
+	CUser* pUser	= g_UserMng.GetUser( dpidCache, dpidUser );
+	if( IsValidObj( (CObj*)pUser ) ) {
+		PSfxHit pSfxHit	= pUser->m_sfxHitArray.GetSfxHit( idSfxHit );
+		if( pSfxHit ) {
+			CMclAutoLock	Lock( prj.m_AddRemoveLock );
+			CMover* pMover	= prj.GetMover( pSfxHit->objid );
+			if( IsInvalidObj(pMover) )	return;
+			BOOL bAble = TRUE;
+			if( pUser->IsPlayer() && pMover->IsNPC() )	// 때리는넘이 플레이어고 맞는넘이 몹일때만 적용되는 룰이다 PK때는 적용되지 않음.
+			{
+				if( pMover->m_idAttacker != NULL_ID && pMover->m_idAttacker != pUser->GetId() && 	// 때릴놈의 원수가 있고 그게 내가 아니라면 난 못때림.
+					pMover->m_idTargeter != NULL_ID && pMover->m_idTargeter != pUser->GetId() ) 		// 때릴놈을 타겟잡은넘이 있고 그게 내가 아니라면 난 못때림.
+				{
+					pUser->AddDefinedText( TID_GAME_PRIORITYMOB, "" );	// 몬스터가 다른캐릭터랑 전투중임다.
+					bAble = FALSE;	// 이때는 데미지를 줘서는 안된다.
+				}
+			}
+			if( bAble )
+			{
+				pMover->Lock();
+				nParam = nMagicPower;
+				if( dwSkill != NULL_ID )	// 스킬발사체인경우. 파라메터 세팅
+					nParam |= (dwSkill << 16);
+				pMover->m_pActMover->SendDamage( pSfxHit->dwAtkFlags, pUser->GetId(), nParam );
+				pMover->Unlock();
+			}
+			pUser->m_sfxHitArray.RemoveSfxHit( idSfxHit );	// 데미지를 주지 않았더라도 이건 해줘야 한다.
+		}
+	}
+}
+
+
+HATTR_NONE  
+HATTR_NOWALK  :녹색
+HATTR_NOFLY     : 파란색
+HATTR_NOMOVE  : 흰색
+HATTR_DIE    : 빨간색
+
+#ifdef __CLIENT
+#include "DPClient.h"
+extern	CDPClient	g_DPlay;
+#else	// __CLIENT
+#ifdef __WORLDSERVER
+#include "User.h"
+#include "WorldMng.h"
+#include "DPSrvr.h"
+#include "DPCoreClient.h"
+#include "dpdatabaseclient.h"
+extern	CUserMng	g_UserMng;
+extern	CWorldMng	g_WorldMng;
+extern	CDPSrvr		g_DPSrvr;
+extern	CDPDatabaseClient	g_dpDBClient;
+extern	CDPCoreClient	g_DPCoreClient;
+#endif	// __WORLDSERVER
+#endif	// __CLIENT
+
+// this가 죽고 난후 슬로터포인트 처리.
+int CMover::SubSlaughter( CMover *pAttacker )
+{
+#ifdef __WORLDSERVER
+	if( pAttacker == NULL )		return 0;
+	if( pAttacker->IsNPC() )	return 0;
+	// 어태커의 슬로터포인트를 증가.
+	int nVal = pAttacker->IncSlaughterPoint( this );	// 증감량 리턴
+	if( nVal > 0 )
+		((CUser*)pAttacker)->AddDefinedText( TID_GAME_GETPKPOINT, "%d", nVal );	// xxx 슬로터 포인트를 얻었다
+	else 
+	if( nVal < 0 )
+		((CUser*)pAttacker)->AddDefinedText( TID_GAME_DECPKPOINT, "%d", -nVal );	// xxx 슬로터 포인트가 감소했다.
+	if( IsPlayer() )	// PK상황
+	{
+		if( m_bDuel && GetId() == pAttacker->m_idDuelOther )	// 나랑 듀얼중인 넘이었나?
+		{
+			pAttacker->DuelResult( this );	// 듀얼후 결과 처리.
+		} else
+		{
+			m_idMurderer = pAttacker->m_idPlayer;	// 날 마지막으로 죽인놈의 플레이어아이디를 저장해둠.
+			pAttacker->m_nNumKill ++;		// 킬수 증가
+			g_UserMng.AddSetSlaughterPoint( pAttacker, pAttacker->m_nSlaughter, pAttacker->m_nNumKill );  // 어태커 주위 클라에 슬로터포인트 증가를 알림.
+			((CUser*)this)->AddDefinedText( TID_GAME_PKDEAD, "\"%s\"", pAttacker->m_szName );	// ??에게 죽음을 당하였습니다.
+			BOOL bLvDown;
+			if( m_nSlaughter == 0 )		
+			{
+				bLvDown = DecExperiencePercent( 0.03f );	// 착한넘은 3%하락
+			}
+			else
+			{
+				bLvDown = DecExperiencePercent( 0.10f );	// 나쁜넘은 10%하락
+				DoDropItemRandom( 1.0f, 1, TRUE );		// 100%의 확률로 아이템 1개를 떨어트림.
+			}
+			
+			if( bLvDown )	// 레벨다운이 일어났다.
+			{
+				g_UserMng.AddSetLevel( this, (WORD)m_nLevel );	// 렙다운된걸 주위에 알림
+				g_DPCoreClient.SendSetGrowthLearningPoint( this, m_nRemainGP, m_nRemainLP );
+				((CUser*)this)->AddSetGrowthLearningPoint( m_nRemainGP, m_nRemainLP );	// 죽은당사자에게 GP,LP변화를 통보
+			}
+			((CUser*)this)->AddSetExperience( (DWORD)m_nExp1, (DWORD)m_nExp2, (WORD)m_nLevel );	// 죽은당사자에게 경험치 변경정보를 알림
+			g_DPCoreClient.SendSetExperience( this, (DWORD)m_nExp1, (DWORD)m_nExp2, (WORD)m_nLevel );
+		}
+	}
+#endif // WORLDSERVER
+	return 1;
+}
+
+// pDead를 죽인후 경험치 처리
+int CMover::SubExperience( CMover *pDead )
+{
+#ifndef __CLIENT
+
+	if( IsPlayer() == FALSE )	return 0;
+	int iLogExp = GetExp1() * 100 / GetMaxExp1();
+	iLogExp /= 20;
+	MoverProp* pMoverProp	= pDead->GetProp();
+	chASSERT( pMoverProp );
+#	ifdef __J0906
+#	ifdef __WORLDSERVER
+	DWORD dwExpValue	= ( FALSE == g_fX3 )? (int)pMoverProp->dwExpValue: (int)pMoverProp->dwExpValue * 3;
+#	else	// __WORLDSERVER
+	DWORD dwExpValue	= pMoverProp->dwExpValue;
+#	endif	// __WORLDSERVER
+	g_PartyMng.Lock();
+	CParty* pParty = g_PartyMng.GetParty( m_idparty );
+	if( pParty )
+	{
+		// 극단 경험치 분배
+
+		// 1. 주변 멤버 검사
+		int nTotalLevel		= 0;
+		int nMemberSize		= 0;
+		CUser* apMember[MAX_PTMEMBER_SIZE];
+		
+		CUser* pUsertmp;
+		for( int i = 0 ; i < pParty->m_nSizeofMember ; i++ )	
+		{
+			pUsertmp	= g_UserMng.GetUserByPlayerID( pParty->GetPlayerId( i ) );
+			if( IsValidObj( (CObj*)pUsertmp ) && pDead->IsNearPC( pUsertmp ) && pUsertmp->IsOrigin() )
+			{
+				apMember[nMemberSize++]	= pUsertmp;
+				nTotalLevel		+= pUsertmp->GetLevel();
+			}
+		}
+
+		g_DPCoreClient.SendPartyExp( pParty->m_uPartyId );
+
+		g_PartyMng.Unlock();	// 더 이상 파티를 참조할 필요가 없다.
+
+		// 2. 캐릭터가 받는 경험치 = int((캐릭터레벨/극단원레벨총합) * 획득경험치 * (2-(캐릭터레벨/극단원레벨총합))
+		float fRate;
+		DWORD dwMemberExp;
+		for( i = 0; i < nMemberSize; i++ )
+		{
+			fRate	= (float)apMember[i]->GetLevel() / (float)nTotalLevel;
+			dwMemberExp		= (int)( fRate * dwExpValue * ( 2 - fRate ) );
+			if( apMember[i]->AddExperience( dwMemberExp ) )
+			{
+#				ifdef __WORLDSERVER
+				g_UserMng.AddSetLevel( apMember[i], (WORD)apMember[i]->m_nLevel );
+				g_DPCoreClient.SendSetGrowthLearningPoint( apMember[i], apMember[i]->m_nRemainGP, apMember[i]->m_nRemainLP );
+				apMember[i]->AddSetGrowthLearningPoint( apMember[i]->m_nRemainGP, apMember[i]->m_nRemainLP );
+				g_dpDBClient.SendLogLevelUp( apMember[i], 1 );	// 레벨업 로그
+				g_DPCoreClient.SendPartyMemberLevel( apMember[i] );
+#				endif	// __WORLDSERVER
+			}
+			else
+			{
+				// 레벨 5이상 로그_레벨업 테이블에 로그를 남긴다
+				// 20% 단위로 로그를 남김
+				if( apMember[i]->GetLevel() > 5 ) // 레벨 5이상
+				{
+#					ifdef __WORLDSERVER
+					if( ( 20 * ( iLogExp + 1 ) ) <= ( apMember[i]->GetExp1() * 100 / apMember[i]->GetMaxExp1() ) )
+						g_dpDBClient.SendLogLevelUp( apMember[i], 5 );
+#					endif	// __WORLDSERVER
+				}
+			}
+#			ifdef __WORLDSERVER
+			apMember[i]->AddSetExperience( (DWORD)apMember[i]->m_nExp1, (DWORD)apMember[i]->m_nExp2, (WORD)apMember[i]->m_nLevel );
+			g_DPCoreClient.SendSetExperience( (CMover*)apMember[i], (DWORD)apMember[i]->m_nExp1, (DWORD)apMember[i]->m_nExp2, (WORD)apMember[i]->m_nLevel );
+#			endif	// __WORLDSERVER
+		}
+	}
+	else
+	{
+		g_PartyMng.Unlock();
+		// 극단에 참가되어 있지 안습니다.
+		// 레벨에 따라 경험치를 준다. 렙이 나보다 낮을경우 70  %, 나보다 높을경우 130 %
+		int dw_Level = GetLevel() - (int)pMoverProp->dwLevel;
+		if( dw_Level > 0 )
+		{
+			if( 1 == dw_Level || dw_Level == 2 )
+			{
+				dwExpValue *= 0.7;
+			}
+			else if( 3 == dw_Level || dw_Level == 4 )	// 
+			{
+				dwExpValue *= 0.4;
+			}
+			else										// 5이상 차이
+			{
+				dwExpValue *= 0.1;
+			}
+		}
+		
+		if( AddExperience( (int)dwExpValue ) )	// lv up
+#		else	// __J0906
+		if( AddExperience( (int)pMoverProp->dwExpValue ) )	// lv up
+#		endif	// __J0906
+		{
+#		ifdef __WORLDSERVER
+			g_UserMng.AddSetLevel( pAttacker, (WORD)m_nLevel );
+			g_DPCoreClient.SendSetGrowthLearningPoint( pAttacker, m_nRemainGP, m_nRemainLP );
+			( (CUser*)pAttacker )->AddSetGrowthLearningPoint( m_nRemainGP, m_nRemainLP );
+			g_dpDBClient.SendLogLevelUp( pAttacker, 1 );	// 레벨업 로그
+#		endif	// __WORLDSERVER
+		}
+		else
+		{
+			// 레벨 5이상 로그_레벨업 테이블에 로그를 남긴다
+			// 20% 단위로 로그를 남김
+			if( GetLevel() > 5 ) // 레벨 5이상
+			{
+#				ifdef __WORLDSERVER
+				if( ( 20 * ( iLogExp + 1 ) ) <= ( GetExp1() * 100 / GetMaxExp1() ) )
+					g_dpDBClient.SendLogLevelUp( pAttacker, 5 );
+#				endif	// __WORLDSERVER
+			}
+		}
+#		ifdef __WORLDSERVER
+		( (CUser*)pAttacker )->AddSetExperience( (DWORD)m_nExp1, (DWORD)m_nExp2, (WORD)m_nLevel );
+		g_DPCoreClient.SendSetExperience( pAttacker, (DWORD)m_nExp1, (DWORD)m_nExp2, (WORD)m_nLevel );
+#		endif	// __WORLDSERVER
+	} // if not party
+
+#endif	// not client
+	return 1;
+}
+
+// this를 죽게 만드는 명령. - 외부에서 직접 호출해서 죽이기만 할때도 쓸수있다.
+// Attacker는 NULL일 수도 있다.  어느지역가면 걍 뒤지는 경우.
+int CMover::DoDie( CCtrl *pAttackCtrl, DWORD dwMsg )
+{
+#ifdef __WORLDSERVER
+	// 클라이언트는 이쪽으로 오지 않음.
+	BOOL	bBehavior = FALSE;
+	CMover *pAttacker = NULL;
+
+	if( pAttackCtrl && pAttackCtrl->GetType() == OT_MOVER )		// 어태커가 무버라면 무버 포인터 만들어 둔다.
+		pAttacker = (CMover *)pAttackCtrl;
+
+	BOOL fValid		= ( ( IsValidObj( this ) && IsOrigin() ) &&
+								( IsValidObj( (CObj*)pAttacker ) && pAttacker->IsOrigin() ) );
+	
+
+	if( IsPlayer() && m_pActMover->IsFly() )	// 날고있는 중에 죽었으면
+	{
+		SendActMsg( OBJMSG_MODE_GROUND );	// 비행모드를 해제시키고 죽는다.
+		bBehavior = TRUE;
+	}
+	
+	SendActMsg( OBJMSG_DIE, dwMsg, (int)pAttacker );
+	
+	// 플레이어인 내가 죽었으면 내가 타겟으로 잡고있던넘을 풀어줌. 로그아웃 같은거 할때도 마찬가지 처리를 해야함.
+	if( IsPlayer() )
+	{
+		CMover *pLastHit = prj.GetMover( m_idLastHitMover );
+		if( IsValidObj( pLastHit ) )
+		{
+			if( pLastHit->m_idAttacker == GetId() )	// pLastHit의 공격자가 나로 설정되어 있을때만 풀어줌,.
+				pLastHit->m_idAttacker = NULL_ID;	
+			if( pLastHit->m_idTargeter == GetId() )
+				pLastHit->m_idTargeter = NULL_ID;
+		}
+	}
+	
+	if( bBehavior ) {
+		g_UserMng.AddMoverBehavior2
+			( this, GetPos(), m_pActMover->m_vDelta, GetAngle(), GetAngleX(), m_pActMover->m_fAccPower, m_fTurnAngle, 
+			m_pActMover->GetState(), m_pActMover->m_dwStateFlag, m_dwMotion, m_pActMover->m_nMotionEx, m_pModel->m_nLoop, m_dwMotionOption, 
+			g_TickCount.GetTickCount(), TRUE );
+	}
+	if( fValid )
+	{
+		g_DPCoreClient.SendMoverDeath( this, pAttacker, dwMsg );
+		g_UserMng.AddMoverDeath( this, pAttacker, dwMsg );
+		g_dpDBClient.SendLogPlayDeath( this, pAttacker );
+		
+		RemoveAllEnemies();		// pAttacker->SendAIMsg( AIMSG_DSTDIE, GetId() );
+	}	// fValid
+	
+	if( pAttacker )
+		pAttacker->m_pActMover->m_objidHit	= NULL_ID;
+	
+#endif // WORLDSERVER
+	return 1;
+}
+
+
+		// 클라이언트는 이쪽으로 오지 않음.
+		BOOL	bBehavior = FALSE;
+		if( pMover->IsPlayer() && IsFly() )	// 날고있는 중에 죽었으면
+		{
+			SendActMsg( OBJMSG_MODE_GROUND );	// 비행모드를 해제시키고 죽는다.
+			bBehavior = TRUE;
+		}
+#	ifndef __ONLINE
+		SendActMsg( OBJMSG_DIE, dwMsg, (int)pAttacker );
+
+		// 내가 죽었으면 내가 타겟으로 잡고있던넘을 풀어줌. 로그아웃 같은거 할때도 마찬가지 처리를 해야함.
+		if( pMover->IsPlayer() )
+		{
+			CMover *pLastHit = prj.GetMover( pMover->m_idLastHitMover );
+			if( IsValidObj( pLastHit ) )
+			{
+				if( pLastHit->m_idAttacker == pMover->GetId() )	// pLastHit의 공격자가 나로 설정되어 있을때만 풀어줌,.
+					pLastHit->m_idAttacker = NULL_ID;	
+				if( pLastHit->m_idTargeter == pMover->GetId() )
+					pLastHit->m_idTargeter = NULL_ID;
+			}
+		}
+		
+#		ifdef __WORLDSERVER
+		if( bBehavior ) {
+			g_UserMng.AddMoverBehavior2
+							( pMover, pMover->GetPos(), m_vDelta, pMover->GetAngle(), pMover->GetAngleX(), m_fAccPower, m_fTurnAngle, 
+							GetState(), m_dwStateFlag, pMover->m_dwMotion, m_nMotionEx, pMover->m_pModel->m_nLoop, pMover->m_dwMotionOption, 
+							g_TickCount.GetTickCount(), TRUE );
+		}
+		if( fValid )
+		{
+#			ifdef __PK
+			pMover->SubSlaughter( pAttacker );	// pMover가 죽고난 후 슬로터관련 처리.
+#			endif // PK
+			pAttacker->SubExperience( pMover );		// pMover를 죽이고 난후의 pAttacker 경험치 처리.
+			g_DPCoreClient.SendMoverDeath( pMover, pAttacker, dwMsg );
+			g_UserMng.AddMoverDeath( pMover, pAttacker, dwMsg );
+			g_dpDBClient.SendLogPlayDeath( pMover, pAttacker );
+
+			pMover->RemoveAllEnemies();		// pAttacker->SendAIMsg( AIMSG_DSTDIE, pMover->GetId() );
+			DropItem( pAttacker );
+		}	// fValid
+		
+#		endif // __WORLDSERVER
+#	endif	// __ONLINE
+
+		pAttacker->m_pActMover->m_objidHit	= NULL_ID;
+		pAttacker->ClearDestObj();		// 목표를 죽였으면 이동목표도 클리어.
+
+
+
+			if( pAttacker->IsPlayer() )
+			{
+				// 어태커의 슬로터포인트를 증가.
+				int nVal = pAttacker->IncSlaughterPoint( pMover );	// 증감량 리턴
+				if( nVal > 0 )
+					((CUser*)pAttacker)->AddDefinedText( TID_GAME_GETPKPOINT, "%d", nVal );	// xxx 슬로터 포인트를 얻었다
+				else 
+				if( nVal < 0 )
+					((CUser*)pAttacker)->AddDefinedText( TID_GAME_DECPKPOINT, "%d", -nVal );	// xxx 슬로터 포인트가 감소했다.
+				if( pMover->IsPlayer() )	// PK상황
+				{
+					if( pMover->m_bDuel && pMover->GetId() == pAttacker->m_idDuelOther )	// 나랑 듀얼중인 넘이었나?
+					{
+						pAttacker->DuelResult( pMover );	// 듀얼후 결과 처리.
+					} else
+					{
+						pMover->m_idMurderer = pAttacker->m_idPlayer;	// 날 마지막으로 죽인놈의 플레이어아이디를 저장해둠.
+						pAttacker->m_nNumKill ++;		// 킬수 증가
+						g_UserMng.AddSetSlaughterPoint( pAttacker, pAttacker->m_nSlaughter, pAttacker->m_nNumKill );  // 어태커 주위 클라에 슬로터포인트 증가를 알림.
+						((CUser*)pMover)->AddDefinedText( TID_GAME_PKDEAD, "\"%s\"", pAttacker->m_szName );	// ??에게 죽음을 당하였습니다.
+						BOOL bLvDown;
+						if( pMover->m_nSlaughter == 0 )		
+						{
+							bLvDown = pMover->DecExperiencePercent( 0.03f );	// 착한넘은 3%하락
+						}
+						else
+						{
+							bLvDown = pMover->DecExperiencePercent( 0.10f );	// 나쁜넘은 10%하락
+							pMover->DoDropItemRandom( 1.0f, 1, TRUE );		// 100%의 확률로 아이템 1개를 떨어트림.
+						}
+
+						if( bLvDown )	// 레벨다운이 일어났다.
+						{
+							g_UserMng.AddSetLevel( pMover, (WORD)pMover->m_nLevel );	// 렙다운된걸 주위에 알림
+							g_DPCoreClient.SendSetGrowthLearningPoint( pMover, pMover->m_nRemainGP, pMover->m_nRemainLP );
+							((CUser*)pMover)->AddSetGrowthLearningPoint( pMover->m_nRemainGP, pMover->m_nRemainLP );	// 죽은당사자에게 GP,LP변화를 통보
+						}
+						((CUser*)pMover)->AddSetExperience( (DWORD)pMover->m_nExp1, (DWORD)pMover->m_nExp2, (WORD)pMover->m_nLevel );	// 죽은당사자에게 경험치 변경정보를 알림
+						g_DPCoreClient.SendSetExperience( pMover, (DWORD)pMover->m_nExp1, (DWORD)pMover->m_nExp2, (WORD)pMover->m_nLevel );
+					}
+				}
+			}
+
+
+DWORD CActionMover::_ProcessMsgDmg( DWORD dwMsg, CMover* pAttacker, DWORD dwAtkFlags, int nParam )
+{
+	int		nMagicPower = (nParam & 0x0000FFFF);	// 완드충전량
+	int		nSkill		= ((nParam >> 16) & 0xFFFF);	// 스킬이었다면 스킬ID
+#ifndef __BEAST
+	CMover* pMover	= GetMover();
+	if( !pAttacker )
+		return( 0 );
+	if( IsState( OBJSTA_DIE_ALL ) )
+		return( 0 );
+	if( dwAtkFlags & AF_MISS ) {
+#ifndef __ONLINE
+#ifdef __WORLDSERVER
+		g_UserMng.AddDamage( pMover, GETID( pAttacker ), 0, dwAtkFlags );
+#else	// __WORLDSERVER
+		g_DamageNumMng.AddNumber( pMover->GetPos(), 0, ( pMover->IsActiveMover()? 0 : 1 ) );
+#endif	// __WORLDSERVER
+#endif	// __ONLINE
+		return( 0 );
+	}
+
+	if( IsSit() )		// 앉아있다가 맞으면 앉기해제 한다.
+		ResetState( OBJSTA_MOVE_ALL );
+	
+	int nHit	= 0;
+#ifndef __ONLINE
+  #ifdef __WORLDSERVER
+	BOOL fValid		= ( ( IsValidObj( (CObj*)pMover ) && pMover->IsOrigin() ) &&
+								( IsValidObj( (CObj*)pAttacker ) && pAttacker->IsOrigin() ) );
+  #else	// __WORLDSERVER
+	BOOL fValid		= TRUE;
+  #endif	// __WORLDSERVER
+	if( fValid )
+	{
+		if( !( pAttacker->m_dwMode & ONEKILL_MODE) )	// 원킬 모드인지 검사
+		{
+			int nHitPower = 0;
+			if( (dwAtkFlags & AF_MELEESKILL) || (dwAtkFlags & AF_MAGICSKILL) ) {			// 스킬 공격( 밀리, 매직 )
+//				int nSkill = pAttacker->GetActParam(0);
+				nHitPower = pAttacker->GetMeleeSkillPower( nSkill );
+			}
+			else if( dwAtkFlags & AF_MAGIC ) {			// 일반 완드 공격
+				nHitPower = pAttacker->GetMagicHitPower();	
+				switch( nMagicPower )  // 충전레벨
+				{
+				// case 0:	100%
+				case 1:	nHitPower = (int)(nHitPower * 1.5f);	break;
+				case 2: nHitPower = (int)(nHitPower * 2.2f);	break;
+				case 3: nHitPower = (int)(nHitPower * 3.0f);	break;
+				}
+			}
+			else										// 일반 공격
+			{
+				nHitPower	= pAttacker->GetHitPower( xRandom( 4 ) );
+			}
+			// 디펜스 적용
+			nHit	= nHitPower - ( pMover->GetDefense() / 3 );
+			if( nHit < 0 )	nHit	= 0;
+			nHit	+= ( nHitPower / 10 + 1 );
+		}
+		else
+		{
+			nHit = pMover->GetHitPoint();
+		}
+	}
+#endif	// __ONLINE
+	
+	SendActMsg( OBJMSG_STAND );
+
+	int nHitPoint	= pMover->GetHitPoint() - nHit;
+	if( nHitPoint < 0 )		nHitPoint	= 0;
+
+	// 날때린놈에 대한 정보를 기록함.
+	if( pMover->IsNPC() && pAttacker->IsPlayer() )		// 맞은놈은 NPC , 어태커가 플레이어 일때만 적용됨
+	{
+		pMover->m_idAttacker = pAttacker->GetId();	// 날 때린넘이 어태커란걸 기록함
+		pMover->m_idTargeter = pAttacker->GetId();	// 날 때린넘이 날 타겟으로 잡았다는걸 기록함.
+		pAttacker->m_idLastHitMover = pMover->GetId();		// 어태커가 마지막으로 때렸던넘이 나란걸 기록함.
+	}
+
+
+#ifdef __CLIENT
+#ifndef __ONLINE
+	g_DamageNumMng.AddNumber( pMover->GetPos(), nHit, ( pMover->IsActiveMover()? 0 : 1 ) );
+#endif	// __ONLINE
+	// 03/09/25
+	CreateSfx(g_Neuz.m_pd3dDevice,XI_GEN_NORMAL_DMG01,pMover->GetPos()+D3DXVECTOR3(.0f,1.0f,.0f));
+#endif	// __CLIENT
+	
+	m_nDmgCnt	= 10;
+
+	if( nHitPoint > 0 )
+	{
+		ResetState( OBJSTA_JUMP_ALL/* | OBJSTA_ATK_ALL */ );
+		SetState( OBJSTA_DMG_ALL, OBJSTA_DMG );
+
+		if( IsActJump() == FALSE && IsActAttack() == FALSE ) {
+			pMover->m_dwMotion	= -1;
+			pMover->SetMotion( MTI_DMG1 + random( 2 ), ANILOOP_1PLAY );
+		}
+
+#ifndef __ONLINE
+#ifdef __WORLDSERVER
+		if( fValid ) {
+			g_UserMng.AddDamage( pMover, GETID( pAttacker ), nHit, dwAtkFlags );
+			g_DPCoreClient.SendDamage( pMover, GETID( pAttacker ), nHit, dwAtkFlags );
+#ifdef __PK			
+			if( pMover->IsPlayer() && pAttacker->IsPlayer() )	// 양쪽다 플레이어 일때.
+			{
+				// 맞은 나도 착한넘이고 때린넘도 착한넘이었을때.
+				if( pMover->m_nSlaughter == 0 && pAttacker->m_nSlaughter == 0 && pAttacker->m_tmCrime == 0 )	
+				{
+					pAttacker->m_tmCrime = timeGetTime();	//어태커를 범죄자로 설정;
+					g_UserMng.AddHdr( pAttacker, SNAPSHOTTYPE_CRIME );
+				}
+			}
+#endif
+		}
+#endif	// __WORLDSERVER
+		pAttacker->SendAIMsg( AIMSG_DSTDAMAGE, pMover->GetId() );
+#endif	// __ONLINE
+	}
+	else	// die
+	{
+		// 클라이언트는 이쪽으로 오지 않음.
+		BOOL	bBehavior = FALSE;
+		if( IsFly() )	// 날고있는 중에 죽었으면
+		{
+			SendActMsg( OBJMSG_MODE_GROUND );	// 비행모드를 해제시키고 죽는다.
+			bBehavior = TRUE;
+		}
+#ifndef __ONLINE
+		SendActMsg( OBJMSG_DIE, dwMsg, (int)pAttacker );
+
+		// 내가 죽었으면 내가 타겟으로 잡고있던넘을 풀어줌. 로그아웃 같은거 할때도 마찬가지 처리를 해야함.
+		CMover *pLastHit = prj.GetMover( pMover->m_idLastHitMover );
+		if( IsValidObj( pLastHit ) )
+		{
+			if( pLastHit->m_idAttacker == pMover->GetId() )	// pLastHit의 공격자가 나로 설정되어 있을때만 풀어줌,.
+				pLastHit->m_idAttacker = NULL_ID;	
+			if( pLastHit->m_idTargeter == pMover->GetId() )
+				pLastHit->m_idTargeter = NULL_ID;
+		}
+		
+  #ifdef __WORLDSERVER
+		if( bBehavior ) {
+			g_UserMng.AddMoverBehavior2
+							( pMover, pMover->GetPos(), m_vDelta, pMover->GetAngle(), pMover->GetAngleX(), m_fAccPower, m_fTurnAngle, 
+							GetState(), m_dwStateFlag, pMover->m_dwMotion, m_nMotionEx, pMover->m_pModel->m_nLoop, pMover->m_dwMotionOption, 
+							g_TickCount.GetTickCount(), TRUE );
+		}
+		if( fValid )
+		{
+	#ifdef __PK
+			if( pAttacker->IsPlayer() )
+			{
+				// 어태커의 슬로터포인트를 증가.
+				int nVal = pAttacker->IncSlaughterPoint( pMover );	// 증감량 리턴
+				pAttacker->m_nNumKill ++;		// 킬수 증가
+				g_UserMng.AddSetSlaughterPoint( pAttacker, pAttacker->m_nSlaughter, pAttacker->m_nNumKill );  // 어태커 주위 클라에 슬로터포인트 증가를 알림.
+				if( nVal > 0 )
+					((CUser*)pAttacker)->AddDefinedText( TID_GAME_GETPKPOINT, "%d", nVal );	// xxx 슬로터 포인트를 얻었다
+				else
+					((CUser*)pAttacker)->AddDefinedText( TID_GAME_DECPKPOINT, "%d", nVal );	// xxx 슬로터 포인트가 감소했다.
+				if( pMover->IsPlayer() )
+				{
+					((CUser*)pMover)->AddDefinedText( TID_GAME_PKDEAD, "\"%s\"", pAttacker->m_szName );	// ??에게 죽음을 당하였습니다.
+					BOOL bLvDown;
+					if( pMover->m_nSlaughter == 0 )		
+						bLvDown = pMover->DecExperiencePercent( 0.03f );	// 착한넘은 3%하락
+					else
+						bLvDown = pMover->DecExperiencePercent( 0.10f );	// 나쁜넘은 10%하락
+
+					if( bLvDown )
+					{
+						g_UserMng.AddSetLevel( pMover, (WORD)pMover->m_nLevel );	// 렙다운된걸 주위에 알림
+						g_DPCoreClient.SendSetGrowthLearningPoint( pMover, pMover->m_nRemainGP, pMover->m_nRemainLP );
+						((CUser*)pMover)->AddSetGrowthLearningPoint( pMover->m_nRemainGP, pMover->m_nRemainLP );	// 죽은당사자에게 GP,LP변화를 통보
+					}
+					((CUser*)pMover)->AddSetExperience( (DWORD)pMover->m_nExp1, (DWORD)pMover->m_nExp2, (WORD)pMover->m_nLevel );	// 죽은당사자에게 경험치 변경정보를 알림
+					g_DPCoreClient.SendSetExperience( pMover, (DWORD)pMover->m_nExp1, (DWORD)pMover->m_nExp2, (WORD)pMover->m_nLevel );
+				}
+			}
+	#endif // PK
+			g_DPCoreClient.SendMoverDeath( pMover, pAttacker, dwMsg );
+			g_UserMng.AddMoverDeath( pMover, pAttacker, dwMsg );
+			g_dpDBClient.SendLogPlayDeath( pMover, pAttacker );
+		}
+  #endif	// __WORLDSERVER
+
+		if( fValid )
+		{
+			if( pAttacker->IsPlayer() )
+			{
+				int iLogExp = pAttacker->GetExp1() * 100 / pAttacker->GetMaxExp1();
+				iLogExp /= 20;
+				MoverProp* pMoverProp	= pMover->GetProp();
+				chASSERT( pMoverProp );
+#ifdef __S0930
+#ifdef __J0906
+  #ifdef __WORLDSERVER
+				DWORD dwExpValue	= ( FALSE == g_fX3 )? (int)pMoverProp->dwExpValue: (int)pMoverProp->dwExpValue * 3;
+  #else	// __WORLDSERVER
+				DWORD dwExpValue	= pMoverProp->dwExpValue;
+  #endif	// __WORLDSERVER
+				
+				g_PartyMng.Lock();
+				CParty* pParty = g_PartyMng.GetParty( pAttacker->m_idparty );
+				if( pParty )
+				{
+					pParty->Lock();
+					int MemberLevel = 0;
+					CUser* pUser[MAX_PTMEMBER_SIZE];
+					int nNearSize	= 0;
+					// 극단원레벨 총합을 구함
+					for( int i = 0 ; i < pParty->m_nSizeofMember ; i++ )	
+					{
+						pUser[nNearSize] = g_UserMng.GetUserByPlayerID( pParty->m_aMember[i].m_uPlayerId );
+						// 여기서 pUser[i] = NULL && 자기 범위에 있는지 검사
+						if( pUser[nNearSize] && pMover->IsNearPC( pUser[nNearSize] ) )
+						{
+							MemberLevel += pUser[nNearSize]->GetLevel();
+						}
+						nNearSize++;
+					}
+					
+					// 실제로 경험치를 줌
+					// 
+					for( i = 0 ; i < nNearSize ; i++ )
+					{
+						float fLevel;
+						fLevel = pUser[i]->GetLevel() / (float)MemberLevel;
+						int dwMemberExp =  int(fLevel * dwExpValue * (2-fLevel));
+						if( pUser[i]->AddExperience( dwMemberExp ) )
+						{
+  #ifdef __WORLDSERVER
+							g_UserMng.AddSetLevel( pUser[i], (WORD)pUser[i]->m_nLevel );
+							g_DPCoreClient.SendSetGrowthLearningPoint( pUser[i], pUser[i]->m_nRemainGP, pUser[i]->m_nRemainLP );
+							( (CUser*)pAttacker )->AddSetGrowthLearningPoint( pUser[i]->m_nRemainGP, pUser[i]->m_nRemainLP );
+							g_dpDBClient.SendLogLevelUp( pUser[i], 1 );	// 레벨업 로그
+  #ifdef __S0930
+							g_DPCoreClient.SendPartyMemberLevel( (CUser*)pUser[i] );
+  #endif // __S0930	
+  #endif	// __WORLDSERVER
+						}
+						else
+						{
+							// 레벨 5이상 로그_레벨업 테이블에 로그를 남긴다
+							// 20% 단위로 로그를 남김
+							if( pUser[i]->GetLevel() > 5 ) // 레벨 5이상
+							{
+  #ifdef __WORLDSERVER
+								if( ( 20 * ( iLogExp + 1 ) ) <= ( pUser[i]->GetExp1() * 100 / pUser[i]->GetMaxExp1() ) )
+									g_dpDBClient.SendLogLevelUp( pUser[i], 5 );
+  #endif	// __WORLDSERVER
+							}
+						}
+  #ifdef __WORLDSERVER
+						pUser[i]->AddSetExperience( (DWORD)pUser[i]->m_nExp1, (DWORD)pUser[i]->m_nExp2, (WORD)pUser[i]->m_nLevel );
+						g_DPCoreClient.SendSetExperience( (CMover*)pUser[i], (DWORD)pUser[i]->m_nExp1, (DWORD)pUser[i]->m_nExp2, (WORD)pUser[i]->m_nLevel );
+  #endif	// __WORLDSERVER
+					}
+					pParty->Unlock();
+					// 극단에 참가되어 있습니다.
+					// 1. 어라운드 검사를 하여 몇명 있는지 검사
+					// 2. 한명씩 경험치를 "캐릭터가 받는 경험치 = int((캐릭터레벨/극단원레벨총합) * 획득경험치 * (2-(캐릭터레벨/극단원레벨총합));"를 얻음
+					// 3. 각각 처리					
+				}
+				else
+				{
+					// 극단에 참가되어 있지 안습니다.
+					// 레벨에 따라 경험치를 준다. 렙이 나보다 낮을경우 70  %, 나보다 높을경우 130 %
+					int dw_Level = pAttacker->GetLevel() - (int)pMoverProp->dwLevel;
+					if( dw_Level > 0 )
+					{
+						if( 1 == dw_Level || dw_Level == 2 )
+						{
+							dwExpValue *= 0.7;
+						}
+						else if( 3 == dw_Level || dw_Level == 4 )	// 
+						{
+							dwExpValue *= 0.4;
+						}
+						else										// 5이상 차이
+						{
+							dwExpValue *= 0.1;
+						}
+					}
+					
+					if( pAttacker->AddExperience( dwExpValue ) )	// lv up
+#else	// __J0906
+					if( pAttacker->AddExperience( (int)pMoverProp->dwExpValue ) )	// lv up
+#endif	// __J0906
+					{
+#ifdef __WORLDSERVER
+						g_UserMng.AddSetLevel( pAttacker, (WORD)pAttacker->m_nLevel );
+						g_DPCoreClient.SendSetGrowthLearningPoint( pAttacker, pAttacker->m_nRemainGP, pAttacker->m_nRemainLP );
+						( (CUser*)pAttacker )->AddSetGrowthLearningPoint( pAttacker->m_nRemainGP, pAttacker->m_nRemainLP );
+						g_dpDBClient.SendLogLevelUp( pAttacker, 1 );	// 레벨업 로그
+  #ifdef __S0930
+						g_DPCoreClient.SendPartyMemberLevel( (CUser*)pAttacker );
+  #endif // __S0930	
+#endif	// __WORLDSERVER
+					}
+					else
+					{
+	#ifdef __WORLDSERVER
+						// 레벨 5이상 로그_레벨업 테이블에 로그를 남긴다
+						// 20% 단위로 로그를 남김
+						if( pAttacker->GetLevel() > 5 ) // 레벨 5이상
+						{
+							if( ( 20 * ( iLogExp + 1 ) ) <= ( pAttacker->GetExp1() * 100 / pAttacker->GetMaxExp1() ) )
+								g_dpDBClient.SendLogLevelUp( pAttacker, 5 );
+						}
+	#endif	// __WORLDSERVER
+					}
+	#ifdef __WORLDSERVER
+					( (CUser*)pAttacker )->AddSetExperience( (DWORD)pAttacker->m_nExp1, (DWORD)pAttacker->m_nExp2, (WORD)pAttacker->m_nLevel );
+					g_DPCoreClient.SendSetExperience( pAttacker, (DWORD)pAttacker->m_nExp1, (DWORD)pAttacker->m_nExp2, (WORD)pAttacker->m_nLevel );
+	#endif	// __WORLDSERVER
+				}
+				g_PartyMng.Unlock();
+#else // __S0930
+#ifdef __J0906
+  #ifdef __WORLDSERVER
+				DWORD dwExpValue	= ( FALSE == g_fX3 )? (int)pMoverProp->dwExpValue: (int)pMoverProp->dwExpValue * 3;
+  #else	// __WORLDSERVER
+				DWORD dwExpValue	= pMoverProp->dwExpValue;
+  #endif	// __WORLDSERVER
+
+
+
+				// 레벨에 따라 경험치를 준다. 렙이 나보다 낮을경우 70  %, 나보다 높을경우 130 %
+				int dw_Level = pAttacker->GetLevel() - (int)pMoverProp->dwLevel;
+				if( dw_Level > 0 )
+				{
+					if( 1 == dw_Level || dw_Level == 2 )
+					{
+						dwExpValue *= 0.7;
+					}
+					else if( 3 == dw_Level || dw_Level == 4 )	// 
+					{
+						dwExpValue *= 0.4;
+					}
+					else										// 5이상 차이
+					{
+						dwExpValue *= 0.1;
+					}
+				}
+				
+				if( pAttacker->AddExperience( dwExpValue ) )	// lv up
+#else	// __J0906
+				if( pAttacker->AddExperience( (int)pMoverProp->dwExpValue ) )	// lv up
+#endif	// __J0906
+				{
+  #ifdef __WORLDSERVER
+					g_UserMng.AddSetLevel( pAttacker, (WORD)pAttacker->m_nLevel );
+					g_DPCoreClient.SendSetGrowthLearningPoint( pAttacker, pAttacker->m_nRemainGP, pAttacker->m_nRemainLP );
+					( (CUser*)pAttacker )->AddSetGrowthLearningPoint( pAttacker->m_nRemainGP, pAttacker->m_nRemainLP );
+					g_dpDBClient.SendLogLevelUp( pAttacker, 1 );	// 레벨업 로그
+    #ifdef __S0930
+					g_DPCoreClient.SendPartyMemberLevel( (CUser*)pAttacker );
+    #endif // __S0930	
+  #endif	// __WORLDSERVER
+				}
+				else
+				{
+					// 레벨 5이상 로그_레벨업 테이블에 로그를 남긴다
+					// 20% 단위로 로그를 남김
+					if( pAttacker->GetLevel() > 5 ) // 레벨 5이상
+					{
+  #ifdef __WORLDSERVER
+						if( ( 20 * ( iLogExp + 1 ) ) <= ( pAttacker->GetExp1() * 100 / pAttacker->GetMaxExp1() ) )
+							g_dpDBClient.SendLogLevelUp( pAttacker, 5 );
+  #endif	// __WORLDSERVER
+					}
+				}
+  #ifdef __WORLDSERVER
+				( (CUser*)pAttacker )->AddSetExperience( (DWORD)pAttacker->m_nExp1, (DWORD)pAttacker->m_nExp2, (WORD)pAttacker->m_nLevel );
+				g_DPCoreClient.SendSetExperience( pAttacker, (DWORD)pAttacker->m_nExp1, (DWORD)pAttacker->m_nExp2, (WORD)pAttacker->m_nLevel );
+  #endif	// __WORLDSERVER
+#endif // __S0930
+			}
+			pMover->RemoveAllEnemies();		// pAttacker->SendAIMsg( AIMSG_DSTDIE, pMover->GetId() );
+			DropItem( pAttacker );
+		}	// fValid
+#endif	// __ONLINE
+
+		pAttacker->m_pActMover->m_objidHit	= NULL_ID;
+		pAttacker->ClearDestObj();		// 목표를 죽였으면 이동목표도 클리어.
+	}
+  #ifndef __ONLINE
+	pMover->m_nHitPoint		= nHitPoint;
+  #endif	// __ONLINE
+	return( nHit );
+#else	// __BEAST
+	return( 0 );
+#endif	// __BEAST
+}
+
+
+void CDPSrvr::OnDropItem( CAr & ar, DPID dpidCache, DPID dpidUser, LPBYTE lpBuf, u_long uBufSize )
+{
+	CWorld* pWorld;
+	CUser* pUser	= g_UserMng.GetUser( dpidCache, dpidUser );
+	
+	if( IsValidObj( (CObj*)pUser ) && ( pWorld = pUser->GetWorld() ) )
+	{
+		if( pUser->m_pActMover->m_bGround == 0 || pUser->m_pActMover->IsFly() )
+		{
+			pUser->AddDefinedText( TID_GAME_FLIGHTDROP, "" );
+			return;
+		}
+		if( NULL != pUser->m_pTrader )
+		{
+			pUser->AddDefinedText( TID_GAME_TRADELIMITITEM, "" );
+			return;
+		}
+
+
+		BYTE nItemType, nId;
+		D3DXVECTOR3 vPos;
+
+		ar >> nItemType >> nId >> vPos;
+
+		pUser->DropItem( (DWORD)nItemType, (DWORD)nId, vPos );
+
+		CItemBase* pItemBase	= pUser->GetItemId( nItemType, nId );
+		
+		/*________________________________________*/
+
+		if( NULL == pItemBase )
+			return;
+
+		if( 0 != pItemBase->m_nTrade ) {
+			//
+			return;
+		}
+
+		BYTE nNum	= 1;
+		if( ITYPE_ITEM == nItemType ) {
+			nNum	= ( (CItemElem*)pItemBase )->m_nItemNum;
+			if( TRUE == pUser->m_Inventory.IsEquip( pItemBase->m_dwObjId ) ) {
+				// 
+				return;
+			}
+		}
+
+		if( pUser->IsPosAttrDif( pWorld, vPos ) ) {
+			//
+			return;
+		}
+
+		/*________________________________________*/
+
+		CItem* pItem	= new CItem;
+		switch( nItemType )
+		{
+			case ITYPE_ITEM:
+				pItem->m_pItemBase	= new CItemElem;
+				*( (CItemElem*)pItem->m_pItemBase )		= *( (CItemElem*)pItemBase );
+				break;
+			case ITYPE_CARD:
+				pItem->m_pItemBase	= new CCardElem;
+				*( (CCardElem*)pItem->m_pItemBase )		= *( (CCardElem*)pItemBase );
+				break;
+			default:
+				//
+				return;
+		}
+
+		if( pItemBase->GetProp()->dwItemKind3 == IK3_QUEST )
+			pItem->m_idHolder	= pUser->m_idPlayer;
+	
+		OnLogItem( "D", pUser->m_szName, "땅", pWorld->GetID(), pUser->GetGold(), pUser->GetGold(), (DWORD)0, (DWORD)0, (char*)pItemBase->GetItemText(), (short)nNum );
+
+		pItem->SetIndex( D3DDEVICE, pItemBase->m_dwItemId );
+		if( pItem->m_pModel )
+		{
+			vPos.y += ( pItem->m_pModel->m_vMax.y - pItem->m_pModel->m_vMin.y ) / 2.0f;
+			pItem->SetPos( vPos );
+			pItem->SetAngle( xRandom( 360 ) );
+			pWorld->AddObj( (CObj*)pItem, TRUE );
+			pUser->RemoveItem( nItemType, nId, nNum, TRUE );
+
+			chVERIFY( pUser );
+		}
+		else
+		{
+			SAFE_DELETE( pItem );
+		}
+	}
+}
+
+
+
+{
+	if( IsFullMax() && m_wndTitleBar.GetWindowRect( TRUE ).PtInRect( point ) )
+		return;
+	if( g_pPlayer == NULL || g_pPlayer->IsDie() ) 
+		return;
+#ifdef __VRCAMERA
+	if( CObj::m_pObjHighlight == NULL )
+	{
+		SetCapture();
+		m_ptMouseOld = point;
+		m_bCameraMode = TRUE;
+	}
+#endif
+	m_ptMouseSpot = point;
+	//SetCapture();
+	m_timerRButtonDown.Set( 0 );;
+	// 좌측 버튼이 눌러진지 1000분의 200초 내라면 동시에 눌러진 것으로 판단, 동시 눌러진 것은 점프, 
+	// 따라서 스킬 사용 또는 포커싱을 스킵함.
+	if( m_timerLButtonDown.GetLeftTime() < 200 )
+		return;
+	CRect rect = GetClientRect();
+	CWorld* pWorld = g_WorldMng();
+	CObj* pTargetObj = CObj::m_pObjHighlight;		// 커서를 대고 있던 오브젝트가 하이라이트 오브젝이다.
+//	if( pTargetObj  == NULL ) return;
+	if( pTargetObj )
+	{
+		pWorld->SetObjFocus( pTargetObj );
+
+		CMover* pMover = (CMover*)pTargetObj;
+		if( pMover->GetType() == OT_MOVER )
+		{
+			MoverProp* pMoverProp = pMover->GetProp();
+			if( pMoverProp->dwBelligerence == BELLI_PEACEFUL && 
+				( ((CMover*)pMover)->IsPlayer() == FALSE || ( ((CMover*)pMover)->IsPlayer() == TRUE && GetAsyncKeyState(VK_CONTROL) & 0x8000 ) ) ) 
+			{
+				g_pPlayer->ClearDest();
+				m_wndMenuMover.DeleteAllMenu();
+/*
+				if( ((CMover*)pMover)->IsPlayer() == TRUE )
+				{
+					m_wndMenuMover.AppendMenu( 0,  MMI_TRADE         , g_aszMoverMenu[ MMI_TRADE         ] );
+					m_wndMenuMover.AppendMenu( 0,  MMI_MESSAGE       , g_aszMoverMenu[ MMI_MESSAGE       ] );
+					m_wndMenuMover.AppendMenu( 0,  MMI_ADD_MESSANGER , g_aszMoverMenu[ MMI_ADD_MESSANGER ] );
+					m_wndMenuMover.AppendMenu( 0,  MMI_JOIN_PARTY    , g_aszMoverMenu[ MMI_JOIN_PARTY    ] );
+				}
+				else
+				{
+					LPCHARACTER lpCharacter = pMover->GetCharacter();
+					if( lpCharacter )
+					{
+						for( int i = 0; i < MAX_MOVER_MENU; i++ )
+						{
+							if( lpCharacter->m_abMoverMenu[ i ] )
+								m_wndMenuMover.AppendMenu( 0, i, g_aszMoverMenu[ i ] );
+						}
+					}
+				}
+*/
+				m_wndMenuMover.Move( CPoint( m_rectBound.right, m_rectBound.top ) );
+				m_wndMenuMover.SetVisible( TRUE );//!m_wndMenuMover.IsVisible() );
+				m_wndMenuMover.SetFocus();
+			}
+			else
+				UseSkillToFocusObj( (CCtrl*)pTargetObj );
+		}
+	} else
+		UseSkillToFocusObj( NULL );		// 오브젝트를 선택하지 않았을때.
+}
+
+
+BOOL CWndWorld::UseFocusObj( CCtrl* pFocusObj )
+{
+	if( g_pPlayer->m_pActMover->IsFly() )	return FALSE;	// 날고있는중이었으면 취소
+	if( IsInvalidObj(pFocusObj) )			return FALSE;	// 타겟이 거시기한 상태면 취소
+	if( pFocusObj->GetType() == OT_OBJ )	return FALSE;	// 타겟이 OT_OBJ면 취소
+
+	CWorld* pWorld = g_WorldMng();
+	CRect rect = GetClientRect();
+	if( pFocusObj->GetType() == OT_ITEM )
+	{
+		if( m_bLButtonDown && !m_bLButtonDowned )
+			g_pPlayer->CMD_SetUseItem( (CCtrl*)pFocusObj );	// 목표가 주어지면 자동 이동 
+		m_bLButtonDowned = m_bLButtonDown;
+	}
+	else
+	if( pFocusObj->GetType() == OT_MOVER )
+	{
+		// 매뉴를 띄우기 
+		CLandscape* pLand;
+		CWndButton* pWndButton;
+		//SetBoundRect( pFocusObj );
+		CMover* pMover = (CMover*)pFocusObj;
+		MoverProp* pMoverProp = pMover->GetProp();
+//			if( pMoverProp->dwBelligerence == BELLI_PEACEFUL && 
+//				( ((CMover*)pFocusObj)->IsPlayer() == FALSE || ( ((CMover*)pFocusObj)->IsPlayer() == TRUE && GetAsyncKeyState(VK_CONTROL) & 0x8000 ) ) ) 
+		// pFocusObj가 엉뚱한것을 지정하고 있거나 IsPlayer()가 꼬이는일이 있는것 같다. 클라에서. -xuzhu-
+//			if( pMoverProp->bKillable != 1 && // 못죽이는놈이고....
+//				( ((CMover*)pFocusObj)->IsPlayer() == FALSE || ( ((CMover*)pFocusObj)->IsPlayer() == TRUE && GetAsyncKeyState(VK_CONTROL) & 0x8000 ) ) ) 
+//			{
+		/*
+			g_pPlayer->ClearDest();
+			m_wndMenuMover.DeleteAllMenu();
+
+			if( ((CMover*)pFocusObj)->IsPlayer() == TRUE )
+			{
+				m_wndMenuMover.AppendMenu( 0,  MMI_TRADE         , g_aszMoverMenu[ MMI_TRADE         ] );
+				m_wndMenuMover.AppendMenu( 0,  MMI_MESSAGE       , g_aszMoverMenu[ MMI_MESSAGE       ] );
+				m_wndMenuMover.AppendMenu( 0,  MMI_ADD_MESSANGER , g_aszMoverMenu[ MMI_ADD_MESSANGER ] );
+				m_wndMenuMover.AppendMenu( 0,  MMI_JOIN_PARTY    , g_aszMoverMenu[ MMI_JOIN_PARTY    ] );
+			}
+			else
+			{
+				LPCHARACTER lpCharacter = pMover->GetCharacter();
+				if( lpCharacter )
+				{
+					for( int i = 0; i < MAX_MOVER_MENU; i++ )
+					{
+						if( lpCharacter->m_abMoverMenu[ i ] )
+							m_wndMenuMover.AppendMenu( 0, i, g_aszMoverMenu[ i ] );
+					}
+				}
+			}
+			m_wndMenuMover.Move( CPoint( m_rectBound.right, m_rectBound.top ) );
+			m_wndMenuMover.SetVisible( TRUE );//!m_wndMenuMover.IsVisible() );
+			m_wndMenuMover.SetFocus();
+			*/
+//			}
+//			else
+		BOOL bAble = FALSE;		// 공격 가능 여부
+		if( pMover->IsPlayer() )	// 플레이어냐 아니냐로 크게 나눈다.
+		{
+			if( GetAsyncKeyState(VK_LMENU) & 0x8000 )	// alt키를 눌렀는가를 검사
+				bAble = TRUE;	// 공격키 누르고 클릭하면 PK가능.
+			else
+				bAble = FALSE;	// 아니면 불가.
+		} else
+		{
+			if( pMoverProp->bKillable == 1 )	// NPC상대로는 킬가능한놈만 공격가능. 마을NPC는 이게 0이다.
+				bAble = TRUE;
+			else
+				bAble = FALSE;
+		}
+
+		if( bAble )
+		{
+//				g_pPlayer->m_nUsedSkillIdx = -1;
+			// 여기는 무조건 공격인데.. 단거리 공격은 목표만 세팅해주고 장거리 공격은 실제 공격 코드 삽입 
+			if( !g_pPlayer->m_pActMover->IsActJump() && !g_pPlayer->m_pActMover->IsActAttack() && !g_pPlayer->m_pActMover->IsDie() )
+			{
+				// 사용하는 무기가 마법 무기라면? 목표점으로 이동시키지 않는다.
+				if( g_pPlayer->m_pActMover->IsFly() )
+				{
+					/*
+					g_pPlayer->SetDestObj( (CCtrl*)pFocusObj ); // 목표가 주어지면 자동 이동 
+					// 가속 처리 
+					if( !(g_pPlayer->m_pActMover->m_dwStateFlag & OBJSTAF_ACC ) )	// 가속상태아니면 
+					{
+						if( g_pPlayer->SendActMsg( OBJMSG_ACC_START ) == 1 )
+						{
+#ifdef __ONLINE
+							g_DPlay.SendActMsg( g_pPlayer, OBJMSG_ACC_START );
+#endif	// __ONLINE
+						}
+					}
+					if( IsValidObj( pFocusObj ) && pFocusObj->GetType() != OT_OBJ )
+					{
+						g_pPlayer->SetDestObj( (CCtrl*)pFocusObj ); // 목표가 주어지면 자동 이동 
+					}
+					else
+						g_pPlayer->ClearDest();
+					*/
+				}
+				else
+				{
+					CItemElem* pItemElem = g_pPlayer->GetWeaponItem();
+					if( pItemElem && pItemElem->GetProp()->dwItemKind3 == IK3_WAND )
+					{
+					}
+					else
+					{
+						CCtrl *pTarget = (CCtrl*)pFocusObj;
+						chASSERT( pTarget );	
+//							SetDestObj( pTarget->GetId() );
+//							g_pPlayer->SetDestObj( pTarget ); // 목표가 주어지면 자동 이동 
+						if( g_pPlayer->m_pActMover->IsSit() )	// 앉아있는 상태였으면 해제
+						{
+							if( g_pPlayer->m_pActMover->SendActMsg( OBJMSG_STANDUP ) == 1 )	// 일어나라
+								g_DPlay.SendPlayerBehavior();		// 서버측에 동기화 요구.
+						} else
+							g_pPlayer->CMD_SetMeleeAttack( pTarget->GetId() );		// 근접패턴공격 들어감.
+					}
+				}
+			}
+		}
+	}
+	else
+		return FALSE;
+
+	return TRUE;
+}
+
+
+
+#include "ModelObject.h"
+
+CModelObject *pModel = new CModelObject;
+pModel->LoadElement( "arrow.o3d" );
+
+CModelObject *pModel2 = new CModelObject;
+pModel2->LoadElement( "arrow.o3d" );
+
+
+void FrameMove()
+{
+	pModel->FrameMove();
+	if( pModel->IsEndFrame() )
+	{
+
+	}
+
+	if( pModel->m_fFrameCurrent == 11.0f )
+	{
+	}
+
+	
+}
+
+void Render()
+{
+	pModel->Render( pd3dDevice, &world )
+}
+
+
+
+
+
+	/////////////////////////////////////////////
+	// 히트포인트, 마나포인트, 피로포인트 회복 하기 
+	if( m_timerNewbieRecovery.IsOver() && IsLive() && IsPlayer() ) {
+		m_timerNewbieRecovery.Reset();
+		if( GetLevel() > 1)	{
+			if( m_timerRecovery.IsTimeOut() && IsLive() && IsPlayer() )	{
+				m_timerRecovery.Reset();
+				IncHitPoint( GetHPRecovery() );
+				IncManaPoint( GetMPRecovery() );
+				IncFatiguePoint( GetFPRecovery() );
+			}
+		}
+		else {
+			IncHitPoint( GetHPRecovery() );
+		}
+	}
+
+
+
+#include "stdafx.h"
+#include "ActionMover.h"
+
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#undef THIS_FILE
+static char THIS_FILE[] = __FILE__;
+#endif
+
+//
+//
+//
+BOOL	CActionMover::ProcessCollisionFly( D3DXVECTOR3 *vPos )
+{
+	CMover* pMover = m_pMover;
+	
+	D3DXVECTOR3 vStart = *vPos;
+	D3DXVECTOR3 vDelta = m_vDeltaAccu;
+
+	vStart.y += 0.5f;	// vPos는 지면의 좌표.  빗자루 높이로 충돌해야하므로 대략 0.5더함
+	// vStart-m_vDelta로 이어지는 진행방향에 충돌검사를 하고 충돌했다면 반사된 벡터를 vDelta에 넣어준다.
+
+	BOOL fResult = FALSE;
+	if( CObj::m_bCollision ) {
+#ifdef __J0703
+//		if( GetMover()->IsEmptyDestPos() || !GetMover()->m_CorrAction.fValid )
+#ifdef __WORLDSERVER
+		if( FALSE == pMover->IsPlayer() || TRUE == pMover->IsEmptyDest() )
+#else	// __WORLDSERVER
+		if( TRUE == pMover->IsActiveMover() || TRUE == pMover->IsEmptyDest() )
+#endif	// __WORLDSERVER
+#endif	// __J0703
+			fResult	= pMover->m_pWorld->ProcessCollisionReflection( &vDelta, vStart, m_vDeltaAccu );
+	}
+
+	if( fResult == TRUE )	// 뭔가 충돌했다.
+		vDelta *= 0.7f;
+	
+//		m_delta -= (m_delta * 0.1);
+	FLOAT h = pMover->m_pWorld->GetFullHeight(D3DXVECTOR3( vPos->x, vPos->y + 1.0f, vPos->z ));//0.5f;
+	
+	*vPos += vDelta;
+
+	if( vPos->y < h )		// 지상에서의 최대 낮게 날수 있는 고도 2.0미터
+	{
+		vPos->y		= h;
+		fResult = TRUE;
+	}
+	if ( vPos->y > MAX_MOVE_HEIGHT )
+		vPos->y = MAX_MOVE_HEIGHT;
+	if( vPos->y < MIN_MOVE_HEIGHT )
+		vPos->y = MIN_MOVE_HEIGHT;
+	
+
+	return fResult;
+}
+
+
+//
+//
+//
+BOOL	CActionMover::ProcessCollisionGround( D3DXVECTOR3 *vPos )
+{
+	CMover* pMover = m_pMover;
+	CModelObject	*pModel = (CModelObject *)pMover->m_pModel;
+	D3DXVECTOR3	vKneePos, vDeltaXZ, vTemp, vIntersect;
+	BOOL	bFly = FALSE;
+	D3DXVECTOR3 vDelta = m_vDeltaAccu;
+
+/*
+	// m_pMotion이 널이 아니라고 가정하자
+	D3DXVECTOR3 *pPath = pModel->m_pMotion->m_pPath;
+	if( pPath )	// path가 있는가?
+	{
+		D3DXVECTOR3 vPathDelta;
+		FLOAT fTheta = D3DXToRadian( -pMover->GetAngle() );
+		pModel->GetPathDelta( &vPathDelta );		// 이번 프레임의 이동치를 계산해서 
+		D3DXMATRIX mRot;
+		D3DXMatrixRotationY( &mRot, fTheta );
+		D3DXVec3TransformCoord( &vPathDelta, &vPathDelta, &mRot );
+		m_vDelta += vPathDelta;						// m_vDelta에 더함.
+		// path가 처리되고 있을때는 중력처리 안함.
+	}
+*/
+
+	vKneePos = *vPos;	vKneePos.y += 0.4f;		// 무릎높이
+	vDeltaXZ = vDelta;	vDeltaXZ.y = 0;		// 이동벡터에서 수평이동 성분만 취함
+
+#ifdef __X15
+	vDeltaXZ /= 4.0f;	// 서버가 15프레임으로 돌때는 vDeltaXZ도 4배로 커진다. 그래서 줄여줘야 함.
+#endif
+	vDeltaXZ *= 5.0f;
+	// 현재위치와 이동벡터를 넘겨주면 
+	// 배경과의 충돌여부를 검사해서 바뀐 이동벡터를 계산한다.
+	BOOL bColl = FALSE;
+	BOOL bSyncMove = FALSE;
+	BOOL fResult = FALSE;
+
+#ifdef __WORLDSERVER
+	if( FALSE == pMover->IsPlayer() || TRUE == pMover->IsEmptyDest() )
+		bColl = TRUE;
+	else
+		bSyncMove = TRUE;	// 동기화 이동중
+#else	// __WORLDSERVER
+  #ifdef __ONLINE
+	if( TRUE == pMover->IsActiveMover() || TRUE == pMover->IsEmptyDest() )
+		bColl = TRUE;
+	else
+		bSyncMove = TRUE;	// 동기화 이동중
+#else
+	bColl = TRUE;
+  #endif
+#endif	// __WORLDSERVER
+			
+
+	if( CObj::m_bCollision && m_bMove && bColl ) {
+#ifdef __J0703
+//		pMover->IsEmptyDest() || !pMover->m_CorrAction.fValid
+//		|| pMover->IsEmptyDest() || pMover->m_CorrAction.fValid || pMover->IsActiveMover()
+#endif	// __J0703
+			fResult		= pMover->m_pWorld->ProcessCollision( &vDeltaXZ, vKneePos, vDeltaXZ );
+	}
+
+	vDeltaXZ /= 5.0f;
+#ifdef __X15
+	vDeltaXZ *= 4.0f;	// 서버가 15프레임으로 돌때는 vDeltaXZ도 4배로 커진다. 그래서 줄여줘야 함.
+#endif
+	
+	vPos->x += vDeltaXZ.x;
+	vPos->z += vDeltaXZ.z;
+
+#if defined( __ONLINE ) || defined( __WORLDSERVER )
+	CWorld* pWorld = GetWorld();
+	if( vPos->x <= WLD_EXTRA_WIDTH ) vPos->x = WLD_EXTRA_WIDTH;
+	if( vPos->x >= ( pWorld->m_nLandWidth * MAP_SIZE * MPU - WLD_EXTRA_WIDTH ) )	vPos->x	= ( pWorld->m_nLandWidth * MAP_SIZE * MPU - WLD_EXTRA_WIDTH );
+	if( vPos->z <= WLD_EXTRA_WIDTH ) vPos->z	= WLD_EXTRA_WIDTH;
+	if( vPos->z >= ( pWorld->m_nLandWidth * MAP_SIZE * MPU - WLD_EXTRA_WIDTH ) )	vPos->z	= ( pWorld->m_nLandWidth * MAP_SIZE * MPU - WLD_EXTRA_WIDTH );
+#endif
+
+	// 좌표 더해준후 보정(후처리)
+	if( GetDmgState() != OBJSTA_DISAPPEAR )		// 죽어 사라지는 중엔 지형충돌검사 안함.
+	{
+		if( !bFly )
+		{
+			// 좌표가 내려갔음
+			if( vDelta.y < 0 )
+			{
+				if( m_bGround != 1 )	// 바닥에 그냥 서있는 상태(m_bGround == 1)는 추가적으로 충돌검사 할필요 없다.
+				{
+#ifdef	_DEBUG
+#ifdef	__CLIENT
+					if( g_pPlayer == pMover )
+					{
+						int a = 0;
+					}
+#else
+					if( pMover->IsPlayer() )
+					{
+						int a = 0;
+					}
+#endif
+#endif
+					
+	#ifdef	__XSLIDE
+					D3DXVECTOR3 vSlide;
+					// 미끄러진후 바뀐 vDelta
+					// vPos.xz 지점의 h값.
+					vSlide.x = vSlide.z = vSlide.y = 0;	// slide벡터.
+					FLOAT h;
+					if( bColl )
+						h = pMover->m_pWorld->ProcessUnderCollision( &vSlide, D3DXVECTOR3( vPos->x, vPos->y + 1.0f, vPos->z ) );
+					else
+						h = pMover->m_pWorld->GetLandHeight( vPos->x, vPos->z );
+					// 캐릭터 머리에서 아래로 라인을 내리고 걸리는게 있으면 적당한 값으로 슬라이드 계산후 적용.
+					// 걸리는게 없다면 공중에 떠있는것이므로 vPos->y += delta.y만 해주고 h값으로 계산.
+					// 단 슬라이드 계산할때는 면이 일정각이상으로 기울어져 있을때만 적용. 안그러면 모든 경사면은 다 미끄러져 못올라간다.
+					// 슬라이드를 더할때는 실제로 바닥에 닿았을때만 더해준다.
+					// 슬라이드 적용후 한번더 높이 계산해서 보정해줘야 할거 같다.
+	#else
+					// x, y위치의 지형 높이.
+					FLOAT h	= pMover->m_pWorld->GetUnderHeight( D3DXVECTOR3( vPos->x, vPos->y + 1.5f, vPos->z ) );
+	#endif
+					// 운동량을 더해줌
+					D3DXVECTOR3 tempV = *vPos;
+					vPos->y += vDelta.y;
+					
+					if( GetJumpState() == OBJSTA_SJUMP3 )	// 하강동작 상태였을때
+					{
+ 						if( vPos->y < h )	// 바닥에 닿으면
+						{
+//							fResult = TRUE;		// 수직축으로는 충돌플랙을 리턴해선 안된다.
+							if( vSlide.y )
+							{
+								*vPos = vSlide;
+								m_bGround = 2;	// 땅에 닿긴 했는데 미끄러 지고 있다.
+							} else
+							{
+								vPos->y = h;
+								m_bGround = 1;	// 미끄러 지지 않고 있다.
+							}
+
+							m_vDelta.y = 0;
+						}
+					} else	// 그냥 좌표만 내려가고 있던상태( 비탈길을 내려간다거나.  걸어다가 빠졌다거나)
+					{
+						if( vPos->y - 0.25f > h )	// 발바닥 아래 xx지점을 더 내려서 검사했는데도 바닥보다 높다면 
+						{
+							if( vDelta.y < -0.1f )		// 떨어지는 속도가 0.x보다 클때만 하강동작.  살짝 떨어지는건 걍 좌표만 내려감.
+							{
+								SetJumpState( OBJSTA_SJUMP3 );		// 하강 상태로 전환
+								pMover->OnActDrop();				// 이벤트 호출
+							}
+						} else		// 발아래 0.5지점내에 바닥이 있다면 그냥 발바닥 붙여줌
+						{
+//							fResult = TRUE;
+							m_vDelta.y = 0;
+							if( vSlide.y )
+							{
+								*vPos = vSlide;
+								m_bGround = 2;
+							} else
+							{
+								vPos->y = h;
+								m_bGround = 1;
+							}
+						}
+					}
+				} // m_bGround
+			} else
+			// 좌표가 올라갔음
+			if( vDelta.y > 0 )
+			{
+				// x, y위치의 천장 높이.
+				FLOAT h	= pMover->m_pWorld->GetOverHeight( D3DXVECTOR3( vPos->x, vPos->y + 1.5f, vPos->z ) );
+				
+				// 운동량을 더해줌
+				vPos->y += vDelta.y;
+				if( vPos->y + 1.5f > h )	// 머리 부분이 천장에 닿았으면 
+				{
+					fResult = TRUE;			// 위로 올라가는건 체크해야한다,.
+					vPos->y = h - 1.5f ;	// y좌표 보정
+					m_vDelta.y = -0.01f;			// 올라가던거 멈춤
+				}
+			}
+		}
+	}
+
+//	if( fResult )
+//	{
+//		int a=0;
+//	}
+	
+	return fResult;
+}
+
+
+
+
+BOOL CWndTaskBar::CheckAddSkill( int nSkillStyleSrc, int nQueueDest  )
+{
+	/*
+	START -> FINISH, FG 
+	CIRCLE -> START, CIRCLE
+	FINISH -> START, CIRCLE
+	*/
+	DWORD dwComboStyleSrc = nSkillStyleSrc;
+	if( nQueueDest == -1 )		// 첫칸에 넣으려 시도 했을경우
+	{
+		/*
+		if( 이미 스킬창에 등록되어 있다 )
+		{
+			if( 삽입하려는게 CT_GENERAL인가 )
+				if( 이미 삽입되어 있는게 CT_GENERAL인가 )
+				return TRUE;
+			return FALSE;		// CT_GENERAL이외의 것을 첫칸에 삽입하려면 모두 실패.
+		} else
+		{
+			// 아무것도 등록되어 있지 않다.
+			// 스텝, 제네럴만 합격.
+			if( dwComboStyleSrc == CT_STEP  || dwComboStyleSrc == CT_GENERAL  ) 
+				return TRUE;
+			return FALSE;	// 그외엔 모두 불합격.
+		}
+		 */
+		if( dwComboStyleSrc == CT_STEP  || dwComboStyleSrc == CT_GENERAL  ) 
+			return TRUE;
+	}
+	else
+	{
+		// nQueueDest는 마지막스킬바의 인덱스.
+		DWORD dwSkill = m_aSlotQueue[ nQueueDest ].m_dwId;
+		DWORD dwComboStyleDest = prj.GetSkillProp( dwSkill )->dwComboStyle;
+		if( dwComboStyleDest == CT_FINISH )		// 마지막 스킬이 피니쉬면 더이상 넣을 수 없다.
+			return FALSE;
+		if( dwComboStyleSrc == CT_STEP  && ( dwComboStyleDest == CT_FINISH || dwComboStyleDest == CT_GENERAL  ) ||
+			dwComboStyleSrc == CT_CIRCLE && ( dwComboStyleDest == CT_STEP  || dwComboStyleDest == CT_CIRCLE ) ||
+			dwComboStyleSrc == CT_FINISH && ( dwComboStyleDest == CT_STEP  || dwComboStyleDest == CT_CIRCLE ) )
+			return TRUE;
+	}
+	return FALSE;
+}
+BOOL CWndTaskBar::SetSkillQueue( int nIndex, DWORD dwShortcut, DWORD dwType, DWORD dwIndex, DWORD dwId, DWORD dwData, CTexture* pTexture )
+{
+	if( m_nCurQueueNum >= 5 )
+		return FALSE;
+
+	LPSHORTCUT pShortcut = NULL;
+	CRect rect = GetWindowRect();
+	DWORD dwComboStyleSrc = prj.GetSkillProp( dwId )->dwComboStyle;
+	DWORD dwComboStyleDest;
+	ItemProp* pItemProp1, * pItemProp2,* pItemProp3; 
+	if( nIndex < m_nCurQueueNum ) // insert		// nIndex는 세팅할 칸의 인덱스
+	{
+		if( !CheckAddSkill( dwComboStyleSrc, nIndex - 1 ) )
+			return FALSE;
+		for( int i = m_nCurQueueNum; i > nIndex; i-- )
+		{
+			memcpy( &m_aSlotQueue[ i ], &m_aSlotQueue[ i - 1 ], sizeof( SHORTCUT ) );
+		}
+		pShortcut = &m_aSlotQueue[ nIndex ];
+		m_nCurQueueNum++;
+	}
+	else // add
+	{
+		if( !CheckAddSkill( dwComboStyleSrc,  m_nCurQueueNum - 1 ) )
+			return FALSE;
+		pShortcut = &m_aSlotQueue[ m_nCurQueueNum ];
+		m_nCurQueueNum++;
+	}
+	m_nCurQueue = -1;
+	if( pTexture == NULL )
+	{
+		CItemBase* pItemBase;
+		if( dwShortcut == SHORTCUT_SKILL ) 
+		{
+			LPSKILL lpSkill = g_pPlayer->GetSkill( dwType, dwIndex );
+			pShortcut->m_pTexture = m_textureMng.AddTexture( g_Neuz.m_pd3dDevice, MakePath( DIR_ITEM, lpSkill->GetProp()->szIcon), 0xff000000, TRUE );
+		}	
+	}
+	else pShortcut->m_pTexture = pTexture;
+
+
+	pShortcut->m_dwShortcut = dwShortcut   ;
+	pShortcut->m_dwType     = dwType; // 직업 
+	pShortcut->m_dwIndex    = dwIndex; // 스킬 콘트롤에서의 순서 
+	pShortcut->m_dwId       = dwId; // 스킬 인덱스 
+	pShortcut->m_dwUserId   = 0 ;
+	pShortcut->m_dwData     = 2;
+	_tcscpy( pShortcut->m_szString, m_GlobalShortcut.m_szString );
+	return TRUE;
+}
+
+
+
+#include "stdafx.h"
+#include "skillinfluence.h"
+
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#undef THIS_FILE
+static char THIS_FILE[] = __FILE__;
+#endif
+
+CSkillInfluence::CSkillInfluence()
+{
+	Init();
+}
+
+CSkillInfluence::~CSkillInfluence()
+{
+	Destroy();
+}
+
+void	CSkillInfluence::Init( void )
+{
+	m_pMover		= NULL;
+	memset( m_aSkillInfluence, 0, sizeof(m_aSkillInfluence) );
+	m_pEmptyNode = NULL;
+}
+
+BOOL CSkillInfluence::Set( SKILLINFLUENCE *pNode, DWORD dwSkill, DWORD dwTime )
+{
+#ifdef __XDEBUG
+	if( pNode == NULL )
+	{
+		Error( "CSkillInfluence::Set : pNode가 NULL" );
+		return FALSE;
+	}
+	if( pNode->dwSkill > 0 )
+	{
+		Error( "CSkillInfluence::Set : dwSkill에 값이 있음 %d", dwSkill );
+		return FALSE;
+	}
+#endif
+	pNode->dwSkill	= dwSkill;
+	pNode->dwTime	= dwTime;
+	pNode->dwStartTime = timeGetTime();		// 세팅 당시 시간을 기록.
+
+	return	TRUE;
+}
+
+//
+// 새로운 스킬 상태를 추가한다.
+//
+BOOL CSkillInfluence::Set( DWORD dwSkill, DWORD dwTime )
+{
+	SKILLINFLUENCE *pList = m_aSkillInfluence, *pNode;
+	
+	pNode = Find( dwSkill );		// 이미 같은 스킬상태가 있었는지 찾음.
+
+	if( pNode )		// 있었으면 시간만 재 세팅함.
+	{
+		pNode->dwTime	= dwTime;
+		pNode->dwStartTime = timeGetTime();		// 시작 시간을 재 세팅.
+		return FALSE;
+	}
+	else	// 없었으면 추가함.
+	{
+		int		i = MAX_SKILLINFLUENCE;
+		BOOL	bAdd = FALSE;
+
+		if( m_pEmptyNode )
+		{
+			if( Set( m_pEmptyNode, dwSkill, dwTime ) )
+				bAdd = TRUE;
+		} else
+		{
+			while( i-- )
+			{
+				pNode = pList++;
+				if( pNode->dwSkill > 0 )	continue;	// 비어있는 공간을 찾음.
+
+				InfluenceMover( dwSkill, TRUE );		// ??
+	
+				Set( pNode, dwSkill, dwTime );
+				bAdd = TRUE;
+				break;
+			}
+		}
+		if( bAdd == FALSE )
+			Message( "CSkillInfluence::Set : 스킬 세팅 실패" );
+	}
+	return( TRUE );
+}
+
+//
+// dwSkill을 리스트에서 찾아 없앤다.
+//
+void CSkillInfluence::Reset( DWORD dwSkill )
+{
+	SKILLINFLUENCE *pNode = Find( dwSkill );
+	if( pNode )
+		Remove( pNode );
+}
+
+//
+// 등록된 스킬상태들을 매 프로세스 검사하여 시간이 지난것들은 삭제한다.
+//
+void CSkillInfluence::Process( void )
+{
+	DWORD dwTimeCurrent	= timeGetTime();		// 현재 시간 읽음.
+
+	int		i = MAX_SKILLINFLUENCE;
+	SKILLINFLUENCE *pList = m_aSkillInfluence, *pNode;
+
+	while( i-- )
+	{
+		pNode = pList++;
+		if( pNode->dwSkill == 0 )	continue;	// 비어있는 공간은 스킵.
+
+		// 현재시각에서 시작시간을 빼면 흐른시간이 나온다. 흐른시간이 스킬지속시간을 넘어서면 삭제.
+		if( (dwTimeCurrent - pNode->dwStartTime) > pNode->dwTime )	
+		{
+			m_pMover->OnEndSkillState( pNode->dwSkill );		// 스킬상태가 하나 끝나면 핸들러 호출.
+			Remove( pNode );
+		}
+	}
+}
+
+void CSkillInfluence::InfluenceMover( DWORD dwSkill, BOOL fInfluece )
+{
+	if( m_pMover )
+	{
+/*
+		switch( dwSkill )
+		{
+		}
+*/
+	}
+}
+
+
+
+. 해상도 조절
+ - 800x600
+ - 1024x768
+ - 1280x1024
+. 텍스쳐 품질
+ - 상
+ - 중
+ - 하
+. 시야범위
+ - 멀리
+ - 중간
+ - 가깝게
+. 오브젝트 디테일
+ - 높음
+ - 중간
+ - 낮음
+
+
+
+
+
+. 시드드롭
+. 충돌최적화
+. 충돌처리 정밀하게..
+. 충돌관련 링크맵 버그 수정..
+. PK안되게.
+
+
+FLOAT CWorld::ProcessUnderCollision( D3DXVECTOR3 *pOut, D3DXVECTOR3 &vPos, CObj* pExceptionObj )
+{
+	D3DXVECTOR3 vDir( 0.0f, -1.5f, 0.0f );	// 키높이(1.0) + 여유분(0.5)
+	D3DXVECTOR3 vIntersect, vEnd;
+
+	CObj* pObj;
+	CObj* pMinObj = NULL;
+	CModel* pModel;
+#ifndef __0610
+	int nRange = 1;
+#else	// __0610
+	int nRange = 0;
+#endif	// __0610
+	//return GetLandHeight( vPos.x, vPos.z );
+	vEnd = vPos + vDir;
+	int		nCount = 0;
+
+#ifndef __0610
+	FOR_LINKMAP( this, vPos, pObj, nRange )
+#else	// __0610
+	FOR_LINKMAP( this, vPos, pObj, nRange, CObj::linkStatic )
+#endif	// __0610
+	{
+#ifdef	__WORLDSERVER
+#ifndef __0610
+		if( pObj->GetType() == OT_OBJ && pObj != pExceptionObj )
+#endif	// __0610
+#else	// __WORLDSERVER
+		if( pObj->GetType() == OT_OBJ )// && pObj->GetIndex() >= 15 && pObj->GetIndex() != 27 && pObj->GetIndex() != 86 && pObj->GetIndex() != 87 )
+#endif	// __WORLDSERVER
+		{
+			// 레이(vPos-vDir)와 오브젝트OBB의 검사.  
+			nCount ++;
+			pModel = pObj->m_pModel;
+			if( pModel->IsTouchOBB_Line( vPos, vEnd, pObj->GetMatrixWorld(), &vIntersect ) == TRUE )
+			{
+				pMinObj = pObj;		// 찾았으면 바로 튀어나옴 - 속도땜에 이랬다...
+				goto LP1;
+			}
+		}
+	}
+	END_LINKMAP
+LP1:
+
+	D3DXVECTOR3	v1, v2;
+	if( pMinObj )	// 레이에 걸린 가장 가까운 오브젝트가 있는가	
+	{
+		if( pMinObj->m_dwIndex == 69 )
+		{
+			int a = 0;
+		}
+		pModel = pMinObj->m_pModel;
+		// 중력방향 라인과 교차하는 삼각형을 찾고 교차점(높이)을 찾은 후 슬라이딩 벡터를 pOut에 받는다.
+		if( ((CModelObject *)pModel)->GetObject3D()->SlideVectorUnder( pOut, vPos, vEnd, pObj->GetMatrixWorld(), &vIntersect ) == TRUE )
+		{
+			return vIntersect.y;
+		}
+	}
+	// 현재 위치의 하이트맵 삼각형 읽음
+	// 수직벡터로 인터섹트 지점 구하고(높이) 슬라이드 계산.
+	// 
+	D3DXVECTOR3 pTri[3 * 9 * 2];		// 삼각형 54개
+	FLOAT	fDist;
+	FLOAT	vx, vz;
+
+	// 바닥 노말 구함
+	vx = vPos.x;	vz = vPos.z;
+	GetLandTri( vx, vz, pTri );
+	v1 = pTri[1] - pTri[0];		// 노말 계산 시작.
+	v2 = pTri[2] - pTri[0];
+	D3DXVec3Cross( &v1, &v1, &v2 );		// 바닥의 노말 계산.
+	D3DXVec3Normalize( &v1, &v1 );		// 단위벡터로 변환
+
+	// 수직벡터와 바닥면의 충돌지점 구함.
+	BOOL b = IsTouchRayTri( &pTri[0], &pTri[1], &pTri[2], &vPos, &vDir, &fDist );
+	vIntersect.x = vx;
+	vIntersect.z = vz;
+	vIntersect.y = (vPos.y + fDist * vDir.y) + 0.01f;		// 수직레이와 바닥삼각형의 교차점 - 이것은 높이로도 쓰인다.
+	
+  #ifdef _XDEBUG
+	if( b == FALSE )
+	{
+//		GetLandTris( vx, vz, pTri );
+		Message( "ProcessUnderCollision : Intersect실패. 캐릭터의 좌표가 맵을 벗어났다. %d %d", vPos.x, vPos.z );
+	}
+  #endif
+	
+	
+	v2.x = v2.z = 0;	v2.y = -1.0f;	// 이건 반드시 단위벡터여야 한다.
+	// -0.19080f == cos(101)   -0.37864 == cos(112)
+	if( D3DXVec3Dot( &v1, &v2 ) > -0.37864f )	// dot > cos(theta) 일정각 이상 기울어진 면만 슬라이드를 적용시킨다. 두벡터다 노말이어야 한다.
+	{
+		v2.y = -1000.5f;
+		CalcSlideVec( pOut, v2, v1 );		// 미끄러짐 벡터 구함
+		int nMaxTri = GetLandTris( vx, vz, pTri ) / 3;	// vPos주위의 9개 그리드삼각형 읽음.
+		D3DXVECTOR3 *p = FindTouchLandTri( pTri, nMaxTri, vIntersect, *pOut, &fDist );	// 교차점에서 slide방향쪽의 삼각형이 충돌하는게 있는지...
+		if( p )
+		{
+//			*pOut *= fDist;		// slide벡터가 다른면에 부딪힌 부분에서 끝나게 한다.
+			*pOut = vIntersect + *pOut * fDist;
+		} else
+			*pOut = vIntersect + *pOut;
+	}
+	return vIntersect.y;
+}
+
+
+
+			if( pObj->IsTouchObj( this ) )
+			{
+				// IsActDamage()라도 공격가능하다.
+				SendActMsg( OBJMSG_STAND );
+				ClearDestObj();		// 일단은 서버/클라 모두 목표오브젝에 도달하면 멈춘다.
+#ifdef __WORLDSERVER
+				SendAIMsg( AIMSG_ARRIVAL, pObj->GetId() );
+#else
+				if( IsActiveMover() )
+				{
+					if( m_nUsedSkillIdx != -1 )		// 스킬을 쓰도록 등록 되어 있다면..
+					{
+//						pMover->DoUseSkill( 0, pMover->m_nUsedSkillIdx, pMover->m_idUsedObj );
+						g_DPlay.SendUseSkill( 0, m_nUsedSkillIdx, m_idUsedObj );	// 목표지점에 도착하면 스킬쓴다고 알림.
+					}
+					else
+					{
+//						SendActMsg( OBJMSG_ATK1, pObj->GetId(), 0, 0 );
+						if( pObj->GetType() == OT_MOVER ) {
+							int nError	= SendActMsg( OBJMSG_ATK1, pObj->GetId(), MAKELONG( 0, 0 ), MAKELONG( 0, 0 ) );
+							if( nError > 0 )	g_DPlay.SendMeleeAttack( OBJMSG_ATK1, pObj->GetId(), MAKELONG( 0, 0 ), MAKELONG( 0, (WORD)nError ) );
+						}
+					}
+				}
+				return;
+#endif
+			}
+
+if( 왼쪽 클릭 )
+{
+	if( 오브젝트에 클릭 )
+	{
+		명령리스트 클리어
+		플레이어 - 선택
+		NPC : 이동 - 메뉴띄움
+		몬스터 : 
+		if( 들고있는 무기가 근접무기냐 )
+			선택 - 이동 - 근접공격
+		else
+			선택 - 매직공격
+		아이템 : 선택 - 이동 - 집음
+		그외 오브젝트(문, 스위치 등) : 이동 - 사용
+	} else
+	// 땅에 클릭
+	{
+		이동
+	}
+}
+if( 오른쪽 클릭 )
+{
+	명령리스트 클리어
+	if( 스킬사용 )
+	{
+		몬스터 : 명령입력(선택 - 이동 - 스킬사용)
+		NPC : 취소됨
+		플레이어 : 선택 - 스킬사용
+	}
+}
+
+ProcessCmdQ()
+{
+	명령 = 명령리스트();
+	switch( 명령 )
+	{
+		case 이동:		// 목표타겟ID
+			목표오브젝트좌표로 계속 이동;
+			if( IsTouchObj() )		// 명령이 끝나는 조건
+				명령리스트 다음으로;
+			break;
+		case 근접공격:
+			if( 공격중이 아닌가? )
+				목표오브젝트를 근접공격시작;
+			if( 공격상태가 끝났으면 )
+				명령리스트 다음으로;
+			
+
+	}
+
+	if( 명령 )
+	{
+		
+	}
+
+}
+
+
+
+
+
+* 지포스2 급에서의 문제점
+ . 버텍스쉐이더가 지원되지 않으므로 s/w모드로 VS를 에뮬레이션 해야한다.
+ . 비디오 메모리가 32메가. 텍스쳐사이즈를 줄여야 한다.
+
+
+
+	CHECK1();
+	int i, j, k, l, x, y;
+	WorldPosToLand( m_pCamera->m_vPos, x, y );
+	CLandscape* pLand;
+	CObj* m_apObjProcess[ 5000 ];
+	DWORD dwObjProcessNum = 0;
+	D3DXVECTOR3 vPos;
+	for( i = y - m_nVisibilityLand; i <= y + m_nVisibilityLand; i++ )
+	{
+		for( j = x - m_nVisibilityLand; j <= x + m_nVisibilityLand; j++ )
+		{
+			if( LandInWorld( j, i ) && m_apLand[ i * m_nLandWidth + j ] )
+			{
+				pLand = m_apLand[ i * m_nLandWidth + j ];
+				for( k = 0; k < MAX_OBJARRAY; k++ )
+				{
+					CObj** apObject = pLand->m_apObject[ k ];
+					for( l = 0; l < pLand->m_adwObjNum[ k ]; l++ )
+					{
+						if( apObject[ l ] && apObject[ l ]->IsDelete() == FALSE && apObject[ l ]->GetWorld() != NULL )
+						{
+							vPos = apObject[ l ]->GetPos() - m_pCamera->m_vPos;
+							int nLength = D3DXVec3Length( &vPos );
+							if( nLength < ( CWorld::m_fFarPlane / 2 ) ) 
+								m_apObjProcess[ dwObjProcessNum++ ] = apObject[ l ];
+						}
+					}
+				}
+			}
+		}
+	}
+	CHECK2("    Visibi");
+
+
+* 충돌메쉬를 기준으로 vMin,vMax를 결정할것
+# 충돌메시가 없는 오브젝트는 OBB검사 하지 말것
+* 원기둥형태로 1차검사를 할것
+* 뷰 프러스텀 컬링 최적화 할것
+
+assert  0.0026
+sort	0.0013
+object  0.0186
+
+#2/4
+* 모델 클래스의 변경 계획
+. CModel을 베이스로 계승되는것은 기존과 같다.
+	CBipedModel - 스켈레톤 기반의 모델 구조.
+	CStaticModel - 비 스켈레톤 기반의 모델구조.
+	CMorphModel - 모핑 기반의 모델구조 - 각 버텍스의 개별변형
+
+. CBipedModel
+  . 1개의 본(bone)을 가진다.
+  . 다수의 메쉬를 가진다.  각 메쉬는 아래와 같은 형태가 있다.
+    . 스킨형 메쉬 - 피지크정보를 가진 메쉬.  본의 움직임에 따라 각 버텍스는 실시간으로 재계산된다.
+	. 일반형 메쉬 - 모양의 변형이 없다.  특정본에 링크되어 트랜스폼된다.  자체 TM ani도 있을수 있다.
+	. 모핑형 메쉬 - 모양이 변한다.  
+  . 다수의 모션을 교체할 수 있다.
+
+. CStaticModel
+  . 
+#2/5
+* 모델 클래스의 궁극적 모습
+. CMotion - 각 geometry object(뼈대도 포함)의 자세와 그 움직임들을 표현하는 행렬의 집합. 
+
+. GEOMOBJECT
+  . 지오메트리오브젝트의 최소단위. 폴리곤오브젝트외에도 파티클이나 직선같은 도형도 포함된다.
+  . 버텍스리스트, 페이스리스트 등을 가지고있다.
+  . 오브젝트마다 지나치게 메모리 할당을 받지 않기 위해 세분화해서 상속시키지 않는다.
+
+. MODEL_OBJECT
+  . GEOMOBJECT - 읽기만 가능한 메쉬데이타
+  . 매프레임 갱신된 버텍스리스트
+  . 매프레임 갱신된 월드트랜스폼 행렬
+  . 기타 매프레임 갱신되는 것들...
+
+
+
+. CModel
+  . 애니메이션 객체
+  . 게임객체당 하나씩 생성된다.
+  - CModelObject
+	. MODEL_OBJECT[ nMaxObject ] - 매 프레임 업데이트 되는 정보.
+	. Pose - 
+
+  - CModelBillboard
+
+
+
+. 정적모델		- 애니메이션이 없으므로 트랜스폼이 없음.
+. 키프레임모델	- 매 프레임마다 각 오브젝트의 트랜스폼이 재계산됨.
+. 스키닝모델	- 매 프레임마다 각 뼈대들과 버텍스들이 재계산됨.
+. 모핑모델		- 매 프레임마다 각 버텍스들이 재계산됨.
+
+
+
+* DirectX 8.1을 이용한 H/W T&L처리
+* bone + skin animation
+* 3DMAX + Character Studio를 사용한 Biped데이타 사용.
+* MAX Exporter
+* Keyframe animation
+* Animated animation
+* Motion interpolation
+* Motion blending
+* Material Block Optimize
+* Spline보간을 이용한 부드러운 곡선의 검광.
+* 인간형모델의 자유로운 의상교체
+
+
+. 키프레임 애니메이션 - 완성
+  - 일반 오브젝트의 애니메이션.  
+
+. 이에따라 MES파일 구조 변경 - ( ~ 7/9)
+	- 이것으로 폴리곤을 이용한 효과 애니메이션까지 가능토록 할것.
+
+. 오브젝트 처리 ( 7/10 ~ 7/12 )
+  - 무버의 이벤트&메시지 처리 방식 강화
+	- 점프 방식 재고
+
+. 오브젝트형 지형과의 충돌 ( 7/15 ~ 7/16 )
+	- 다리위를 건너기 같은...
+
+. 모션 블렌딩 1 ( 7/17 ~ 7/20 )
+  - 동작과 동작사이를 자연스럽게 연결해주는 블렌딩
+	- 예)서있다가 전투동작전환시, 서있다가 달릴때, 달리다 설때 등.
+
+. 검광 7/22 - 7/27
+  - 스플라인 곡선을 이용한 부드러운 검광 구현 연구.
+
+. 모션 블렌딩 2   (7/29 ~ 
+  - 동작과 동작을 동시에 플레이
+	- 달리다 칼 뽑기.
+	- 달리다 활쏘기
+	- 기타 등등
+. 
+
+
+  
+
+
+#06/19
+. 주인공 앞점프, 옆점프, 백점프 하기
+. 방어
+. 몬스터 AI
+. 연속기 생각해보기
+. 컨버터에서 알파 보이게
+. 컨버터 매터리얼 저장할때 파일명 이상하게 저장되는 버그
+. 검광
+
+
+
+
+분리된 메시를 읽어 들였는데
+노말이 잘못됐는지 조명이 이상하게 나온다.
+부위별로 따로 읽어들여서 애니메이션 되게 할것.
+
+애니메이션 할때 쿼터니언 보간 할것.
+
+
+* 최적화 전략
+ . 텍스쳐 한장(256x256)에 부위별로 구역을 정해두고.
+ . 장비를 갈아 입을때마다 해당 구역에 그 장비의 텍스쳐를 카피해서 쓰는 방식
+ . 그렇게 한다면 캐릭터 하나당 텍스쳐 한장으로 족하다.
+
+* CharUtil에서 정구씨 모델은 노말이 이상하게 읽힌다.  토르는 정상이다.
+
+* 메쉬의 종류
+ . 정적인 메쉬.  움직임이 없는 단일 메쉬.
+   - 바위, 나무, 굴러다니는 아이템
+ 
+ . 키프레임 애니메이션 메쉬.  단순한 키프레임 애니메이션이 있는것.
+   - 물레방아 떡방아. 풍차. 뚜껑이 열리는 보물상자 등..
+ 
+ . 모핑 애니메이션 메쉬.  매 프레임마다 버텍스좌표가 모두 들어간 메쉬
+   - 바람에 날리는 풀.  깃발.  망토
+ 
+ . 바이페드+피지크 애니메이션 메쉬.  본과 스킨으로 이루어진 메쉬들.  부위별로 나눌수도 있다.
+   - 동물, 몬스터, 인간 등...
+
+
+* 바이페드 애니메이션이 아닌 종류의 애니.
+ . 단일 오브젝트 
+	. 떡방아, 풍차, 
+	. 바람에 움직이는 풀, 나무
+
+ . 다수 오브젝트
+	. 보물상자
+
+
+* Mesh Viewer key
+ . F1 : prev frame
+ . F2 : next frame
+ . F3 : goto 0 frame
+ . F5 : set zpos zero
+ . L+R BUTTON : Zoom in/out
+ . SHIFT + L+R : slow Zoom in/out
+
+ . 바이페드형 메쉬. 여러개 메쉬 동시에 읽을수 있게.
+ . Save All 지원
+ . 쿼터니언 보간
+
+------------------------------------
+
+모델 데이타 관련 
+
+class CModel
+
+class CMesh : public CModel
+
+class CStaticMesh : public CMesh
+
+class CBillboard : public CModel
+
+class CCustomMesh : public CModel
+
+---------------------------------------------
+
+모델 
+
+class CMotion
+
+class CBipedMesh : public Motion
+
+--------------------------------------------
+
+모델 메니저
+
+class 
+
+* 5.0익스포터
+* 왼쪽기울어지기 버그 수정
+* 검광 버그 수정
+* 
+
+
+* 최적화 분석 결과
+. 주요 부분별 수행속도 측정.
+. QueryPerformance()함수로 측정함.
+. 크게 나눠 FrameMove, Render, Present를 검사하고 그중 가장 속도가 많이 먹는 Render내부에서
+. 지형, 컬링, 오브젝트, 기타 루틴의 수행속도를 측정함.
+. 보통 Render부분이 전체 수행속도의 90%를 차지하는 상황임.
+  오브젝트 1003개에 폴리곤 13만개(오브젝트만)가 출력됐을때 약 12프레임정도 나오는데
+  그중 오브젝트출력이 가장 느리고, 다음이 컬링/소팅 부분이었다.
+  기타 많이 잡아먹는 부분이 있었는데 아마도 인터페이스 출력부분이 아닌가 짐작한다.
+  오브젝트출력을 해결하려면 폴리곤수를 최대한 아껴서 모델링하고 오브젝트LOD를 사용하는수밖엔 없다.
+  컬링부분은 최적화의 여지가 많이 남아있다.  제대로 최적화 한다면 상당부분 속도를 끌어올릴수 있겠다.
+
+. 오브젝트1003개 오브젝트 삼각형 13만개 - 초당12프레임가량
+. Frameove()가 전체속도의 5.2%
+. Render()가 전체속도의 93%
+  . 지형 : 5.3%
+  . 컬링 : 8.9%
+  . 소트 : 5.9%
+  . 오브젝트렌더 : 65.4%
+  . 기타(?) : 나머지 약 10%는 인터페이스가 아닌가 한다.
+
+* 오브젝트 출력 최적화
+* Cola의 일괄 컨버터 추가
+
+
+* 전함 추락
+* uv스크롤
+* Cola에 UV스크롤 포맷 바뀜. MES
+* ASE클래스 구조 변경 CModel계승됨.
+
+
+
+
+* 리소스 변환 규칙/방법
+1)방법
+. 바이페드모델의 파츠(스킨/링크)의 경우
+  . max파일 하나에 파츠 여러개를 같이 넣고 관리한다.  ex:여자.max
+  . 파츠별로 분리해서 익스포트 할필요 없이 하나로 출력한다.  물론 따로 해도 상관은 없다.  ex:여자.ase
+  . Cola에서 ase를 불러들인후 파일->MES 저장 을 선택하면 파일내 모든 파츠를 자동으로 저장한다.  
+    이때 각 파츠의 파일명은 오브젝트명으로 자동 저장된다.
+  . 저장된 파일을 Model폴더에 옮긴다.  작업끝.
+  . 만약 특정 파츠만 선택적으로 저장하고 싶다면 나머지 파츠는 hide시킨다.  hide된건 익스포트 되지 않는다.
+
+. 일반 오브젝트의 경우
+
+2)익스포터의 변경점 v1.01
+  . 바이페드모델의 익스포트시에 각 오브젝트의 말머리를 검사한다.  잘못된 경우 경고창이 뜬다.  mvr_, parts_, item_
+  . 일반 오브젝트의 경우는 말머리는 물론이고 오브젝트명을 아무거나 해도 상관없다.  ase파일명이 곧 mes파일명으로 변환된다.
+  . 오브젝트명앞에 _이 붙을경우는 익스포트 하지 않는다.  더미용으로 쓰는 오브젝트가 있다면 사용.
+  . hide상태인 오브젝트는 익스포트 하지 않는다.  선택적으로 익스포트할때 사용.
+
+
+* 때리기
+. 클라->서버 : 나 어떤놈 공격한다.  결과 알려줘
+. 서버 : 공격성공여부 판정
+. 서버->클라 : 성공 혹은 실패 전달
+. 클라 : 성공 모션/실패 모션으로 공격 시작
+
+
+* 과제
+. 캐릭터 애니메이션시 액션로컬좌표의 이용에 관한 연구
+. 맥스에서 파티클 애니메이션 하는 방식에 대한 조사
+
+
+* 전투
+. 전투방식이 액션게임처럼 때리면 맞는 구조인지, RPG처럼 힛트다이스(HitDice)를 굴리는 
+  방식인지에 따라 동기화 방법이 달라질 것 같다.
+
+
+* 지형이동을 위한 충돌 검출
+. 캐릭터의 충돌영역은 실린더로 한다.
+. 실린더와 AABB(혹은 스피어)의 충돌검출이 필요하다.
+. 실린더와 OBB의 충돌검출이 필요하다.  OBB검출이 비교적 속도가 빠르다면 AABB검출은 생략될수도 있다.
+. 실린더와 삼각형의 충돌검출이 필요하다.  충돌예상 메쉬의 삼각형들과 실린더의 세부검출.
+. 충돌후 빼내기 위한 반복검사를 없애기 위해 동적실린더와 삼각형 검출이 필요하다.
+
+
+. 진행방향쪽으로 짤막한 선분을 쏜다.
+. OBB가 걸렸다.  충돌한 오브젝트를 구한다.(OBB - LINE)
+. 충돌한 오브젝트의 폴리곤별로 다시 세밀 검사한다.(Tri - Line)
+. 교차한 최종 삼각형 지점으로 오브젝트를 이동시킨다.
+
+* 새버젼
+for( 내 주위의 오브젝트들 )
+{
+	if( 진행방향쪽으로 진행속도크기의 선분을 만들어 오브젝트들의 OBB와 충돌 검사 == YES )
+	{
+		if( 선분을 레이로 사용. 충돌한 오브젝트의 면들과 교차검사 == NO )
+			continue;
+		if( 교차점과의 거리가 1.0f보다 크다 == 아직 충돌안함 )	continue;
+
+		교차한 거리 - 오브젝트 반지름 위치로 오브젝트 이동.
+	}
+}
+
+* 방법 1
+  속도벡터와 중력벡터를 분리해서 처리.
+  속도벡터는 캐릭터 무릅높이에서 체크하고 속도벡터이동후 중력벡터처리하여 높이 결정
+  vDelta = 속도벡터 + 중력벡터;
+{
+	// 이동벡터의 XZ만 취한다.
+	vDeltaXZ = vDelta;
+	vDeltaXZ.y = 0;
+	vKneePos = vPos + 0.5f;		// 무릎높이의 좌표
+	
+	for( 내 주위의 오브젝트 )
+	{
+		// OBB-Line검사
+		if( OBBLine( vKneePos, vDeltaXY ) == TRUE )			// 무릎높이에서 뭔가 부딪힐 가능성 있음.
+		{	// Tri-Line검사로 확실히 다시 검사해봄
+			if( ObjTriLine( vKneePos, vDeltaXZ ) == TRUE )	// 확실히 무릎높에서 뭔가 부딪혔다
+			{
+				// 면과 부딪혔을때 미끄러진 벡터 게산
+				vSlide = CalcVecSlide( vDeltaXZ, Tri.n );	
+				인접한면3개와 vSlide를 다시 검사;
+				if( 다시 부딪혔으면 )
+					교차점부분을 최종 미끄러진지점으로 설정
+				vSlide.y = 0;		// y성분 없앰.
+				vPos += vSlide;		// 미끄러진 지점으로 이동
+			} else
+			// 무릎높이벡터가 부딪히지 않았다.
+			{
+				vPos += vDeltaXZ;
+			}
+			break;
+		}
+	}
+
+	// vPos += vDeltaXZ 후의 y축 높이 계산
+
+	vKneePos에서 발바닥아래 중력벡터까지를 잇는 선분과 의 교차점 검사.
+	
+
+
+	
+	vPos - vDelta로 연결되는 선을 만들어 주위 배경오브젝과 OBB - Line충돌 검사. 
+ if( 충돌했는가? )
+  {
+	충돌한 오브젝트의 삼각형들과 Line을 다시 교차검사(Ray-Tri검사후 dist가 1보다 작은지로 검사)
+	if( 교차했는가 )		
+	{
+		이동벡터 + 중력벡터 = 최종벡터;
+		최종벡터와 오브젝삼각형의 충돌후 미끄러짐벡터 계산
+		미끄러짐벡터와 그 삼각형의 인접한 삼각형과 한번더 계산
+	}
+  }
+  바닥과 최종벡터의 미끄러짐 벡터 계산( 단, 이동벡터없이 중력벡터만 있을땐 재계산 하지 않는다.)
+  마지막 계산결과로 좌표 이동
+}
+
+
+
+교차점(t) = -(면경계 + 선분원점) / 기울기
+
+Box : bx0, by0, bx1, by1
+Line : px0, py0 - dx, dy
+
+Test( RECT r, Point p1, Point p2 )
+{
+	Point t;	// 교차점
+
+}
+
+

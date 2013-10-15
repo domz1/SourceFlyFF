@@ -1,0 +1,8 @@
+
+TEAM_LIST			"ArenaTeamList.txt"		// 팀 리스트
+TONEMENT_LIST		"ArenaSetVictory.txt"	// 토너먼트 리스트
+GIVE_ITEM_LIST		"ArenaItemList.txt"		// 지급 아이템 리스트
+
+TIME_CONFIG			"ArenaSetTime.txt"		// 시간 설정
+START_POSITION_LIST	"ArenaStartWorld.txt"	// 시작 지점 리스트
+SUMMON_LIST			"ArenaSumon.txt"		// 소환 NPC

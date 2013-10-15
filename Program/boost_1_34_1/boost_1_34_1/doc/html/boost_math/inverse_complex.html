@@ -1,0 +1,244 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title> Complex Number Inverse Trigonometric Functions</title>
+<link rel="stylesheet" href="../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.68.1">
+<link rel="start" href="../index.html" title="The Boost C++ Libraries BoostBook Documentation Subset">
+<link rel="up" href="../boost_math.html" title="Chapter 9. Boost.Math">
+<link rel="prev" href="math_special_functions.html" title="Math Special Functions">
+<link rel="next" href="quaternions.html" title="Quaternions">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%">
+<td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../boost.png"></td>
+<td align="center"><a href="../../../index.htm">Home</a></td>
+<td align="center"><a href="../../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="../../../people/people.htm">People</a></td>
+<td align="center"><a href="../../../more/faq.htm">FAQ</a></td>
+<td align="center"><a href="../../../more/index.htm">More</a></td>
+</table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="math_special_functions.html"><img src="../images/prev.png" alt="Prev"></a><a accesskey="u" href="../boost_math.html"><img src="../images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="../images/home.png" alt="Home"></a><a accesskey="n" href="quaternions.html"><img src="../images/next.png" alt="Next"></a>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="boost_math.inverse_complex"></a> Complex Number Inverse Trigonometric Functions</h2></div></div></div>
+<div class="toc"><dl>
+<dt><span class="section"><a href="inverse_complex.html#boost_math.inverse_complex.implementation_and_accuracy">Implementation and Accuracy</a></span></dt>
+<dt><span class="section"><a href="inverse_complex.html#boost_math.inverse_complex.asin"> asin</a></span></dt>
+<dt><span class="section"><a href="inverse_complex.html#boost_math.inverse_complex.acos"> acos</a></span></dt>
+<dt><span class="section"><a href="inverse_complex.html#boost_math.inverse_complex.atan"> atan</a></span></dt>
+<dt><span class="section"><a href="inverse_complex.html#boost_math.inverse_complex.asinh"> asinh</a></span></dt>
+<dt><span class="section"><a href="inverse_complex.html#boost_math.inverse_complex.acosh"> acosh</a></span></dt>
+<dt><span class="section"><a href="inverse_complex.html#boost_math.inverse_complex.atanh"> atanh</a></span></dt>
+<dt><span class="section"><a href="inverse_complex.html#boost_math.inverse_complex.history">History</a></span></dt>
+</dl></div>
+<p>
+      The following complex number algorithms are the inverses of trigonometric functions
+      currently present in the C++ standard. Equivalents to these functions are part
+      of the C99 standard, and will be part of the forthcoming Technical Report on
+      C++ Standard Library Extensions.
+    </p>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.inverse_complex.implementation_and_accuracy"></a>Implementation and Accuracy</h3></div></div></div>
+<p>
+        Although there are deceptively simple formulae available for all of these
+        functions, a naive implementation that used these formulae would fail catastrophically
+        for some input values. The Boost versions of these functions have been implemented
+        using the methodology described in "Implementing the Complex Arcsine
+        and Arccosine Functions Using Exception Handling" by T. E. Hull Thomas
+        F. Fairgrieve and Ping Tak Peter Tang, ACM Transactions on Mathematical Software,
+        Vol. 23, No. 3, September 1997. This means that the functions are well defined
+        over the entire complex number range, and produce accurate values even at
+        the extremes of that range, where as a naive formula would cause overflow
+        or underflow to occur during the calculation, even though the result is actually
+        a representable value. The maximum theoretical relative error for all of
+        these functions is less than 9.5E for every machine-representable point in
+        the complex plane. Please refer to comments in the header files themselves
+        and to the above mentioned paper for more information on the implementation
+        methodology.
+      </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.inverse_complex.asin"></a> asin</h3></div></div></div>
+<a name="boost_math.inverse_complex.asin.header_"></a><h4>
+<a name="id1256476"></a>
+        Header:
+      </h4>
+<pre class="programlisting">
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">math</span><span class="special">/</span><span class="identifier">complex</span><span class="special">/</span><span class="identifier">asin</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+</pre>
+<a name="boost_math.inverse_complex.asin.synopsis_"></a><h4>
+<a name="id1256549"></a>
+        Synopsis:
+      </h4>
+<pre class="programlisting">
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">class</span> <span class="identifier">T</span><span class="special">&gt;</span> 
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">complex</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;</span> <span class="identifier">asin</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">complex</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;&amp;</span> <span class="identifier">z</span><span class="special">);</span>
+</pre>
+<p>
+        <span class="bold"><strong>Effects: </strong></span> returns the inverse sine of the
+        complex number z.
+      </p>
+<p>
+        <span class="bold"><strong>Formula: </strong></span> <span class="inlinemediaobject"><img src="../../../libs/math/doc/images/asin.png" alt="asin"></span>
+      </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.inverse_complex.acos"></a> acos</h3></div></div></div>
+<a name="boost_math.inverse_complex.acos.header_"></a><h4>
+<a name="id1256715"></a>
+        Header:
+      </h4>
+<pre class="programlisting">
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">math</span><span class="special">/</span><span class="identifier">complex</span><span class="special">/</span><span class="identifier">acos</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+</pre>
+<a name="boost_math.inverse_complex.acos.synopsis_"></a><h4>
+<a name="id1256788"></a>
+        Synopsis:
+      </h4>
+<pre class="programlisting">
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">class</span> <span class="identifier">T</span><span class="special">&gt;</span> 
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">complex</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;</span> <span class="identifier">acos</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">complex</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;&amp;</span> <span class="identifier">z</span><span class="special">);</span>
+</pre>
+<p>
+        <span class="bold"><strong>Effects: </strong></span> returns the inverse cosine of
+        the complex number z.
+      </p>
+<p>
+        <span class="bold"><strong>Formula: </strong></span> <span class="inlinemediaobject"><img src="../../../libs/math/doc/images/acos.png" alt="acos"></span>
+      </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.inverse_complex.atan"></a> atan</h3></div></div></div>
+<a name="boost_math.inverse_complex.atan.header_"></a><h4>
+<a name="id1256953"></a>
+        Header:
+      </h4>
+<pre class="programlisting">
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">math</span><span class="special">/</span><span class="identifier">complex</span><span class="special">/</span><span class="identifier">atan</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+</pre>
+<a name="boost_math.inverse_complex.atan.synopsis_"></a><h4>
+<a name="id1257026"></a>
+        Synopsis:
+      </h4>
+<pre class="programlisting">
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">class</span> <span class="identifier">T</span><span class="special">&gt;</span> 
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">complex</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;</span> <span class="identifier">atan</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">complex</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;&amp;</span> <span class="identifier">z</span><span class="special">);</span>
+</pre>
+<p>
+        <span class="bold"><strong>Effects: </strong></span> returns the inverse tangent of
+        the complex number z.
+      </p>
+<p>
+        <span class="bold"><strong>Formula: </strong></span> <span class="inlinemediaobject"><img src="../../../libs/math/doc/images/atan.png" alt="atan"></span>
+      </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.inverse_complex.asinh"></a> asinh</h3></div></div></div>
+<a name="boost_math.inverse_complex.asinh.header_"></a><h4>
+<a name="id1257192"></a>
+        Header:
+      </h4>
+<pre class="programlisting">
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">math</span><span class="special">/</span><span class="identifier">complex</span><span class="special">/</span><span class="identifier">asinh</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+</pre>
+<a name="boost_math.inverse_complex.asinh.synopsis_"></a><h4>
+<a name="id1257265"></a>
+        Synopsis:
+      </h4>
+<pre class="programlisting">
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">class</span> <span class="identifier">T</span><span class="special">&gt;</span> 
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">complex</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;</span> <span class="identifier">asinh</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">complex</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;&amp;</span> <span class="identifier">z</span><span class="special">);</span>
+</pre>
+<p>
+        <span class="bold"><strong>Effects: </strong></span> returns the inverse hyperbolic
+        sine of the complex number z.
+      </p>
+<p>
+        <span class="bold"><strong>Formula: </strong></span> <span class="inlinemediaobject"><img src="../../../libs/math/doc/images/asinh.png" alt="asinh"></span>
+      </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.inverse_complex.acosh"></a> acosh</h3></div></div></div>
+<a name="boost_math.inverse_complex.acosh.header_"></a><h4>
+<a name="id1257432"></a>
+        Header:
+      </h4>
+<pre class="programlisting">
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">math</span><span class="special">/</span><span class="identifier">complex</span><span class="special">/</span><span class="identifier">acosh</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+</pre>
+<a name="boost_math.inverse_complex.acosh.synopsis_"></a><h4>
+<a name="id1257505"></a>
+        Synopsis:
+      </h4>
+<pre class="programlisting">
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">class</span> <span class="identifier">T</span><span class="special">&gt;</span> 
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">complex</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;</span> <span class="identifier">acosh</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">complex</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;&amp;</span> <span class="identifier">z</span><span class="special">);</span>
+</pre>
+<p>
+        <span class="bold"><strong>Effects: </strong></span> returns the inverse hyperbolic
+        cosine of the complex number z.
+      </p>
+<p>
+        <span class="bold"><strong>Formula: </strong></span> <span class="inlinemediaobject"><img src="../../../libs/math/doc/images/acosh.png" alt="acosh"></span>
+      </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.inverse_complex.atanh"></a> atanh</h3></div></div></div>
+<a name="boost_math.inverse_complex.atanh.header_"></a><h4>
+<a name="id1257671"></a>
+        Header:
+      </h4>
+<pre class="programlisting">
+<span class="preprocessor">#include</span> <span class="special">&lt;</span><span class="identifier">boost</span><span class="special">/</span><span class="identifier">math</span><span class="special">/</span><span class="identifier">complex</span><span class="special">/</span><span class="identifier">atanh</span><span class="special">.</span><span class="identifier">hpp</span><span class="special">&gt;</span>
+</pre>
+<a name="boost_math.inverse_complex.atanh.synopsis_"></a><h4>
+<a name="id1257744"></a>
+        Synopsis:
+      </h4>
+<pre class="programlisting">
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">class</span> <span class="identifier">T</span><span class="special">&gt;</span> 
+<span class="identifier">std</span><span class="special">::</span><span class="identifier">complex</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;</span> <span class="identifier">atanh</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">std</span><span class="special">::</span><span class="identifier">complex</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;&amp;</span> <span class="identifier">z</span><span class="special">);</span>
+</pre>
+<p>
+        <span class="bold"><strong>Effects: </strong></span> returns the inverse hyperbolic
+        tangent of the complex number z.
+      </p>
+<p>
+        <span class="bold"><strong>Formula: </strong></span> <span class="inlinemediaobject"><img src="../../../libs/math/doc/images/atanh.png" alt="atanh"></span>
+      </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.inverse_complex.history"></a>History</h3></div></div></div>
+<div class="itemizedlist"><ul type="disc">
+<li>
+          2005/12/17: Added support for platforms with no meaningful numeric_limits&lt;&gt;::infinity().
+        </li>
+<li>
+          2005/12/01: Initial version, added as part of the TR1 library.
+        </li>
+</ul></div>
+</div>
+</div>
+<table width="100%"><tr>
+<td align="left"></td>
+<td align="right"><small>Copyright © 2001 -2002 Daryle Walker, 2001-2003 Hubert Holin, 2005
+      John Maddock</small></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="math_special_functions.html"><img src="../images/prev.png" alt="Prev"></a><a accesskey="u" href="../boost_math.html"><img src="../images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="../images/home.png" alt="Home"></a><a accesskey="n" href="quaternions.html"><img src="../images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

@@ -1,0 +1,149 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "AccountServer"=..\AccountServer\AccountServer.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Neurospace/Program/AccountServer", ZPZBAAAA
+    ..\accountserver
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "CacheServer"=..\CacheServer\CacheServer.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Neurospace/Program/CacheServer", DKSAAAAA
+    ..\cacheserver
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Certifier"=..\Certifier\Certifier.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Neurospace/Program/Certifier", VKXAAAAA
+    ..\certifier
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "CoreServer"=..\CoreServer\CoreServer.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Neurospace/Program/CoreServer", MISAAAAA
+    ..\coreserver
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "DatabaseServer"=..\DatabaseServer\DatabaseServer.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Neurospace/Program/DatabaseServer", TNSAAAAA
+    ..\databaseserver
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "LoginServer"=..\LoginServer\LoginServer.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Neurospace/Program/LoginServer", BNSAAAAA
+    ..\loginserver
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "Neuz"=..\Neuz\Neuz.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Neurospace/Program", NWMAAAAA
+    ..
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Project: "WorldServer"=..\WorldServer\WorldServer.dsp - Package Owner=<4>
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Neurospace/Program/WorldServer", CDSAAAAA
+    ..\worldserver
+    end source code control
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+    begin source code control
+    "$/Neurospace/Program/all", JBSJAAAA
+    .
+    end source code control
+}}}
+
+Package=<3>
+{{{
+}}}
+
+###############################################################################
+

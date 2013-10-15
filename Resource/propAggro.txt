@@ -1,0 +1,44 @@
+// 보정치 : 몬스터MAX HP의 비율
+
+
+NORMAL_AGGRO
+{
+	BUFF_AGGRO_RATE		= 3		//버프 어그로 보정치%	 		
+	DEBUFF_AGGRO_RATE		= 10		//디버프 어그로 보정치% 	
+	FIRST_ATTACK_AGGRO_RATE 	= 5		//최초 공격자 어그로 보정치%
+	FIRST_TARGET_AGGRO_RATE 	= 1		//최초 목표 어그로 보정치%
+
+	HEAL_RATE			= 10		//오버힐 어그로 보정치%
+
+	SINGLE_HEAL_DICE			= 1		//일반힐 주사위%
+	GROUP_HEAL_DICE			= 3		//그룹힐 주사위%
+	OVER_HEAL_ADDISION_DICE		= 2		//오버힐 주사위%
+
+
+	// 스킬 어그로 하드 코딩???
+	SI_LOD_SUP_ANGER		= 5		//로드 템플러 : 적대치 증폭 스킬 보정치%
+	SI_LOD_SUP_PULLING		= 3		//로드 템플러 : 풀링 스킬 보정치%
+}
+
+
+SINGLE_AGGRO
+{
+	BUFF_AGGRO_RATE		= 0	 		
+	DEBUFF_AGGRO_RATE		= 0	
+	FIRST_ATTACK_AGGRO_RATE 	= 100
+	FIRST_TARGET_AGGRO_RATE 	= 200	
+
+	HEAL_RATE			= 0	
+
+	SINGLE_HEAL_DICE			= 0	
+	GROUP_HEAL_DICE			= 0	
+	OVER_HEAL_ADDISION_DICE		= 0	
+
+
+	// 스킬 어그로 하드 코딩???
+	SI_LOD_SUP_ANGER		= 0	
+	SI_LOD_SUP_PULLING		= 0	
+
+	NEXT_TARET_AGGRO_RATE		= 100
+}
+

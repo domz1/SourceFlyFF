@@ -1,0 +1,4986 @@
+MMI_EVENT_MAY //5월 이벤트
+{
+	// 이벤트 설명
+	DESCRIPTION
+	{
+		TID_GAME_EVENT_MAY_TEXT01
+		TID_GAME_EVENT_MAY_TEXT02
+		TID_GAME_EVENT_MAY_TEXT03
+	}
+
+	// 리스트 설명
+	SET	TID_GAME_EVENT_MAY_COND01
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_MAY_COND01_SUCCESS // 성공
+			TID_GAME_EVENT_MAY_COND01_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	30000
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	30000
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_RID_RID_STI_BIKE2	1	1000000
+		}
+	}						
+
+	SET	TID_GAME_EVENT_MAY_COND02
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_MAY_COND02_SUCCESS // 성공
+			TID_GAME_EVENT_MAY_COND02_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	15000
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	15000
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_JEW_EAR_DEFEARRING06	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_MAY_COND03
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_MAY_COND03_SUCCESS // 성공
+			TID_GAME_EVENT_MAY_COND03_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	11300
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	11300
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_JEW_RIN_METEOFY		1	1000000
+		}
+	}	
+
+	SET	TID_GAME_EVENT_MAY_COND04
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_MAY_COND04_SUCCESS // 성공
+			TID_GAME_EVENT_MAY_COND04_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	7500
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	7500
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_SCR_BXMFROG01	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_MAY_COND04_01
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_MAY_COND04_01_SUCCESS // 성공
+			TID_GAME_EVENT_MAY_COND04_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	7500
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	7500
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_SCR_BXFFROG01	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_MAY_COND05
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_MAY_COND05_SUCCESS // 성공
+			TID_GAME_EVENT_MAY_COND05_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	5300
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	5300
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_PET_SOCCERBALL	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_MAY_COND06
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_MAY_COND06_SUCCESS // 성공
+			TID_GAME_EVENT_MAY_COND06_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	3800
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	3800
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_EVE_BALLOON	1	1000000
+		}
+	}	
+
+	SET	TID_GAME_EVENT_MAY_COND07
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_MAY_COND07_SUCCESS // 성공
+			TID_GAME_EVENT_MAY_COND07_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	3800
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	3800
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_EVE_BALLOON01	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_MAY_COND08
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_MAY_COND08_SUCCESS // 성공
+			TID_GAME_EVENT_MAY_COND08_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	3800
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	3800
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_EVE_BALLOON02	1	1000000
+		}
+	}	
+
+	SET	TID_GAME_EVENT_MAY_COND09
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_MAY_COND09_SUCCESS // 성공
+			TID_GAME_EVENT_MAY_COND09_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	750
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	750
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_SCR_PARTYSUMMON	1	1000000
+		}
+	}		
+
+	SET	TID_GAME_EVENT_MAY_COND10
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_MAY_COND10_SUCCESS // 성공
+			TID_GAME_EVENT_MAY_COND10_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	380
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	380
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_SCR_ADDMAGIC		1	333333
+			II_SYS_SYS_SCR_CRITICALBONUS	1	333333
+			II_SYS_SYS_SCR_MPMAX		1	333334
+		}
+	}	
+
+	SET	TID_GAME_EVENT_MAY_COND11
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_MAY_COND11_SUCCESS // 성공
+			TID_GAME_EVENT_MAY_COND11_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	230
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	230
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_EVE_BXFIRECRACKER	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_MAY_COND12
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_MAY_COND12_SUCCESS // 성공
+			TID_GAME_EVENT_MAY_COND12_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	150
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	150
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_EVE_WINGS	1	1000000
+		}
+	}	
+
+	SET	TID_GAME_EVENT_MAY_COND13
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_MAY_COND13_SUCCESS // 성공
+			TID_GAME_EVENT_MAY_COND13_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	80
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	80
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_GM_DIS_CROWNIBLIS	1	333333
+			II_SYS_SYS_GM_DIS_CROWNSHADE	1	333333
+			II_SYS_SYS_GM_DIS_CROWNBUBBLE	1	333334
+		}
+	}
+
+	SET	TID_GAME_EVENT_MAY_COND14
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_MAY_COND14_SUCCESS // 성공
+			TID_GAME_EVENT_MAY_COND14_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	40
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	40
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_MAG_TRI_GOODBYEBOMB	1	1000000
+		}
+	}		
+}
+
+MMI_COLLECT01
+{
+	// 이벤트 설명
+	DESCRIPTION
+	{
+		TID_GAME_COLLECT_TEXT01
+		TID_GAME_COLLECT_TEXT02
+		TID_GAME_COLLECT_TEXT03
+	}
+
+	// 리스트 설명
+	SET	TID_GAME_COLLECT_COND01
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_COLLECT_COND01_SUCCESS // 성공
+			TID_GAME_COLLECT_COND01_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_SCR_SCRAPCLOUD	10
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_SCR_SCRAPCLOUD	10
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_SCR_CLOUDBOX          1     1000000
+		}
+	}						
+
+	SET	TID_GAME_COLLECT_COND02
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_COLLECT_COND02_SUCCESS // 성공
+			TID_GAME_COLLECT_COND02_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_SCR_SCRAPORICHALCUM    10
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_SCR_SCRAPORICHALCUM    10
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_MAT_ORICHALCUM01           1	1000000
+		}
+	}
+
+	SET	TID_GAME_COLLECT_COND03
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_COLLECT_COND03_SUCCESS // 성공
+			TID_GAME_COLLECT_COND03_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_SCR_SCRAPMOONSTONE    10
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_SCR_SCRAPMOONSTONE    10
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_MAT_MOONSTONE		1	1000000
+		}
+	}	
+
+	SET	TID_GAME_COLLECT_COND04
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_COLLECT_COND04_SUCCESS // 성공
+			TID_GAME_COLLECT_COND04_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_SCR_SCRAPTOPAZ	10
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_SCR_SCRAPTOPAZ	10
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_MAT_TOPAZ	        1	1000000
+		}
+	}
+
+	SET	TID_GAME_COLLECT_COND05
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_COLLECT_COND05_SUCCESS // 성공
+			TID_GAME_COLLECT_COND05_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_SCR_SCRAPRUBY	10
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_SCR_SCRAPRUBY	10
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_MAT_RUBY    	1	1000000
+		}
+	}
+
+	SET	TID_GAME_COLLECT_COND06
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_COLLECT_COND06_SUCCESS // 성공
+			TID_GAME_COLLECT_COND06_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_SCR_SCRAPSAPPHIRE	10
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_SCR_SCRAPSAPPHIRE	10
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_MAT_SAPPHIRE      	1	1000000
+		}
+	}	
+
+	SET	TID_GAME_COLLECT_COND07
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_COLLECT_COND07_SUCCESS // 성공
+			TID_GAME_COLLECT_COND07_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_SCR_SCRAPEMERALD	10
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_SCR_SCRAPEMERALD	10
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_MAT_EMERALD	        1	1000000
+		}
+	}
+
+	SET	TID_GAME_COLLECT_COND08
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_COLLECT_COND08_SUCCESS // 성공
+			TID_GAME_COLLECT_COND08_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_SCR_SCRAPDIAMOND	10
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_SCR_SCRAPDIAMOND	10
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_MAT_DIAMOND       	1	1000000
+		}
+	}	
+}
+
+MMI_COLLECT02
+{
+	// 이벤트 설명
+	DESCRIPTION
+	{
+		TID_GAME_COLLECT_TEXT01
+		TID_GAME_COLLECT_TEXT02
+		TID_GAME_COLLECT_TEXT03
+	}
+
+	// 리스트 설명
+	SET	TID_GAME_COLLECT_COND09
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_COLLECT_COND09_SUCCESS // 성공
+			TID_GAME_COLLECT_COND09_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_SCR_SCRAPSPARK	10
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_SCR_SCRAPSPARK	10
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_MAT_ELE_SPARK             1     1000000
+		}
+	}						
+
+	SET	TID_GAME_COLLECT_COND10
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_COLLECT_COND10_SUCCESS // 성공
+			TID_GAME_COLLECT_COND10_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_SCR_SCRAPTHUNDER    10
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_SCR_SCRAPTHUNDER    10
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_MAT_ELE_THUNDER           1	1000000
+		}
+	}
+
+	SET	TID_GAME_COLLECT_COND11
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_COLLECT_COND11_SUCCESS // 성공
+			TID_GAME_COLLECT_COND11_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_SCR_SCRAPLIGHTING    10
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_SCR_SCRAPLIGHTING    10
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_MAT_ELE_LIGHTING		1	1000000
+		}
+	}	
+
+	SET	TID_GAME_COLLECT_COND12
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_COLLECT_COND12_SUCCESS // 성공
+			TID_GAME_COLLECT_COND12_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_SCR_SCRAPSAND	10
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_SCR_SCRAPSAND	10
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_MAT_ELE_SAND	        1	1000000
+		}
+	}
+
+	SET	TID_GAME_COLLECT_COND13
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_COLLECT_COND13_SUCCESS // 성공
+			TID_GAME_COLLECT_COND13_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_SCR_SCRAPMOUNTAIN	10
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_SCR_SCRAPMOUNTAIN	10
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_MAT_ELE_MOUNTAIN    	1	1000000
+		}
+	}
+
+	SET	TID_GAME_COLLECT_COND14
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_COLLECT_COND14_SUCCESS // 성공
+			TID_GAME_COLLECT_COND14_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_SCR_SCRAPEARTHQUAKE	10
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_SCR_SCRAPEARTHQUAKE	10
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_MAT_ELE_EARTHQUAKE      	1	1000000
+		}
+	}	
+
+	SET	TID_GAME_COLLECT_COND15
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_COLLECT_COND15_SUCCESS // 성공
+			TID_GAME_COLLECT_COND15_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_SCR_SCRAPCANDLE	10
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_SCR_SCRAPCANDLE	10
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_MAT_ELE_CANDLE	        1	1000000
+		}
+	}
+
+	SET	TID_GAME_COLLECT_COND16
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_COLLECT_COND16_SUCCESS // 성공
+			TID_GAME_COLLECT_COND16_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_SCR_SCRAPMAGMA	10
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_SCR_SCRAPMAGMA	10
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_MAT_ELE_MAGMA       	1	1000000
+		}
+	}	
+
+	SET	TID_GAME_COLLECT_COND17
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_COLLECT_COND17_SUCCESS // 성공
+			TID_GAME_COLLECT_COND17_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_SCR_SCRAPVOLCANO	10
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_SCR_SCRAPVOLCANO	10
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_MAT_ELE_VOLCANO       	1	1000000
+		}
+	}	
+
+	SET	TID_GAME_COLLECT_COND18
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_COLLECT_COND18_SUCCESS // 성공
+			TID_GAME_COLLECT_COND18_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_SCR_SCRAPBREEZE	10
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_SCR_SCRAPBREEZE	10
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_MAT_ELE_BREEZE      	1	1000000
+		}
+	}	
+
+	SET	TID_GAME_COLLECT_COND19
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_COLLECT_COND19_SUCCESS // 성공
+			TID_GAME_COLLECT_COND19_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_SCR_SCRAPSTORM	10
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_SCR_SCRAPSTORM	10
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_MAT_ELE_STORM       	1	1000000
+		}
+	}	
+
+	SET	TID_GAME_COLLECT_COND20
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_COLLECT_COND20_SUCCESS // 성공
+			TID_GAME_COLLECT_COND20_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_SCR_SCRAPVACCUM	10
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_SCR_SCRAPVACCUM	10
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_MAT_ELE_VACCUM       	1	1000000
+		}
+	}	
+
+	SET	TID_GAME_COLLECT_COND21
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_COLLECT_COND21_SUCCESS // 성공
+			TID_GAME_COLLECT_COND21_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_SCR_SCRAPRAIN	10
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_SCR_SCRAPRAIN	10
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_MAT_ELE_RAIN       	1	1000000
+		}
+	}	
+
+	SET	TID_GAME_COLLECT_COND22
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_COLLECT_COND22_SUCCESS // 성공
+			TID_GAME_COLLECT_COND22_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_SCR_SCRAPFLOOD	10
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_SCR_SCRAPFLOOD	10
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_MAT_ELE_FLOOD       	1	1000000
+		}
+	}	
+
+	SET	TID_GAME_COLLECT_COND23
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_COLLECT_COND23_SUCCESS // 성공
+			TID_GAME_COLLECT_COND23_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_SCR_SCRAPOCEAN	10
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_SCR_SCRAPOCEAN	10
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_MAT_ELE_OCEAN       	1	1000000
+		}
+	}	
+}
+
+MMI_PET_RES01
+{
+	// 이벤트 설명
+	DESCRIPTION
+	{
+		TID_GAME_PETRES_TEXT01
+		TID_GAME_PETRES_TEXT02
+	}
+
+	// 리스트 설명
+	SET	TID_GAME_PETRES_COND01
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_PETRES_COND01_SUCCESS // 성공
+			TID_GAME_PETRES_COND01_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_QUE_PETRESURRECTION01_S	3
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_QUE_PETRESURRECTION01_S	3
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_QUE_PETRESURRECTION02_S	1     1000000
+		}
+	}						
+
+	SET	TID_GAME_PETRES_COND02
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_PETRES_COND02_SUCCESS // 성공
+			TID_GAME_PETRES_COND02_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_QUE_PETRESURRECTION01_A	3
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_QUE_PETRESURRECTION01_A	3
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_QUE_PETRESURRECTION02_A	1	1000000
+		}
+	}
+
+	SET	TID_GAME_PETRES_COND03
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_PETRES_COND03_SUCCESS // 성공
+			TID_GAME_PETRES_COND03_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_QUE_PETRESURRECTION01_B	3
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_QUE_PETRESURRECTION01_B	3
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_QUE_PETRESURRECTION02_B	1	1000000
+		}
+	}
+}	
+
+MMI_EVENT_HAPPY_TWN
+{
+	// 이벤트 설명
+	DESCRIPTION
+	{
+		TID_GAME_EVENT_HAPPY_TWN_TEXT01
+		TID_GAME_EVENT_HAPPY_TWN_TEXT02
+	}
+
+	// 리스트 설명
+	SET	TID_GAME_EVENT_HAPPY_TWN_COND01
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_TWN_COND01_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_TWN_COND01_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	50000
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	50000
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_RID_RID_BOR_RIDINGCLOUD02	1     1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_USA_COND02
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_USA_COND02_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_USA_COND02_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	30000
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	30000
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_ARM_S_CLO_CLO_GAIA	1     1000000
+		}
+	}
+
+/*
+	SET	TID_GAME_EVENT_HAPPY_TWN_COND02
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_TWN_COND02_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_TWN_COND02_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	30000
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	30000
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_JEW_EAR_DEFEARRING06	1     1000000
+		}
+	}
+*/
+
+	SET	TID_GAME_EVENT_HAPPY_TWN_COND03
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_TWN_COND03_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_TWN_COND03_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	25000
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	25000
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_JEW_RIN_METEOFY	1     1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_TWN_COND04
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_TWN_COND04_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_TWN_COND04_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	22000
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	22000
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_PET_PENGUIN		1     1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_TWN_COND05
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_TWN_COND05_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_TWN_COND05_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	20000
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	20000
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_SCR_BXMVAMPIRE01	1     1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_TWN_COND06
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_TWN_COND06_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_TWN_COND06_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	20000
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	20000
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_SCR_BXFVAMPIRE01	1     1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_TWN_COND07
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_TWN_COND07_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_TWN_COND07_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	8000
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	8000
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_SCR_HAIRCHANGE	1     1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_TWN_COND08
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_TWN_COND07_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_TWN_COND07_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	8000
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	8000
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_SCR_FACEOFFFREE	1     1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_TWN_COND09
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_TWN_COND09_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_TWN_COND09_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	5000
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	5000
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_MAT_ORICHALCUM01_1	1     1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_TWN_COND10
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_TWN_COND10_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_TWN_COND10_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	3000
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	3000
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_MAT_MOONSTONE_1	1     1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_TWN_COND11
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_TWN_COND11_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_TWN_COND11_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	1500
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	1500
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_WARP_COUPLERING	1     1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_TWN_COND12
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_TWN_COND12_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_TWN_COND12_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	1000
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	1000
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_EVE_BALLOON	1     1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_TWN_COND13
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_TWN_COND13_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_TWN_COND13_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	1000
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	1000
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_EVE_BALLOON01	1     1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_TWN_COND14
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_TWN_COND14_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_TWN_COND14_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	1000
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	1000
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_EVE_BALLOON02	1     1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_TWN_COND15
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_TWN_COND15_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_TWN_COND15_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	250
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	250
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_EVE_WINGS	1     1000000
+		}
+	}
+}	
+
+MMI_EVENT_HAPPY_USA
+{
+	// 이벤트 설명
+	DESCRIPTION
+	{
+		TID_GAME_EVENT_HAPPY_TWN_TEXT01
+		TID_GAME_EVENT_HAPPY_TWN_TEXT02
+	}
+
+	// 리스트 설명
+	SET	TID_GAME_EVENT_HAPPY_TWN_COND01
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_TWN_COND01_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_TWN_COND01_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	50000
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	50000
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_RID_RID_BOR_RIDINGCLOUD02	1     1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_USA_COND02
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_USA_COND02_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_USA_COND02_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	30000
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	30000
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_ARM_S_CLO_CLO_GAIA	1     1000000
+		}
+	}
+/*
+	SET	TID_GAME_EVENT_HAPPY_TWN_COND03
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_TWN_COND03_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_TWN_COND03_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	25000
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	25000
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_JEW_RIN_METEOFY	1     1000000
+		}
+	}
+*/
+	SET	TID_GAME_EVENT_HAPPY_USA_COND07
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_USA_COND07_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_TWN_COND07_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	8000
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	8000
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_SCR_HAIRCHANGE	1     1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_TWN_COND08
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_TWN_COND07_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_TWN_COND07_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	8000
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	8000
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_SCR_FACEOFFFREE	1     1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_TWN_COND09
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_TWN_COND09_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_TWN_COND09_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	3000
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	3000
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_MAT_ORICHALCUM01_1	1     1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_TWN_COND10
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_TWN_COND10_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_TWN_COND10_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	3000
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	3000
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_MAT_MOONSTONE_1	1     1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_TWN_COND11
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_TWN_COND11_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_TWN_COND11_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	1500
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	1500
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_GEN_WARP_COUPLERING	1     1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_TWN_COND12
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_TWN_COND12_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_TWN_COND12_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	1000
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	1000
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_EVE_BALLOON	1     1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_TWN_COND13
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_TWN_COND13_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_TWN_COND13_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	1000
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	1000
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_EVE_BALLOON01	1     1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_TWN_COND14
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_TWN_COND14_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_TWN_COND14_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	1000
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	1000
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_EVE_BALLOON02	1     1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_TWN_COND15
+	{
+		//메시지 내용
+		RESULTMSG
+		{
+			TID_GAME_EVENT_HAPPY_TWN_COND15_SUCCESS // 성공
+			TID_GAME_EVENT_HAPPY_TWN_COND15_FAIL // 실패
+		}
+		//조건
+		CONDITION
+		{
+			//아이템 ID		갯수
+			II_SYS_SYS_EVE_HAPPYMONEY01	250
+		}
+		//삭제
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	250
+		}
+		//지급	지급갯수
+		PAY	1
+		{
+			//아이템 ID		갯수	확률(n/1000000)
+			II_SYS_SYS_EVE_WINGS	1     1000000
+		}
+	}
+}	
+
+MMI_EXCHANGE_ARMORCARD
+{
+	DESCRIPTION
+	{
+		TID_EXCHANGE_ARMORCARD_TEXT01
+	}
+
+	// 볼케이노 2%_>3%
+	SET	TID_EXCHANGE_ARMORCARD_COND01_1
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_ARMORCARD_COND01_1_SUCCESS
+			TID_EXCHANGE_ARMORCARD_COND01_1_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_CANDLE   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_CANDLE	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_CANDLE       1      600000
+			II_GEN_MAT_ELE_VOLCANO3     1      400000
+		}
+	}
+   
+	// 볼케이노 3%_>4%
+	SET	TID_EXCHANGE_ARMORCARD_COND01_2
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_ARMORCARD_COND01_2_SUCCESS
+			TID_EXCHANGE_ARMORCARD_COND01_2_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_VOLCANO3   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_VOLCANO3	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_VOLCANO3     1      850000
+			II_GEN_MAT_ELE_MAGMA        1      150000
+		}
+	}
+
+    // 볼케이노 4%_>7%
+	SET	TID_EXCHANGE_ARMORCARD_COND01_3
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_ARMORCARD_COND01_3_SUCCESS
+			TID_EXCHANGE_ARMORCARD_COND01_3_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_MAGMA   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_MAGMA	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_MAGMA     1      960000
+			II_GEN_MAT_ELE_VOLCANO   1      40000
+		}
+	}
+    
+	// 오션 2%_>3%
+	SET	TID_EXCHANGE_ARMORCARD_COND02_1
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_ARMORCARD_COND02_1_SUCCESS
+			TID_EXCHANGE_ARMORCARD_COND02_1_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_RAIN   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_RAIN	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_RAIN       1      600000
+			II_GEN_MAT_ELE_OCEAN3     1      400000
+		}
+	}
+   
+	// 오션 3%_>4%
+	SET	TID_EXCHANGE_ARMORCARD_COND02_2
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_ARMORCARD_COND02_2_SUCCESS
+			TID_EXCHANGE_ARMORCARD_COND02_2_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_OCEAN3   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_OCEAN3	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_OCEAN3     1      850000
+			II_GEN_MAT_ELE_FLOOD      1      150000
+		}
+	}
+
+    // 오션 4%_>7%
+	SET	TID_EXCHANGE_ARMORCARD_COND02_3
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_ARMORCARD_COND02_3_SUCCESS
+			TID_EXCHANGE_ARMORCARD_COND02_3_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_FLOOD   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_FLOOD	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_FLOOD     1      960000
+			II_GEN_MAT_ELE_OCEAN     1      40000
+		}
+	}
+    
+	// 라이트닝 2%_>3%
+	SET	TID_EXCHANGE_ARMORCARD_COND03_1
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_ARMORCARD_COND03_1_SUCCESS
+			TID_EXCHANGE_ARMORCARD_COND03_1_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_SPARK   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_SPARK	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_SPARK       1      600000
+			II_GEN_MAT_ELE_LIGHTING3   1      400000
+		}
+	}
+   
+	// 라이트닝 3%_>4%
+	SET	TID_EXCHANGE_ARMORCARD_COND03_2
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_ARMORCARD_COND03_2_SUCCESS
+			TID_EXCHANGE_ARMORCARD_COND03_2_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_LIGHTING3   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_LIGHTING3	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_LIGHTING3     1      850000
+			II_GEN_MAT_ELE_THUNDER       1      150000
+		}
+	}
+
+    // 라이트닝 4%_>7%
+	SET	TID_EXCHANGE_ARMORCARD_COND03_3
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_ARMORCARD_COND03_3_SUCCESS
+			TID_EXCHANGE_ARMORCARD_COND03_3_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_THUNDER   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_THUNDER	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_THUNDER     1      960000
+			II_GEN_MAT_ELE_LIGHTING    1      40000
+		}
+	}
+    
+	// 바큠 2%_>3%
+	SET	TID_EXCHANGE_ARMORCARD_COND04_1
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_ARMORCARD_COND04_1_SUCCESS
+			TID_EXCHANGE_ARMORCARD_COND04_1_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_BREEZE   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_BREEZE	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_BREEZE    1      600000
+			II_GEN_MAT_ELE_VACCUM3   1      400000
+		}
+	}
+   
+	// 바큠 3%_>4%
+	SET	TID_EXCHANGE_ARMORCARD_COND04_2
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_ARMORCARD_COND04_2_SUCCESS
+			TID_EXCHANGE_ARMORCARD_COND04_2_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_VACCUM3   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_VACCUM3	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_VACCUM3     1      850000
+			II_GEN_MAT_ELE_STORM       1      150000
+		}
+	}
+
+    // 바큠 4%_>7%
+	SET	TID_EXCHANGE_ARMORCARD_COND04_3
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_ARMORCARD_COND04_3_SUCCESS
+			TID_EXCHANGE_ARMORCARD_COND04_3_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_STORM   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_STORM	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_STORM     1      960000
+			II_GEN_MAT_ELE_VACCUM    1      40000
+		}
+	}
+
+	// 어스퀘이크 2%_>3%
+	SET	TID_EXCHANGE_ARMORCARD_COND05_1
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_ARMORCARD_COND05_1_SUCCESS
+			TID_EXCHANGE_ARMORCARD_COND05_1_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_SAND   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_SAND	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_SAND          1      600000
+			II_GEN_MAT_ELE_EARTHQUAKE3   1      400000
+		}
+	}
+   
+	// 어스퀘이크 3%_>4%
+	SET	TID_EXCHANGE_ARMORCARD_COND05_2
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_ARMORCARD_COND05_2_SUCCESS
+			TID_EXCHANGE_ARMORCARD_COND05_2_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_EARTHQUAKE3   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_EARTHQUAKE3	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_EARTHQUAKE3     1      850000
+			II_GEN_MAT_ELE_MOUNTAIN        1      150000
+		}
+	}
+
+    // 어스퀘이크 4%_>7%
+	SET	TID_EXCHANGE_ARMORCARD_COND05_3
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_ARMORCARD_COND05_3_SUCCESS
+			TID_EXCHANGE_ARMORCARD_COND05_3_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_MOUNTAIN   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_MOUNTAIN	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_MOUNTAIN     1      960000
+			II_GEN_MAT_ELE_EARTHQUAKE   1      40000
+		}
+	}    
+}
+
+MMI_EXCHANGE_WEAPONCARD
+{
+	DESCRIPTION
+	{
+		TID_EXCHANGE_WEAPONCARD_TEXT01
+	}
+
+	// 캔들 D->C
+	SET	TID_EXCHANGE_WEAPONCARD_COND01_1
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_WEAPONCARD_COND01_1_SUCCESS
+			TID_EXCHANGE_WEAPONCARD_COND01_1_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_CANDLED   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_CANDLED	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_CANDLED     1      600000
+			II_GEN_MAT_ELE_CANDLEC     1      400000
+		}
+	}
+   
+	// 캔들 C->B
+	SET	TID_EXCHANGE_WEAPONCARD_COND01_2
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_WEAPONCARD_COND01_2_SUCCESS
+			TID_EXCHANGE_WEAPONCARD_COND01_2_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_CANDLEC   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_CANDLEC	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_CANDLEC     1      850000
+			II_GEN_MAT_ELE_CANDLEB     1      150000
+		}
+	}
+
+    // 캔들B->A
+	SET	TID_EXCHANGE_WEAPONCARD_COND01_3
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_WEAPONCARD_COND01_3_SUCCESS
+			TID_EXCHANGE_WEAPONCARD_COND01_3_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_CANDLEB   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_CANDLEB	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_CANDLEB     1      960000
+			II_GEN_MAT_ELE_CANDLEA     1      40000
+		}
+	}
+    
+	// 레인 D->C
+	SET	TID_EXCHANGE_WEAPONCARD_COND02_1
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_WEAPONCARD_COND02_1_SUCCESS
+			TID_EXCHANGE_WEAPONCARD_COND02_1_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_RAINATKD   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_RAINATKD	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_RAINATKD       1      600000
+			II_GEN_MAT_ELE_RAINATKC       1      400000
+		}
+	}
+   
+	// 레인C->B
+	SET	TID_EXCHANGE_WEAPONCARD_COND02_2
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_WEAPONCARD_COND02_2_SUCCESS
+			TID_EXCHANGE_WEAPONCARD_COND02_2_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_RAINATKC   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_RAINATKC	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_RAINATKC     1      850000
+			II_GEN_MAT_ELE_RAINATKB     1      150000
+		}
+	}
+
+    // 레인 B->A
+	SET	TID_EXCHANGE_WEAPONCARD_COND02_3
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_WEAPONCARD_COND02_3_SUCCESS
+			TID_EXCHANGE_WEAPONCARD_COND02_3_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_RAINATKB   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_RAINATKB	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_RAINATKB     1      960000
+			II_GEN_MAT_ELE_RAINATKA     1      40000
+		}
+	}
+    
+	// 스파크 D->C
+	SET	TID_EXCHANGE_WEAPONCARD_COND03_1
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_WEAPONCARD_COND03_1_SUCCESS
+			TID_EXCHANGE_WEAPONCARD_COND03_1_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_SPARKATKD   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_SPARKATKD	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_SPARKATKD      1      600000
+			II_GEN_MAT_ELE_SPARKATKC      1      400000
+		}
+	}
+   
+	// 스파크 C->B
+	SET	TID_EXCHANGE_WEAPONCARD_COND03_2
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_WEAPONCARD_COND03_2_SUCCESS
+			TID_EXCHANGE_WEAPONCARD_COND03_2_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_SPARKATKC   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_SPARKATKC	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_SPARKATKC     1      850000
+			II_GEN_MAT_ELE_SPARKATKB     1      150000
+		}
+	}
+
+    // 스파크 B->A
+	SET	TID_EXCHANGE_WEAPONCARD_COND03_3
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_WEAPONCARD_COND03_3_SUCCESS
+			TID_EXCHANGE_WEAPONCARD_COND03_3_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_SPARKATKB   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_SPARKATKB	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_SPARKATKB     1      960000
+			II_GEN_MAT_ELE_SPARKATKA     1      40000
+		}
+	}
+    
+	// 브리즈 D->C
+	SET	TID_EXCHANGE_WEAPONCARD_COND04_1
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_WEAPONCARD_COND04_1_SUCCESS
+			TID_EXCHANGE_WEAPONCARD_COND04_1_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_BREEZEATKD   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_BREEZEATKD	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_BREEZEATKD    1      600000
+			II_GEN_MAT_ELE_BREEZEATKC    1      400000
+		}
+	}
+   
+	// 브리즈 C->B
+	SET	TID_EXCHANGE_WEAPONCARD_COND04_2
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_WEAPONCARD_COND04_2_SUCCESS
+			TID_EXCHANGE_WEAPONCARD_COND04_2_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_BREEZEATKC   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_BREEZEATKC	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_BREEZEATKC     1      850000
+			II_GEN_MAT_ELE_BREEZEATKB     1      150000
+		}
+	}
+
+    // 브리즈 B->A
+	SET	TID_EXCHANGE_WEAPONCARD_COND04_3
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_WEAPONCARD_COND04_3_SUCCESS
+			TID_EXCHANGE_WEAPONCARD_COND04_3_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_BREEZEATKB   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_BREEZEATKB	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_BREEZEATKB     1      960000
+			II_GEN_MAT_ELE_BREEZEATKA     1      40000
+		}
+	}
+
+	// 쌘드 D->C
+	SET	TID_EXCHANGE_WEAPONCARD_COND05_1
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_WEAPONCARD_COND05_1_SUCCESS
+			TID_EXCHANGE_WEAPONCARD_COND05_1_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_SANDATKD   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_SANDATKD	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_SANDATKD    1      600000
+			II_GEN_MAT_ELE_SANDATKC    1      400000
+		}
+	}
+   
+	// 쌘드 C->B
+	SET	TID_EXCHANGE_WEAPONCARD_COND05_2
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_WEAPONCARD_COND05_2_SUCCESS
+			TID_EXCHANGE_WEAPONCARD_COND05_2_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_SANDATKC   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_SANDATKC	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_SANDATKC     1      850000
+			II_GEN_MAT_ELE_SANDATKB     1      150000
+		}
+	}
+
+    // 쌘드 B->A
+	SET	TID_EXCHANGE_WEAPONCARD_COND05_3
+	{
+		RESULTMSG
+		{
+			TID_EXCHANGE_WEAPONCARD_COND05_3_SUCCESS
+			TID_EXCHANGE_WEAPONCARD_COND05_3_FAIL
+		}
+		CONDITION
+		{
+			II_GEN_MAT_ELE_SANDATKB   10
+		}
+		REMOVE
+		{
+			II_GEN_MAT_ELE_SANDATKB	10
+		}
+		PAY	1
+		{
+            II_GEN_MAT_ELE_SANDATKB     1      960000
+			II_GEN_MAT_ELE_SANDATKA     1      40000
+		}
+	}    
+}
+
+MMI_FASHION_PHP //패션 쿠폰 이벤트(필리핀)
+{
+	DESCRIPTION
+	{
+		TID_GAME_EVENT_FASHIONCOUPON_PHP_TEXT01
+		TID_GAME_EVENT_FASHIONCOUPON_PHP_TEXT02
+	}
+
+	SET	TID_GAME_EVENT_FASHIONCOUPON_PHP_COND01
+	{
+		RESULTMSG
+		{
+			TID_GAME_EVENT_FASHIONCOUPON_PHP_COND01_SUCCESS 
+			TID_GAME_EVENT_FASHIONCOUPON_PHP_COND01_FAIL
+		}
+
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_FASHIONCOUPON	2
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_FASHIONCOUPON	2
+		}
+
+		PAY	1
+		{
+			II_CHR_SYS_SCR_UPCUTSTONE	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_FASHIONCOUPON_PHP_COND02
+	{
+		RESULTMSG
+		{
+			TID_GAME_EVENT_FASHIONCOUPON_PHP_COND02_SUCCESS 
+			TID_GAME_EVENT_FASHIONCOUPON_PHP_COND02_FAIL
+		}
+
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_FASHIONCOUPON	3
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_FASHIONCOUPON	3
+		}
+
+		PAY	1
+		{
+			II_ARM_M_CLO_MAS_WIG09BR_1	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_FASHIONCOUPON_PHP_COND03
+	{
+		RESULTMSG
+		{
+			TID_GAME_EVENT_FASHIONCOUPON_PHP_COND03_SUCCESS 
+			TID_GAME_EVENT_FASHIONCOUPON_PHP_COND03_FAIL
+		}
+
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_FASHIONCOUPON	3
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_FASHIONCOUPON	3
+		}
+
+		PAY	1
+		{
+			II_ARM_M_CLO_MAS_WIG09S_1	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_FASHIONCOUPON_PHP_COND04
+	{
+		RESULTMSG
+		{
+			TID_GAME_EVENT_FASHIONCOUPON_PHP_COND04_SUCCESS 
+			TID_GAME_EVENT_FASHIONCOUPON_PHP_COND04_FAIL
+		}
+
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_FASHIONCOUPON	3
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_FASHIONCOUPON	3
+		}
+
+		PAY	1
+		{
+			II_ARM_M_CLO_MAS_WIG09B_1	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_FASHIONCOUPON_PHP_COND05
+	{
+		RESULTMSG
+		{
+			TID_GAME_EVENT_FASHIONCOUPON_PHP_COND05_SUCCESS 
+			TID_GAME_EVENT_FASHIONCOUPON_PHP_COND05_FAIL
+		}
+
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_FASHIONCOUPON	3
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_FASHIONCOUPON	3
+		}
+
+		PAY	1
+		{
+			II_ARM_F_CLO_MAS_WIG07BL_1	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_FASHIONCOUPON_PHP_COND06
+	{
+		RESULTMSG
+		{
+			TID_GAME_EVENT_FASHIONCOUPON_PHP_COND06_SUCCESS 
+			TID_GAME_EVENT_FASHIONCOUPON_PHP_COND06_FAIL
+		}
+
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_FASHIONCOUPON	3
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_FASHIONCOUPON	3
+		}
+
+		PAY	1
+		{
+			II_ARM_F_CLO_MAS_WIG07B_1	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_FASHIONCOUPON_PHP_COND07
+	{
+		RESULTMSG
+		{
+			TID_GAME_EVENT_FASHIONCOUPON_PHP_COND07_SUCCESS 
+			TID_GAME_EVENT_FASHIONCOUPON_PHP_COND07_FAIL
+		}
+
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_FASHIONCOUPON	3
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_FASHIONCOUPON	3
+		}
+
+		PAY	1
+		{
+			II_ARM_F_CLO_MAS_WIG07BR_1	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_FASHIONCOUPON_PHP_COND08
+	{
+		RESULTMSG
+		{
+			TID_GAME_EVENT_FASHIONCOUPON_PHP_COND08_SUCCESS 
+			TID_GAME_EVENT_FASHIONCOUPON_PHP_COND08_FAIL
+		}
+
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_FASHIONCOUPON	4
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_FASHIONCOUPON	4
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXMSUPER0107	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_FASHIONCOUPON_PHP_COND09
+	{
+		RESULTMSG
+		{
+			TID_GAME_EVENT_FASHIONCOUPON_PHP_COND09_SUCCESS 
+			TID_GAME_EVENT_FASHIONCOUPON_PHP_COND09_FAIL
+		}
+
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_FASHIONCOUPON	4
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_FASHIONCOUPON	4
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXFSUPER0107	1	1000000
+		}
+	}
+}
+
+MMI_EVENT_CARD_KOR //카드 이벤트(국내)
+{
+	DESCRIPTION
+	{
+		TID_GAME_EVENT_CARD_KOR_TEXT01
+	}
+
+	SET	TID_GAME_EVENT_CARD_KOR_COND01
+	{
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_F_CARD	1
+			II_SYS_SYS_EVE_L_CARD	1
+			II_SYS_SYS_EVE_Y_CARD	1
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_F_CARD	1
+			II_SYS_SYS_EVE_L_CARD	1
+			II_SYS_SYS_EVE_Y_CARD	1
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_FLY01	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_CARD_KOR_COND02
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_F_CARD	1
+			II_SYS_SYS_EVE_O_CARD	1
+			II_SYS_SYS_EVE_R_CARD	1
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_F_CARD	1
+			II_SYS_SYS_EVE_O_CARD	1
+			II_SYS_SYS_EVE_R_CARD	1
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_FOR01	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_CARD_KOR_COND03
+	{
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_F_CARD	1
+			II_SYS_SYS_EVE_U_CARD	1
+			II_SYS_SYS_EVE_N_CARD	1
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_F_CARD	1
+			II_SYS_SYS_EVE_U_CARD	1
+			II_SYS_SYS_EVE_N_CARD	1
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_FUN01	1	1000000
+		}
+	}
+}
+
+MMI_EVENT_TRADE_KOR
+{
+	DESCRIPTION
+	{
+		TID_GAME_EVENT_TRADE_KOR_TEXT01
+	}
+
+	SET	TID_GAME_EVENT_TRADE_KOR_COND01
+	{
+		CONDITION
+		{
+
+			II_GEN_MAT_ORICHALCUM01	2
+		}
+
+		REMOVE
+		{
+			II_GEN_MAT_ORICHALCUM01	2
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_KAWIBAWIBO	1	1000000
+		}
+	}
+}
+
+MMI_EVENT_RESTATE01
+{
+	DESCRIPTION
+	{
+		TID_GAME_EVENT_RESTATE01_TEXT01
+	}
+
+	SET	TID_GAME_EVENT_RESTATE01_COND01
+	{
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_RESTATECOUPON01	1
+			PENYA				10000000
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_RESTATECOUPON01	1
+			PENYA				10000000
+		}
+
+		PAY	1
+		{
+			II_CHR_SYS_SCR_RESTATE_STR	1	1000000		2
+		}
+	}
+
+	SET	TID_GAME_EVENT_RESTATE01_COND02
+	{
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_RESTATECOUPON01	1
+			PENYA				10000000
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_RESTATECOUPON01	1
+			PENYA				10000000
+		}
+
+		PAY	1
+		{
+			II_CHR_SYS_SCR_RESTATE_DEX	1	1000000		2
+		}
+	}
+
+	SET	TID_GAME_EVENT_RESTATE01_COND03
+	{
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_RESTATECOUPON01	1
+			PENYA				10000000
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_RESTATECOUPON01	1
+			PENYA				10000000
+		}
+
+		PAY	1
+		{
+			II_CHR_SYS_SCR_RESTATE_STA	1	1000000		2
+		}
+	}
+
+	SET	TID_GAME_EVENT_RESTATE01_COND04
+	{
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_RESTATECOUPON01	1
+			PENYA				10000000
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_RESTATECOUPON01	1
+			PENYA				10000000
+		}
+
+		PAY	1
+		{
+			II_CHR_SYS_SCR_RESTATE_INT	1	1000000		2
+		}
+	}
+}
+
+MMI_EVENT_FIRSTTERM01
+{
+	DESCRIPTION
+	{
+		TID_GAME_EVENT_FIRSTTERM01_TEXT01
+	}
+
+	SET	TID_GAME_EVENT_FIRSTTERM01_COND01
+	{
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_SCHOOL01		10
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_SCHOOL01		10
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXSCHOOL01	1	500000
+			II_SYS_SYS_SCR_BXSCHOOL02	1	300000
+			II_SYS_SYS_SCR_BXSCHOOL03	1	200000
+		}
+	}
+}
+
+MMI_EVENT_ALICE01
+{
+	DESCRIPTION
+	{
+		TID_GAME_EVENT_ALICE01_TEXT01
+	}
+
+	SET	TID_GAME_EVENT_ALICE01_COND01
+	{
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_BLOSSOM01	3
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_BLOSSOM01	3
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_BXBLOSSOM01	1	1000000
+		}
+	}
+}
+
+MMI_EVENT_OASIS01
+{
+	DESCRIPTION
+	{
+		TID_GAME_EVENT_OASIS01_TEXT01
+	}
+
+	SET	TID_GAME_EVENT_OASIS01_COND01
+	{
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_WORLDMAP01	1
+			II_SYS_SYS_EVE_WORLDMAP02	1
+		}
+
+		REMOVE
+		{			
+			II_SYS_SYS_EVE_WORLDMAP01	1
+			II_SYS_SYS_EVE_WORLDMAP02	1
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_BXBOMUL01	1	1000000
+		}
+	}
+}
+
+MMI_EVENT_FLOWER01
+{
+	DESCRIPTION
+	{
+		TID_GAME_EVENT_FLOWER01_TEXT01
+	}
+
+	SET	TID_GAME_EVENT_FLOWER01_COND01
+	{
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_WATER01		50
+		}
+
+		REMOVE
+		{			
+			II_SYS_SYS_EVE_WATER01		50
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_FLOWERPOT01	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_FLOWER01_COND02
+	{
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_WATER01		100
+		}
+
+		REMOVE
+		{			
+			II_SYS_SYS_EVE_WATER01		100
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_FLOWERPOT02	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_FLOWER01_COND03
+	{
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_WATER01		150
+		}
+
+		REMOVE
+		{			
+			II_SYS_SYS_EVE_WATER01		150
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_FLOWERPOT03	1	1000000
+		}
+	}
+}
+
+MMI_EVENT_ALICE02
+{
+	DESCRIPTION
+	{
+		TID_GAME_EVENT_ALICE02_TEXT02
+	}
+
+	SET	TID_GAME_EVENT_ALICE02_COND02
+	{
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_BLOSSOM01	3
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_BLOSSOM01	3
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_BXBLOSSOM02	1	1000000
+		}
+	}
+}
+
+MMI_EVENT_TRADE_USA
+{
+	DESCRIPTION
+	{
+		TID_GAME_EVENT_TRADE_USA_TEXT01
+	}
+
+	SET	TID_GAME_EVENT_TRADE_USA_COND01
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_0401F01COUPON	5
+			PENYA				100000
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_0401F01COUPON	5
+			PENYA				100000
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_KAWIBAWIBO	1	1000000
+		}
+	}
+}
+
+MMI_EVENT_TRADE_ASIA
+{
+	DESCRIPTION
+	{
+		TID_GAME_EVENT_TRADE_ASIA_TEXT01
+	}
+
+	SET	TID_GAME_EVENT_TRADE_ASIA_COND01
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_0401F01COUPON	5
+			PENYA				100000
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_0401F01COUPON	5
+			PENYA				100000
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_KAWIBAWIBO	1	1000000
+		}
+	}
+}
+
+
+MMI_CHANGTICKET01
+{
+	DESCRIPTION
+	{
+		TID_MMI_CHANGTICKET01_TEXT01
+	}
+
+	SET	TID_MMI_CHANGTICKET01_COND01
+	{
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_TICKECT01	5
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_TICKECT01	5
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_MACARONINDIGO	1	200000
+			II_SYS_SYS_SCR_MACARONAZALEA	1	200000
+			II_SYS_SYS_SCR_MACARONYGREEN	1	200000
+			II_SYS_SYS_SCR_MACARONREDBEAN	1	200000
+			II_SYS_SYS_SCR_MACARONGOLD	1	200000
+		}
+	}
+}
+
+
+MMI_CHANGE_CHRISTMAS01
+{
+	DESCRIPTION
+	{
+		TID_MMI_CHANGE_CHRISTMAS01_TEXT01
+	}
+
+	SET	TID_MMI_CHANGE_CHRISTMAS01_COND01
+	{
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_CHRISTMASMEDAL01		5
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_CHRISTMASMEDAL01		5
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXMRUDOLF07		1	1000000
+		}
+	}
+
+	SET	TID_MMI_CHANGE_CHRISTMAS01_COND02
+	{
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_CHRISTMASMEDAL01		5
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_CHRISTMASMEDAL01		5
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXFRUDOLF07		1	1000000
+		}
+	}
+
+	SET	TID_MMI_CHANGE_CHRISTMAS01_COND03
+	{
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_CHRISTMASMEDAL01		5
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_CHRISTMASMEDAL01		5
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXMSANTA01		1	1000000
+		}
+	}
+
+	SET	TID_MMI_CHANGE_CHRISTMAS01_COND04
+	{
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_CHRISTMASMEDAL01		5
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_CHRISTMASMEDAL01		5
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXFSANTA01		1	1000000
+		}
+	}
+
+	SET	TID_MMI_CHANGE_CHRISTMAS01_COND05
+	{
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_CHRISTMASMEDAL01		1
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_CHRISTMASMEDAL01		1
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_CHRISTMASCAKE01		2	1000000
+		}
+	}
+
+	SET	TID_MMI_CHANGE_CHRISTMAS01_COND06
+	{
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_CHRISTMASMEDAL01		1
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_CHRISTMASMEDAL01		1
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_GINGERBRADE01		2	1000000
+		}
+	}
+
+	SET	TID_MMI_CHANGE_CHRISTMAS01_COND07
+	{
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_CHRISTMASMEDAL01		1
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_CHRISTMASMEDAL01		1
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_CHRISTMASVANILLA01	10	1000000
+		}
+	}
+
+	SET	TID_MMI_CHANGE_CHRISTMAS01_COND08
+	{
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_CHRISTMASMEDAL01		1
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_CHRISTMASMEDAL01		1
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_CHRISTMASTEA01		4	1000000
+		}
+	}
+}
+
+MMI_EVENT_FITA
+{
+	DESCRIPTION
+	{
+		TID_EVENT_FITA_TEXT01
+	}
+
+	SET	TID_EVENT_FITA_COND01
+	{
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_FITAPIECEF		1
+			II_SYS_SYS_EVE_FITAPIECEI		1
+			II_SYS_SYS_EVE_FITAPIECET		1
+			II_SYS_SYS_EVE_FITAPIECEA		1
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_FITAPIECEF		1
+			II_SYS_SYS_EVE_FITAPIECEI		1
+			II_SYS_SYS_EVE_FITAPIECET		1
+			II_SYS_SYS_EVE_FITAPIECEA		1
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXFITA02			1	1000000		2
+		}
+	}
+}
+
+MMI_EVENT_LUCKYBOX
+{
+	DESCRIPTION
+	{
+		TID_EVENT_LUCKYBOX_TEXT01
+	}
+
+	SET	TID_EVENT_LUCKYBOX_COND01
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_LUCKBAG		2000
+			PENYA				20000000
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_LUCKBAG		2000
+			PENYA				20000000
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_HAIRCHANGE	1	1000000
+		}
+	}
+
+	SET	TID_EVENT_LUCKYBOX_COND02
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_LUCKBAG		2000
+			PENYA				20000000
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_LUCKBAG		2000
+			PENYA				20000000
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_FACEOFFFREE	1	1000000
+		}
+	}
+
+	SET	TID_EVENT_LUCKYBOX_COND03
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_LUCKBAG		1500
+			PENYA				15000000
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_LUCKBAG		1500
+			PENYA				15000000
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BX_EVE_MSNOWMAN07	1	1000000
+		}
+	}
+
+	SET	TID_EVENT_LUCKYBOX_COND04
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_LUCKBAG		1500
+			PENYA				15000000
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_LUCKBAG		1500
+			PENYA				15000000
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BX_EVE_FSNOWMAN07	1	1000000
+		}
+	}
+
+	SET	TID_EVENT_LUCKYBOX_COND05
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_LUCKBAG		1000
+			PENYA				10000000
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_LUCKBAG		1000
+			PENYA				10000000
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXANGEL01_3	1	1000000
+		}
+	}
+
+	SET	TID_EVENT_LUCKYBOX_COND06
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_LUCKBAG		1000
+			PENYA				10000000
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_LUCKBAG		1000
+			PENYA				10000000
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXPROPHET01_3	1	1000000
+		}
+	}
+
+	SET	TID_EVENT_LUCKYBOX_COND07
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_LUCKBAG		500
+			PENYA				1000000
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_LUCKBAG		500
+			PENYA				1000000
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_BALLOON_TWN	1	1000000
+		}
+	}
+
+	SET	TID_EVENT_LUCKYBOX_COND08
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_LUCKBAG		10
+			PENYA				100000
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_LUCKBAG		10
+			PENYA				100000
+		}
+
+		PAY	1
+		{
+			II_CHR_MAG_TRI_HEARTBOMB	1	1000000
+		}
+	}
+
+	SET	TID_EVENT_LUCKYBOX_COND09
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_LUCKBAG		10
+			PENYA				100000
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_LUCKBAG		10
+			PENYA				100000
+		}
+
+		PAY	1
+		{
+			II_GEN_MAG_TRI_HWFIREWORKS	1	1000000
+		}
+	}
+}
+
+
+MMI_CHANGEGG01
+{
+	DESCRIPTION
+	{
+		TID_GAME_CHANGEGG01_TEXT01
+	}
+
+	SET	TID_GAME_CHANGEGG01_COND01
+	{
+		CONDITION
+		{
+
+			II_SYS_SYS_EVE_NATURALEGG1	100
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_NATURALEGG1	100
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_BOXEGG1	1	1000000
+		}
+	}
+}
+
+
+MMI_EVENT_TRADE_KOR2010
+{
+	DESCRIPTION
+	{
+		TID_GAME_EVENT_TRADE_KOR2010_TEXT01
+	}
+
+	SET	TID_GAME_EVENT_TRADE_KOR2010_COND01
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_KAWIBAWIBOPIECE01	5
+			PENYA					50000
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_KAWIBAWIBOPIECE01	5
+			PENYA					50000
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_KAWIBAWIBO	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_TRADE_KOR2010_COND02
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_KAWIBAWIBOPIECE01	50
+			PENYA					500000
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_KAWIBAWIBOPIECE01	50
+			PENYA					500000
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_KAWIBAWIBO	10	1000000
+		}
+	}
+}
+
+MMI_EVENT_HAPPY_USA2010
+{
+	DESCRIPTION
+	{
+		TID_GAME_EVENT_HAPPY_USA2010_TEXT01
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_USA2010_COND01 //천사의날개
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	200000
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	200000
+		}
+
+		PAY	1
+		{
+			II_RID_RID_WIN_ANGEL01		1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_USA2010_COND02 //하이브리드 라이칸
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	40000
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	40000
+		}
+
+		PAY	1
+		{
+			II_PET_RICAN			1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_USA2010_COND03 //크리스탈
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	9000
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	9000
+		}
+
+		PAY	1
+		{
+			II_GHOU_FUR_CRYSTAL01		1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_USA2010_COND04 //아즈리아 7일
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	3000
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	3000
+		}
+
+		PAY	1
+		{
+			II_SYS_TICKET_KEBARAS01		1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_USA2010_COND05 //샤우트풀15,경험치 증폭, 파티 스킬 증폭
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	800
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	800
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXHAPPYUSA2010_01	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_USA2010_COND06 // 오리칼쿰, 핑크 풍선
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	300
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	300
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXHAPPYUSA2010_02	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_USA2010_COND07 // 문스톤, 블루 풍선
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	100
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	100
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXHAPPYUSA2010_03	1	1000000
+		}
+	}
+	
+
+	SET	TID_GAME_EVENT_HAPPY_USA2010_COND08 // 루이아 변신구 , 변신 해제구
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	60
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	60
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXHAPPYUSA2010_04	1	1000000
+		}
+	}
+
+	
+	SET	TID_GAME_EVENT_HAPPY_USA2010_COND09 // 질주의 두루마리
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	30
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	30
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_SCUD	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_HAPPY_USA2010_COND10 // 바닐라 케익
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	10
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HAPPYMONEY01	10
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_CHRISTMASVANILLA01	5	1000000
+		}
+	}
+}
+
+MMI_EVENT_WORLDCUP10_KOR
+{
+	DESCRIPTION
+	{
+		TID_GAME_EVENT_WORLDCUP10_KOR_TEXT01
+	}
+
+	SET	TID_GAME_EVENT_WORLDCUP10_KOR_COND01
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_WORLDCUP2010_01	5
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_WORLDCUP2010_01	5
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_FOOTBALLRED01	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_WORLDCUP10_KOR_COND02
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_WORLDCUP2010_02	5
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_WORLDCUP2010_02	5
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_FOOTBALLBLACK01	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_WORLDCUP10_KOR_COND03
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_WORLDCUP2010_03	5
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_WORLDCUP2010_03	5
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_FOOTBALLBLUE01	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_WORLDCUP10_KOR_COND04
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_FOOTBALLRED01	3
+			II_SYS_SYS_EVE_FOOTBALLBLACK01	3
+			II_SYS_SYS_EVE_FOOTBALLBLUE01	3
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_FOOTBALLRED01	3
+			II_SYS_SYS_EVE_FOOTBALLBLACK01	3
+			II_SYS_SYS_EVE_FOOTBALLBLUE01	3
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXTROPHY01	1	1000000
+		}
+	}
+}
+
+MMI_EVENT_WORLDCUP10_FOR
+
+{
+	DESCRIPTION
+	{
+		TID_GAME_EVENT_WORLDCUP10_FOR_TEXT01
+	}
+
+	SET	TID_GAME_EVENT_WORLDCUP10_FOR_COND01
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_WORLDCUP2010_01	5
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_WORLDCUP2010_01	5
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_FOOTBALLRED01	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_WORLDCUP10_FOR_COND02
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_WORLDCUP2010_02	5
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_WORLDCUP2010_02	5
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_FOOTBALLBLACK01	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_WORLDCUP10_FOR_COND03
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_WORLDCUP2010_03	5
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_WORLDCUP2010_03	5
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_FOOTBALLBLUE01	1	1000000
+		}
+	}
+
+	SET	TID_GAME_EVENT_WORLDCUP10_FOR_COND04
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_FOOTBALLRED01	3
+			II_SYS_SYS_EVE_FOOTBALLBLACK01	3
+			II_SYS_SYS_EVE_FOOTBALLBLUE01	3
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_FOOTBALLRED01	3
+			II_SYS_SYS_EVE_FOOTBALLBLACK01	3
+			II_SYS_SYS_EVE_FOOTBALLBLUE01	3
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXTROPHY02	1	1000000
+		}
+	}
+}
+
+MMI_EVENT_MATCHMAKER_FOR
+{
+	DESCRIPTION
+	{
+		TID_MMI_EVENT_MATCHMAKER_TEXT
+	}
+
+	SET	TID_MMI_EVENT_MATCHMAKER_COND
+	{
+		CONDITION
+		{
+			II_GEN_GEM_GEM_MAGPIEFEATHER	10
+			II_GEN_GEM_GEM_BROKENSTONE		10
+		}
+
+		REMOVE
+		{
+			II_GEN_GEM_GEM_MAGPIEFEATHER	10
+			II_GEN_GEM_GEM_BROKENSTONE		10
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXSUMMER2	1	1000000
+		}
+	}
+}
+
+MMI_EVENT_ALICE_PHP_FOR
+{
+	DESCRIPTION
+	{
+		TID_MMI_EVENT_ALICE_PHP_FOR_TEXT
+	}
+
+	SET	TID_MMI_EVENT_ALICE_PHP_FOR_COND
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_LOVECANDY			5
+
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_LOVECANDY			5
+
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_LOVEFLOWER	1	1000000
+		}
+	}
+}
+
+MMI_ZOMBIES_CHANGE1
+{
+	DESCRIPTION
+	{
+		TID_MMI_ZOMBIES_CHANGE2_FOR_TEXT
+	}
+
+	SET	TID_MMI_ZOMBIES_CHANGE1
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_HUNTERZOMBIETOKEN			2
+
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HUNTERZOMBIETOKEN			2
+
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_BXZOMBIEHUMTER	2	1000000
+		}
+	}
+}
+
+MMI_ZOMBIES_CHANGE2
+{
+	DESCRIPTION
+	{
+		TID_MMI_ZOMBIES_CHANGE2_FOR_TEXT
+	}
+
+	SET	TID_MMI_ZOMBIES_CHANGE2
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_HUNTERZOMBIETOKEN			6
+
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HUNTERZOMBIETOKEN			6
+
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_EVE_BXZOMBIEHUMTER	12	1000000
+		}
+	}
+}
+
+MMI_ZOMBIES_CHANGE3
+{
+	DESCRIPTION
+	{
+		TID_MMI_ZOMBIES_CHANGE2_FOR_TEXT
+	}
+
+	SET	TID_MMI_ZOMBIES_CHANGE3
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_HUNTERZOMBIETOKEN			15
+
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HUNTERZOMBIETOKEN			15
+
+		}
+
+		PAY	1
+		{
+			II_ARM_S_CLO_CLO_EVEZOMBIE	 1      1000000
+		}
+	}
+}
+
+MMI_ZOMBIES_CHANGE4
+{
+	DESCRIPTION
+	{
+		TID_MMI_ZOMBIES_CHANGE2_FOR_TEXT
+	}
+
+	SET	TID_MMI_ZOMBIES_CHANGE4
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_HUNTERZOMBIETOKEN			35
+
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_HUNTERZOMBIETOKEN			35
+
+		}
+
+		PAY	1
+		{
+			II_ARM_S_CLO_CLO_EVESURVIVE 	1	1000000
+		}
+	}
+}
+
+
+MMI_JAP_CHANGE
+{
+	DESCRIPTION
+	{
+		TID_MMI_JAP_CHANGE
+	}
+    
+	SET	TID_MMI_JAP_CHANGE_FOR_TEXT
+	{
+		CONDITION
+		{
+			II_PET_PIG			1
+
+		}
+
+		REMOVE
+		{
+			II_PET_PIG			1
+
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXSMELTING02 	1	1000000
+		}
+	}
+}
+
+MMI_HOLDEMEVENT01
+{
+	DESCRIPTION
+	{
+		TID_MMI_HOLDEMEVENT01
+	}
+    
+	SET	TID_MMI_HOLDEMEVENT01_TEXT
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_A_CARD			4
+
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_A_CARD			4
+
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXBANKJACK 	1	1000000
+		}
+	}
+}
+MMI_HOLDEMEVENT02
+{
+	DESCRIPTION
+	{
+		TID_MMI_HOLDEMEVENT02
+	}
+    
+	SET	TID_MMI_HOLDEMEVENT02_TEXT
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_K_CARD			4
+
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_K_CARD			4
+
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXGRANDJACK 	1	1000000
+		}
+	}
+}
+MMI_HOLDEMEVENT03
+{
+	DESCRIPTION
+	{
+		TID_MMI_HOLDEMEVENT03
+	}
+    
+	SET	TID_MMI_HOLDEMEVENT03_TEXT
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_Q_CARD			4
+
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_Q_CARD			4
+
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXLARGEJACK 	1	1000000
+		}
+	}
+}
+MMI_HOLDEMEVENT04
+{
+	DESCRIPTION
+	{
+		TID_MMI_HOLDEMEVENT04
+	}
+    
+	SET	TID_MMI_HOLDEMEVENT04_TEXT
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_J_CARD			4
+
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_J_CARD			4
+
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXNRJACK	1	1000000
+		}
+	}
+}
+MMI_HOLDEMEVENT05
+{
+	DESCRIPTION
+	{
+		TID_MMI_HOLDEMEVENT05
+	}
+    
+	SET	TID_MMI_HOLDEMEVENT05_TEXT
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_K_CARD			1
+			II_SYS_SYS_EVE_Q_CARD			1
+			II_SYS_SYS_EVE_J_CARD			1
+			II_SYS_SYS_EVE_10CARD			1
+
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_K_CARD			1
+			II_SYS_SYS_EVE_Q_CARD			1
+			II_SYS_SYS_EVE_J_CARD			1
+			II_SYS_SYS_EVE_10CARD			1
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXSMJACK	 	1	1000000
+		}
+	}
+}
+MMI_CHRISTMASFAIRY01				// 크리스마스 정령 교환 1개
+{
+	DESCRIPTION
+	{
+		TID_MMI_CHRISTMASFAIRY01
+	}
+    
+	SET	TID_MMI_CHRISTMASFAIRY01_TEXT
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_CHRISTMASTOKEN			1
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_CHRISTMASTOKEN			1
+		}
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXCHRISTMASFAIRY01 	1	1000000
+		}
+	}
+}
+MMI_CHRISTMASFAIRY02				// 크리스마스 정령 교환 25개
+{
+	DESCRIPTION
+	{
+		TID_MMI_CHRISTMASFAIRY02
+	}
+    
+	SET	TID_MMI_CHRISTMASFAIRY02_TEXT
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_CHRISTMASTOKEN			25
+		}
+		REMOVE
+		{
+			II_SYS_SYS_EVE_CHRISTMASTOKEN			25
+		}
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXCHRISTMASFAIRY02 	1	1000000
+		}
+	}
+}
+MMI_CHRISTMASFAIRY03					// 크리스마스 정령 교환 50개
+{
+	DESCRIPTION
+	{
+		TID_MMI_CHRISTMASFAIRY03
+	}
+    
+	SET	TID_MMI_CHRISTMASFAIRY03_TEXT
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_CHRISTMASTOKEN			50
+		}
+		REMOVE
+		{
+			II_SYS_SYS_EVE_CHRISTMASTOKEN			50
+		}
+
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXCHRISTMASFAIRY03 	1	1000000
+		}
+	}
+}
+MMI_CHRISTMASFAIRY04				// 크리스마스 정령 교환 75개
+{
+	DESCRIPTION
+	{
+		TID_MMI_CHRISTMASFAIRY04
+	}
+    
+	SET	TID_MMI_CHRISTMASFAIRY04_TEXT
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_CHRISTMASTOKEN			75
+		}
+		REMOVE
+		{
+			II_SYS_SYS_EVE_CHRISTMASTOKEN			75
+		}
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXCHRISTMASFAIRY04 	1	1000000
+		}
+	}
+}
+MMI_CHRISTMASFAIRY05				// 크리스마스 정령 교환 100개
+{
+	DESCRIPTION
+	{
+		TID_MMI_CHRISTMASFAIRY05
+	}
+    
+	SET	TID_MMI_CHRISTMASFAIRY05_TEXT
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_CHRISTMASTOKEN			100
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_CHRISTMASTOKEN			100
+		}
+		PAY	1
+		{
+			II_SYS_SYS_SCR_BXCHRISTMASFAIRY05 	1	1000000
+		}
+	}
+}
+
+
+
+
+MMI_WHITEDAY_EXCHANGE01			// 화이트데이
+{
+	DESCRIPTION
+	{
+		TID_MMI_WHITEDAY_EXCHANGE01
+	}
+    
+	SET	TID_MMI_WHITEDAY_EXCHANGE01_TEXT
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_WHITEDAY01			500
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_WHITEDAY01			500
+		}
+		PAY	1
+		{
+			II_ARM_S_CLO_MAS_CORSAGE_PINK 	1	1000000
+		}
+	}
+}
+
+
+MMI_WHITEDAY_EXCHANGE02				//화이트데이
+{
+	DESCRIPTION
+	{
+		TID_MMI_WHITEDAY_EXCHANGE02
+	}
+    
+	SET	TID_MMI_WHITEDAY_EXCHANGE02_TEXT
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_WHITEDAY02			500
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_WHITEDAY02			500
+		}
+		PAY	1
+		{
+			II_ARM_S_CLO_MAS_CORSAGE_WHITE 	1	1000000
+		}
+	}
+}
+
+
+MMI_WHITEDAY_EXCHANGE03				// 화이트데이
+{
+	DESCRIPTION
+	{
+		TID_MMI_WHITEDAY_EXCHANGE03
+	}
+    
+	SET	TID_MMI_WHITEDAY_EXCHANGE03_TEXT
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_WHITEDAY03			500
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_WHITEDAY03			500
+		}
+		PAY	1
+		{
+			II_ARM_S_CLO_MAS_CORSAGE_YELLOW 	1	1000000
+		}
+	}
+}
+
+
+
+MMI_WHITEDAY_EXCHANGE04				// 화이트데이
+{
+	DESCRIPTION
+	{
+		TID_MMI_WHITEDAY_EXCHANGE04
+	}
+    
+	SET	TID_MMI_WHITEDAY_EXCHANGE04_TEXT
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_WHITEDAY04			500
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_WHITEDAY04			500
+		}
+		PAY	1
+		{
+			II_ARM_S_CLO_MAS_CORSAGE_BLUE 	1	1000000
+		}
+	}
+}
+
+
+
+
+
+MMI_FIRSEED2011				// 전나무
+{
+	DESCRIPTION
+	{
+		TID_MMI_FIRSEED2011
+	}
+    
+	SET	TID_MMI_FIRSEED2011_TEXT
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_2011FIRSEED			200
+			II_SYS_SYS_EVE_2011BUCKET			200
+
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_2011FIRSEED			200
+			II_SYS_SYS_EVE_2011BUCKET			200
+		}
+		PAY	1
+		{
+			II_SYS_SYS_EVE_SEEDLING01 	1	1000000
+		}
+	}
+}
+MMI_PEARSEED2011				// 배나무
+{
+	DESCRIPTION
+	{
+		TID_MMI_PEARSEED2011
+	}
+    
+	SET	TID_MMI_PEARSEED2011_TEXT
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_2011PEARSEED			400
+			II_SYS_SYS_EVE_2011BUCKET			400
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_2011PEARSEED			400
+			II_SYS_SYS_EVE_2011BUCKET			400
+		}
+		PAY	1
+		{
+			II_SYS_SYS_EVE_SEEDLING03 	1	1000000
+		}
+	}
+}
+MMI_PINESEED2011				// 소나무
+{
+	DESCRIPTION
+	{
+		TID_MMI_PINESEED2011
+	}
+    
+	SET	TID_MMI_PINESEED2011_TEXT
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_2011PINESEED			1000
+			II_SYS_SYS_EVE_2011BUCKET			1000
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_2011PINESEED			1000
+			II_SYS_SYS_EVE_2011BUCKET			1000
+		}
+		PAY	1
+		{
+			II_SYS_SYS_EVE_SEEDLING04 	1	1000000
+		}
+	}
+}
+MMI_PERSIMSEED2011				// 감나무
+{
+	DESCRIPTION
+	{
+		TID_MMI_PERSIMSEED2011
+	}
+    
+	SET	TID_MMI_PERSIMSEED2011_TEXT
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_2011PERSIMSEED		300
+			II_SYS_SYS_EVE_2011BUCKET			300
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_2011PERSIMSEED		300
+			II_SYS_SYS_EVE_2011BUCKET			300
+		}
+		PAY	1
+		{
+			II_SYS_SYS_EVE_SEEDLING02 	1	1000000
+		}
+	}
+}
+
+
+
+
+
+
+
+MMI_RIVERCARD2011				// 리버 카드
+{
+	DESCRIPTION
+	{
+		TID_MMI_RIVERCARD2011
+	}
+    
+	SET	TID_MMI_RIVERCARD2011_TEXT
+	{
+		CONDITION
+		{
+			PENYA				5000
+		}
+
+		REMOVE
+		{
+			PENYA				5000
+		}
+		PAY	1
+		{
+			II_GEN_MAT_ELE_RIVER 	1	1000000
+		}
+	}
+}
+
+MMI_FLAMECARD2011				// 플레임 카드
+{
+	DESCRIPTION
+	{
+		TID_MMI_FLAMECARD2011
+	}
+    
+	SET	TID_MMI_FLAMECARD2011_TEXT
+	{
+		CONDITION
+		{
+			PENYA				5000
+		}
+
+		REMOVE
+		{
+			PENYA				5000
+		}
+		PAY	1
+		{
+			II_GEN_MAT_ELE_FLAME 	1	1000000
+		}
+	}
+}
+
+MMI_DESERTCARD2011				// 데저트 카드
+{
+	DESCRIPTION
+	{
+		TID_MMI_DESERTCARD2011
+	}
+    
+	SET	TID_MMI_DESERTCARD2011_TEXT
+	{
+		CONDITION
+		{
+			PENYA				5000
+		}
+
+		REMOVE
+		{
+			PENYA				5000
+		}
+		PAY	1
+		{
+			II_GEN_MAT_ELE_DESERT 	1	1000000
+		}
+	}
+}
+
+MMI_GENERATERCARD2011				// 제너레이터 카드
+{
+	DESCRIPTION
+	{
+		TID_MMI_GENERATERCARD2011
+	}
+    
+	SET	TID_MMI_GENERATERCARD2011_TEXT
+	{
+		CONDITION
+		{
+			PENYA				5000
+		}
+
+		REMOVE
+		{
+			PENYA				5000
+		}
+		PAY	1
+		{
+			II_GEN_MAT_ELE_GENERATOR 	1	1000000
+		}
+	}
+}
+
+MMI_CYCLONECARD2011				// 사이클론 카드
+{
+	DESCRIPTION
+	{
+		TID_MMI_CYCLONECARD2011
+	}
+    
+	SET	TID_MMI_CYCLONECARD2011_TEXT
+	{
+		CONDITION
+		{
+			PENYA				5000
+		}
+
+		REMOVE
+		{
+			PENYA				5000
+		}
+		PAY	1
+		{
+			II_GEN_MAT_ELE_CYCLON 	1	1000000
+		}
+	}
+}
+
+MMI_EXCHANGEBLOSSOM				// 벚꽃씨앗 - 가위바위보 쿠폰 교환
+{
+	DESCRIPTION
+	{
+		TID_MMI_EXCHANGEBLOSSOM
+	}
+    
+	SET	TID_MMI_EXCHANGEBLOSSOM_TEXT
+	{
+		CONDITION
+		{
+			II_SYS_SYS_EVE_BLOSSOM01		10
+			PENYA							50000
+		}
+
+		REMOVE
+		{
+			II_SYS_SYS_EVE_BLOSSOM01		10
+			PENYA							50000
+		}
+		PAY	1
+		{
+			II_SYS_SYS_EVE_KAWIBAWIBO	 	1	1000000
+		}
+	}
+}

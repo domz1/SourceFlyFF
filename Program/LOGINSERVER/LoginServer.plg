@@ -1,0 +1,51 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: LoginServer - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\JHMAAE~1.000\LOCALS~1\Temp\RSP140.tmp" with contents
+[
+/nologo /o"..\..\Output\LoginServer\Debug/LoginServer.bsc" 
+\NEUROSPACE\Output\LoginServer\Debug\StdAfx.sbr
+\NEUROSPACE\Output\LoginServer\Debug\DPCoreClient.sbr
+\NEUROSPACE\Output\LoginServer\Debug\DPDatabaseClient.sbr
+\NEUROSPACE\Output\LoginServer\Debug\DPLoginSrvr.sbr
+\NEUROSPACE\Output\LoginServer\Debug\LoginProtect.sbr
+\NEUROSPACE\Output\LoginServer\Debug\LoginServer.sbr
+\NEUROSPACE\Output\LoginServer\Debug\memtrace.sbr
+\NEUROSPACE\Output\LoginServer\Debug\User.sbr
+\NEUROSPACE\Output\LoginServer\Debug\ar.sbr
+\NEUROSPACE\Output\LoginServer\Debug\dos2.sbr
+\NEUROSPACE\Output\LoginServer\Debug\heapmng.sbr
+\NEUROSPACE\Output\LoginServer\Debug\MyTrace.sbr
+\NEUROSPACE\Output\LoginServer\Debug\buffer.sbr
+\NEUROSPACE\Output\LoginServer\Debug\clientsock.sbr
+\NEUROSPACE\Output\LoginServer\Debug\clientsocke.sbr
+\NEUROSPACE\Output\LoginServer\Debug\crc.sbr
+\NEUROSPACE\Output\LoginServer\Debug\dpmng.sbr
+\NEUROSPACE\Output\LoginServer\Debug\dpsock.sbr
+\NEUROSPACE\Output\LoginServer\Debug\serversock.sbr
+\NEUROSPACE\Output\LoginServer\Debug\serversocke.sbr
+\NEUROSPACE\Output\LoginServer\Debug\sock.sbr
+\NEUROSPACE\Output\LoginServer\Debug\dxutil.sbr
+\NEUROSPACE\Output\LoginServer\Debug\scanner.sbr
+\NEUROSPACE\Output\LoginServer\Debug\debug.sbr
+\NEUROSPACE\Output\LoginServer\Debug\file.sbr
+\NEUROSPACE\Output\LoginServer\Debug\timer.sbr
+\NEUROSPACE\Output\LoginServer\Debug\vUtil.sbr
+\NEUROSPACE\Output\LoginServer\Debug\xutil.sbr
+\NEUROSPACE\Output\LoginServer\Debug\exceptionhandler.sbr]
+Creating command line "bscmake.exe @C:\DOCUME~1\JHMAAE~1.000\LOCALS~1\Temp\RSP140.tmp"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+LoginServer.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

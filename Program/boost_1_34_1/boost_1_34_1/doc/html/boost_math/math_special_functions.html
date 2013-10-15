@@ -1,0 +1,429 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Math Special Functions</title>
+<link rel="stylesheet" href="../boostbook.css" type="text/css">
+<meta name="generator" content="DocBook XSL Stylesheets V1.68.1">
+<link rel="start" href="../index.html" title="The Boost C++ Libraries BoostBook Documentation Subset">
+<link rel="up" href="../boost_math.html" title="Chapter 9. Boost.Math">
+<link rel="prev" href="gcd_lcm.html" title=" Greatest Common Divisor and Least Common Multiple">
+<link rel="next" href="inverse_complex.html" title=" Complex Number Inverse Trigonometric Functions">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table cellpadding="2" width="100%">
+<td valign="top"><img alt="Boost C++ Libraries" width="277" height="86" src="../../../boost.png"></td>
+<td align="center"><a href="../../../index.htm">Home</a></td>
+<td align="center"><a href="../../../libs/libraries.htm">Libraries</a></td>
+<td align="center"><a href="../../../people/people.htm">People</a></td>
+<td align="center"><a href="../../../more/faq.htm">FAQ</a></td>
+<td align="center"><a href="../../../more/index.htm">More</a></td>
+</table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="gcd_lcm.html"><img src="../images/prev.png" alt="Prev"></a><a accesskey="u" href="../boost_math.html"><img src="../images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="../images/home.png" alt="Home"></a><a accesskey="n" href="inverse_complex.html"><img src="../images/next.png" alt="Next"></a>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="boost_math.math_special_functions"></a>Math Special Functions</h2></div></div></div>
+<div class="toc"><dl>
+<dt><span class="section"><a href="math_special_functions.html#boost_math.math_special_functions.overview">Overview</a></span></dt>
+<dt><span class="section"><a href="math_special_functions.html#boost_math.math_special_functions.header_files">Header Files</a></span></dt>
+<dt><span class="section"><a href="math_special_functions.html#boost_math.math_special_functions.synopsis">Synopsis</a></span></dt>
+<dt><span class="section"><a href="math_special_functions.html#boost_math.math_special_functions.acosh">acosh</a></span></dt>
+<dt><span class="section"><a href="math_special_functions.html#boost_math.math_special_functions.asinh">asinh</a></span></dt>
+<dt><span class="section"><a href="math_special_functions.html#boost_math.math_special_functions.atanh">atanh</a></span></dt>
+<dt><span class="section"><a href="math_special_functions.html#boost_math.math_special_functions.expm1"> expm1</a></span></dt>
+<dt><span class="section"><a href="math_special_functions.html#boost_math.math_special_functions.hypot"> hypot</a></span></dt>
+<dt><span class="section"><a href="math_special_functions.html#boost_math.math_special_functions.log1p"> log1p</a></span></dt>
+<dt><span class="section"><a href="math_special_functions.html#boost_math.math_special_functions.sinc_pi">sinc_pi</a></span></dt>
+<dt><span class="section"><a href="math_special_functions.html#boost_math.math_special_functions.sinhc_pi">sinhc_pi</a></span></dt>
+<dt><span class="section"><a href="math_special_functions.html#boost_math.math_special_functions.test_programs">Test Programs</a></span></dt>
+<dt><span class="section"><a href="math_special_functions.html#boost_math.math_special_functions.acknowledgements">Acknowledgements</a></span></dt>
+<dt><span class="section"><a href="math_special_functions.html#boost_math.math_special_functions.history">History</a></span></dt>
+<dt><span class="section"><a href="math_special_functions.html#boost_math.math_special_functions.to_do">To Do</a></span></dt>
+</dl></div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.math_special_functions.overview"></a>Overview</h3></div></div></div>
+<p>
+        The Special Functions library currently provides eight templated special
+        functions, in namespace boost. Two of these (<a href="math_special_functions.html#boost_math.math_special_functions.sinc_pi" title="sinc_pi">sinc_pi</a>
+        and <a href="math_special_functions.html#boost_math.math_special_functions.sinhc_pi" title="sinhc_pi">sinhc_pi</a>)
+        are needed by our implementation of quaternions and octonions.
+      </p>
+<p>
+        The functions <a href="math_special_functions.html#boost_math.math_special_functions.acosh" title="acosh">acosh</a>,
+        <a href="math_special_functions.html#boost_math.math_special_functions.asinh" title="asinh">asinh</a> and
+        <a href="math_special_functions.html#boost_math.math_special_functions.atanh" title="atanh">atanh</a> are
+        entirely classical, the function <a href="math_special_functions.html#boost_math.math_special_functions.sinc_pi" title="sinc_pi">sinc_pi</a>
+        sees heavy use in signal processing tasks, and the function <a href="math_special_functions.html#boost_math.math_special_functions.sinhc_pi" title="sinhc_pi">sinhc_pi</a>
+        is an ad'hoc function whose naming is modelled on <a href="math_special_functions.html#boost_math.math_special_functions.sinc_pi" title="sinc_pi">sinc_pi</a>
+        and hyperbolic functions.
+      </p>
+<p>
+        The functions <a href="math_special_functions.html#boost_math.math_special_functions.log1p" title=" log1p">log1p</a>,
+        <a href="math_special_functions.html#boost_math.math_special_functions.expm1" title=" expm1">expm1</a> and
+        <a href="math_special_functions.html#boost_math.math_special_functions.hypot" title=" hypot">hypot</a> are
+        all part of the C99 standard but not yet C++. Two of these (<a href="math_special_functions.html#boost_math.math_special_functions.log1p" title=" log1p">log1p</a>
+        and <a href="math_special_functions.html#boost_math.math_special_functions.hypot" title=" hypot">hypot</a>)
+        were needed for the <a href="inverse_complex.html" title=" Complex Number Inverse Trigonometric Functions">complex number
+        inverse trigonometric functions</a>.
+      </p>
+<p>
+        The functions implemented here can throw standard exceptions, but no exception
+        specification has been made.
+      </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.math_special_functions.header_files"></a>Header Files</h3></div></div></div>
+<p>
+        The interface and implementation for each function (or forms of a function)
+        are both supplied by one header file:
+      </p>
+<div class="itemizedlist"><ul type="disc">
+<li><a href="../../../boost/math/special_functions/acosh.hpp" target="_top">acosh.hpp</a></li>
+<li><a href="../../../boost/math/special_functions/asinh.hpp" target="_top">asinh.hpp</a></li>
+<li><a href="../../../boost/math/special_functions/atanh.hpp" target="_top">atanh.hpp</a></li>
+<li><a href="../../../boost/math/special_functions/expm1.hpp" target="_top">expm1.hpp</a></li>
+<li><a href="../../../boost/math/special_functions/hypot.hpp" target="_top">hypot.hpp</a></li>
+<li><a href="../../../boost/math/special_functions/log1p.hpp" target="_top">log1p.hpp</a></li>
+<li><a href="../../../boost/math/special_functions/sinc.hpp" target="_top">sinc.hpp</a></li>
+<li><a href="../../../boost/math/special_functions/sinhc.hpp" target="_top">sinhc.hpp</a></li>
+</ul></div>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.math_special_functions.synopsis"></a>Synopsis</h3></div></div></div>
+<pre class="programlisting">
+<span class="keyword">namespace</span> <span class="identifier">boost</span><span class="special">{</span> <span class="keyword">namespace</span> <span class="identifier">math</span><span class="special">{</span>
+
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">T</span><span class="special">&gt;</span>
+<span class="identifier">T</span> <a href="math_special_functions.html#boost_math.math_special_functions.acosh" title="acosh">acosh</a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span> <span class="identifier">x</span><span class="special">);</span>
+
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">T</span><span class="special">&gt;</span>
+<span class="identifier">T</span> <a href="math_special_functions.html#boost_math.math_special_functions.asinh" title="asinh">asinh</a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span> <span class="identifier">x</span><span class="special">);</span>
+
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">T</span><span class="special">&gt;</span>
+<span class="identifier">T</span> <a href="math_special_functions.html#boost_math.math_special_functions.atanh" title="atanh">atanh</a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span> <span class="identifier">x</span><span class="special">);</span>
+
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">T</span><span class="special">&gt;</span>
+<span class="identifier">T</span> <a href="math_special_functions.html#boost_math.math_special_functions.expm1" title=" expm1">expm1</a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span> <span class="identifier">x</span><span class="special">);</span>
+
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">T</span><span class="special">&gt;</span>
+<span class="identifier">T</span> <a href="math_special_functions.html#boost_math.math_special_functions.hypot" title=" hypot">hypot</a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span> <span class="identifier">x</span><span class="special">);</span>
+
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">T</span><span class="special">&gt;</span>
+<span class="identifier">T</span> <a href="math_special_functions.html#boost_math.math_special_functions.log1p" title=" log1p">log1p</a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span> <span class="identifier">x</span><span class="special">);</span>
+
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">T</span><span class="special">&gt;</span>
+<span class="identifier">T</span> <a href="math_special_functions.html#boost_math.math_special_functions.sinc_pi" title="sinc_pi">sinc_pi</a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span> <span class="identifier">x</span><span class="special">);</span>
+
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">T</span><span class="special">,</span> <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span><span class="special">&gt;</span> <span class="keyword">class</span> <span class="identifier">U</span><span class="special">&gt;</span>
+<span class="identifier">U</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;</span> <a href="math_special_functions.html#boost_math.math_special_functions.sinc_pi" title="sinc_pi">sinc_pi</a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">U</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;</span> <span class="identifier">x</span><span class="special">);</span>
+
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">T</span><span class="special">&gt;</span>
+<span class="identifier">T</span> <a href="math_special_functions.html#boost_math.math_special_functions.sinhc_pi" title="sinhc_pi">sinhc_pi</a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span> <span class="identifier">x</span><span class="special">);</span>
+
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">T</span><span class="special">,</span> <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span><span class="special">&gt;</span> <span class="keyword">class</span> <span class="identifier">U</span><span class="special">&gt;</span>
+<span class="identifier">U</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;</span> <a href="math_special_functions.html#boost_math.math_special_functions.sinhc_pi" title="sinhc_pi">sinhc_pi</a><span class="special">(</span><span class="keyword">const</span> <span class="identifier">U</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;</span> <span class="identifier">x</span><span class="special">);</span>
+
+<span class="special">}</span>
+<span class="special">}</span>
+</pre>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.math_special_functions.acosh"></a>acosh</h3></div></div></div>
+<pre class="programlisting">
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">T</span><span class="special">&gt;</span> 
+<span class="identifier">T</span> <span class="identifier">acosh</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span> <span class="identifier">x</span><span class="special">);</span>
+</pre>
+<p>
+        Computes the reciprocal of (the restriction to the range of <code class="literal">[0;+
+&#8734;
+        [</code>) <a href="background_information_and_white_papers.html#boost_math.background_information_and_white_papers.the_inverse_hyperbolic_functions" title="The Inverse Hyperbolic Functions">the
+        hyperbolic cosine function</a>, at x. Values returned are positive. Generalised
+        Taylor series are used near 1 and Laurent series are used near the infinity
+        to ensure accuracy.
+      </p>
+<p>
+        If x is in the range <code class="literal">]-
+&#8734;
+        ;+1[</code> a quiet NaN is returned (if the system allows, otherwise a
+        <code class="computeroutput"><span class="identifier">domain_error</span></code> exception is
+        generated).
+      </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.math_special_functions.asinh"></a>asinh</h3></div></div></div>
+<pre class="programlisting">
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">T</span><span class="special">&gt;</span> 
+<span class="identifier">T</span> <span class="identifier">asinh</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span> <span class="identifier">x</span><span class="special">);</span>
+</pre>
+<p>
+        Computes the reciprocal of <a href="background_information_and_white_papers.html#boost_math.background_information_and_white_papers.the_inverse_hyperbolic_functions" title="The Inverse Hyperbolic Functions">the
+        hyperbolic sine function</a>. Taylor series are used at the origin and
+        Laurent series are used near the infinity to ensure accuracy.
+      </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.math_special_functions.atanh"></a>atanh</h3></div></div></div>
+<pre class="programlisting">
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">T</span><span class="special">&gt;</span> 
+<span class="identifier">T</span> <span class="identifier">atanh</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span> <span class="identifier">x</span><span class="special">);</span>
+</pre>
+<p>
+        Computes the reciprocal of <a href="background_information_and_white_papers.html#boost_math.background_information_and_white_papers.the_inverse_hyperbolic_functions" title="The Inverse Hyperbolic Functions">the
+        hyperbolic tangent function</a>, at x. Taylor series are used at the origin
+        to ensure accuracy.
+      </p>
+<p>
+        If x is in the range <code class="literal">]-
+&#8734;
+        ;-1[</code> or in the range <code class="literal">]+1;+
+&#8734;
+        [</code> a quiet NaN is returned (if the system allows, otherwise a <code class="computeroutput"><span class="identifier">domain_error</span></code> exception is generated).
+      </p>
+<p>
+        If x is in the range `<code class="literal">[-1;-1+
+&#949;
+        [</code>, minus infinity is returned (if the system allows, otherwise
+        an <code class="computeroutput"><span class="identifier">out_of_range</span></code> exception
+        is generated), with 
+&#949;
+        denoting numeric_limits&lt;T&gt;::epsilon().
+      </p>
+<p>
+        If x is in the range <code class="literal">]+1-
+&#949;
+        ;+1]</code>, plus infinity is returned (if the system allows, otherwise
+        an <code class="computeroutput"><span class="identifier">out_of_range</span></code> exception
+        is generated), with 
+&#949;
+        denoting numeric_limits&lt;T&gt;::epsilon().
+      </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.math_special_functions.expm1"></a> expm1</h3></div></div></div>
+<pre class="programlisting">
+<span class="keyword">template</span> <span class="special">&lt;</span><span class="keyword">class</span> <span class="identifier">T</span><span class="special">&gt;</span>
+<span class="identifier">T</span> <span class="identifier">expm1</span><span class="special">(</span><span class="identifier">T</span> <span class="identifier">t</span><span class="special">);</span>
+</pre>
+<p>
+        <span class="bold"><strong>Effects: </strong></span> returns 
+<code class="computeroutput">e<sup>x</sup> - 1</code>
+        .
+      </p>
+<p>
+        For small x, then 
+<code class="computeroutput">e<sup>x</sup></code>
+        is very close to 1, as a result calculating 
+<code class="computeroutput">e<sup>x</sup> - 1</code>
+        results in catastrophic cancellation errors when x is small. <code class="computeroutput"><span class="identifier">expm1</span></code> calculates 
+<code class="computeroutput">e<sup>x</sup> - 1</code>
+        using a series expansion when x is small (giving an accuracy of less than
+        
+2&#949;
+        ).
+      </p>
+<p>
+        Finally when BOOST_HAS_EXPM1 is defined then the <code class="computeroutput"><span class="keyword">float</span><span class="special">/</span><span class="keyword">double</span><span class="special">/</span><span class="keyword">long</span> <span class="keyword">double</span></code>
+        specializations of this template simply forward to the platform's native
+        implementation of this function.
+      </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.math_special_functions.hypot"></a> hypot</h3></div></div></div>
+<pre class="programlisting">
+<span class="keyword">template</span> <span class="special">&lt;</span><span class="keyword">class</span> <span class="identifier">T</span><span class="special">&gt;</span>
+<span class="identifier">T</span> <span class="identifier">hypot</span><span class="special">(</span><span class="identifier">T</span> <span class="identifier">x</span><span class="special">,</span> <span class="identifier">T</span> <span class="identifier">y</span><span class="special">);</span>
+</pre>
+<p>
+        <span class="bold"><strong>Effects: </strong></span> computes <span class="inlinemediaobject"><img src="../../../libs/math/doc/images/hypot.png" alt="hypot"></span> in such a way as to avoid undue underflow and overflow.
+      </p>
+<p>
+        When calculating <span class="inlinemediaobject"><img src="../../../libs/math/doc/images/hypot.png" alt="hypot"></span> it's quite easy for the intermediate terms to either
+        overflow or underflow, even though the result is in fact perfectly representable.
+        One possible alternative form is <span class="inlinemediaobject"><img src="../../../libs/math/doc/images/hypot2.png" alt="hypot2"></span>, but that can overflow or underflow if x and y are of
+        very differing magnitudes. The <code class="computeroutput"><span class="identifier">hypot</span></code>
+        function takes care of all the special cases for you, so you don't have to.
+      </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.math_special_functions.log1p"></a> log1p</h3></div></div></div>
+<pre class="programlisting">
+<span class="keyword">template</span> <span class="special">&lt;</span><span class="keyword">class</span> <span class="identifier">T</span><span class="special">&gt;</span>
+<span class="identifier">T</span> <span class="identifier">log1p</span><span class="special">(</span><span class="identifier">T</span> <span class="identifier">x</span><span class="special">);</span>
+</pre>
+<p>
+        <span class="bold"><strong>Effects: </strong></span> returns the natural logarithm
+        of <code class="computeroutput"><span class="identifier">x</span><span class="special">+</span><span class="number">1</span></code>.
+      </p>
+<p>
+        There are many situations where it is desirable to compute <code class="computeroutput"><span class="identifier">log</span><span class="special">(</span><span class="identifier">x</span><span class="special">+</span><span class="number">1</span><span class="special">)</span></code>.
+        However, for small <code class="computeroutput"><span class="identifier">x</span></code> then
+        <code class="computeroutput"><span class="identifier">x</span><span class="special">+</span><span class="number">1</span></code> suffers from catastrophic cancellation errors
+        so that <code class="computeroutput"><span class="identifier">x</span><span class="special">+</span><span class="number">1</span> <span class="special">==</span> <span class="number">1</span></code> and <code class="computeroutput"><span class="identifier">log</span><span class="special">(</span><span class="identifier">x</span><span class="special">+</span><span class="number">1</span><span class="special">)</span> <span class="special">==</span> <span class="number">0</span></code>, when in fact for very small x, the best
+        approximation to <code class="computeroutput"><span class="identifier">log</span><span class="special">(</span><span class="identifier">x</span><span class="special">+</span><span class="number">1</span><span class="special">)</span></code> would be <code class="computeroutput"><span class="identifier">x</span></code>.
+        <code class="computeroutput"><span class="identifier">log1p</span></code> calculates the best
+        approximation to <code class="computeroutput"><span class="identifier">log</span><span class="special">(</span><span class="number">1</span><span class="special">+</span><span class="identifier">x</span><span class="special">)</span></code> using a Taylor series expansion for accuracy
+        (less than 
+2&#949;
+        ). Note that there are faster methods available, for example using the equivalence:
+      </p>
+<pre class="programlisting">
+<span class="identifier">log</span><span class="special">(</span><span class="number">1</span><span class="special">+</span><span class="identifier">x</span><span class="special">)</span> <span class="special">==</span> <span class="special">(</span><span class="identifier">log</span><span class="special">(</span><span class="number">1</span><span class="special">+</span><span class="identifier">x</span><span class="special">)</span> <span class="special">*</span> <span class="identifier">x</span><span class="special">)</span> <span class="special">/</span> <span class="special">((</span><span class="number">1</span><span class="special">-</span><span class="identifier">x</span><span class="special">)</span> <span class="special">-</span> <span class="number">1</span><span class="special">)</span>
+</pre>
+<p>
+        However, experience has shown that these methods tend to fail quite spectacularly
+        once the compiler's optimizations are turned on. In contrast, the series
+        expansion method seems to be reasonably immune optimizer-induced errors.
+      </p>
+<p>
+        Finally when BOOST_HAS_LOG1P is defined then the <code class="computeroutput"><span class="keyword">float</span><span class="special">/</span><span class="keyword">double</span><span class="special">/</span><span class="keyword">long</span> <span class="keyword">double</span></code>
+        specializations of this template simply forward to the platform's native
+        implementation of this function.
+      </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.math_special_functions.sinc_pi"></a>sinc_pi</h3></div></div></div>
+<pre class="programlisting">
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">T</span><span class="special">&gt;</span> 
+<span class="identifier">T</span> <span class="identifier">sinc_pi</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span> <span class="identifier">x</span><span class="special">);</span>
+
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">T</span><span class="special">,</span> <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span><span class="special">&gt;</span> <span class="keyword">class</span> <span class="identifier">U</span><span class="special">&gt;</span> 
+<span class="identifier">U</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;</span> <span class="identifier">sinc_pi</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">U</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;</span> <span class="identifier">x</span><span class="special">);</span>
+</pre>
+<p>
+        Computes <a href="background_information_and_white_papers.html#boost_math.background_information_and_white_papers.sinus_cardinal_and_hyperbolic_sinus_cardinal_functions" title="Sinus Cardinal and Hyperbolic Sinus Cardinal Functions">the
+        Sinus Cardinal</a> of x. The second form is for complexes, quaternions,
+        octonions... Taylor series are used at the origin to ensure accuracy.
+      </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.math_special_functions.sinhc_pi"></a>sinhc_pi</h3></div></div></div>
+<pre class="programlisting">
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">T</span><span class="special">&gt;</span> 
+<span class="identifier">T</span> <span class="identifier">sinhc_pi</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">T</span> <span class="identifier">x</span><span class="special">);</span>
+
+<span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span> <span class="identifier">T</span><span class="special">,</span> <span class="keyword">template</span><span class="special">&lt;</span><span class="keyword">typename</span><span class="special">&gt;</span> <span class="keyword">class</span> <span class="identifier">U</span><span class="special">&gt;</span> 
+<span class="identifier">U</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;</span> <span class="identifier">sinhc_pi</span><span class="special">(</span><span class="keyword">const</span> <span class="identifier">U</span><span class="special">&lt;</span><span class="identifier">T</span><span class="special">&gt;</span> <span class="identifier">x</span><span class="special">);</span>
+</pre>
+<p>
+        Computes <a href="background_information_and_white_papers.html#boost_math.background_information_and_white_papers.sinus_cardinal_and_hyperbolic_sinus_cardinal_functions" title="Sinus Cardinal and Hyperbolic Sinus Cardinal Functions">the
+        Hyperbolic Sinus Cardinal</a> of x. The second form is for complexes,
+        quaternions, octonions... Taylor series are used at the origin to ensure
+        accuracy.
+      </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.math_special_functions.test_programs"></a>Test Programs</h3></div></div></div>
+<p>
+        The <a href="../../../libs/math/special_functions/special_functions_test.cpp" target="_top">special_functions_test.cpp</a>
+        and <a href="../../../libs/math/test/log1p_expm1_test.cpp" target="_top">log1p_expm1_test.cpp</a>
+        test programs test the functions for float, double and long double arguments
+        (<a href="../../../libs/math/special_functions/output.txt" target="_top">sample output</a>,
+        with message output enabled).
+      </p>
+<p>
+        If you define the symbol BOOST_SPECIAL_FUNCTIONS_TEST_VERBOSE, you will get
+        additional output (<a href="../../../libs/math/special_functions/output_more.txt" target="_top">verbose
+        output</a>), which may prove useful for tuning on your platform (the
+        library use "reasonable" tolerances, which may prove to be too
+        strict for your platform); this will only be helpfull if you enable message
+        output at the same time, of course (by uncommenting the relevant line in
+        the test or by adding <code class="computeroutput"><span class="special">--</span><span class="identifier">log_level</span><span class="special">=</span><span class="identifier">messages</span></code>
+        to your command line,...).
+      </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.math_special_functions.acknowledgements"></a>Acknowledgements</h3></div></div></div>
+<p>
+        The mathematical text has been typeset with <a href="http://www.nisus-soft.com/" target="_top">Nisus
+        Writer</a>, and the illustrations have been made with <a href="http://www.pacifict.com/" target="_top">Graphing
+        Calculator</a>. Jens Maurer was the Review Manager for this library.
+        More acknowledgements in the History section. Thank you to all who contributed
+        to the discution about this library.
+      </p>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.math_special_functions.history"></a>History</h3></div></div></div>
+<div class="itemizedlist"><ul type="disc">
+<li>
+          1.5.0 - 17/12/2005: John Maddock added <a href="math_special_functions.html#boost_math.math_special_functions.log1p" title=" log1p">log1p</a>,
+          <a href="math_special_functions.html#boost_math.math_special_functions.expm1" title=" expm1">expm1</a> and
+          <a href="math_special_functions.html#boost_math.math_special_functions.hypot" title=" hypot">hypot</a>. Converted
+          documentation to Quickbook Format.
+        </li>
+<li>
+          1.4.2 - 03/02/2003: transitionned to the unit test framework; &lt;boost/config.hpp&gt;
+          now included by the library headers (rather than the test files).
+        </li>
+<li>
+          1.4.1 - 18/09/2002: improved compatibility with Microsoft compilers.
+        </li>
+<li>
+          1.4.0 - 14/09/2001: added (after rewrite) <a href="math_special_functions.html#boost_math.math_special_functions.acosh" title="acosh">acosh</a>
+          and <a href="math_special_functions.html#boost_math.math_special_functions.asinh" title="asinh">asinh</a>,
+          which were submited by Eric Ford; applied changes for Gcc 2.9.x suggested
+          by John Maddock; improved accuracy; sanity check for test file, related
+          to accuracy.
+        </li>
+<li>
+          1.3.2 - 07/07/2001: introduced namespace math.
+        </li>
+<li>
+          1.3.1 - 07/06/2001:(end of Boost review) split special_functions.hpp into
+          atanh.hpp, sinc.hpp and sinhc.hpp; improved efficiency of <a href="math_special_functions.html#boost_math.math_special_functions.atanh" title="atanh">atanh</a>
+          with compile-time technique (Daryle Walker); improved accuracy of all functions
+          near zero (Peter Schmitteckert).
+        </li>
+<li>
+          1.3.0 - 26/03/2001: support for complexes &amp; all, for cardinal functions.
+        </li>
+<li>
+          1.2.0 - 31/01/2001: minor modifications for Koenig lookup.
+        </li>
+<li>
+          1.1.0 - 23/01/2001: boostification.
+        </li>
+<li>
+          1.0.0 - 10/08/1999: first public version.
+        </li>
+</ul></div>
+</div>
+<div class="section" lang="en">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="boost_math.math_special_functions.to_do"></a>To Do</h3></div></div></div>
+<div class="itemizedlist"><ul type="disc">
+<li>
+          Add more functions.
+        </li>
+<li>
+          Improve test of each function.
+        </li>
+</ul></div>
+</div>
+</div>
+<table width="100%"><tr>
+<td align="left"></td>
+<td align="right"><small>Copyright © 2001 -2002 Daryle Walker, 2001-2003 Hubert Holin, 2005
+      John Maddock</small></td>
+</tr></table>
+<hr>
+<div class="spirit-nav">
+<a accesskey="p" href="gcd_lcm.html"><img src="../images/prev.png" alt="Prev"></a><a accesskey="u" href="../boost_math.html"><img src="../images/up.png" alt="Up"></a><a accesskey="h" href="../index.html"><img src="../images/home.png" alt="Home"></a><a accesskey="n" href="inverse_complex.html"><img src="../images/next.png" alt="Next"></a>
+</div>
+</body>
+</html>

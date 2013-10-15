@@ -1,0 +1,4 @@
+// dwWorldid		nExpand
+WI_WORLD_KEBARAS	1
+
+WI_WORLD_RARTESIA	1
